@@ -1,77 +1,308 @@
-<!doctype html>
-<html>
-  <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="chrome=1">
-    <title>Google style by shihyu</title>
-    <link rel="stylesheet" href="stylesheets/styles.css">
-    <link rel="stylesheet" href="stylesheets/pygment_trac.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
-    <script src="javascripts/main.js"></script>
-    <!--[if lt IE 9]>
-      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
-    <![endif]-->
-    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>﻿Google C++ 風格指南 - 中文版 &mdash; Google C++ Style Guide</title>
+    <link rel="stylesheet" href="_static/sphinxdoc.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '',
+        VERSION:     '3.133',
+        COLLAPSE_MODINDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="top" title="Google C++ Style Guide" href="" />
+    <link rel="next" title="1. 標頭檔" href="headers.html" /> 
   </head>
   <body>
-
-      <header>
-        <h1>Google style</h1>
-        <p>google_style</p>
-      </header>
-
-      <div id="banner">
-        <span id="logo"></span>
-
-        <a href="https://github.com/shihyu/google_style" class="button fork"><strong>View On GitHub</strong></a>
-        <div class="downloads">
-          <span>Downloads:</span>
-          <ul>
-            <li><a href="https://github.com/shihyu/google_style/zipball/master" class="button">ZIP</a></li>
-            <li><a href="https://github.com/shihyu/google_style/tarball/master" class="button">TAR</a></li>
-          </ul>
-        </div>
-      </div><!-- end banner -->
-
-    <div class="wrapper">
-      <nav>
-        <ul></ul>
-      </nav>
-      <section>
-        <h3>Welcome to GitHub Pages.</h3>
-
-<p>This automatic page generator is the easiest way to create beautiful pages for all of your projects. Author your page content here using GitHub Flavored Markdown, select a template crafted by a designer, and publish. After your page is generated, you can check out the new branch:</p>
-
-<pre><code>$ cd your_repo_root/repo_name
-$ git fetch origin
-$ git checkout gh-pages
-</code></pre>
-
-<p>If you're using the GitHub for Mac, simply sync your repository and you'll see the new branch.</p>
-
-<h3>Designer Templates</h3>
-
-<p>We've crafted some handsome templates for you to use. Go ahead and continue to layouts to browse through them. You can easily go back to edit your page before publishing. After publishing your page, you can revisit the page generator and switch to another theme. Your Page content will be preserved if it remained markdown format.</p>
-
-<h3>Rather Drive Stick?</h3>
-
-<p>If you prefer to not use the automatic generator, push a branch named <code>gh-pages</code> to your repository to create a page manually. In addition to supporting regular HTML content, GitHub Pages support Jekyll, a simple, blog aware static site generator written by our own Tom Preston-Werner. Jekyll makes it easy to create site-wide headers and footers without having to copy them across every page. It also offers intelligent blog support and other advanced templating features.</p>
-
-<h3>Authors and Contributors</h3>
-
-<p>You can <a href="https://github.com/blog/821" class="user-mention">@mention</a> a GitHub username to generate a link to their profile. The resulting <code>&lt;a&gt;</code> element will link to the contributor's GitHub Profile. For example: In 2007, Chris Wanstrath (<a href="https://github.com/defunkt" class="user-mention">@defunkt</a>), PJ Hyett (<a href="https://github.com/pjhyett" class="user-mention">@pjhyett</a>), and Tom Preston-Werner (<a href="https://github.com/mojombo" class="user-mention">@mojombo</a>) founded GitHub.</p>
-
-<h3>Support or Contact</h3>
-
-<p>Having trouble with Pages? Check out the documentation at <a href="http://help.github.com/pages">http://help.github.com/pages</a> or contact <a href="mailto:support@github.com">support@github.com</a> and we’ll help you sort it out.</p>
-      </section>
-      <footer>
-        <p>Project maintained by <a href="https://github.com/shihyu">shihyu</a></p>
-        <p><small>Hosted on GitHub Pages &mdash; Theme by <a href="http://twitter.com/#!/michigangraham">mattgraham</a></small></p>
-      </footer>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="headers.html" title="1. 標頭檔"
+             accesskey="N">next</a> |</li>
+        <li><a href="">Google C++ Style Guide</a> &raquo;</li> 
+      </ul>
     </div>
-    <!--[if !IE]><script>fixScale(document);</script><![endif]-->
-    
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+            <h3><a href="">Table Of Contents</a></h3>
+            <ul>
+<li><a class="reference external" href="">﻿Google C++ 風格指南 - 中文版</a><ul>
+<li><a class="reference external" href="#id1">目錄</a><ul>
+</ul>
+</li>
+<li><a class="reference external" href="#id2">譯者前言</a></li>
+<li><a class="reference external" href="#id4">背景</a></li>
+</ul>
+</li>
+</ul>
+
+            <h4>Next topic</h4>
+            <p class="topless"><a href="headers.html"
+                                  title="next chapter">1. 標頭檔</a></p>
+            <h3>This Page</h3>
+            <ul class="this-page-menu">
+              <li><a href="_sources/index.txt"
+                     rel="nofollow">Show Source</a></li>
+            </ul>
+          <div id="searchbox" style="display: none">
+            <h3>Quick search</h3>
+              <form class="search" action="search.html" method="get">
+                <input type="text" name="q" size="18" />
+                <input type="submit" value="Go" />
+                <input type="hidden" name="check_keywords" value="yes" />
+                <input type="hidden" name="area" value="default" />
+              </form>
+              <p class="searchtip" style="font-size: 90%">
+              Enter search terms or a module, class or function name.
+              </p>
+          </div>
+          <script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="google-c">
+<h1>﻿Google C++ 風格指南 - 中文版<a class="headerlink" href="#google-c" title="Permalink to this headline">¶</a></h1>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field"><th class="field-name">版本:</th><td class="field-body"><p class="first">3.133</p>
+</td>
+</tr>
+<tr class="field"><th class="field-name">原作者:</th><td class="field-body"><div class="first line-block">
+<div class="line">Benjy Weinberger</div>
+<div class="line">Craig Silverstein</div>
+<div class="line">Gregory Eitzmann</div>
+<div class="line">Mark Mentovai</div>
+<div class="line">Tashana Landray</div>
+</div>
+</td>
+</tr>
+<tr class="field"><th class="field-name">翻譯:</th><td class="field-body"><div class="first line-block">
+<div class="line"><a class="reference external" href="http://www.yulefox.com/">YuleFox</a></div>
+<div class="line"><a class="reference external" href="http://blog.yangyubo.com/">yospaly</a></div>
+</div>
+</td>
+</tr>
+<tr class="field"><th class="field-name">項目主頁:</th><td class="field-body"><ul class="first last simple">
+<li><a class="reference external" href="http://google-styleguide.googlecode.com">Google Style Guide</a></li>
+<li><a class="reference external" href="http://zh-google-styleguide.googlecode.com">Google 開源項目風格指南 - 中文版</a></li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<div class="section" id="id1">
+<h2>目錄<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
+<div class="contents topic" id="contents">
+<p class="topic-title first">Contents</p>
+<ul class="simple">
+<li><a class="reference internal" href="#google-c" id="id5">﻿Google C++ 風格指南 - 中文版</a><ul>
+<li><a class="reference internal" href="#id1" id="id6">目錄</a></li>
+<li><a class="reference internal" href="#id2" id="id7">譯者前言</a></li>
+<li><a class="reference internal" href="#id4" id="id8">背景</a></li>
+</ul>
+</li>
+</ul>
+</div>
+<ul>
+<li class="toctree-l1"><a class="reference external" href="headers.html">1. 標頭檔</a><ul>
+<li class="toctree-l2"><a class="reference external" href="headers.html#define">1.1. #define 保護</a></li>
+<li class="toctree-l2"><a class="reference external" href="headers.html#id2">1.2. 標頭檔依賴</a></li>
+<li class="toctree-l2"><a class="reference external" href="headers.html#inline-functions">1.3. 內聯函數</a></li>
+<li class="toctree-l2"><a class="reference external" href="headers.html#inl-h">1.4. -inl.h檔案</a></li>
+<li class="toctree-l2"><a class="reference external" href="headers.html#id4">1.5. 函數參數的順序</a></li>
+<li class="toctree-l2"><a class="reference external" href="headers.html#include">1.6. <tt class="docutils literal"><span class="pre">#include</span></tt> 的路徑及順序</a></li>
+<li class="toctree-l2"><a class="reference external" href="headers.html#yulefox">譯者 (YuleFox) 筆記</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference external" href="scoping.html">2. 作用域</a><ul>
+<li class="toctree-l2"><a class="reference external" href="scoping.html#namespaces">2.1. 名字空間</a><ul>
+<li class="toctree-l3"><a class="reference external" href="scoping.html#id3">2.1.1. 匿名名字空間</a></li>
+<li class="toctree-l3"><a class="reference external" href="scoping.html#id4">2.1.2. 具名的名字空間</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference external" href="scoping.html#id5">2.2. 嵌套類</a></li>
+<li class="toctree-l2"><a class="reference external" href="scoping.html#id6">2.3. 非成員函數, 靜態成員函數, 和全局函數</a></li>
+<li class="toctree-l2"><a class="reference external" href="scoping.html#id7">2.4. 局部變數</a></li>
+<li class="toctree-l2"><a class="reference external" href="scoping.html#id8">2.5. 靜態和全局變數</a></li>
+<li class="toctree-l2"><a class="reference external" href="scoping.html#yulefox">譯者 (YuleFox) 筆記</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference external" href="classes.html">3. 類</a><ul>
+<li class="toctree-l2"><a class="reference external" href="classes.html#id2">3.1. 建構子的職責</a></li>
+<li class="toctree-l2"><a class="reference external" href="classes.html#id4">3.2. 預設建構子</a></li>
+<li class="toctree-l2"><a class="reference external" href="classes.html#id5">3.3. 顯式建構子</a></li>
+<li class="toctree-l2"><a class="reference external" href="classes.html#copy-constructors">3.4. 拷貝建構子</a></li>
+<li class="toctree-l2"><a class="reference external" href="classes.html#vs">3.5. 結構體 VS. 類</a></li>
+<li class="toctree-l2"><a class="reference external" href="classes.html#inheritance">3.6. 繼承</a></li>
+<li class="toctree-l2"><a class="reference external" href="classes.html#multiple-inheritance">3.7. 多重繼承</a></li>
+<li class="toctree-l2"><a class="reference external" href="classes.html#interface">3.8. 介面</a></li>
+<li class="toctree-l2"><a class="reference external" href="classes.html#id12">3.9. 運算符重載</a></li>
+<li class="toctree-l2"><a class="reference external" href="classes.html#id13">3.10. 存取控制</a></li>
+<li class="toctree-l2"><a class="reference external" href="classes.html#declaration-order">3.11. 聲明順序</a></li>
+<li class="toctree-l2"><a class="reference external" href="classes.html#id15">3.12. 編寫簡短函數</a></li>
+<li class="toctree-l2"><a class="reference external" href="classes.html#yulefox">譯者 (YuleFox) 筆記</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference external" href="magic.html">4. 來自 Google 的奇技</a><ul>
+<li class="toctree-l2"><a class="reference external" href="magic.html#id1">4.1. 智能指針</a></li>
+<li class="toctree-l2"><a class="reference external" href="magic.html#cpplint">4.2. cpplint</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference external" href="others.html">5. 其他 C++ 特性</a><ul>
+<li class="toctree-l2"><a class="reference external" href="others.html#id1">5.1. 引用參數</a></li>
+<li class="toctree-l2"><a class="reference external" href="others.html#function-overloading">5.2. 函數重載</a></li>
+<li class="toctree-l2"><a class="reference external" href="others.html#id5">5.3. 預設參數</a></li>
+<li class="toctree-l2"><a class="reference external" href="others.html#alloca">5.4. 變長數組和 alloca()</a></li>
+<li class="toctree-l2"><a class="reference external" href="others.html#id6">5.5. 友元</a></li>
+<li class="toctree-l2"><a class="reference external" href="others.html#id7">5.6. 異常</a></li>
+<li class="toctree-l2"><a class="reference external" href="others.html#id8">5.7. 運行時類型識別</a></li>
+<li class="toctree-l2"><a class="reference external" href="others.html#id9">5.8. 類型轉換</a></li>
+<li class="toctree-l2"><a class="reference external" href="others.html#id11">5.9. 流</a></li>
+<li class="toctree-l2"><a class="reference external" href="others.html#id12">5.10. 前置自增和自減</a></li>
+<li class="toctree-l2"><a class="reference external" href="others.html#const">5.11. <tt class="docutils literal"><span class="pre">const</span></tt> 的使用</a></li>
+<li class="toctree-l2"><a class="reference external" href="others.html#id13">5.12. 整型</a></li>
+<li class="toctree-l2"><a class="reference external" href="others.html#id14">5.13. 64 位下的可移植性</a></li>
+<li class="toctree-l2"><a class="reference external" href="others.html#preprocessor-macros">5.14. 預處理宏</a></li>
+<li class="toctree-l2"><a class="reference external" href="others.html#null">5.15. 0 和 NULL</a></li>
+<li class="toctree-l2"><a class="reference external" href="others.html#sizeof">5.16. sizeof</a></li>
+<li class="toctree-l2"><a class="reference external" href="others.html#boost">5.17. Boost 庫</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference external" href="naming.html">6. 命名約定</a><ul>
+<li class="toctree-l2"><a class="reference external" href="naming.html#id2">6.1. 通用命名規則</a></li>
+<li class="toctree-l2"><a class="reference external" href="naming.html#id3">6.2. 檔案命名</a></li>
+<li class="toctree-l2"><a class="reference external" href="naming.html#id4">6.3. 類型命名</a></li>
+<li class="toctree-l2"><a class="reference external" href="naming.html#id5">6.4. 變數命名</a></li>
+<li class="toctree-l2"><a class="reference external" href="naming.html#constant-names">6.5. 常量命名</a></li>
+<li class="toctree-l2"><a class="reference external" href="naming.html#function-names">6.6. 函數命名</a></li>
+<li class="toctree-l2"><a class="reference external" href="naming.html#id8">6.7. 名字空間命名</a></li>
+<li class="toctree-l2"><a class="reference external" href="naming.html#id9">6.8. 枚舉命名</a></li>
+<li class="toctree-l2"><a class="reference external" href="naming.html#macro-names">6.9. 宏命名</a></li>
+<li class="toctree-l2"><a class="reference external" href="naming.html#id11">6.10. 命名規則的特例</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference external" href="comments.html">7. 註釋</a><ul>
+<li class="toctree-l2"><a class="reference external" href="comments.html#id2">7.1. 註釋風格</a></li>
+<li class="toctree-l2"><a class="reference external" href="comments.html#id3">7.2. 檔案註釋</a></li>
+<li class="toctree-l2"><a class="reference external" href="comments.html#class-comments">7.3. 類註釋</a></li>
+<li class="toctree-l2"><a class="reference external" href="comments.html#id5">7.4. 函數註釋</a></li>
+<li class="toctree-l2"><a class="reference external" href="comments.html#id6">7.5. 變數註釋</a></li>
+<li class="toctree-l2"><a class="reference external" href="comments.html#id7">7.6. 實現註釋</a></li>
+<li class="toctree-l2"><a class="reference external" href="comments.html#id8">7.7. 標點, 拼寫和語法</a></li>
+<li class="toctree-l2"><a class="reference external" href="comments.html#todo">7.8. TODO 註釋</a></li>
+<li class="toctree-l2"><a class="reference external" href="comments.html#yulefox">譯者 (YuleFox) 筆記</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference external" href="formatting.html">8. 格式</a><ul>
+<li class="toctree-l2"><a class="reference external" href="formatting.html#line-length">8.1. 行長度</a></li>
+<li class="toctree-l2"><a class="reference external" href="formatting.html#ascii">8.2. 非 ASCII 字元</a></li>
+<li class="toctree-l2"><a class="reference external" href="formatting.html#id3">8.3. 空格還是製表位</a></li>
+<li class="toctree-l2"><a class="reference external" href="formatting.html#id4">8.4. 函數聲明與定義</a></li>
+<li class="toctree-l2"><a class="reference external" href="formatting.html#id5">8.5. 函數調用</a></li>
+<li class="toctree-l2"><a class="reference external" href="formatting.html#id6">8.6. 條件語句</a></li>
+<li class="toctree-l2"><a class="reference external" href="formatting.html#id7">8.7. 循環和開關選擇語句</a></li>
+<li class="toctree-l2"><a class="reference external" href="formatting.html#id8">8.8. 指針和引用表達式</a></li>
+<li class="toctree-l2"><a class="reference external" href="formatting.html#id9">8.9. 布爾表達式</a></li>
+<li class="toctree-l2"><a class="reference external" href="formatting.html#id10">8.10. 函數返回值</a></li>
+<li class="toctree-l2"><a class="reference external" href="formatting.html#id11">8.11. 變數及數組初始化</a></li>
+<li class="toctree-l2"><a class="reference external" href="formatting.html#id12">8.12. 預處理指令</a></li>
+<li class="toctree-l2"><a class="reference external" href="formatting.html#id13">8.13. 類格式</a></li>
+<li class="toctree-l2"><a class="reference external" href="formatting.html#id14">8.14. 初始化列表</a></li>
+<li class="toctree-l2"><a class="reference external" href="formatting.html#id15">8.15. 名字空間格式化</a></li>
+<li class="toctree-l2"><a class="reference external" href="formatting.html#id16">8.16. 水平留白</a></li>
+<li class="toctree-l2"><a class="reference external" href="formatting.html#id17">8.17. 垂直留白</a></li>
+<li class="toctree-l2"><a class="reference external" href="formatting.html#yulefox">譯者 (YuleFox) 筆記</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference external" href="exceptions.html">9. 規則特例</a><ul>
+<li class="toctree-l2"><a class="reference external" href="exceptions.html#id2">9.1. 現有不合規範的代碼</a></li>
+<li class="toctree-l2"><a class="reference external" href="exceptions.html#windows">9.2. Windows 代碼</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference external" href="end.html">10. 結束語</a></li>
+</ul>
+</div>
+<div class="section" id="id2">
+<h2>譯者前言<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
+<p>Google 經常會發佈一些開源項目, 意味着會接受來自其他代碼貢獻者的代碼. 但是如果代碼貢獻者的編程風格與 Google 的不一致, 會給代碼閲讀者和其他代碼提交這造成不小的困擾. Google 因此發佈了這份自己的編程風格, 使所有提交代碼的人都能獲知 Google 的編程風格.</p>
+<dl class="docutils">
+<dt>翻譯初衷:</dt>
+<dd><p class="first">規則的作用就是避免混亂. 但規則本身一定要權威, 有說服力, 並且是理性的. 我們所見過的大部分編程規範, 其內容或不夠嚴謹, 或闡述過于簡單, 或帶有一定的武斷性.</p>
+<p>Google 保持其一貫的嚴謹精神, 5 萬漢字的指南涉及廣泛, 論證嚴密. 我們翻譯該系列指南的主因也正是其嚴謹性. 嚴謹意味着指南的價值不僅僅侷限于它羅列出的規範, 更具參考意義的是它為了列出規範而做的謹慎權衡過程.</p>
+<p>指南不僅列出你要怎麼做, 還告訴你為什麼要這麼做, 哪些情況下可以不這麼做, 以及如何權衡其利弊. 其他團隊未必要完全遵照指南亦步亦趨, 如前面所說, 這份指南是 Google 根據自身實際情況打造的, 適用於其主導的開源項目. 其他團隊可以參照該指南, 或從中汲取靈感, 建立適合自身實際情況的規範.</p>
+<p class="last">我們在翻譯的過程中, 收穫頗多. 希望本系列指南中文版對你同樣能有所幫助.</p>
+</dd>
+</dl>
+<p>我們翻譯時也是儘力保持嚴謹, 但水平所限, bug 在所難免. 有任何意見或建議, 可與我們取得聯繫.</p>
+<p>中文版和英文版一樣, 使用 <tt class="docutils literal"><span class="pre">Artistic</span> <span class="pre">License/GPL</span></tt> 開源許可.</p>
+<dl class="docutils">
+<dt>中文版修訂歷史:</dt>
+<dd><ul class="first last">
+<li><p class="first">2009-06 3.133 : YuleFox 的 1.0 版已經相當完善, 但原版在近一年的時間裡, 其規範也發生了一些變化.</p>
+<blockquote>
+<p>yospaly 與 YuleFox 一拍即合, 以項目的形式來延續中文版 : <a class="reference external" href="http://zh-google-styleguide.googlecode.com">Google 開源項目風格指南 - 中文版項目</a>.</p>
+<p>主要變化是同步到 3.133 最新英文版本, 做部分勘誤和改善可讀性方面的修改, 並改進排版效果. yospaly 重新翻修, YuleFox 做後續評審.</p>
+</blockquote>
+</li>
+<li><p class="first">2008-07 1.0 : 出自 <a class="reference external" href="http://www.yulefox.com/20080710/translation-google-programming-style-01.html/">YuleFox 的 Blog</a>, 很多地方摘錄的也是該版本.</p>
+</li>
+</ul>
+</dd>
+</dl>
+</div>
+<div class="section" id="id4">
+<h2>背景<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h2>
+<p>C++ 是 Google 大部分開源項目的主要編程語言. 正如每個 C++ 程序員都知道的, C++ 有很多強大的特性, 但這種強大不可避免的導致它走向複雜，使代碼更容易產生 bug, 難以閲讀和維護.</p>
+<p>本指南的目的是通過詳細闡述 C++ 注意事項來駕馭其複雜性. 這些規則在保證代碼易於管理的同時, 高效使用 C++ 的語言特性.</p>
+<p><em>風格</em>, 亦被稱作可讀性, 也就是指導 C++ 編程的約定. 使用術語 &#8220;風格&#8221; 有些用詞不當, 因為這些習慣遠不止原始碼檔案格式化這麼簡單.</p>
+<p>使代碼易於管理的方法之一是加強代碼一致性. 讓任何程序員都可以快速讀懂你的代碼這點非常重要. 保持統一編程風格並遵守約定意味着可以很容易根據 &#8220;模式匹配&#8221; 規則來推斷各種標識符的含義. 創建通用, 必需的習慣用語和模式可以使代碼更容易理解. 在一些情況下可能有充分的理由改變某些編程風格, 但我們還是應該遵循一致性原則，儘量不這麼做.</p>
+<p>本指南的另一個觀點是 C++ 特性的臃腫. C++ 是一門包含大量高級特性的龐大語言. 某些情況下, 我們會限制甚至禁止使用某些特性. 這麼做是為了保持代碼清爽, 避免這些特性可能導致的各種問題. 指南中列舉了這類特性, 並解釋為什麼這些特性被限制使用.</p>
+<p>Google 主導的開源項目均符合本指南的規定.</p>
+<p>注意: 本指南並非 C++ 教程, 我們假定讀者已經對 C++ 非常熟悉.</p>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="headers.html" title="1. 標頭檔"
+             >next</a> |</li>
+        <li><a href="">Google C++ Style Guide</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+      &copy; Copyright 2009, Google Inc..
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 0.6.2.
+    </div>
   </body>
 </html>
