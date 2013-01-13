@@ -1,103 +1,61 @@
+
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
 
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>3. 類 &mdash; Google C++ Style Guide</title>
-    <link rel="stylesheet" href="_static/sphinxdoc.css" type="text/css" />
-    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <title>3. 類 &mdash; Google 開源項目風格指南</title>
+    
+    <link rel="stylesheet" href="../_static/haiku.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/print.css" type="text/css" />
+    
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
-        URL_ROOT:    '',
-        VERSION:     '3.133',
-        COLLAPSE_MODINDEX: false,
+        URL_ROOT:    '../',
+        VERSION:     '',
+        COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
       };
     </script>
-    <script type="text/javascript" src="_static/jquery.js"></script>
-    <script type="text/javascript" src="_static/doctools.js"></script>
-    <link rel="top" title="Google C++ Style Guide" href="index.html" />
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <script type="text/javascript" src="../_static/theme_extras.js"></script>
+    <link rel="top" title="Google 開源項目風格指南" href="../index.html" />
+    <link rel="up" title="C++ 風格指南 - 內容目錄" href="contents.html" />
     <link rel="next" title="4. 來自 Google 的奇技" href="magic.html" />
     <link rel="prev" title="2. 作用域" href="scoping.html" /> 
   </head>
   <body>
-    <div class="related">
-      <h3>Navigation</h3>
-      <ul>
-        <li class="right" style="margin-right: 10px">
-          <a href="genindex.html" title="General Index"
-             accesskey="I">index</a></li>
-        <li class="right" >
-          <a href="magic.html" title="4. 來自 Google 的奇技"
-             accesskey="N">next</a> |</li>
-        <li class="right" >
-          <a href="scoping.html" title="2. 作用域"
-             accesskey="P">previous</a> |</li>
-        <li><a href="index.html">Google C++ Style Guide</a> &raquo;</li> 
-      </ul>
-    </div>
-      <div class="sphinxsidebar">
-        <div class="sphinxsidebarwrapper">
-            <h3><a href="index.html">Table Of Contents</a></h3>
-            <ul>
-<li><a class="reference external" href="">3. 類</a><ul>
-<li><a class="reference external" href="#id2">3.1. 建構子的職責</a></li>
-<li><a class="reference external" href="#id4">3.2. 預設建構子</a></li>
-<li><a class="reference external" href="#id5">3.3. 顯式建構子</a></li>
-<li><a class="reference external" href="#copy-constructors">3.4. 拷貝建構子</a></li>
-<li><a class="reference external" href="#vs">3.5. 結構體 VS. 類</a></li>
-<li><a class="reference external" href="#inheritance">3.6. 繼承</a></li>
-<li><a class="reference external" href="#multiple-inheritance">3.7. 多重繼承</a></li>
-<li><a class="reference external" href="#interface">3.8. 介面</a></li>
-<li><a class="reference external" href="#id12">3.9. 運算符重載</a></li>
-<li><a class="reference external" href="#id13">3.10. 存取控制</a></li>
-<li><a class="reference external" href="#declaration-order">3.11. 聲明順序</a></li>
-<li><a class="reference external" href="#id15">3.12. 編寫簡短函數</a></li>
-<li><a class="reference external" href="#yulefox">譯者 (YuleFox) 筆記</a></li>
-</ul>
-</li>
-</ul>
-
-            <h4>Previous topic</h4>
-            <p class="topless"><a href="scoping.html"
-                                  title="previous chapter">2. 作用域</a></p>
-            <h4>Next topic</h4>
-            <p class="topless"><a href="magic.html"
-                                  title="next chapter">4. 來自 Google 的奇技</a></p>
-            <h3>This Page</h3>
-            <ul class="this-page-menu">
-              <li><a href="_sources/classes.txt"
-                     rel="nofollow">Show Source</a></li>
-            </ul>
-          <div id="searchbox" style="display: none">
-            <h3>Quick search</h3>
-              <form class="search" action="search.html" method="get">
-                <input type="text" name="q" size="18" />
-                <input type="submit" value="Go" />
-                <input type="hidden" name="check_keywords" value="yes" />
-                <input type="hidden" name="area" value="default" />
-              </form>
-              <p class="searchtip" style="font-size: 90%">
-              Enter search terms or a module, class or function name.
-              </p>
-          </div>
-          <script type="text/javascript">$('#searchbox').show(0);</script>
-        </div>
+      <div class="header"><h1 class="heading"><a href="../index.html">
+          <span>Google 開源項目風格指南</span></a></h1>
+        <h2 class="heading"><span>3. 類</span></h2>
       </div>
+      <div class="topnav">
+      
+        <p>
+        «&#160;&#160;<a href="scoping.html">2. 作用域</a>
+        &#160;&#160;::&#160;&#160;
+        <a class="uplink" href="../contents.html">Contents</a>
+        &#160;&#160;::&#160;&#160;
+        <a href="magic.html">4. 來自 Google 的奇技</a>&#160;&#160;»
+        </p>
 
-    <div class="document">
-      <div class="documentwrapper">
-        <div class="bodywrapper">
-          <div class="body">
-            
+      </div>
+      <div class="content">
+        
+        
   <div class="section" id="id1">
-<h1>3. 類<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h1>
+<h1>3. 類</h1>
 <p>類是 C++ 中代碼的基本單元. 顯然, 它們被廣泛使用. 本節列舉了在寫一個類時的主要注意事項.</p>
 <div class="section" id="id2">
-<h2>3.1. 建構子的職責<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
+<h2>3.1. 建構子的職責</h2>
 <div class="admonition tip">
 <p class="first admonition-title">Tip</p>
 <p class="last">建構子中只進行那些沒什麼意義的 (trivial, YuleFox 註: 簡單初始化對於程序執行沒有實際的邏輯意義, 因為成員變數 &#8220;有意義&#8221; 的值大多不在建構子中確定) 初始化, 可能的話, 使用 <tt class="docutils literal"><span class="pre">Init()</span></tt> 方法集中初始化有意義的 (non-trivial) 數據.</p>
@@ -110,20 +68,20 @@
 <dt>缺點:</dt>
 <dd><p class="first">在建構子中執行操作引起的問題有:</p>
 <blockquote class="last">
-<ul class="simple">
+<div><ul class="simple">
 <li>建構子中很難上報錯誤, <a class="reference external" href="#...">不能使用異常</a>.</li>
 <li>操作失敗會造成對象初始化失敗，進入不確定狀態.</li>
 <li>如果在建構子內調用了自身的虛函數, 這類調用是不會重定向到子類的虛函數實現. 即使當前沒有子類化實現, 將來仍是隱患.</li>
 <li>如果有人創建該類型的全局變數 (雖然違背了上節提到的規則), 建構子將先 <tt class="docutils literal"><span class="pre">main()</span></tt> 一步被調用, 有可能破壞建構子中暗含的假設條件. 例如, <a class="reference external" href="http://code.google.com/p/google-gflags/">gflags</a> 尚未初始化.</li>
 </ul>
-</blockquote>
+</div></blockquote>
 </dd>
 <dt>結論:</dt>
 <dd>如果對象需要進行有意義的 (non-trivial) 初始化, 考慮使用明確的 <tt class="docutils literal"><span class="pre">Init()</span></tt> 方法並 (或) 增加一個成員標記用於指示對象是否已經初始化成功.</dd>
 </dl>
 </div>
 <div class="section" id="id4">
-<h2>3.2. 預設建構子<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h2>
+<h2>3.2. 預設建構子</h2>
 <div class="admonition tip">
 <p class="first admonition-title">Tip</p>
 <p class="last">如果一個類定義了若干成員變數又沒有其它建構子, 必須定義一個預設建構子. 否則編譯器將自動生產一個很糟糕的預設建構子.</p>
@@ -143,7 +101,7 @@
 </dl>
 </div>
 <div class="section" id="id5">
-<h2>3.3. 顯式建構子<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h2>
+<h2>3.3. 顯式建構子</h2>
 <div class="admonition tip">
 <p class="first admonition-title">Tip</p>
 <p class="last">對單個參數的建構子使用 C++ 關鍵字 <tt class="docutils literal"><span class="pre">explicit</span></tt>.</p>
@@ -162,7 +120,7 @@
 </dl>
 </div>
 <div class="section" id="copy-constructors">
-<span id="id6"></span><h2>3.4. 拷貝建構子<a class="headerlink" href="#copy-constructors" title="Permalink to this headline">¶</a></h2>
+<span id="id6"></span><h2>3.4. 拷貝建構子</h2>
 <div class="admonition tip">
 <p class="first admonition-title">Tip</p>
 <p class="last">僅在代碼中需要拷貝一個類對象的時候使用拷貝建構子; 大部分情況下都不需要, 此時應使用 <tt class="docutils literal"><span class="pre">DISALLOW_COPY_AND_ASSIGN</span></tt>.</p>
@@ -178,8 +136,8 @@
 <dd><p class="first">大部分類並不需要可拷貝, 也不需要一個拷貝建構子或重載賦值運算符. 不幸的是, 如果你不主動聲明它們, 編譯器會為你自動生成, 而且是 <tt class="docutils literal"><span class="pre">public</span></tt> 的.</p>
 <dl class="docutils">
 <dt>可以考慮在類的 <tt class="docutils literal"><span class="pre">private:</span></tt> 中添加拷貝建構子和賦值操作的空實現, 只有聲明, 沒有定義. 由於這些空函數聲明為 <tt class="docutils literal"><span class="pre">private</span></tt>, 當其他代碼試圖使用它們的時候, 編譯器將報錯. 方便起見, 我們可以使用 <tt class="docutils literal"><span class="pre">DISALLOW_COPY_AND_ASSIGN</span></tt> 宏:</dt>
-<dd><div class="first last highlight-c++"><div class="highlight"><pre><span class="c">// 禁止使用拷貝建構子和 operator= 賦值操作的宏</span>
-<span class="c">// 應該類的 private: 中使用</span>
+<dd><div class="first last highlight-c++"><div class="highlight"><pre><span class="cp">// 禁止使用拷貝建構子和 operator= 賦值操作的宏</span>
+<span class="cp">// 應該類的 private: 中使用</span>
 
 <span class="cp">#define DISALLOW_COPY_AND_ASSIGN(TypeName) \</span>
 <span class="cp">            TypeName(const TypeName&amp;); \</span>
@@ -206,7 +164,7 @@
 <p>為了能作為 STL 容器的值, 你可能有使類可拷貝的衝動. 在大多數類似的情況下, 真正該做的是把對象的 <em>指針</em> 放到 STL 容器中. 可以考慮使用 <tt class="docutils literal"><span class="pre">std::tr1::shared_ptr</span></tt>.</p>
 </div>
 <div class="section" id="vs">
-<span id="structs-vs-classes"></span><h2>3.5. 結構體 VS. 類<a class="headerlink" href="#vs" title="Permalink to this headline">¶</a></h2>
+<span id="structs-vs-classes"></span><h2>3.5. 結構體 VS. 類</h2>
 <div class="admonition tip">
 <p class="first admonition-title">Tip</p>
 <p class="last">僅當只有數據時使用 <tt class="docutils literal"><span class="pre">struct</span></tt>, 其它一概使用 <tt class="docutils literal"><span class="pre">class</span></tt>.</p>
@@ -218,7 +176,7 @@
 <p>注意: 類和結構體的成員變數使用 <a class="reference external" href="...">不同的命名規則</a>.</p>
 </div>
 <div class="section" id="inheritance">
-<span id="id8"></span><h2>3.6. 繼承<a class="headerlink" href="#inheritance" title="Permalink to this headline">¶</a></h2>
+<span id="id8"></span><h2>3.6. 繼承</h2>
 <div class="admonition tip">
 <p class="first admonition-title">Tip</p>
 <p class="last">使用組合 (composition, YuleFox 註: 這一點也是 GoF 在 &lt;&lt;Design Patterns&gt;&gt; 裡反覆強調的) 常常比使用繼承更合理. 如果使用繼承的話, 定義為 <tt class="docutils literal"><span class="pre">public</span></tt> 繼承.</p>
@@ -239,7 +197,7 @@
 </dl>
 </div>
 <div class="section" id="multiple-inheritance">
-<span id="id10"></span><h2>3.7. 多重繼承<a class="headerlink" href="#multiple-inheritance" title="Permalink to this headline">¶</a></h2>
+<span id="id10"></span><h2>3.7. 多重繼承</h2>
 <div class="admonition tip">
 <p class="first admonition-title">Tip</p>
 <p class="last">真正需要用到多重實現繼承的情況少之又少. 只在以下情況我們才允許多重繼承: 最多只有一個基類是非抽象類; 其它基類都是以 <tt class="docutils literal"><span class="pre">Interface</span></tt> 為尾碼的 <a class="reference internal" href="#interface"><em>純介面類</em></a>.</p>
@@ -256,11 +214,11 @@
 </dl>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
-<p class="last">關於該規則, Windows 下有個 <a class="reference external" href="exceptions.html#windows-code"><em>特例</em></a>.</p>
+<p class="last">關於該規則, Windows 下有個 <a class="reference internal" href="exceptions.html#windows-code"><em>特例</em></a>.</p>
 </div>
 </div>
 <div class="section" id="interface">
-<span id="id11"></span><h2>3.8. 介面<a class="headerlink" href="#interface" title="Permalink to this headline">¶</a></h2>
+<span id="id11"></span><h2>3.8. 介面</h2>
 <div class="admonition tip">
 <p class="first admonition-title">Tip</p>
 <p class="last">介面是指滿足特定條件的類, 這些類以 <tt class="docutils literal"><span class="pre">Interface</span></tt> 為尾碼 (不強制).</p>
@@ -269,13 +227,13 @@
 <dt>定義:</dt>
 <dd><p class="first">當一個類滿足以下要求時, 稱之為純介面:</p>
 <blockquote>
-<ul class="simple">
-<li>只有純虛函數 (&#8220;<tt class="docutils literal"><span class="pre">=0</span></tt>&#8220;) 和靜態函數 (除了下文提到的解構子).</li>
+<div><ul class="simple">
+<li>只有純虛函數 (&#8220;<tt class="docutils literal"><span class="pre">=0</span></tt>&#8221;) 和靜態函數 (除了下文提到的解構子).</li>
 <li>沒有非靜態數據成員.</li>
 <li>沒有定義任何建構子. 如果有, 也不能帶有參數, 並且必須為 <tt class="docutils literal"><span class="pre">protected</span></tt>.</li>
 <li>如果它是一個子類, 也只能從滿足上述條件並以 <tt class="docutils literal"><span class="pre">Interface</span></tt> 為尾碼的類繼承.</li>
 </ul>
-</blockquote>
+</div></blockquote>
 <p class="last">介面類不能被直接實例化, 因為它聲明了純虛函數. 為確保介面類的所有實現可被正確銷毀, 必須為之聲明虛解構子 (作為上述第 1 條規則的特例, 解構子不能是純虛函數). 具體細節可參考 Stroustrup 的 <em>The C++ Programming Language, 3rd edition</em> 第 12.4 節.</p>
 </dd>
 <dt>優點:</dt>
@@ -287,7 +245,7 @@
 </dl>
 </div>
 <div class="section" id="id12">
-<h2>3.9. 運算符重載<a class="headerlink" href="#id12" title="Permalink to this headline">¶</a></h2>
+<h2>3.9. 運算符重載</h2>
 <div class="admonition tip">
 <p class="first admonition-title">Tip</p>
 <p class="last">除少數特定環境外，不要重載運算符.</p>
@@ -310,21 +268,21 @@
 <dd><p class="first">一般不要重載運算符. 尤其是賦值操作 (<tt class="docutils literal"><span class="pre">operator=</span></tt>) 比較詭異, 應避免重載. 如果需要的話, 可以定義類似 <tt class="docutils literal"><span class="pre">Equals()</span></tt>, <tt class="docutils literal"><span class="pre">CopyFrom()</span></tt> 等函數.</p>
 <p>然而, 極少數情況下可能需要重載運算符以便與模板或 &#8220;標準&#8221; C++ 類互操作 (如 <tt class="docutils literal"><span class="pre">operator&lt;&lt;(ostream&amp;,</span> <span class="pre">const</span> <span class="pre">T&amp;)</span></tt>). 只有被證明是完全合理的才能重載, 但你還是要儘可能避免這樣做. 尤其是不要僅僅為了在 STL 容器中用作鍵值就重載 <tt class="docutils literal"><span class="pre">operator==</span></tt> 或 <tt class="docutils literal"><span class="pre">operator&lt;</span></tt>; 相反, 你應該在聲明容器的時候, 創建相等判斷和大小比較的仿函數類型.</p>
 <p>有些 STL 算法確實需要重載 <tt class="docutils literal"><span class="pre">operator==</span></tt> 時, 你可以這麼做, 記得別忘了在文檔中說明原因.</p>
-<p class="last">參考 <a class="reference internal" href="#copy-constructors"><em>拷貝建構子</em></a> 和 <a class="reference external" href="others.html#function-overloading"><em>函數重載</em></a>.</p>
+<p class="last">參考 <a class="reference internal" href="#copy-constructors"><em>拷貝建構子</em></a> 和 <a class="reference internal" href="others.html#function-overloading"><em>函數重載</em></a>.</p>
 </dd>
 </dl>
 </div>
 <div class="section" id="id13">
-<h2>3.10. 存取控制<a class="headerlink" href="#id13" title="Permalink to this headline">¶</a></h2>
+<h2>3.10. 存取控制</h2>
 <div class="admonition tip">
 <p class="first admonition-title">Tip</p>
 <p class="last">將 <em>所有</em> 數據成員聲明為 <tt class="docutils literal"><span class="pre">private</span></tt>, 並根據需要提供相應的存取函數. 例如, 某個名為 <tt class="docutils literal"><span class="pre">foo_</span></tt> 的變數, 其取值函數是 <tt class="docutils literal"><span class="pre">foo()</span></tt>. 還可能需要一個賦值函數 <tt class="docutils literal"><span class="pre">set_foo()</span></tt>.</p>
 </div>
 <p>一般在標頭檔中把存取函數定義成內聯函數.</p>
-<p>參考 <a class="reference internal" href="#inheritance"><em>繼承</em></a> 和 <a class="reference external" href="naming.html#function-names"><em>函數命名</em></a></p>
+<p>參考 <a class="reference internal" href="#inheritance"><em>繼承</em></a> 和 <a class="reference internal" href="naming.html#function-names"><em>函數命名</em></a></p>
 </div>
 <div class="section" id="declaration-order">
-<span id="id14"></span><h2>3.11. 聲明順序<a class="headerlink" href="#declaration-order" title="Permalink to this headline">¶</a></h2>
+<span id="id14"></span><h2>3.11. 聲明順序</h2>
 <div class="admonition tip">
 <p class="first admonition-title">Tip</p>
 <p class="last">在類中使用特定的聲明順序: <tt class="docutils literal"><span class="pre">public:</span></tt> 在 <tt class="docutils literal"><span class="pre">private:</span></tt> 之前, 成員函數在數據成員 (變數) 前;</p>
@@ -332,7 +290,7 @@
 <p>類的訪問控制區段的聲明順序依次為: <tt class="docutils literal"><span class="pre">public:</span></tt>, <tt class="docutils literal"><span class="pre">protected:</span></tt>, <tt class="docutils literal"><span class="pre">private:</span></tt>. 如果某區段沒內容, 可以不聲明.</p>
 <p>每個區段內的聲明通常按以下順序:</p>
 <blockquote>
-<ul class="simple">
+<div><ul class="simple">
 <li><tt class="docutils literal"><span class="pre">typedefs</span></tt> 和枚舉</li>
 <li>常量</li>
 <li>建構子</li>
@@ -340,13 +298,13 @@
 <li>成員函數, 含靜態成員函數</li>
 <li>數據成員, 含靜態數據成員</li>
 </ul>
-</blockquote>
+</div></blockquote>
 <p>宏 <tt class="docutils literal"><span class="pre">DISALLOW_COPY_AND_ASSIGN</span></tt> 的調用放在 <tt class="docutils literal"><span class="pre">private:</span></tt> 區段的末尾. 它通常是類的最後部分. 參考 <a class="reference internal" href="#copy-constructors"><em>拷貝建構子</em></a>.</p>
 <p><tt class="docutils literal"><span class="pre">.cc</span></tt> 檔案中函數的定義應儘可能和聲明順序一致.</p>
-<p>不要在類定義中內聯大型函數. 通常, 只有那些沒有特別意義或性能要求高, 並且是比較短小的函數才能被定義為內聯函數. 更多細節參考 <a class="reference external" href="headers.html#inline-functions"><em>內聯函數</em></a>.</p>
+<p>不要在類定義中內聯大型函數. 通常, 只有那些沒有特別意義或性能要求高, 並且是比較短小的函數才能被定義為內聯函數. 更多細節參考 <a class="reference internal" href="headers.html#inline-functions"><em>內聯函數</em></a>.</p>
 </div>
 <div class="section" id="id15">
-<h2>3.12. 編寫簡短函數<a class="headerlink" href="#id15" title="Permalink to this headline">¶</a></h2>
+<h2>3.12. 編寫簡短函數</h2>
 <div class="admonition tip">
 <p class="first admonition-title">Tip</p>
 <p class="last">傾向編寫簡短, 凝練的函數.</p>
@@ -356,7 +314,7 @@
 <p>在處理代碼時, 你可能會發現複雜的長函數. 不要害怕修改現有代碼: 如果證實這些代碼使用 / 調試困難, 或者你需要使用其中的一小段代碼, 考慮將其分割為更加簡短並易於管理的若干函數.</p>
 </div>
 <div class="section" id="yulefox">
-<h2>譯者 (YuleFox) 筆記<a class="headerlink" href="#yulefox" title="Permalink to this headline">¶</a></h2>
+<h2>譯者 (YuleFox) 筆記</h2>
 <ol class="arabic simple">
 <li>不在建構子中做太多邏輯相關的初始化;</li>
 <li>編譯器提供的預設建構子不會對變數進行初始化, 如果定義了其他建構子, 編譯器不再提供, 需要編碼者自行提供預設建構子;</li>
@@ -375,29 +333,22 @@
 </div>
 
 
-          </div>
-        </div>
       </div>
-      <div class="clearer"></div>
-    </div>
-    <div class="related">
-      <h3>Navigation</h3>
-      <ul>
-        <li class="right" style="margin-right: 10px">
-          <a href="genindex.html" title="General Index"
-             >index</a></li>
-        <li class="right" >
-          <a href="magic.html" title="4. 來自 Google 的奇技"
-             >next</a> |</li>
-        <li class="right" >
-          <a href="scoping.html" title="2. 作用域"
-             >previous</a> |</li>
-        <li><a href="index.html">Google C++ Style Guide</a> &raquo;</li> 
-      </ul>
-    </div>
+      <div class="bottomnav">
+      
+        <p>
+        «&#160;&#160;<a href="scoping.html">2. 作用域</a>
+        &#160;&#160;::&#160;&#160;
+        <a class="uplink" href="../contents.html">Contents</a>
+        &#160;&#160;::&#160;&#160;
+        <a href="magic.html">4. 來自 Google 的奇技</a>&#160;&#160;»
+        </p>
+
+      </div>
+
     <div class="footer">
-      &copy; Copyright 2009, Google Inc..
-      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 0.6.2.
+        &copy; Copyright .
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.3.
     </div>
   </body>
 </html>

@@ -1,0 +1,159 @@
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>註釋 &mdash; Google 開源項目風格指南</title>
+    
+    <link rel="stylesheet" href="../_static/haiku.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/print.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <script type="text/javascript" src="../_static/theme_extras.js"></script>
+    <link rel="top" title="Google 開源項目風格指南" href="../index.html" />
+    <link rel="up" title="Objective-C 風格指南 - 內容目錄" href="contents.html" />
+    <link rel="next" title="Cocoa 和 Objective-C 特性" href="features.html" />
+    <link rel="prev" title="命名" href="naming.html" /> 
+  </head>
+  <body>
+      <div class="header"><h1 class="heading"><a href="../index.html">
+          <span>Google 開源項目風格指南</span></a></h1>
+        <h2 class="heading"><span>註釋</span></h2>
+      </div>
+      <div class="topnav">
+      
+        <p>
+        «&#160;&#160;<a href="naming.html">命名</a>
+        &#160;&#160;::&#160;&#160;
+        <a class="uplink" href="../contents.html">Contents</a>
+        &#160;&#160;::&#160;&#160;
+        <a href="features.html">Cocoa 和 Objective-C 特性</a>&#160;&#160;»
+        </p>
+
+      </div>
+      <div class="content">
+        
+        
+  <div class="section" id="id1">
+<h1>註釋</h1>
+<p>雖然寫起來很痛苦，但註釋是保證代碼可讀性的關鍵。下面的規則給出了你應該什麼時候、在哪進行註釋。記住：儘管註釋很重要，但最好的代碼應該自成文檔。與其給類型及變數起一個晦澀難懂的名字，再為它寫註釋，不如直接起一個有意義的名字。</p>
+<p>當你寫註釋的時候，記得你是在給你的聽眾寫，即下一個需要閲讀你所寫代碼的貢獻者。大方一點，下一個讀代碼的人可能就是你！</p>
+<p>記住所有 C++ 風格指南里的規則在這裡也同樣適用，不同的之處後續會逐步指出。</p>
+<div class="section" id="id2">
+<h2>檔案註釋</h2>
+<div class="admonition tip">
+<p class="first admonition-title">Tip</p>
+<p class="last">每個檔案的開頭以檔案內容的簡要描述起始，緊接着是作者，最後是版權聲明和/或許可證樣板。</p>
+</div>
+<div class="section" id="id3">
+<h3>版權信息及作者</h3>
+<p>每個檔案應該按順序包括如下項：</p>
+<ul class="simple">
+<li>檔案內容的簡要描述</li>
+<li>代碼作者</li>
+<li>版權信息聲明（如：``Copyright 2008 Google Inc.``）</li>
+<li>必要的話，加上許可證樣板。為項目選擇一個合適的授權樣板（例如，``Apache 2.0, BSD, LGPL, GPL``）。</li>
+</ul>
+<p>如果你對其他人的原始代碼作出重大的修改，請把你自己的名字添加到作者裡面。當另外一個代碼貢獻者對檔案有問題時，他需要知道怎麼聯繫你，這十分有用。</p>
+</div>
+</div>
+<div class="section" id="id4">
+<h2>聲明部分的註釋</h2>
+<div class="admonition tip">
+<p class="first admonition-title">Tip</p>
+<p class="last">每個介面、類別以及協議應輔以註釋，以描述它的目的及與整個項目的關係。</p>
+</div>
+<div class="highlight-objc"><div class="highlight"><pre><span class="c1">// A delegate for NSApplication to handle notifications about app</span>
+<span class="c1">// launch and shutdown. Owned by the main app controller.</span>
+<span class="k">@interface</span> <span class="nc">MyAppDelegate</span> : <span class="nc">NSObject</span> <span class="p">{</span>
+  <span class="p">...</span>
+<span class="p">}</span>
+<span class="k">@end</span>
+</pre></div>
+</div>
+<p>如果你已經在檔案頭部詳細描述了介面，可以直接說明 “完整的描述請參見檔案頭部”，但是一定要有這部分註釋。</p>
+<p>另外，公共介面的每個方法，都應該有註釋來解釋它的作用、參數、返回值以及其它影響。</p>
+<p>為類的綫程安全性作註釋，如果有的話。如果類的實例可以被多個綫程訪問，記得註釋多綫程條件下的使用規則。</p>
+</div>
+<div class="section" id="id5">
+<h2>實現部分的註釋</h2>
+<div class="admonition tip">
+<p class="first admonition-title">Tip</p>
+<p class="last">使用 <tt class="docutils literal"><span class="pre">|</span></tt> 來引用註釋中的變數名及符號名而不是使用引號。</p>
+</div>
+<p>這會避免二義性，尤其是當符號是一個常用詞彙，這使用語句讀起來很糟糕。例如，對於符號 <tt class="docutils literal"><span class="pre">count</span></tt> ：</p>
+<div class="highlight-objc"><div class="highlight"><pre><span class="c1">// Sometimes we need |count| to be less than zero.</span>
+</pre></div>
+</div>
+<p>或者當引用已經包含引號的符號：</p>
+<div class="highlight-objc"><div class="highlight"><pre><span class="c1">// Remember to call |StringWithoutSpaces(&quot;foo bar baz&quot;)|</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="id6">
+<h2>對象所有權</h2>
+<div class="admonition tip">
+<p class="first admonition-title">Tip</p>
+<p class="last">當與 Objective-C 最常規的作法不同時，儘量使指針的所有權模型儘量明確。</p>
+</div>
+<p>繼承自 <tt class="docutils literal"><span class="pre">NSObject</span></tt> 的對象的實例變數指針，通常被假定是強引用關係（retained），某些情況下也可以註釋為弱引用（weak）或使用 <tt class="docutils literal"><span class="pre">__weak</span></tt> 生命周期限定符。同樣，聲明的屬性如果沒有被類 <tt class="docutils literal"><span class="pre">retained``，必須指定是弱引用或賦予</span> <span class="pre">``&#64;property</span></tt> 屬性。然而，Mac 軟件中標記上 <tt class="docutils literal"><span class="pre">IBOutlets</span></tt> 的實例變數，被認為是不會被類 <tt class="docutils literal"><span class="pre">retained</span></tt> 的。</p>
+<p>當實例變數指向 <tt class="docutils literal"><span class="pre">CoreFoundation``、C++</span> <span class="pre">或者其它非</span> <span class="pre">Objective-C</span> <span class="pre">對象時，不論指針是否會被</span> <span class="pre">``retained``，都需要使用</span> <span class="pre">``__strong</span></tt> 和 <tt class="docutils literal"><span class="pre">__weak</span></tt> 類型修飾符明確指明。``CoreFoundation`` 和其它非 Objective-C 對象指針需要顯式的內存管理，即便使用了自動引用計數或垃圾回收機制。當不允許使用 <tt class="docutils literal"><span class="pre">__weak</span></tt> 類型修飾符（比如，使用 clang 編譯時的 C++ 成員變數），應使用註釋替代說明。</p>
+<p>注意：Objective-C 對象中的 C++ 對象的自動封裝，預設是不允許的，參見 <a class="reference external" href="http://chanson.livejournal.com/154253.html">這裡</a> 的說明。</p>
+<p>強引用及弱引用聲明的例子：</p>
+<div class="highlight-objc"><div class="highlight"><pre><span class="k">@interface</span> <span class="nc">MyDelegate</span> : <span class="nc">NSObject</span> <span class="p">{</span>
+ <span class="k">@private</span>
+  <span class="kt">IBOutlet</span> <span class="n">NSButton</span> <span class="o">*</span><span class="n">okButton_</span><span class="p">;</span>  <span class="c1">// normal NSControl; implicitly weak on Mac only</span>
+
+  <span class="n">AnObjcObject</span><span class="o">*</span> <span class="n">doohickey_</span><span class="p">;</span>  <span class="c1">// my doohickey</span>
+  <span class="n">__weak</span> <span class="n">MyObjcParent</span> <span class="o">*</span><span class="n">parent_</span><span class="p">;</span>  <span class="c1">// so we can send msgs back (owns me)</span>
+
+  <span class="c1">// non-NSObject pointers...</span>
+  <span class="n">__strong</span> <span class="n">CWackyCPPClass</span> <span class="o">*</span><span class="n">wacky_</span><span class="p">;</span>  <span class="c1">// some cross-platform object</span>
+  <span class="n">__strong</span> <span class="n">CFDictionaryRef</span> <span class="o">*</span><span class="n">dict_</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="k">@property</span><span class="p">(</span><span class="n">strong</span><span class="p">,</span> <span class="n">nonatomic</span><span class="p">)</span> <span class="n">NSString</span> <span class="o">*</span><span class="n">doohickey</span><span class="p">;</span>
+<span class="k">@property</span><span class="p">(</span><span class="n">weak</span><span class="p">,</span> <span class="n">nonatomic</span><span class="p">)</span> <span class="n">NSString</span> <span class="o">*</span><span class="n">parent</span><span class="p">;</span>
+<span class="k">@end</span>
+</pre></div>
+</div>
+<p>（譯註：強引用 - 對象被類 <a href="#id8"><span class="problematic" id="id9">``</span></a>retained``。弱引用 - 對象沒有被類 <a href="#id10"><span class="problematic" id="id11">``</span></a>retained``，如委託）</p>
+</div>
+</div>
+
+
+      </div>
+      <div class="bottomnav">
+      
+        <p>
+        «&#160;&#160;<a href="naming.html">命名</a>
+        &#160;&#160;::&#160;&#160;
+        <a class="uplink" href="../contents.html">Contents</a>
+        &#160;&#160;::&#160;&#160;
+        <a href="features.html">Cocoa 和 Objective-C 特性</a>&#160;&#160;»
+        </p>
+
+      </div>
+
+    <div class="footer">
+        &copy; Copyright .
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.3.
+    </div>
+  </body>
+</html>

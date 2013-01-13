@@ -1,0 +1,643 @@
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Python語言規範 &mdash; Google 開源項目風格指南</title>
+    
+    <link rel="stylesheet" href="../_static/haiku.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/print.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <script type="text/javascript" src="../_static/theme_extras.js"></script>
+    <link rel="top" title="Google 開源項目風格指南" href="../index.html" />
+    <link rel="up" title="Google Python 風格指南 - 中文版" href="index.html" />
+    <link rel="next" title="Python風格規範" href="python_style_rules.html" />
+    <link rel="prev" title="Google Python 風格指南 - 中文版" href="index.html" /> 
+  </head>
+  <body>
+      <div class="header"><h1 class="heading"><a href="../index.html">
+          <span>Google 開源項目風格指南</span></a></h1>
+        <h2 class="heading"><span>Python語言規範</span></h2>
+      </div>
+      <div class="topnav">
+      
+        <p>
+        «&#160;&#160;<a href="index.html">Google Python 風格指南 - 中文版</a>
+        &#160;&#160;::&#160;&#160;
+        <a class="uplink" href="../contents.html">Contents</a>
+        &#160;&#160;::&#160;&#160;
+        <a href="python_style_rules.html">Python風格規範</a>&#160;&#160;»
+        </p>
+
+      </div>
+      <div class="content">
+        
+        
+  <div class="section" id="python">
+<h1>Python語言規範</h1>
+<div class="section" id="pychecker">
+<h2>pychecker</h2>
+<div class="admonition tip">
+<p class="first admonition-title">Tip</p>
+<p class="last">對你的代碼運行pychecker</p>
+</div>
+<dl class="docutils">
+<dt>定義:</dt>
+<dd>pychecker是一個在Python原始碼中查找bug的工具. 對於C和C++這樣的不那麼動態的(譯者註: 原文是less dynamic)語言, 這些bug通常由編譯器來捕獲. pychecker和lint類似. 由於Python的動態特性, 有些警告可能不對. 不過偽告警應該很少.</dd>
+<dt>優點:</dt>
+<dd>可以捕獲容易忽視的錯誤, 例如輸入錯誤, 使用未賦值的變數等.</dd>
+<dt>缺點:</dt>
+<dd>pychecker不完美. 要利用其優勢, 我們有時侯需要: a) 圍繞着它來寫代碼 b) 抑制其告警 c) 改進它, 或者d) 忽略它.</dd>
+<dt>結論:</dt>
+<dd><p class="first">確保對你的代碼運行pychecker.</p>
+<p>關於如何運行pychecker的更多信息, 參考 <a class="reference external" href="http://pychecker.sourceforge.net/">pychecker主頁</a></p>
+<p>你可以設置一個叫做__pychecker__的模組級變數來抑制適當的告警. 例如:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">__pychecker__</span> <span class="o">=</span> <span class="s">&#39;no-callinit no-classattr&#39;</span>
+</pre></div>
+</div>
+<p>採用這種抑制方式的好處是我們可以輕鬆查找抑制並回顧它們.</p>
+<p>你可以使用 <tt class="docutils literal"><span class="pre">pychecker</span> <span class="pre">--help</span></tt> 來獲取pychecker告警列表.</p>
+<p>要抑制&#8221;參數未使用&#8221;告警, 你可以用&#8221;_&#8221;作為參數標識符, 或者在參數名前加&#8221;unused_&#8221;. 遇到不能改變參數名的情況, 你可以通過在函數開頭&#8221;提到&#8221;它們來消除告警. 例如:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="k">def</span> <span class="nf">foo</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">unused_b</span><span class="p">,</span> <span class="n">unused_c</span><span class="p">,</span> <span class="n">d</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">e</span><span class="o">=</span><span class="bp">None</span><span class="p">):</span>
+    <span class="p">(</span><span class="n">d</span><span class="p">,</span> <span class="n">e</span><span class="p">)</span> <span class="o">=</span> <span class="p">(</span><span class="n">d</span><span class="p">,</span> <span class="n">e</span><span class="p">)</span>  <span class="c"># 讓pychecker不告警</span>
+    <span class="k">return</span> <span class="n">a</span>
+</pre></div>
+</div>
+<p class="last">理想情況下, 我們以後會擴展pychecker以確保你真的沒有使用這些參數.</p>
+</dd>
+</dl>
+</div>
+<div class="section" id="id2">
+<h2>導入</h2>
+<div class="admonition tip">
+<p class="first admonition-title">Tip</p>
+<p class="last">僅對包和模組使用導入</p>
+</div>
+<dl class="docutils">
+<dt>定義:</dt>
+<dd>模組間共享代碼的重用機制.</dd>
+<dt>優點:</dt>
+<dd>命名空間管理約定十分簡單. 每個標識符的源都用一種一致的方式指示. x.Obj表示Obj對象定義在模組x中.</dd>
+<dt>缺點:</dt>
+<dd>模組名仍可能衝突. 有些模組名太長, 不太方便.</dd>
+<dt>結論:</dt>
+<dd><p class="first">使用 <tt class="docutils literal"><span class="pre">import</span> <span class="pre">x</span></tt> 來導入包和模組.</p>
+<p>使用 <tt class="docutils literal"><span class="pre">from</span> <span class="pre">x</span> <span class="pre">import</span> <span class="pre">y</span></tt> , 其中x是包首碼, y是不帶首碼的模組名.</p>
+<p>使用 <tt class="docutils literal"><span class="pre">from</span> <span class="pre">x</span> <span class="pre">import</span> <span class="pre">y</span> <span class="pre">as</span> <span class="pre">z</span></tt>, 如果兩個要導入的模組都叫做z或者y太長了.</p>
+<p>例如, 模組 <tt class="docutils literal"><span class="pre">sound.effects.echo</span></tt> 可以用如下方式導入:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="kn">from</span> <span class="nn">sound.effects</span> <span class="kn">import</span> <span class="n">echo</span>
+<span class="o">...</span>
+<span class="n">echo</span><span class="o">.</span><span class="n">EchoFilter</span><span class="p">(</span><span class="nb">input</span><span class="p">,</span> <span class="n">output</span><span class="p">,</span> <span class="n">delay</span><span class="o">=</span><span class="mf">0.7</span><span class="p">,</span> <span class="n">atten</span><span class="o">=</span><span class="mi">4</span><span class="p">)</span>
+</pre></div>
+</div>
+<p class="last">導入時不要使用相對名稱. 即使模組在同一個包中, 也要使用完整包名. 這能幫助你避免無意間導入一個包兩次.</p>
+</dd>
+</dl>
+</div>
+<div class="section" id="id3">
+<h2>包</h2>
+<div class="admonition tip">
+<p class="first admonition-title">Tip</p>
+<p class="last">使用模組的全路徑名來導入每個模組</p>
+</div>
+<dl class="docutils">
+<dt>優點:</dt>
+<dd>避免模組名衝突. 查找包更容易.</dd>
+<dt>缺點:</dt>
+<dd>部署代碼變難, 因為你必須複製包層次.</dd>
+<dt>結論:</dt>
+<dd><p class="first">所有的新代碼都應該用完整包名來導入每個模組.</p>
+<p>應該像下面這樣導入:</p>
+<div class="last highlight-python"><div class="highlight"><pre><span class="c"># Reference in code with complete name.</span>
+<span class="kn">import</span> <span class="nn">sound.effects.echo</span>
+
+<span class="c"># Reference in code with just module name (preferred).</span>
+<span class="kn">from</span> <span class="nn">sound.effects</span> <span class="kn">import</span> <span class="n">echo</span>
+</pre></div>
+</div>
+</dd>
+</dl>
+</div>
+<div class="section" id="id4">
+<h2>異常</h2>
+<div class="admonition tip">
+<p class="first admonition-title">Tip</p>
+<p class="last">允許使用異常, 但必須小心</p>
+</div>
+<dl class="docutils">
+<dt>定義:</dt>
+<dd>異常是一種跳出代碼塊的正常控制流來處理錯誤或者其它異常條件的方式.</dd>
+<dt>優點:</dt>
+<dd>正常操作代碼的控制流不會和錯誤處理代碼混在一起. 當某種條件發生時, 它也允許控制流跳過多個框架. 例如, 一步跳出N個嵌套的函數, 而不必繼續執行錯誤的代碼.</dd>
+<dt>缺點:</dt>
+<dd>可能會導致讓人困惑的控制流. 調用庫時容易錯過錯誤情況.</dd>
+<dt>結論:</dt>
+<dd><p class="first">異常必須遵守特定條件:</p>
+<ol class="last arabic">
+<li><p class="first">像這樣觸發異常: <tt class="docutils literal"><span class="pre">raise</span> <span class="pre">MyException(&quot;Error</span> <span class="pre">message&quot;)</span></tt> 或者 <tt class="docutils literal"><span class="pre">raise</span> <span class="pre">MyException</span></tt> . 不要使用兩個參數的形式( <tt class="docutils literal"><span class="pre">raise</span> <span class="pre">MyException,</span> <span class="pre">&quot;Error</span> <span class="pre">message&quot;</span></tt> )或者過時的字元串異常( <tt class="docutils literal"><span class="pre">raise</span> <span class="pre">&quot;Error</span> <span class="pre">message&quot;</span></tt> ).</p>
+</li>
+<li><p class="first">模組或包應該定義自己的特定域的異常基類, 這個基類應該從內建的Exception類繼承. 模組的異常基類應該叫做&#8221;Error&#8221;.</p>
+<blockquote>
+<div><div class="highlight-python"><div class="highlight"><pre><span class="k">class</span> <span class="nc">Error</span><span class="p">(</span><span class="ne">Exception</span><span class="p">):</span>
+    <span class="k">pass</span>
+</pre></div>
+</div>
+</div></blockquote>
+</li>
+<li><p class="first">永遠不要使用 <tt class="docutils literal"><span class="pre">except:</span></tt> 語句來捕獲所有異常, 也不要捕獲 <tt class="docutils literal"><span class="pre">Exception</span></tt> 或者 <tt class="docutils literal"><span class="pre">StandardError</span></tt> , 除非你打算重新觸發該異常, 或者你已經在當前線程的最外層(記得還是要打印一條錯誤消息). 在異常這方面, Python非常寬容, <tt class="docutils literal"><span class="pre">except:</span></tt> 真的會捕獲包括Python語法錯誤在內的任何錯誤. 使用 <tt class="docutils literal"><span class="pre">except:</span></tt> 很容易隱藏真正的bug.</p>
+</li>
+<li><p class="first">儘量減少try/except塊中的代碼量. try塊的體積越大, 期望之外的異常就越容易被觸發. 這種情況下, try/except塊將隱藏真正的錯誤.</p>
+</li>
+<li><p class="first">使用finally子句來執行那些無論try塊中有沒有異常都應該被執行的代碼. 這對於清理資源常常很有用, 例如關閉檔案.</p>
+</li>
+</ol>
+</dd>
+</dl>
+</div>
+<div class="section" id="id5">
+<h2>全局變數</h2>
+<div class="admonition tip">
+<p class="first admonition-title">Tip</p>
+<p class="last">避免全局變數</p>
+</div>
+<dl class="docutils">
+<dt>定義:</dt>
+<dd>定義在模組級的變數.</dd>
+<dt>優點:</dt>
+<dd>偶爾有用.</dd>
+<dt>缺點:</dt>
+<dd>導入時可能改變模組行為, 因為導入模組時會對模組級變數賦值.</dd>
+<dt>結論:</dt>
+<dd><p class="first">避免使用全局變數, 用類變數來代替. 但也有一些例外:</p>
+<ol class="last arabic simple">
+<li>腳本的預設選項.</li>
+<li>模組級常量. 例如:　PI = 3.14159. 常量應該全大寫, 用下劃線連接.</li>
+<li>有時候用全局變數來緩存值或者作為函數返回值很有用.</li>
+<li>如果需要, 全局變數應該僅在模組內部可用, 並通過模組級的公共函數來訪問.</li>
+</ol>
+</dd>
+</dl>
+</div>
+<div class="section" id="id6">
+<h2>嵌套/局部/內部類或函數</h2>
+<div class="admonition tip">
+<p class="first admonition-title">Tip</p>
+<p class="last">鼓勵使用嵌套/本地/內部類或函數</p>
+</div>
+<dl class="docutils">
+<dt>定義:</dt>
+<dd>類可以定義在方法, 函數或者類中. 函數可以定義在方法或函數中. 封閉區間中定義的變數對嵌套函數是隻讀的.</dd>
+<dt>優點:</dt>
+<dd>允許定義僅用於有效範圍的工具類和函數.</dd>
+<dt>缺點:</dt>
+<dd>嵌套類或局部類的實例不能序列化(pickled).</dd>
+<dt>結論:</dt>
+<dd>推薦使用.</dd>
+</dl>
+</div>
+<div class="section" id="list-comprehensions">
+<h2>列表推導(List Comprehensions)</h2>
+<div class="admonition tip">
+<p class="first admonition-title">Tip</p>
+<p class="last">可以在簡單情況下使用</p>
+</div>
+<dl class="docutils">
+<dt>定義:</dt>
+<dd>列表推導(list comprehensions)與生成器表達式(generator expression)提供了一種簡潔高效的方式來創建列表和迭代器, 而不必借助map(), filter(), 或者lambda.</dd>
+<dt>優點:</dt>
+<dd>簡單的列表推導可以比其它的列表創建方法更加清晰簡單. 生成器表達式可以十分高效, 因為它們避免了創建整個列表.</dd>
+<dt>缺點:</dt>
+<dd>複雜的列表推導或者生成器表達式可能難以閲讀.</dd>
+<dt>結論:</dt>
+<dd><p class="first">適用於簡單情況. 每個部分應該單獨置於一行: 映射表達式, for語句, 過濾器表達式. 禁止多重for語句或過濾器表達式. 複雜情況下還是使用循環.</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">No</span><span class="p">:</span>
+  <span class="n">result</span> <span class="o">=</span> <span class="p">[(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span> <span class="k">for</span> <span class="n">y</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span> <span class="k">if</span> <span class="n">x</span> <span class="o">*</span> <span class="n">y</span> <span class="o">&gt;</span> <span class="mi">10</span><span class="p">]</span>
+
+  <span class="k">return</span> <span class="p">((</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">z</span><span class="p">)</span>
+          <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">xrange</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+          <span class="k">for</span> <span class="n">y</span> <span class="ow">in</span> <span class="nb">xrange</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+          <span class="k">if</span> <span class="n">x</span> <span class="o">!=</span> <span class="n">y</span>
+          <span class="k">for</span> <span class="n">z</span> <span class="ow">in</span> <span class="nb">xrange</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+          <span class="k">if</span> <span class="n">y</span> <span class="o">!=</span> <span class="n">z</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="last highlight-python"><div class="highlight"><pre><span class="n">Yes</span><span class="p">:</span>
+  <span class="n">result</span> <span class="o">=</span> <span class="p">[]</span>
+  <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">):</span>
+      <span class="k">for</span> <span class="n">y</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">5</span><span class="p">):</span>
+          <span class="k">if</span> <span class="n">x</span> <span class="o">*</span> <span class="n">y</span> <span class="o">&gt;</span> <span class="mi">10</span><span class="p">:</span>
+              <span class="n">result</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">))</span>
+
+  <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">xrange</span><span class="p">(</span><span class="mi">5</span><span class="p">):</span>
+      <span class="k">for</span> <span class="n">y</span> <span class="ow">in</span> <span class="nb">xrange</span><span class="p">(</span><span class="mi">5</span><span class="p">):</span>
+          <span class="k">if</span> <span class="n">x</span> <span class="o">!=</span> <span class="n">y</span><span class="p">:</span>
+              <span class="k">for</span> <span class="n">z</span> <span class="ow">in</span> <span class="nb">xrange</span><span class="p">(</span><span class="mi">5</span><span class="p">):</span>
+                  <span class="k">if</span> <span class="n">y</span> <span class="o">!=</span> <span class="n">z</span><span class="p">:</span>
+                      <span class="k">yield</span> <span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">z</span><span class="p">)</span>
+
+  <span class="k">return</span> <span class="p">((</span><span class="n">x</span><span class="p">,</span> <span class="n">complicated_transform</span><span class="p">(</span><span class="n">x</span><span class="p">))</span>
+          <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">long_generator_function</span><span class="p">(</span><span class="n">parameter</span><span class="p">)</span>
+          <span class="k">if</span> <span class="n">x</span> <span class="ow">is</span> <span class="ow">not</span> <span class="bp">None</span><span class="p">)</span>
+
+  <span class="n">squares</span> <span class="o">=</span> <span class="p">[</span><span class="n">x</span> <span class="o">*</span> <span class="n">x</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">)]</span>
+
+  <span class="n">eat</span><span class="p">(</span><span class="n">jelly_bean</span> <span class="k">for</span> <span class="n">jelly_bean</span> <span class="ow">in</span> <span class="n">jelly_beans</span>
+      <span class="k">if</span> <span class="n">jelly_bean</span><span class="o">.</span><span class="n">color</span> <span class="o">==</span> <span class="s">&#39;black&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</dd>
+</dl>
+</div>
+<div class="section" id="id7">
+<h2>預設迭代器和操作符</h2>
+<div class="admonition tip">
+<p class="first admonition-title">Tip</p>
+<p class="last">如果類型支持, 就使用預設迭代器和操作符. 比如列表, 字典及檔案等.</p>
+</div>
+<dl class="docutils">
+<dt>定義:</dt>
+<dd>容器類型, 像字典和列表, 定義了預設的迭代器和關係測試操作符(in和not in)</dd>
+<dt>優點:</dt>
+<dd>預設操作符和迭代器簡單高效, 它們直接表達了操作, 沒有額外的方法調用. 使用預設操作符的函數是通用的. 它可以用於支持該操作的任何類型.</dd>
+<dt>缺點:</dt>
+<dd>你沒法通過閲讀方法名來區分對象的類型(例如, has_key()意味着字典). 不過這也是優點.</dd>
+<dt>結論:</dt>
+<dd><p class="first">如果類型支持, 就使用預設迭代器和操作符, 例如列表, 字典和檔案. 內建類型也定義了迭代器方法. 優先考慮這些方法, 而不是那些返回列表的方法. 當然，這樣遍歷容器時，你將不能修改容器.</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">Yes</span><span class="p">:</span>  <span class="k">for</span> <span class="n">key</span> <span class="ow">in</span> <span class="n">adict</span><span class="p">:</span> <span class="o">...</span>
+      <span class="k">if</span> <span class="n">key</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">adict</span><span class="p">:</span> <span class="o">...</span>
+      <span class="k">if</span> <span class="n">obj</span> <span class="ow">in</span> <span class="n">alist</span><span class="p">:</span> <span class="o">...</span>
+      <span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="n">afile</span><span class="p">:</span> <span class="o">...</span>
+      <span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="nb">dict</span><span class="o">.</span><span class="n">iteritems</span><span class="p">():</span> <span class="o">...</span>
+</pre></div>
+</div>
+<div class="last highlight-python"><div class="highlight"><pre><span class="n">No</span><span class="p">:</span>   <span class="k">for</span> <span class="n">key</span> <span class="ow">in</span> <span class="n">adict</span><span class="o">.</span><span class="n">keys</span><span class="p">():</span> <span class="o">...</span>
+      <span class="k">if</span> <span class="ow">not</span> <span class="n">adict</span><span class="o">.</span><span class="n">has_key</span><span class="p">(</span><span class="n">key</span><span class="p">):</span> <span class="o">...</span>
+      <span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="n">afile</span><span class="o">.</span><span class="n">readlines</span><span class="p">():</span> <span class="o">...</span>
+</pre></div>
+</div>
+</dd>
+</dl>
+</div>
+<div class="section" id="id8">
+<h2>生成器</h2>
+<div class="admonition tip">
+<p class="first admonition-title">Tip</p>
+<p class="last">按需使用生成器.</p>
+</div>
+<dl class="docutils">
+<dt>定義:</dt>
+<dd>所謂生成器函數, 就是每當它執行一次生成(yield)語句, 它就返回一個迭代器, 這個迭代器生成一個值. 生成值後, 生成器函數的運行狀態將被掛起, 直到下一次生成.</dd>
+<dt>優點:</dt>
+<dd>簡化代碼, 因為每次調用時, 局部變數和控制流的狀態都會被保存. 比起一次創建一系列值的函數, 生成器使用的內存更少.</dd>
+<dt>缺點:</dt>
+<dd>沒有.</dd>
+<dt>結論:</dt>
+<dd>鼓勵使用. 注意在生成器函數的文檔字元串中使用&#8221;Yields:&#8221;而不是&#8221;Returns:&#8221;.</dd>
+</dl>
+</div>
+<div class="section" id="lambda">
+<h2>Lambda函數</h2>
+<div class="admonition tip">
+<p class="first admonition-title">Tip</p>
+<p class="last">適用於單行函數</p>
+</div>
+<dl class="docutils">
+<dt>定義:</dt>
+<dd>與語句相反, lambda在一個表達式中定義匿名函數. 常用於為map()和filter()之類的高階函數定義回調函數或者操作符.</dd>
+<dt>優點:</dt>
+<dd>方便.</dd>
+<dt>缺點:</dt>
+<dd>比本地函數更難閲讀和調試. 沒有函數名意味着堆棧跟蹤更難理解. 由於lambda函數通常只包含一個表達式, 因此其表達能力有限.</dd>
+<dt>結論:</dt>
+<dd>適用於單行函數. 如果代碼超過60-80個字元, 最好還是定義成常規(嵌套)函數.</dd>
+</dl>
+</div>
+<div class="section" id="id9">
+<h2>預設參數值</h2>
+<div class="admonition tip">
+<p class="first admonition-title">Tip</p>
+<p class="last">適用於大部分情況.</p>
+</div>
+<dl class="docutils">
+<dt>定義:</dt>
+<dd>你可以在函數參數列表的最後指定變數的值, 例如, <tt class="docutils literal"><span class="pre">def</span> <span class="pre">foo(a,</span> <span class="pre">b</span> <span class="pre">=</span> <span class="pre">0):</span></tt> . 如果調用foo時只帶一個參數, 則b被設為0. 如果帶兩個參數, 則b的值等於第二個參數.</dd>
+<dt>優點:</dt>
+<dd>你經常會碰到一些使用大量預設值的函數, 但偶爾(比較少見)你想要覆蓋這些預設值. 預設參數值提供了一種簡單的方法來完成這件事, 你不需要為這些罕見的例外定義大量函數. 同時, Python也不支持重載方法和函數, 預設參數是一種&#8221;仿造&#8221;重載行為的簡單方式.</dd>
+<dt>缺點:</dt>
+<dd>預設參數隻在模組加載時求值一次. 如果參數是列表或字典之類的可變類型, 這可能會導致問題. 如果函數修改了對象(例如向列表追加項), 預設值就被修改了.</dd>
+<dt>結論:</dt>
+<dd><p class="first">鼓勵使用, 不過有如下注意事項:</p>
+<p>不要在函數或方法定義中使用可變對象作為預設值.</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">Yes</span><span class="p">:</span> <span class="k">def</span> <span class="nf">foo</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="o">=</span><span class="bp">None</span><span class="p">):</span>
+         <span class="k">if</span> <span class="n">b</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span>
+             <span class="n">b</span> <span class="o">=</span> <span class="p">[]</span>
+</pre></div>
+</div>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">No</span><span class="p">:</span>  <span class="k">def</span> <span class="nf">foo</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="o">=</span><span class="p">[]):</span>
+         <span class="o">...</span>
+</pre></div>
+</div>
+<p>調用方代碼必須為帶有預設值的參數使用帶有名字的值. 這多少能增加代碼的可讀性, 並且當增加參數時能避免和檢測介面被破壞.</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="k">def</span> <span class="nf">foo</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="o">=</span><span class="mi">1</span><span class="p">):</span>
+    <span class="o">...</span>
+</pre></div>
+</div>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">Yes</span><span class="p">:</span> <span class="n">foo</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+     <span class="n">foo</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">b</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="last highlight-python"><div class="highlight"><pre><span class="n">No</span><span class="p">:</span>  <span class="n">foo</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+</pre></div>
+</div>
+</dd>
+</dl>
+</div>
+<div class="section" id="properties">
+<h2>屬性(properties)</h2>
+<div class="admonition tip">
+<p class="first admonition-title">Tip</p>
+<p class="last">訪問和設置數據成員時, 你通常會使用簡單, 輕量級的訪問和設置函數. 建議用屬性（properties）來代替它們.</p>
+</div>
+<dl class="docutils">
+<dt>定義:</dt>
+<dd>一種用於包裝方法調用的方式. 當運算量不大, 它是獲取和設置屬性(attribute)的標準方式.</dd>
+<dt>優點:</dt>
+<dd>通過消除簡單的屬性(attribute)訪問時顯式的get和set方法調用, 可讀性提高了. 允許懶惰的計算. 用Pythonic的方式來維護類的介面. 就性能而言, 當直接訪問變數是合理的, 添加訪問方法就顯得瑣碎而無意義. 使用屬性(properties)可以繞過這個問題. 將來也可以在不破壞介面的情況下將訪問方法加上.</dd>
+<dt>缺點:</dt>
+<dd>屬性(properties)是在get和set方法聲明後指定, 這需要使用者在接下來的代碼中注意: set和get是用於屬性(properties)的(除了用&#64;property裝飾器創建的只讀屬性).  必須繼承自object類. 可能隱藏比如操作符重載之類的副作用. 繼承時可能會讓人困惑.</dd>
+<dt>結論:</dt>
+<dd><p class="first">你通常習慣于使用訪問或設置方法來訪問或設置數據, 它們簡單而輕量. 不過我們建議你在新的代碼中使用屬性. 只讀屬性應該用 &#64;property 裝飾器來創建.</p>
+<p>如果子類沒有覆蓋屬性, 那麼屬性的繼承可能看上去不明顯. 因此使用者必須確保訪問方法間接被調用, 以保證子類中的重載方法被屬性調用(使用模板方法設計模式).</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">Yes</span><span class="p">:</span> <span class="kn">import</span> <span class="nn">math</span>
+
+     <span class="k">class</span> <span class="nc">Square</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+         <span class="sd">&quot;&quot;&quot;A square with two properties: a writable area and a read-only perimeter.</span>
+
+<span class="sd">         To use:</span>
+<span class="sd">         &gt;&gt;&gt; sq = Square(3)</span>
+<span class="sd">         &gt;&gt;&gt; sq.area</span>
+<span class="sd">         9</span>
+<span class="sd">         &gt;&gt;&gt; sq.perimeter</span>
+<span class="sd">         12</span>
+<span class="sd">         &gt;&gt;&gt; sq.area = 16</span>
+<span class="sd">         &gt;&gt;&gt; sq.side</span>
+<span class="sd">         4</span>
+<span class="sd">         &gt;&gt;&gt; sq.perimeter</span>
+<span class="sd">         16</span>
+<span class="sd">         &quot;&quot;&quot;</span>
+
+         <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">side</span><span class="p">):</span>
+             <span class="bp">self</span><span class="o">.</span><span class="n">side</span> <span class="o">=</span> <span class="n">side</span>
+
+         <span class="k">def</span> <span class="nf">__get_area</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+             <span class="sd">&quot;&quot;&quot;Calculates the &#39;area&#39; property.&quot;&quot;&quot;</span>
+             <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">side</span> <span class="o">**</span> <span class="mi">2</span>
+
+         <span class="k">def</span> <span class="nf">___get_area</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+             <span class="sd">&quot;&quot;&quot;Indirect accessor for &#39;area&#39; property.&quot;&quot;&quot;</span>
+             <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">__get_area</span><span class="p">()</span>
+
+         <span class="k">def</span> <span class="nf">__set_area</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">area</span><span class="p">):</span>
+             <span class="sd">&quot;&quot;&quot;Sets the &#39;area&#39; property.&quot;&quot;&quot;</span>
+             <span class="bp">self</span><span class="o">.</span><span class="n">side</span> <span class="o">=</span> <span class="n">math</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">area</span><span class="p">)</span>
+
+         <span class="k">def</span> <span class="nf">___set_area</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">area</span><span class="p">):</span>
+             <span class="sd">&quot;&quot;&quot;Indirect setter for &#39;area&#39; property.&quot;&quot;&quot;</span>
+             <span class="bp">self</span><span class="o">.</span><span class="n">_SetArea</span><span class="p">(</span><span class="n">area</span><span class="p">)</span>
+
+         <span class="n">area</span> <span class="o">=</span> <span class="nb">property</span><span class="p">(</span><span class="n">___get_area</span><span class="p">,</span> <span class="n">___set_area</span><span class="p">,</span>
+                         <span class="n">doc</span><span class="o">=</span><span class="s">&quot;&quot;&quot;Gets or sets the area of the square.&quot;&quot;&quot;</span><span class="p">)</span>
+
+         <span class="nd">@property</span>
+         <span class="k">def</span> <span class="nf">perimeter</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+             <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">side</span> <span class="o">*</span> <span class="mi">4</span>
+</pre></div>
+</div>
+<p class="last">(譯者註: 老實說, 我覺得這段示例代碼很不恰當, 有必要這麼蛋疼嗎?)</p>
+</dd>
+</dl>
+</div>
+<div class="section" id="true-false">
+<h2>True/False的求值</h2>
+<div class="admonition tip">
+<p class="first admonition-title">Tip</p>
+<p class="last">儘可能使用隱式false</p>
+</div>
+<dl class="docutils">
+<dt>定義:</dt>
+<dd>Python在布爾上下文中會將某些值求值為false. 按簡單的直覺來講, 就是所有的&#8221;空&#8221;值都被認為是false. 因此0， None, [], {}, &#8220;&#8221; 都被認為是false.</dd>
+<dt>優點:</dt>
+<dd>使用Python布爾值的條件語句更易讀也更不易犯錯. 大部分情況下, 也更快.</dd>
+<dt>缺點:</dt>
+<dd>對C/C++開發人員來說, 可能看起來有點怪.</dd>
+<dt>結論:</dt>
+<dd><p class="first">儘可能使用隱式的false, 例如: 使用 <tt class="docutils literal"><span class="pre">if</span> <span class="pre">foo:</span></tt> 而不是 <tt class="docutils literal"><span class="pre">if</span> <span class="pre">foo</span> <span class="pre">!=</span> <span class="pre">[]:</span></tt> . 不過還是有一些注意事項需要你銘記在心:</p>
+<ol class="last arabic">
+<li><p class="first">永遠不要用==或者!=來比較單件, 比如None. 使用is或者is not.</p>
+</li>
+<li><p class="first">注意: 當你寫下 <tt class="docutils literal"><span class="pre">if</span> <span class="pre">x:</span></tt> 時, 你其實表示的是 <tt class="docutils literal"><span class="pre">if</span> <span class="pre">x</span> <span class="pre">is</span> <span class="pre">not</span> <span class="pre">None</span></tt> . 例如: 當你要測試一個預設值是None的變數或參數是否被設為其它值. 這個值在布爾語義下可能是false!</p>
+</li>
+<li><p class="first">永遠不要用==將一個布爾量與false相比較. 使用 <tt class="docutils literal"><span class="pre">if</span> <span class="pre">not</span> <span class="pre">x:</span></tt> 代替. 如果你需要區分false和None, 你應該用像 <tt class="docutils literal"><span class="pre">if</span> <span class="pre">not</span> <span class="pre">x</span> <span class="pre">and</span> <span class="pre">x</span> <span class="pre">is</span> <span class="pre">not</span> <span class="pre">None:</span></tt> 這樣的語句.</p>
+</li>
+<li><p class="first">對於序列(字元串, 列表, 元組), 要注意空序列是false. 因此 <tt class="docutils literal"><span class="pre">if</span> <span class="pre">not</span> <span class="pre">seq:</span></tt> 或者 <tt class="docutils literal"><span class="pre">if</span> <span class="pre">seq:</span></tt> 比 <tt class="docutils literal"><span class="pre">if</span> <span class="pre">len(seq):</span></tt> 或 <tt class="docutils literal"><span class="pre">if</span> <span class="pre">not</span> <span class="pre">len(seq):</span></tt> 要更好.</p>
+</li>
+<li><p class="first">處理整數時, 使用隱式false可能會得不償失(即不小心將None當做0來處理). 你可以將一個已知是整型(且不是len()的返回結果)的值與0比較.</p>
+<blockquote>
+<div><div class="highlight-python"><div class="highlight"><pre><span class="n">Yes</span><span class="p">:</span> <span class="k">if</span> <span class="ow">not</span> <span class="n">users</span><span class="p">:</span>
+         <span class="k">print</span> <span class="s">&#39;no users&#39;</span>
+
+     <span class="k">if</span> <span class="n">foo</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+         <span class="bp">self</span><span class="o">.</span><span class="n">handle_zero</span><span class="p">()</span>
+
+     <span class="k">if</span> <span class="n">i</span> <span class="o">%</span> <span class="mi">10</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+         <span class="bp">self</span><span class="o">.</span><span class="n">handle_multiple_of_ten</span><span class="p">()</span>
+</pre></div>
+</div>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">No</span><span class="p">:</span>  <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">users</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+         <span class="k">print</span> <span class="s">&#39;no users&#39;</span>
+
+     <span class="k">if</span> <span class="n">foo</span> <span class="ow">is</span> <span class="ow">not</span> <span class="bp">None</span> <span class="ow">and</span> <span class="ow">not</span> <span class="n">foo</span><span class="p">:</span>
+         <span class="bp">self</span><span class="o">.</span><span class="n">handle_zero</span><span class="p">()</span>
+
+     <span class="k">if</span> <span class="ow">not</span> <span class="n">i</span> <span class="o">%</span> <span class="mi">10</span><span class="p">:</span>
+         <span class="bp">self</span><span class="o">.</span><span class="n">handle_multiple_of_ten</span><span class="p">()</span>
+</pre></div>
+</div>
+</div></blockquote>
+</li>
+<li><p class="first">注意&#8216;0&#8217;(字元串)會被當做true.</p>
+</li>
+</ol>
+</dd>
+</dl>
+</div>
+<div class="section" id="id10">
+<h2>過時的語言特性</h2>
+<div class="admonition tip">
+<p class="first admonition-title">Tip</p>
+<p class="last">儘可能使用字元串方法取代字元串模組. 使用函數調用語法取代apply(). 使用列表推導, for循環取代filter(), map()以及reduce().</p>
+</div>
+<dl class="docutils">
+<dt>定義:</dt>
+<dd>當前版本的Python提供了大家通常更喜歡的替代品.</dd>
+<dt>結論:</dt>
+<dd><p class="first">我們不使用不支持這些特性的Python版本, 所以沒理由不用新的方式.</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">No</span><span class="p">:</span>  <span class="n">words</span> <span class="o">=</span> <span class="n">string</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="n">foo</span><span class="p">,</span> <span class="s">&#39;:&#39;</span><span class="p">)</span>
+
+     <span class="nb">map</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="nb">filter</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">==</span> <span class="mi">5</span><span class="p">,</span> <span class="n">my_list</span><span class="p">))</span>
+
+     <span class="nb">apply</span><span class="p">(</span><span class="n">fn</span><span class="p">,</span> <span class="n">args</span><span class="p">,</span> <span class="n">kwargs</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="last highlight-python"><div class="highlight"><pre><span class="n">Yes</span><span class="p">:</span> <span class="n">words</span> <span class="o">=</span> <span class="n">foo</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s">&#39;:&#39;</span><span class="p">)</span>
+
+     <span class="p">[</span><span class="n">x</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">my_list</span> <span class="k">if</span> <span class="n">x</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">==</span> <span class="mi">5</span><span class="p">]</span>
+
+     <span class="n">fn</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+</pre></div>
+</div>
+</dd>
+</dl>
+</div>
+<div class="section" id="scoping-lexical-scoping">
+<h2>靜態Scoping(Lexical Scoping)</h2>
+<div class="admonition tip">
+<p class="first admonition-title">Tip</p>
+<p class="last">推薦使用</p>
+</div>
+<dl class="docutils">
+<dt>定義:</dt>
+<dd><p class="first">嵌套的Python函數可以引用外層函數中定義的變數, 但是不能夠對它們賦值. 變數綁定的解析是使用靜態Scoping, 也就是基于靜態的程序文本. 對一個塊中的某個名稱的任何賦值都會導致Python將對該名稱的全部引用當做局部變數, 甚至是賦值前的處理. 如果碰到global聲明, 該名稱就會被視作全局變數.</p>
+<p>一個使用這個特性的例子:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="k">def</span> <span class="nf">get_adder</span><span class="p">(</span><span class="n">summand1</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Returns a function that adds numbers to a given number.&quot;&quot;&quot;</span>
+    <span class="k">def</span> <span class="nf">adder</span><span class="p">(</span><span class="n">summand2</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">summand1</span> <span class="o">+</span> <span class="n">summand2</span>
+
+    <span class="k">return</span> <span class="n">adder</span>
+</pre></div>
+</div>
+<p class="last">(譯者註: 這個例子有點詭異, 你應該這樣使用這個函數: <tt class="docutils literal"><span class="pre">sum</span> <span class="pre">=</span> <span class="pre">get_adder(summand1)(summand2)</span></tt> )</p>
+</dd>
+<dt>優點:</dt>
+<dd>通常可以帶來更加清晰, 優雅的代碼. 尤其會讓有經驗的Lisp和Scheme(還有Haskell, ML等)程序員感到欣慰.</dd>
+<dt>缺點:</dt>
+<dd><p class="first">可能導致讓人迷惑的bug. 例如下面這個例子:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">i</span> <span class="o">=</span> <span class="mi">4</span>
+<span class="k">def</span> <span class="nf">foo</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">bar</span><span class="p">():</span>
+        <span class="k">print</span> <span class="n">i</span><span class="p">,</span>
+    <span class="c"># ...</span>
+    <span class="c"># A bunch of code here</span>
+    <span class="c"># ...</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">x</span><span class="p">:</span>  <span class="c"># Ah, i *is* local to Foo, so this is what Bar sees</span>
+        <span class="k">print</span> <span class="n">i</span><span class="p">,</span>
+    <span class="n">bar</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>因此 <tt class="docutils literal"><span class="pre">foo([1,</span> <span class="pre">2,</span> <span class="pre">3])</span></tt> 會打印 <tt class="docutils literal"><span class="pre">1</span> <span class="pre">2</span> <span class="pre">3</span> <span class="pre">3</span></tt> , 不是 <tt class="docutils literal"><span class="pre">1</span> <span class="pre">2</span> <span class="pre">3</span> <span class="pre">4</span></tt> .</p>
+<p class="last">(譯者註: x是一個列表, for循環其實是將x中的值依次賦給i.這樣對i的賦值就隱式的發生了, 整個foo函數體中的i都會被當做局部變數, 包括bar()中的那個. 這一點與C++之類的靜態語言還是有很大差別的.)</p>
+</dd>
+<dt>結論:</dt>
+<dd>鼓勵使用.</dd>
+</dl>
+</div>
+<div class="section" id="id11">
+<h2>函數與方法裝飾器</h2>
+<div class="admonition tip">
+<p class="first admonition-title">Tip</p>
+<p class="last">如果好處很顯然, 就明智而謹慎的使用裝飾器</p>
+</div>
+<dl class="docutils">
+<dt>定義:</dt>
+<dd><p class="first">用於函數及方法的裝飾器(也就是&#64;標記). 最常見的裝飾器是&#64;classmethod 和&#64;staticmethod, 用於將常規函數轉換成類方法或靜態方法. 不過, 裝飾器語法也允許用戶自定義裝飾器. 特別地, 對於某個函數 <tt class="docutils literal"><span class="pre">my_decorator</span></tt> , 下面的兩段代碼是等效的:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="k">class</span> <span class="nc">C</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+   <span class="nd">@my_decorator</span>
+   <span class="k">def</span> <span class="nf">method</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+       <span class="c"># method body ...</span>
+</pre></div>
+</div>
+<div class="last highlight-python"><div class="highlight"><pre><span class="k">class</span> <span class="nc">C</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">method</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="c"># method body ...</span>
+    <span class="n">method</span> <span class="o">=</span> <span class="n">my_decorator</span><span class="p">(</span><span class="n">method</span><span class="p">)</span>
+</pre></div>
+</div>
+</dd>
+<dt>優點:</dt>
+<dd>優雅的在函數上指定一些轉換. 該轉換可能減少一些重複代碼, 保持已有函數不變(enforce invariants), 等.</dd>
+<dt>缺點:</dt>
+<dd>裝飾器可以在函數的參數或返回值上執行任何操作, 這可能導致讓人驚異的隱藏行為. 而且, 裝飾器在導入時執行. 從裝飾器代碼的失敗中恢復更加不可能.</dd>
+<dt>結論:</dt>
+<dd><p class="first">如果好處很顯然, 就明智而謹慎的使用裝飾器. 裝飾器應該遵守和函數一樣的導入和命名規則. 裝飾器的python文檔應該清晰的說明該函數是一個裝飾器. 請為裝飾器編寫單元測試.</p>
+<p>避免裝飾器自身對外界的依賴(即不要依賴于檔案, socket, 資料庫連接等), 因為裝飾器運行時這些資源可能不可用(例如導入時, 使用pychecker或其它工具時). 應該保證一個用有效參數調用的裝飾器在所有情況下都是成功的.</p>
+<p class="last">裝飾器是一種特殊形式的&#8221;頂級代碼&#8221;. 參考後面關於Main的話題.</p>
+</dd>
+</dl>
+</div>
+<div class="section" id="id12">
+<h2>綫程</h2>
+<div class="admonition tip">
+<p class="first admonition-title">Tip</p>
+<p class="last">不要依賴內建類型的原子性.</p>
+</div>
+<p>雖然Python的內建類型例如字典看上去擁有原子操作, 但是在某些情形下它們仍然不是原子的(即: 如果__hash__或__eq__被實現為Python方法)且它們的原子性是靠不住的. 你也不能指望原子變數賦值(因為這個反過來依賴字典).</p>
+<p>優先使用Queue模組的 <tt class="docutils literal"><span class="pre">Queue</span></tt> 數據類型作為綫程間的數據通信方式. 另外, 使用threading模組及其鎖原語. 瞭解條件變數的合適使用方式, 這樣你就可以使用 <tt class="docutils literal"><span class="pre">threading.Condition</span></tt> 來取代低級別的鎖了.</p>
+</div>
+<div class="section" id="id13">
+<h2>威力過大的特性</h2>
+<div class="admonition tip">
+<p class="first admonition-title">Tip</p>
+<p class="last">避免使用這些特性</p>
+</div>
+<dl class="docutils">
+<dt>定義:</dt>
+<dd>Python是一種異常靈活的語言, 它為你提供了很多花哨的特性, 諸如元類(metaclasses), 位元組碼訪問, 任意編譯(on-the-fly compilation), 動態繼承, 對象父類重定義(object reparenting), 導入黑客(import hacks), 反射, 系統內修改(modification of system internals), 等等.</dd>
+<dt>優點:</dt>
+<dd>強大的語言特性, 能讓你的代碼更緊湊.</dd>
+<dt>缺點:</dt>
+<dd>使用這些很&#8221;酷&#8221;的特性十分誘人, 但不是絶對必要. 使用奇技淫巧的代碼將更加難以閲讀和調試. 開始可能還好(對原作者而言), 但當你回顧代碼, 它們可能會比那些稍長一點但是很直接的代碼更加難以理解.</dd>
+<dt>結論:</dt>
+<dd>在你的代碼中避免這些特性.</dd>
+</dl>
+</div>
+</div>
+
+
+      </div>
+      <div class="bottomnav">
+      
+        <p>
+        «&#160;&#160;<a href="index.html">Google Python 風格指南 - 中文版</a>
+        &#160;&#160;::&#160;&#160;
+        <a class="uplink" href="../contents.html">Contents</a>
+        &#160;&#160;::&#160;&#160;
+        <a href="python_style_rules.html">Python風格規範</a>&#160;&#160;»
+        </p>
+
+      </div>
+
+    <div class="footer">
+        &copy; Copyright .
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.3.
+    </div>
+  </body>
+</html>

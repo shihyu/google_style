@@ -1,109 +1,62 @@
+
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
 
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>8. 格式 &mdash; Google C++ Style Guide</title>
-    <link rel="stylesheet" href="_static/sphinxdoc.css" type="text/css" />
-    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <title>8. 格式 &mdash; Google 開源項目風格指南</title>
+    
+    <link rel="stylesheet" href="../_static/haiku.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/print.css" type="text/css" />
+    
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
-        URL_ROOT:    '',
-        VERSION:     '3.133',
-        COLLAPSE_MODINDEX: false,
+        URL_ROOT:    '../',
+        VERSION:     '',
+        COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
       };
     </script>
-    <script type="text/javascript" src="_static/jquery.js"></script>
-    <script type="text/javascript" src="_static/doctools.js"></script>
-    <link rel="top" title="Google C++ Style Guide" href="index.html" />
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <script type="text/javascript" src="../_static/theme_extras.js"></script>
+    <link rel="top" title="Google 開源項目風格指南" href="../index.html" />
+    <link rel="up" title="C++ 風格指南 - 內容目錄" href="contents.html" />
     <link rel="next" title="9. 規則特例" href="exceptions.html" />
     <link rel="prev" title="7. 註釋" href="comments.html" /> 
   </head>
   <body>
-    <div class="related">
-      <h3>Navigation</h3>
-      <ul>
-        <li class="right" style="margin-right: 10px">
-          <a href="genindex.html" title="General Index"
-             accesskey="I">index</a></li>
-        <li class="right" >
-          <a href="exceptions.html" title="9. 規則特例"
-             accesskey="N">next</a> |</li>
-        <li class="right" >
-          <a href="comments.html" title="7. 註釋"
-             accesskey="P">previous</a> |</li>
-        <li><a href="index.html">Google C++ Style Guide</a> &raquo;</li> 
-      </ul>
-    </div>
-      <div class="sphinxsidebar">
-        <div class="sphinxsidebarwrapper">
-            <h3><a href="index.html">Table Of Contents</a></h3>
-            <ul>
-<li><a class="reference external" href="">8. 格式</a><ul>
-<li><a class="reference external" href="#line-length">8.1. 行長度</a></li>
-<li><a class="reference external" href="#ascii">8.2. 非 ASCII 字元</a></li>
-<li><a class="reference external" href="#id3">8.3. 空格還是製表位</a></li>
-<li><a class="reference external" href="#id4">8.4. 函數聲明與定義</a></li>
-<li><a class="reference external" href="#id5">8.5. 函數調用</a></li>
-<li><a class="reference external" href="#id6">8.6. 條件語句</a></li>
-<li><a class="reference external" href="#id7">8.7. 循環和開關選擇語句</a></li>
-<li><a class="reference external" href="#id8">8.8. 指針和引用表達式</a></li>
-<li><a class="reference external" href="#id9">8.9. 布爾表達式</a></li>
-<li><a class="reference external" href="#id10">8.10. 函數返回值</a></li>
-<li><a class="reference external" href="#id11">8.11. 變數及數組初始化</a></li>
-<li><a class="reference external" href="#id12">8.12. 預處理指令</a></li>
-<li><a class="reference external" href="#id13">8.13. 類格式</a></li>
-<li><a class="reference external" href="#id14">8.14. 初始化列表</a></li>
-<li><a class="reference external" href="#id15">8.15. 名字空間格式化</a></li>
-<li><a class="reference external" href="#id16">8.16. 水平留白</a></li>
-<li><a class="reference external" href="#id17">8.17. 垂直留白</a></li>
-<li><a class="reference external" href="#yulefox">譯者 (YuleFox) 筆記</a></li>
-</ul>
-</li>
-</ul>
-
-            <h4>Previous topic</h4>
-            <p class="topless"><a href="comments.html"
-                                  title="previous chapter">7. 註釋</a></p>
-            <h4>Next topic</h4>
-            <p class="topless"><a href="exceptions.html"
-                                  title="next chapter">9. 規則特例</a></p>
-            <h3>This Page</h3>
-            <ul class="this-page-menu">
-              <li><a href="_sources/formatting.txt"
-                     rel="nofollow">Show Source</a></li>
-            </ul>
-          <div id="searchbox" style="display: none">
-            <h3>Quick search</h3>
-              <form class="search" action="search.html" method="get">
-                <input type="text" name="q" size="18" />
-                <input type="submit" value="Go" />
-                <input type="hidden" name="check_keywords" value="yes" />
-                <input type="hidden" name="area" value="default" />
-              </form>
-              <p class="searchtip" style="font-size: 90%">
-              Enter search terms or a module, class or function name.
-              </p>
-          </div>
-          <script type="text/javascript">$('#searchbox').show(0);</script>
-        </div>
+      <div class="header"><h1 class="heading"><a href="../index.html">
+          <span>Google 開源項目風格指南</span></a></h1>
+        <h2 class="heading"><span>8. 格式</span></h2>
       </div>
+      <div class="topnav">
+      
+        <p>
+        «&#160;&#160;<a href="comments.html">7. 註釋</a>
+        &#160;&#160;::&#160;&#160;
+        <a class="uplink" href="../contents.html">Contents</a>
+        &#160;&#160;::&#160;&#160;
+        <a href="exceptions.html">9. 規則特例</a>&#160;&#160;»
+        </p>
 
-    <div class="document">
-      <div class="documentwrapper">
-        <div class="bodywrapper">
-          <div class="body">
-            
+      </div>
+      <div class="content">
+        
+        
   <div class="section" id="id1">
-<h1>8. 格式<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h1>
+<h1>8. 格式</h1>
 <p>代碼風格和格式確實比較隨意, 但一個項目中所有人遵循同一風格是非常容易的. 個體未必同意下述每一處格式規則, 但整個項目服從統一的編程風格是很重要的, 只有這樣才能讓所有人能很輕鬆的閲讀和理解代碼.</p>
 <p>另外, 我們寫了一個 <a class="reference external" href="http://google-styleguide.googlecode.com/svn/trunk/google-c-style.el">emacs 配置檔案</a> 來幫助你正確的格式化代碼.</p>
 <div class="section" id="line-length">
-<span id="id2"></span><h2>8.1. 行長度<a class="headerlink" href="#line-length" title="Permalink to this headline">¶</a></h2>
+<span id="id2"></span><h2>8.1. 行長度</h2>
 <div class="admonition tip">
 <p class="first admonition-title">Tip</p>
 <p class="last">每一行代碼字元數不超過 80.</p>
@@ -120,13 +73,13 @@
 <ul class="last simple">
 <li>如果一行註釋包含了超過 80 字元的命令或 URL, 出於複製粘貼的方便允許該行超過 80 字元.</li>
 <li>包含長路徑的 <tt class="docutils literal"><span class="pre">#include</span></tt> 語句可以超出80列. 但應該儘量避免.</li>
-<li><a class="reference external" href="headers.html#define-guard"><em>標頭檔保護</em></a> 可以無視該原則.</li>
+<li><a class="reference internal" href="headers.html#define-guard"><em>標頭檔保護</em></a> 可以無視該原則.</li>
 </ul>
 </dd>
 </dl>
 </div>
 <div class="section" id="ascii">
-<h2>8.2. 非 ASCII 字元<a class="headerlink" href="#ascii" title="Permalink to this headline">¶</a></h2>
+<h2>8.2. 非 ASCII 字元</h2>
 <div class="admonition tip">
 <p class="first admonition-title">Tip</p>
 <p class="last">儘量不使用非 ASCII 字元, 使用時必須使用 UTF-8 編碼.</p>
@@ -134,7 +87,7 @@
 <p>即使是英文, 也不應將用戶界面的文本硬編碼到原始碼中, 因此非 ASCII 字元要少用. 特殊情況下可以適當包含此類字元. 如, 代碼分析外部數據檔案時, 可以適當硬編碼數據檔案中作為分隔符的非 ASCII 字元串; 更常見的是 (不需要本地化的) 單元測試代碼可能包含非 ASCII 字元串. 此類情況下, 應使用 UTF-8 編碼, 因為很多工具都可以理解和處理 UTF-8 編碼. 十六進制編碼也可以, 能增強可讀性的情況下尤其鼓勵 —— 比如 <tt class="docutils literal"><span class="pre">&quot;\xEF\xBB\xBF&quot;</span></tt> 在 Unicode 中是 <em>零寬度 無間斷</em> 的間隔符號, 如果不用十六進制直接放在 UTF-8 格式的源檔案中, 是看不到的. (yospaly 註: <tt class="docutils literal"><span class="pre">&quot;\xEF\xBB\xBF&quot;</span></tt> 通常用作 UTF-8 with BOM 編碼標記)</p>
 </div>
 <div class="section" id="id3">
-<h2>8.3. 空格還是製表位<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h2>
+<h2>8.3. 空格還是製表位</h2>
 <div class="admonition tip">
 <p class="first admonition-title">Tip</p>
 <p class="last">只使用空格, 每次縮進 2 個空格.</p>
@@ -142,7 +95,7 @@
 <p>我們使用空格縮進. 不要在代碼中使用制符表. 你應該設置編輯器將制符表轉為空格.</p>
 </div>
 <div class="section" id="id4">
-<h2>8.4. 函數聲明與定義<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h2>
+<h2>8.4. 函數聲明與定義</h2>
 <div class="admonition tip">
 <p class="first admonition-title">Tip</p>
 <p class="last">返回類型和函數名在同一行, 參數也儘量放在同一行.</p>
@@ -168,10 +121,10 @@
 </dd>
 <dt>甚至連第一個參數都放不下:</dt>
 <dd><div class="first last highlight-c++"><div class="highlight"><pre><span class="n">ReturnType</span> <span class="n">LongClassName</span><span class="o">::</span><span class="n">ReallyReallyReallyLongFunctionName</span><span class="p">(</span>
-        <span class="n">Type</span> <span class="n">par_name1</span><span class="p">,</span>  <span class="c">// 4 space indent</span>
+        <span class="n">Type</span> <span class="n">par_name1</span><span class="p">,</span>  <span class="c1">// 4 space indent</span>
         <span class="n">Type</span> <span class="n">par_name2</span><span class="p">,</span>
         <span class="n">Type</span> <span class="n">par_name3</span><span class="p">)</span> <span class="p">{</span>
-    <span class="n">DoSomething</span><span class="p">();</span>  <span class="c">// 2 space indent</span>
+    <span class="n">DoSomething</span><span class="p">();</span>  <span class="c1">// 2 space indent</span>
     <span class="p">...</span>
 <span class="p">}</span>
 </pre></div>
@@ -180,7 +133,7 @@
 </dl>
 <p>注意以下幾點:</p>
 <blockquote>
-<ul class="simple">
+<div><ul class="simple">
 <li>返回值總是和函數名在同一行;</li>
 <li>左圓括號總是和函數名在同一行;</li>
 <li>函數名和左圓括號間沒有空格;</li>
@@ -193,16 +146,16 @@
 <li>預設縮進為 2 個空格;</li>
 <li>換行後的參數保持 4 個空格的縮進;</li>
 </ul>
-</blockquote>
+</div></blockquote>
 <dl class="docutils">
 <dt>如果函數聲明成 <tt class="docutils literal"><span class="pre">const</span></tt>, 關鍵字 <tt class="docutils literal"><span class="pre">const</span></tt> 應與最後一個參數位于同一行:=</dt>
-<dd><div class="first last highlight-c++"><div class="highlight"><pre><span class="c">// Everything in this function signature fits on a single line</span>
+<dd><div class="first last highlight-c++"><div class="highlight"><pre><span class="c1">// Everything in this function signature fits on a single line</span>
 <span class="n">ReturnType</span> <span class="n">FunctionName</span><span class="p">(</span><span class="n">Type</span> <span class="n">par</span><span class="p">)</span> <span class="k">const</span> <span class="p">{</span>
   <span class="p">...</span>
 <span class="p">}</span>
 
-<span class="c">// This function signature requires multiple lines, but</span>
-<span class="c">// the const keyword is on the line with the last parameter.</span>
+<span class="c1">// This function signature requires multiple lines, but</span>
+<span class="c1">// the const keyword is on the line with the last parameter.</span>
 <span class="n">ReturnType</span> <span class="n">ReallyLongFunctionName</span><span class="p">(</span><span class="n">Type</span> <span class="n">par1</span><span class="p">,</span>
                                   <span class="n">Type</span> <span class="n">par2</span><span class="p">)</span> <span class="k">const</span> <span class="p">{</span>
   <span class="p">...</span>
@@ -211,26 +164,26 @@
 </div>
 </dd>
 <dt>如果有些參數沒有用到, 在函數定義處將參數名註釋起來:</dt>
-<dd><div class="first highlight-c++"><div class="highlight"><pre><span class="c">// Always have named parameters in interfaces.</span>
+<dd><div class="first highlight-c++"><div class="highlight"><pre><span class="c1">// Always have named parameters in interfaces.</span>
 <span class="k">class</span> <span class="nc">Shape</span> <span class="p">{</span>
  <span class="k">public</span><span class="o">:</span>
   <span class="k">virtual</span> <span class="kt">void</span> <span class="n">Rotate</span><span class="p">(</span><span class="kt">double</span> <span class="n">radians</span><span class="p">)</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
 <span class="p">}</span>
 
-<span class="c">// Always have named parameters in the declaration.</span>
+<span class="c1">// Always have named parameters in the declaration.</span>
 <span class="k">class</span> <span class="nc">Circle</span> <span class="o">:</span> <span class="k">public</span> <span class="n">Shape</span> <span class="p">{</span>
  <span class="k">public</span><span class="o">:</span>
   <span class="k">virtual</span> <span class="kt">void</span> <span class="n">Rotate</span><span class="p">(</span><span class="kt">double</span> <span class="n">radians</span><span class="p">);</span>
 <span class="p">}</span>
 
-<span class="c">// Comment out unused named parameters in definitions.</span>
-<span class="kt">void</span> <span class="n">Circle</span><span class="o">::</span><span class="n">Rotate</span><span class="p">(</span><span class="kt">double</span> <span class="c">/*radians*/</span><span class="p">)</span> <span class="p">{}</span>
+<span class="c1">// Comment out unused named parameters in definitions.</span>
+<span class="kt">void</span> <span class="n">Circle</span><span class="o">::</span><span class="n">Rotate</span><span class="p">(</span><span class="kt">double</span> <span class="cm">/*radians*/</span><span class="p">)</span> <span class="p">{}</span>
 </pre></div>
 </div>
 <div class="last admonition warning">
 <p class="first admonition-title">Warning</p>
-<div class="last highlight-c++"><div class="highlight"><pre><span class="c">// Bad - if someone wants to implement later, it&#39;s not clear what the</span>
-<span class="c">// variable means.</span>
+<div class="last highlight-c++"><div class="highlight"><pre><span class="c1">// Bad - if someone wants to implement later, it&#39;s not clear what the</span>
+<span class="c1">// variable means.</span>
 <span class="kt">void</span> <span class="n">Circle</span><span class="o">::</span><span class="n">Rotate</span><span class="p">(</span><span class="kt">double</span><span class="p">)</span> <span class="p">{}</span>
 </pre></div>
 </div>
@@ -239,7 +192,7 @@
 </dl>
 </div>
 <div class="section" id="id5">
-<h2>8.5. 函數調用<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h2>
+<h2>8.5. 函數調用</h2>
 <div class="admonition tip">
 <p class="first admonition-title">Tip</p>
 <p class="last">儘量放在同一行, 否則, 將實參封裝在圓括號中.</p>
@@ -270,7 +223,7 @@
   <span class="p">...</span>
   <span class="k">if</span> <span class="p">(...)</span> <span class="p">{</span>
     <span class="n">DoSomethingThatRequiresALongFunctionName</span><span class="p">(</span>
-        <span class="n">very_long_argument1</span><span class="p">,</span>  <span class="c">// 4 space indent</span>
+        <span class="n">very_long_argument1</span><span class="p">,</span>  <span class="c1">// 4 space indent</span>
         <span class="n">argument2</span><span class="p">,</span>
         <span class="n">argument3</span><span class="p">,</span>
         <span class="n">argument4</span><span class="p">);</span>
@@ -281,7 +234,7 @@
 </dl>
 </div>
 <div class="section" id="id6">
-<h2>8.6. 條件語句<a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h2>
+<h2>8.6. 條件語句</h2>
 <div class="admonition tip">
 <p class="first admonition-title">Tip</p>
 <p class="last">傾向于不在圓括號內使用空格. 關鍵字 <tt class="docutils literal"><span class="pre">else</span></tt> 另起一行.</p>
@@ -289,18 +242,18 @@
 <p>對基本條件語句有兩種可以接受的格式. 一種在圓括號和條件之間有空格, 另一種沒有.</p>
 <dl class="docutils">
 <dt>最常見的是沒有空格的格式. 哪種都可以, 但 <em>保持一致性</em>. 如果你是在修改一個檔案, 參考當前已有格式. 如果是寫新的代碼, 參考目錄下或項目中其它檔案. 還在徘徊的話, 就不要加空格了.</dt>
-<dd><div class="first last highlight-c++"><div class="highlight"><pre><span class="k">if</span> <span class="p">(</span><span class="n">condition</span><span class="p">)</span> <span class="p">{</span>  <span class="c">// no spaces inside parentheses</span>
-  <span class="p">...</span>  <span class="c">// 2 space indent.</span>
-<span class="p">}</span> <span class="k">else</span> <span class="p">{</span>  <span class="c">// The else goes on the same line as the closing brace.</span>
+<dd><div class="first last highlight-c++"><div class="highlight"><pre><span class="k">if</span> <span class="p">(</span><span class="n">condition</span><span class="p">)</span> <span class="p">{</span>  <span class="c1">// no spaces inside parentheses</span>
+  <span class="p">...</span>  <span class="c1">// 2 space indent.</span>
+<span class="p">}</span> <span class="k">else</span> <span class="p">{</span>  <span class="c1">// The else goes on the same line as the closing brace.</span>
   <span class="p">...</span>
 <span class="p">}</span>
 </pre></div>
 </div>
 </dd>
 <dt>如果你更喜歡在圓括號內部加空格:</dt>
-<dd><div class="first last highlight-c++"><div class="highlight"><pre><span class="k">if</span> <span class="p">(</span> <span class="n">condition</span> <span class="p">)</span> <span class="p">{</span>  <span class="c">// spaces inside parentheses - rare</span>
-  <span class="p">...</span>  <span class="c">// 2 space indent.</span>
-<span class="p">}</span> <span class="k">else</span> <span class="p">{</span>  <span class="c">// The else goes on the same line as the closing brace.</span>
+<dd><div class="first last highlight-c++"><div class="highlight"><pre><span class="k">if</span> <span class="p">(</span> <span class="n">condition</span> <span class="p">)</span> <span class="p">{</span>  <span class="c1">// spaces inside parentheses - rare</span>
+  <span class="p">...</span>  <span class="c1">// 2 space indent.</span>
+<span class="p">}</span> <span class="k">else</span> <span class="p">{</span>  <span class="c1">// The else goes on the same line as the closing brace.</span>
   <span class="p">...</span>
 <span class="p">}</span>
 </pre></div>
@@ -309,13 +262,13 @@
 <dt>注意所有情況下 <tt class="docutils literal"><span class="pre">if</span></tt> 和左圓括號間都有個空格. 右圓括號和左大括號之間也要有個空格:</dt>
 <dd><div class="first admonition warning">
 <p class="first admonition-title">Warning</p>
-<div class="last highlight-c++"><div class="highlight"><pre><span class="k">if</span><span class="p">(</span><span class="n">condition</span><span class="p">)</span>     <span class="c">// Bad - space missing after IF.</span>
-<span class="k">if</span> <span class="p">(</span><span class="n">condition</span><span class="p">){</span>   <span class="c">// Bad - space missing before {.</span>
-<span class="k">if</span><span class="p">(</span><span class="n">condition</span><span class="p">){</span>    <span class="c">// Doubly bad.</span>
+<div class="last highlight-c++"><div class="highlight"><pre><span class="k">if</span><span class="p">(</span><span class="n">condition</span><span class="p">)</span>     <span class="c1">// Bad - space missing after IF.</span>
+<span class="k">if</span> <span class="p">(</span><span class="n">condition</span><span class="p">){</span>   <span class="c1">// Bad - space missing before {.</span>
+<span class="k">if</span><span class="p">(</span><span class="n">condition</span><span class="p">){</span>    <span class="c1">// Doubly bad.</span>
 </pre></div>
 </div>
 </div>
-<div class="last highlight-c++"><div class="highlight"><pre><span class="k">if</span> <span class="p">(</span><span class="n">condition</span><span class="p">)</span> <span class="p">{</span>  <span class="c">// Good - proper space after IF and before {.</span>
+<div class="last highlight-c++"><div class="highlight"><pre><span class="k">if</span> <span class="p">(</span><span class="n">condition</span><span class="p">)</span> <span class="p">{</span>  <span class="c1">// Good - proper space after IF and before {.</span>
 </pre></div>
 </div>
 </dd>
@@ -328,7 +281,7 @@
 <dt>如果語句有 <tt class="docutils literal"><span class="pre">else</span></tt> 分支則不允許:</dt>
 <dd><div class="first last admonition warning">
 <p class="first admonition-title">Warning</p>
-<div class="last highlight-c++"><div class="highlight"><pre><span class="c">// Not allowed - IF statement on one line when there is an ELSE clause</span>
+<div class="last highlight-c++"><div class="highlight"><pre><span class="c1">// Not allowed - IF statement on one line when there is an ELSE clause</span>
 <span class="k">if</span> <span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="n">DoThis</span><span class="p">();</span>
 <span class="k">else</span> <span class="n">DoThat</span><span class="p">();</span>
 </pre></div>
@@ -337,10 +290,10 @@
 </dd>
 <dt>通常, 單行語句不需要使用大括號, 如果你喜歡用也沒問題; 複雜的條件或循環語句用大括號可讀性會更好. 也有一些項目要求 <tt class="docutils literal"><span class="pre">if</span></tt> 必須總是使用大括號:</dt>
 <dd><div class="first last highlight-c++"><div class="highlight"><pre><span class="k">if</span> <span class="p">(</span><span class="n">condition</span><span class="p">)</span>
-  <span class="n">DoSomething</span><span class="p">();</span>  <span class="c">// 2 space indent.</span>
+  <span class="n">DoSomething</span><span class="p">();</span>  <span class="c1">// 2 space indent.</span>
 
 <span class="k">if</span> <span class="p">(</span><span class="n">condition</span><span class="p">)</span> <span class="p">{</span>
-  <span class="n">DoSomething</span><span class="p">();</span>  <span class="c">// 2 space indent.</span>
+  <span class="n">DoSomething</span><span class="p">();</span>  <span class="c1">// 2 space indent.</span>
 <span class="p">}</span>
 </pre></div>
 </div>
@@ -348,13 +301,13 @@
 <dt>但如果語句中某個 <tt class="docutils literal"><span class="pre">if-else</span></tt> 分支使用了大括號的話, 其它分支也必須使用:</dt>
 <dd><div class="first admonition warning">
 <p class="first admonition-title">Warning</p>
-<div class="last highlight-c++"><div class="highlight"><pre><span class="c">// Not allowed - curly on IF but not ELSE</span>
+<div class="last highlight-c++"><div class="highlight"><pre><span class="c1">// Not allowed - curly on IF but not ELSE</span>
 <span class="k">if</span> <span class="p">(</span><span class="n">condition</span><span class="p">)</span> <span class="p">{</span>
     <span class="n">foo</span><span class="p">;</span>
 <span class="p">}</span> <span class="k">else</span>
     <span class="n">bar</span><span class="p">;</span>
 
-<span class="c">// Not allowed - curly on ELSE but not IF</span>
+<span class="c1">// Not allowed - curly on ELSE but not IF</span>
 <span class="k">if</span> <span class="p">(</span><span class="n">condition</span><span class="p">)</span>
     <span class="n">foo</span><span class="p">;</span>
 <span class="k">else</span> <span class="p">{</span>
@@ -363,8 +316,8 @@
 </pre></div>
 </div>
 </div>
-<div class="last highlight-c++"><div class="highlight"><pre><span class="c">// Curly braces around both IF and ELSE required because</span>
-<span class="c">// one of the clauses used braces.</span>
+<div class="last highlight-c++"><div class="highlight"><pre><span class="c1">// Curly braces around both IF and ELSE required because</span>
+<span class="c1">// one of the clauses used braces.</span>
 <span class="k">if</span> <span class="p">(</span><span class="n">condition</span><span class="p">)</span> <span class="p">{</span>
   <span class="n">foo</span><span class="p">;</span>
 <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
@@ -376,7 +329,7 @@
 </dl>
 </div>
 <div class="section" id="id7">
-<h2>8.7. 循環和開關選擇語句<a class="headerlink" href="#id7" title="Permalink to this headline">¶</a></h2>
+<h2>8.7. 循環和開關選擇語句</h2>
 <div class="admonition tip">
 <p class="first admonition-title">Tip</p>
 <p class="last"><tt class="docutils literal"><span class="pre">switch</span></tt> 語句可以使用大括號分段. 空循環體應使用 <tt class="docutils literal"><span class="pre">{}</span></tt> 或 <tt class="docutils literal"><span class="pre">continue</span></tt>.</p>
@@ -385,8 +338,8 @@
 <dl class="docutils">
 <dt>如果有不滿足 <tt class="docutils literal"><span class="pre">case</span></tt> 條件的枚舉值, <tt class="docutils literal"><span class="pre">switch</span></tt> 應該總是包含一個 <tt class="docutils literal"><span class="pre">default</span></tt> 匹配 (如果有輸入值沒有 case 去處理, 編譯器將報警). 如果 <tt class="docutils literal"><span class="pre">default</span></tt> 應該永遠執行不到, 簡單的加條 <tt class="docutils literal"><span class="pre">assert</span></tt>:</dt>
 <dd><div class="first last highlight-c++"><div class="highlight"><pre><span class="k">switch</span> <span class="p">(</span><span class="n">var</span><span class="p">)</span> <span class="p">{</span>
-  <span class="k">case</span> <span class="mi">0</span><span class="o">:</span> <span class="p">{</span>  <span class="c">// 2 space indent</span>
-    <span class="p">...</span>      <span class="c">// 4 space indent</span>
+  <span class="k">case</span> <span class="mi">0</span><span class="o">:</span> <span class="p">{</span>  <span class="c1">// 2 space indent</span>
+    <span class="p">...</span>      <span class="c1">// 4 space indent</span>
     <span class="k">break</span><span class="p">;</span>
   <span class="p">}</span>
   <span class="k">case</span> <span class="mi">1</span><span class="o">:</span> <span class="p">{</span>
@@ -402,15 +355,15 @@
 </dd>
 <dt>空循環體應使用 <tt class="docutils literal"><span class="pre">{}</span></tt> 或 <tt class="docutils literal"><span class="pre">continue</span></tt>, 而不是一個簡單的分號.</dt>
 <dd><div class="first highlight-c++"><div class="highlight"><pre><span class="k">while</span> <span class="p">(</span><span class="n">condition</span><span class="p">)</span> <span class="p">{</span>
-  <span class="c">// Repeat test until it returns false.</span>
+  <span class="c1">// Repeat test until it returns false.</span>
 <span class="p">}</span>
-<span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">kSomeNumber</span><span class="p">;</span> <span class="o">++</span><span class="n">i</span><span class="p">)</span> <span class="p">{}</span>  <span class="c">// Good - empty body.</span>
-<span class="k">while</span> <span class="p">(</span><span class="n">condition</span><span class="p">)</span> <span class="k">continue</span><span class="p">;</span>  <span class="c">// Good - continue indicates no logic.</span>
+<span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">kSomeNumber</span><span class="p">;</span> <span class="o">++</span><span class="n">i</span><span class="p">)</span> <span class="p">{}</span>  <span class="c1">// Good - empty body.</span>
+<span class="k">while</span> <span class="p">(</span><span class="n">condition</span><span class="p">)</span> <span class="k">continue</span><span class="p">;</span>  <span class="c1">// Good - continue indicates no logic.</span>
 </pre></div>
 </div>
 <div class="last admonition warning">
 <p class="first admonition-title">Warning</p>
-<div class="last highlight-c++"><div class="highlight"><pre><span class="k">while</span> <span class="p">(</span><span class="n">condition</span><span class="p">);</span>  <span class="c">// Bad - looks like part of do/while loop.</span>
+<div class="last highlight-c++"><div class="highlight"><pre><span class="k">while</span> <span class="p">(</span><span class="n">condition</span><span class="p">);</span>  <span class="c1">// Bad - looks like part of do/while loop.</span>
 </pre></div>
 </div>
 </div>
@@ -418,7 +371,7 @@
 </dl>
 </div>
 <div class="section" id="id8">
-<h2>8.8. 指針和引用表達式<a class="headerlink" href="#id8" title="Permalink to this headline">¶</a></h2>
+<h2>8.8. 指針和引用表達式</h2>
 <div class="admonition tip">
 <p class="first admonition-title">Tip</p>
 <p class="last">句點或箭頭前後不要有空格. 指針/地址操作符 (<tt class="docutils literal"><span class="pre">*,</span> <span class="pre">&amp;</span></tt>) 之後不能有空格.</p>
@@ -439,19 +392,19 @@
 </ul>
 </dd>
 <dt>在聲明指針變數或參數時, 星號與類型或變數名緊挨都可以:</dt>
-<dd><div class="first highlight-c++"><div class="highlight"><pre><span class="c">// These are fine, space preceding.</span>
+<dd><div class="first highlight-c++"><div class="highlight"><pre><span class="c1">// These are fine, space preceding.</span>
 <span class="kt">char</span> <span class="o">*</span><span class="n">c</span><span class="p">;</span>
 <span class="k">const</span> <span class="n">string</span> <span class="o">&amp;</span><span class="n">str</span><span class="p">;</span>
 
-<span class="c">// These are fine, space following.</span>
-<span class="kt">char</span><span class="o">*</span> <span class="n">c</span><span class="p">;</span>    <span class="c">// but remember to do &quot;char* c, *d, *e, ...;&quot;!</span>
+<span class="c1">// These are fine, space following.</span>
+<span class="kt">char</span><span class="o">*</span> <span class="n">c</span><span class="p">;</span>    <span class="c1">// but remember to do &quot;char* c, *d, *e, ...;&quot;!</span>
 <span class="k">const</span> <span class="n">string</span><span class="o">&amp;</span> <span class="n">str</span><span class="p">;</span>
 </pre></div>
 </div>
 <div class="last admonition warning">
 <p class="first admonition-title">Warning</p>
-<div class="last highlight-c++"><div class="highlight"><pre><span class="kt">char</span> <span class="o">*</span> <span class="n">c</span><span class="p">;</span>  <span class="c">// Bad - spaces on both sides of *</span>
-<span class="k">const</span> <span class="n">string</span> <span class="o">&amp;</span> <span class="n">str</span><span class="p">;</span>  <span class="c">// Bad - spaces on both sides of &amp;</span>
+<div class="last highlight-c++"><div class="highlight"><pre><span class="kt">char</span> <span class="o">*</span> <span class="n">c</span><span class="p">;</span>  <span class="c1">// Bad - spaces on both sides of *</span>
+<span class="k">const</span> <span class="n">string</span> <span class="o">&amp;</span> <span class="n">str</span><span class="p">;</span>  <span class="c1">// Bad - spaces on both sides of &amp;</span>
 </pre></div>
 </div>
 </div>
@@ -460,7 +413,7 @@
 <p>在單個檔案內要保持風格一致, 所以, 如果是修改現有檔案, 要遵照該檔案的風格.</p>
 </div>
 <div class="section" id="id9">
-<h2>8.9. 布爾表達式<a class="headerlink" href="#id9" title="Permalink to this headline">¶</a></h2>
+<h2>8.9. 布爾表達式</h2>
 <div class="admonition tip">
 <p class="first admonition-title">Tip</p>
 <p class="last">如果一個布爾表達式超過 <a class="reference internal" href="#line-length"><em>標準行寬</em></a>, 斷行方式要統一一下.</p>
@@ -479,21 +432,21 @@
 <p>注意, 上例的邏輯與 (<tt class="docutils literal"><span class="pre">&amp;&amp;</span></tt>) 操作符均位於行尾. 可以考慮額外插入圓括號, 合理使用的話對增強可讀性是很有幫助的.</p>
 </div>
 <div class="section" id="id10">
-<h2>8.10. 函數返回值<a class="headerlink" href="#id10" title="Permalink to this headline">¶</a></h2>
+<h2>8.10. 函數返回值</h2>
 <div class="admonition tip">
 <p class="first admonition-title">Tip</p>
 <p class="last"><tt class="docutils literal"><span class="pre">return</span></tt> 表達式中不要用圓括號包圍.</p>
 </div>
 <dl class="docutils">
 <dt>函數返回時不要使用圓括號:</dt>
-<dd><div class="first last highlight-c++"><div class="highlight"><pre><span class="k">return</span> <span class="n">x</span><span class="p">;</span>  <span class="c">// not return(x);</span>
+<dd><div class="first last highlight-c++"><div class="highlight"><pre><span class="k">return</span> <span class="n">x</span><span class="p">;</span>  <span class="c1">// not return(x);</span>
 </pre></div>
 </div>
 </dd>
 </dl>
 </div>
 <div class="section" id="id11">
-<h2>8.11. 變數及數組初始化<a class="headerlink" href="#id11" title="Permalink to this headline">¶</a></h2>
+<h2>8.11. 變數及數組初始化</h2>
 <div class="admonition tip">
 <p class="first admonition-title">Tip</p>
 <p class="last">用 <tt class="docutils literal"><span class="pre">=</span></tt> 或 <tt class="docutils literal"><span class="pre">()</span></tt> 均可.</p>
@@ -510,16 +463,16 @@
 </dl>
 </div>
 <div class="section" id="id12">
-<h2>8.12. 預處理指令<a class="headerlink" href="#id12" title="Permalink to this headline">¶</a></h2>
+<h2>8.12. 預處理指令</h2>
 <div class="admonition tip">
 <p class="first admonition-title">Tip</p>
 <p class="last">預處理指令不要縮進, 從行首開始.</p>
 </div>
 <dl class="docutils">
 <dt>即使預處理指令位於縮進代碼塊中, 指令也應從行首開始.</dt>
-<dd><div class="first highlight-c++"><div class="highlight"><pre><span class="c">// Good - directives at beginning of line</span>
+<dd><div class="first highlight-c++"><div class="highlight"><pre><span class="c1">// Good - directives at beginning of line</span>
   <span class="k">if</span> <span class="p">(</span><span class="n">lopsided_score</span><span class="p">)</span> <span class="p">{</span>
-<span class="cp">#if DISASTER_PENDING      </span><span class="c">// Correct -- Starts at beginning of line</span>
+<span class="cp">#if DISASTER_PENDING      </span><span class="c1">// Correct -- Starts at beginning of line</span>
     <span class="n">DropEverything</span><span class="p">();</span>
 <span class="cp">#endif</span>
     <span class="n">BackToNormal</span><span class="p">();</span>
@@ -528,11 +481,11 @@
 </div>
 <div class="last admonition warning">
 <p class="first admonition-title">Warning</p>
-<div class="last highlight-c++"><div class="highlight"><pre><span class="c">// Bad - indented directives</span>
+<div class="last highlight-c++"><div class="highlight"><pre><span class="c1">// Bad - indented directives</span>
   <span class="k">if</span> <span class="p">(</span><span class="n">lopsided_score</span><span class="p">)</span> <span class="p">{</span>
-<span class="cp">    #if DISASTER_PENDING  </span><span class="c">// Wrong!  The &quot;#if&quot; should be at beginning of line</span>
+<span class="cp">    #if DISASTER_PENDING  </span><span class="c1">// Wrong!  The &quot;#if&quot; should be at beginning of line</span>
     <span class="n">DropEverything</span><span class="p">();</span>
-<span class="cp">    #endif                </span><span class="c">// Wrong!  Do not indent &quot;#endif&quot;</span>
+<span class="cp">    #endif                </span><span class="c1">// Wrong!  Do not indent &quot;#endif&quot;</span>
     <span class="n">BackToNormal</span><span class="p">();</span>
   <span class="p">}</span>
 </pre></div>
@@ -542,16 +495,16 @@
 </dl>
 </div>
 <div class="section" id="id13">
-<h2>8.13. 類格式<a class="headerlink" href="#id13" title="Permalink to this headline">¶</a></h2>
+<h2>8.13. 類格式</h2>
 <div class="admonition tip">
 <p class="first admonition-title">Tip</p>
 <p class="last">訪問控制塊的聲明依次序是 <tt class="docutils literal"><span class="pre">public:</span></tt>, <tt class="docutils literal"><span class="pre">protected:</span></tt>, <tt class="docutils literal"><span class="pre">private:</span></tt>, 每次縮進 1 個空格.</p>
 </div>
 <dl class="docutils">
-<dt>類聲明 (對類註釋不瞭解的話, 參考 <a class="reference external" href="comments.html#class-comments"><em>類註釋</em></a>) 的基本格式如下:</dt>
+<dt>類聲明 (對類註釋不瞭解的話, 參考 <a class="reference internal" href="comments.html#class-comments"><em>類註釋</em></a>) 的基本格式如下:</dt>
 <dd><div class="first last highlight-c++"><div class="highlight"><pre><span class="k">class</span> <span class="nc">MyClass</span> <span class="o">:</span> <span class="k">public</span> <span class="n">OtherClass</span> <span class="p">{</span>
- <span class="k">public</span><span class="o">:</span>      <span class="c">// Note the 1 space indent!</span>
-  <span class="n">MyClass</span><span class="p">();</span>  <span class="c">// Regular 2 space indent.</span>
+ <span class="k">public</span><span class="o">:</span>      <span class="c1">// Note the 1 space indent!</span>
+  <span class="n">MyClass</span><span class="p">();</span>  <span class="c1">// Regular 2 space indent.</span>
   <span class="k">explicit</span> <span class="n">MyClass</span><span class="p">(</span><span class="kt">int</span> <span class="n">var</span><span class="p">);</span>
   <span class="o">~</span><span class="n">MyClass</span><span class="p">()</span> <span class="p">{}</span>
 
@@ -579,54 +532,54 @@
 <li>除第一個關鍵詞 (一般是 <tt class="docutils literal"><span class="pre">public</span></tt>) 外, 其他關鍵詞前要空一行. 如果類比較小的話也可以不空.</li>
 <li>這些關鍵詞後不要保留空行.</li>
 <li><tt class="docutils literal"><span class="pre">public</span></tt> 放在最前面, 然後是 <tt class="docutils literal"><span class="pre">protected</span></tt>, 最後是 <tt class="docutils literal"><span class="pre">private</span></tt>.</li>
-<li>關於聲明順序的規則請參考 <a class="reference external" href="classes.html#declaration-order"><em>聲明順序</em></a> 一節.</li>
+<li>關於聲明順序的規則請參考 <a class="reference internal" href="classes.html#declaration-order"><em>聲明順序</em></a> 一節.</li>
 </ul>
 </dd>
 </dl>
 </div>
 <div class="section" id="id14">
-<h2>8.14. 初始化列表<a class="headerlink" href="#id14" title="Permalink to this headline">¶</a></h2>
+<h2>8.14. 初始化列表</h2>
 <div class="admonition tip">
 <p class="first admonition-title">Tip</p>
 <p class="last">建構子初始化列表放在同一行或按四格縮進並排幾行.</p>
 </div>
 <p>下面兩種初始化列表方式都可以接受:</p>
 <blockquote>
-<div class="highlight-c++"><div class="highlight"><pre><span class="c">// When it all fits on one line:</span>
+<div><div class="highlight-c++"><div class="highlight"><pre><span class="c1">// When it all fits on one line:</span>
 <span class="n">MyClass</span><span class="o">::</span><span class="n">MyClass</span><span class="p">(</span><span class="kt">int</span> <span class="n">var</span><span class="p">)</span> <span class="o">:</span> <span class="n">some_var_</span><span class="p">(</span><span class="n">var</span><span class="p">),</span> <span class="n">some_other_var_</span><span class="p">(</span><span class="n">var</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span> <span class="p">{</span>
 </pre></div>
 </div>
-</blockquote>
+</div></blockquote>
 <p>或</p>
 <blockquote>
-<div class="highlight-c++"><div class="highlight"><pre><span class="c">// When it requires multiple lines, indent 4 spaces, putting the colon on</span>
-<span class="c">// the first initializer line:</span>
+<div><div class="highlight-c++"><div class="highlight"><pre><span class="c1">// When it requires multiple lines, indent 4 spaces, putting the colon on</span>
+<span class="c1">// the first initializer line:</span>
 <span class="n">MyClass</span><span class="o">::</span><span class="n">MyClass</span><span class="p">(</span><span class="kt">int</span> <span class="n">var</span><span class="p">)</span>
-    <span class="o">:</span> <span class="n">some_var_</span><span class="p">(</span><span class="n">var</span><span class="p">),</span>             <span class="c">// 4 space indent</span>
-      <span class="n">some_other_var_</span><span class="p">(</span><span class="n">var</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span> <span class="p">{</span>  <span class="c">// lined up</span>
+    <span class="o">:</span> <span class="n">some_var_</span><span class="p">(</span><span class="n">var</span><span class="p">),</span>             <span class="c1">// 4 space indent</span>
+      <span class="n">some_other_var_</span><span class="p">(</span><span class="n">var</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span> <span class="p">{</span>  <span class="c1">// lined up</span>
   <span class="p">...</span>
   <span class="n">DoSomething</span><span class="p">();</span>
   <span class="p">...</span>
 <span class="p">}</span>
 </pre></div>
 </div>
-</blockquote>
+</div></blockquote>
 </div>
 <div class="section" id="id15">
-<h2>8.15. 名字空間格式化<a class="headerlink" href="#id15" title="Permalink to this headline">¶</a></h2>
+<h2>8.15. 名字空間格式化</h2>
 <div class="admonition tip">
 <p class="first admonition-title">Tip</p>
 <p class="last">名字空間內容不縮進.</p>
 </div>
 <dl class="docutils">
-<dt><a class="reference external" href="scoping.html#namespaces"><em>名字空間</em></a> 不要增加額外的縮進層次, 例如:</dt>
+<dt><a class="reference internal" href="scoping.html#namespaces"><em>名字空間</em></a> 不要增加額外的縮進層次, 例如:</dt>
 <dd><div class="first last highlight-c++"><div class="highlight"><pre><span class="k">namespace</span> <span class="p">{</span>
 
-<span class="kt">void</span> <span class="n">foo</span><span class="p">()</span> <span class="p">{</span>  <span class="c">// Correct.  No extra indentation within namespace.</span>
+<span class="kt">void</span> <span class="n">foo</span><span class="p">()</span> <span class="p">{</span>  <span class="c1">// Correct.  No extra indentation within namespace.</span>
   <span class="p">...</span>
 <span class="p">}</span>
 
-<span class="p">}</span>  <span class="c">// namespace</span>
+<span class="p">}</span>  <span class="c1">// namespace</span>
 </pre></div>
 </div>
 </dd>
@@ -635,12 +588,12 @@
 <p class="first admonition-title">Warning</p>
 <div class="last highlight-c++"><div class="highlight"><pre><span class="k">namespace</span> <span class="p">{</span>
 
-  <span class="c">// Wrong.  Indented when it should not be.</span>
+  <span class="c1">// Wrong.  Indented when it should not be.</span>
   <span class="kt">void</span> <span class="n">foo</span><span class="p">()</span> <span class="p">{</span>
     <span class="p">...</span>
   <span class="p">}</span>
 
-<span class="p">}</span>  <span class="c">// namespace</span>
+<span class="p">}</span>  <span class="c1">// namespace</span>
 </pre></div>
 </div>
 </div>
@@ -648,79 +601,79 @@
 </dl>
 </div>
 <div class="section" id="id16">
-<h2>8.16. 水平留白<a class="headerlink" href="#id16" title="Permalink to this headline">¶</a></h2>
+<h2>8.16. 水平留白</h2>
 <div class="admonition tip">
 <p class="first admonition-title">Tip</p>
 <p class="last">水平留白的使用因地制宜. 永遠不要在行尾添加沒意義的留白.</p>
 </div>
 <dl class="docutils">
 <dt>常規:</dt>
-<dd><div class="first highlight-c++"><div class="highlight"><pre><span class="kt">void</span> <span class="n">f</span><span class="p">(</span><span class="kt">bool</span> <span class="n">b</span><span class="p">)</span> <span class="p">{</span>  <span class="c">// Open braces should always have a space before them.</span>
+<dd><div class="first highlight-c++"><div class="highlight"><pre><span class="kt">void</span> <span class="n">f</span><span class="p">(</span><span class="kt">bool</span> <span class="n">b</span><span class="p">)</span> <span class="p">{</span>  <span class="c1">// Open braces should always have a space before them.</span>
   <span class="p">...</span>
-<span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>  <span class="c">// Semicolons usually have no space before them.</span>
-<span class="kt">int</span> <span class="n">x</span><span class="p">[]</span> <span class="o">=</span> <span class="p">{</span> <span class="mi">0</span> <span class="p">};</span>  <span class="c">// Spaces inside braces for array initialization are</span>
-<span class="kt">int</span> <span class="n">x</span><span class="p">[]</span> <span class="o">=</span> <span class="p">{</span><span class="mi">0</span><span class="p">};</span>    <span class="c">// optional.  If you use them, put them on both sides!</span>
-<span class="c">// Spaces around the colon in inheritance and initializer lists.</span>
+<span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>  <span class="c1">// Semicolons usually have no space before them.</span>
+<span class="kt">int</span> <span class="n">x</span><span class="p">[]</span> <span class="o">=</span> <span class="p">{</span> <span class="mi">0</span> <span class="p">};</span>  <span class="c1">// Spaces inside braces for array initialization are</span>
+<span class="kt">int</span> <span class="n">x</span><span class="p">[]</span> <span class="o">=</span> <span class="p">{</span><span class="mi">0</span><span class="p">};</span>    <span class="c1">// optional.  If you use them, put them on both sides!</span>
+<span class="c1">// Spaces around the colon in inheritance and initializer lists.</span>
 <span class="k">class</span> <span class="nc">Foo</span> <span class="o">:</span> <span class="k">public</span> <span class="n">Bar</span> <span class="p">{</span>
  <span class="k">public</span><span class="o">:</span>
-  <span class="c">// For inline function implementations, put spaces between the braces</span>
-  <span class="c">// and the implementation itself.</span>
-  <span class="n">Foo</span><span class="p">(</span><span class="kt">int</span> <span class="n">b</span><span class="p">)</span> <span class="o">:</span> <span class="n">Bar</span><span class="p">(),</span> <span class="n">baz_</span><span class="p">(</span><span class="n">b</span><span class="p">)</span> <span class="p">{}</span>  <span class="c">// No spaces inside empty braces.</span>
-  <span class="kt">void</span> <span class="n">Reset</span><span class="p">()</span> <span class="p">{</span> <span class="n">baz_</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="p">}</span>  <span class="c">// Spaces separating braces from implementation.</span>
+  <span class="c1">// For inline function implementations, put spaces between the braces</span>
+  <span class="c1">// and the implementation itself.</span>
+  <span class="n">Foo</span><span class="p">(</span><span class="kt">int</span> <span class="n">b</span><span class="p">)</span> <span class="o">:</span> <span class="n">Bar</span><span class="p">(),</span> <span class="n">baz_</span><span class="p">(</span><span class="n">b</span><span class="p">)</span> <span class="p">{}</span>  <span class="c1">// No spaces inside empty braces.</span>
+  <span class="kt">void</span> <span class="n">Reset</span><span class="p">()</span> <span class="p">{</span> <span class="n">baz_</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="p">}</span>  <span class="c1">// Spaces separating braces from implementation.</span>
   <span class="p">...</span>
 </pre></div>
 </div>
 <p class="last">添加冗餘的留白會給其他人編輯時造成額外負擔. 因此, 行尾不要留空格. 如果確定一行代碼已經修改完畢, 將多餘的空格去掉; 或者在專門清理空格時去掉（確信沒有其他人在處理). (yospaly 註: 現在大部分代碼編輯器稍加設置後, 都支持自動刪除行首/行尾空格, 如果不支持, 考慮換一款編輯器或 IDE)</p>
 </dd>
 <dt>循環和條件語句:</dt>
-<dd><div class="first last highlight-c++"><div class="highlight"><pre><span class="k">if</span> <span class="p">(</span><span class="n">b</span><span class="p">)</span> <span class="p">{</span>          <span class="c">// Space after the keyword in conditions and loops.</span>
-<span class="p">}</span> <span class="k">else</span> <span class="p">{</span>          <span class="c">// Spaces around else.</span>
+<dd><div class="first last highlight-c++"><div class="highlight"><pre><span class="k">if</span> <span class="p">(</span><span class="n">b</span><span class="p">)</span> <span class="p">{</span>          <span class="c1">// Space after the keyword in conditions and loops.</span>
+<span class="p">}</span> <span class="k">else</span> <span class="p">{</span>          <span class="c1">// Spaces around else.</span>
 <span class="p">}</span>
-<span class="k">while</span> <span class="p">(</span><span class="n">test</span><span class="p">)</span> <span class="p">{}</span>   <span class="c">// There is usually no space inside parentheses.</span>
+<span class="k">while</span> <span class="p">(</span><span class="n">test</span><span class="p">)</span> <span class="p">{}</span>   <span class="c1">// There is usually no space inside parentheses.</span>
 <span class="k">switch</span> <span class="p">(</span><span class="n">i</span><span class="p">)</span> <span class="p">{</span>
 <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="mi">5</span><span class="p">;</span> <span class="o">++</span><span class="n">i</span><span class="p">)</span> <span class="p">{</span>
-<span class="k">switch</span> <span class="p">(</span> <span class="n">i</span> <span class="p">)</span> <span class="p">{</span>    <span class="c">// Loops and conditions may have spaces inside</span>
-<span class="k">if</span> <span class="p">(</span> <span class="n">test</span> <span class="p">)</span> <span class="p">{</span>     <span class="c">// parentheses, but this is rare.  Be consistent.</span>
+<span class="k">switch</span> <span class="p">(</span> <span class="n">i</span> <span class="p">)</span> <span class="p">{</span>    <span class="c1">// Loops and conditions may have spaces inside</span>
+<span class="k">if</span> <span class="p">(</span> <span class="n">test</span> <span class="p">)</span> <span class="p">{</span>     <span class="c1">// parentheses, but this is rare.  Be consistent.</span>
 <span class="k">for</span> <span class="p">(</span> <span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="mi">5</span><span class="p">;</span> <span class="o">++</span><span class="n">i</span> <span class="p">)</span> <span class="p">{</span>
-<span class="k">for</span> <span class="p">(</span> <span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="mi">5</span> <span class="p">;</span> <span class="o">++</span><span class="n">i</span><span class="p">)</span> <span class="p">{</span>  <span class="c">// For loops always have a space after the</span>
-  <span class="p">...</span>                   <span class="c">// semicolon, and may have a space before the</span>
-                        <span class="c">// semicolon.</span>
+<span class="k">for</span> <span class="p">(</span> <span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="mi">5</span> <span class="p">;</span> <span class="o">++</span><span class="n">i</span><span class="p">)</span> <span class="p">{</span>  <span class="c1">// For loops always have a space after the</span>
+  <span class="p">...</span>                   <span class="c1">// semicolon, and may have a space before the</span>
+                        <span class="c1">// semicolon.</span>
 <span class="k">switch</span> <span class="p">(</span><span class="n">i</span><span class="p">)</span> <span class="p">{</span>
-  <span class="k">case</span> <span class="mi">1</span><span class="o">:</span>         <span class="c">// No space before colon in a switch case.</span>
+  <span class="k">case</span> <span class="mi">1</span><span class="o">:</span>         <span class="c1">// No space before colon in a switch case.</span>
     <span class="p">...</span>
-  <span class="k">case</span> <span class="mi">2</span><span class="o">:</span> <span class="k">break</span><span class="p">;</span>  <span class="c">// Use a space after a colon if there&#39;s code after it.</span>
+  <span class="k">case</span> <span class="mi">2</span><span class="o">:</span> <span class="k">break</span><span class="p">;</span>  <span class="c1">// Use a space after a colon if there&#39;s code after it.</span>
 </pre></div>
 </div>
 </dd>
 <dt>操作符:</dt>
-<dd><div class="first last highlight-c++"><div class="highlight"><pre><span class="n">x</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>              <span class="c">// Assignment operators always have spaces around</span>
-                    <span class="c">// them.</span>
-<span class="n">x</span> <span class="o">=</span> <span class="o">-</span><span class="mi">5</span><span class="p">;</span>             <span class="c">// No spaces separating unary operators and their</span>
-<span class="o">++</span><span class="n">x</span><span class="p">;</span>                <span class="c">// arguments.</span>
+<dd><div class="first last highlight-c++"><div class="highlight"><pre><span class="n">x</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>              <span class="c1">// Assignment operators always have spaces around</span>
+                    <span class="c1">// them.</span>
+<span class="n">x</span> <span class="o">=</span> <span class="o">-</span><span class="mi">5</span><span class="p">;</span>             <span class="c1">// No spaces separating unary operators and their</span>
+<span class="o">++</span><span class="n">x</span><span class="p">;</span>                <span class="c1">// arguments.</span>
 <span class="k">if</span> <span class="p">(</span><span class="n">x</span> <span class="o">&amp;&amp;</span> <span class="o">!</span><span class="n">y</span><span class="p">)</span>
   <span class="p">...</span>
-<span class="n">v</span> <span class="o">=</span> <span class="n">w</span> <span class="o">*</span> <span class="n">x</span> <span class="o">+</span> <span class="n">y</span> <span class="o">/</span> <span class="n">z</span><span class="p">;</span>  <span class="c">// Binary operators usually have spaces around them,</span>
-<span class="n">v</span> <span class="o">=</span> <span class="n">w</span><span class="o">*</span><span class="n">x</span> <span class="o">+</span> <span class="n">y</span><span class="o">/</span><span class="n">z</span><span class="p">;</span>      <span class="c">// but it&#39;s okay to remove spaces around factors.</span>
-<span class="n">v</span> <span class="o">=</span> <span class="n">w</span> <span class="o">*</span> <span class="p">(</span><span class="n">x</span> <span class="o">+</span> <span class="n">z</span><span class="p">);</span>    <span class="c">// Parentheses should have no spaces inside them.</span>
+<span class="n">v</span> <span class="o">=</span> <span class="n">w</span> <span class="o">*</span> <span class="n">x</span> <span class="o">+</span> <span class="n">y</span> <span class="o">/</span> <span class="n">z</span><span class="p">;</span>  <span class="c1">// Binary operators usually have spaces around them,</span>
+<span class="n">v</span> <span class="o">=</span> <span class="n">w</span><span class="o">*</span><span class="n">x</span> <span class="o">+</span> <span class="n">y</span><span class="o">/</span><span class="n">z</span><span class="p">;</span>      <span class="c1">// but it&#39;s okay to remove spaces around factors.</span>
+<span class="n">v</span> <span class="o">=</span> <span class="n">w</span> <span class="o">*</span> <span class="p">(</span><span class="n">x</span> <span class="o">+</span> <span class="n">z</span><span class="p">);</span>    <span class="c1">// Parentheses should have no spaces inside them.</span>
 </pre></div>
 </div>
 </dd>
 <dt>模板和轉換:</dt>
-<dd><div class="first last highlight-c++"><div class="highlight"><pre><span class="n">vector</span><span class="o">&lt;</span><span class="n">string</span><span class="o">&gt;</span> <span class="n">x</span><span class="p">;</span>           <span class="c">// No spaces inside the angle</span>
-<span class="n">y</span> <span class="o">=</span> <span class="k">static_cast</span><span class="o">&lt;</span><span class="kt">char</span><span class="o">*&gt;</span><span class="p">(</span><span class="n">x</span><span class="p">);</span>  <span class="c">// brackets (&lt; and &gt;), before</span>
-                            <span class="c">// &lt;, or between &gt;( in a cast.</span>
-<span class="n">vector</span><span class="o">&lt;</span><span class="kt">char</span> <span class="o">*&gt;</span> <span class="n">x</span><span class="p">;</span>           <span class="c">// Spaces between type and pointer are</span>
-                            <span class="c">// okay, but be consistent.</span>
-<span class="n">set</span><span class="o">&lt;</span><span class="n">list</span><span class="o">&lt;</span><span class="n">string</span><span class="o">&gt;</span> <span class="o">&gt;</span> <span class="n">x</span><span class="p">;</span>       <span class="c">// C++ requires a space in &gt; &gt;.</span>
-<span class="n">set</span><span class="o">&lt;</span> <span class="n">list</span><span class="o">&lt;</span><span class="n">string</span><span class="o">&gt;</span> <span class="o">&gt;</span> <span class="n">x</span><span class="p">;</span>      <span class="c">// You may optionally make use</span>
-                            <span class="c">// symmetric spacing in &lt; &lt;.</span>
+<dd><div class="first last highlight-c++"><div class="highlight"><pre><span class="n">vector</span><span class="o">&lt;</span><span class="n">string</span><span class="o">&gt;</span> <span class="n">x</span><span class="p">;</span>           <span class="c1">// No spaces inside the angle</span>
+<span class="n">y</span> <span class="o">=</span> <span class="k">static_cast</span><span class="o">&lt;</span><span class="kt">char</span><span class="o">*&gt;</span><span class="p">(</span><span class="n">x</span><span class="p">);</span>  <span class="c1">// brackets (&lt; and &gt;), before</span>
+                            <span class="c1">// &lt;, or between &gt;( in a cast.</span>
+<span class="n">vector</span><span class="o">&lt;</span><span class="kt">char</span> <span class="o">*&gt;</span> <span class="n">x</span><span class="p">;</span>           <span class="c1">// Spaces between type and pointer are</span>
+                            <span class="c1">// okay, but be consistent.</span>
+<span class="n">set</span><span class="o">&lt;</span><span class="n">list</span><span class="o">&lt;</span><span class="n">string</span><span class="o">&gt;</span> <span class="o">&gt;</span> <span class="n">x</span><span class="p">;</span>       <span class="c1">// C++ requires a space in &gt; &gt;.</span>
+<span class="n">set</span><span class="o">&lt;</span> <span class="n">list</span><span class="o">&lt;</span><span class="n">string</span><span class="o">&gt;</span> <span class="o">&gt;</span> <span class="n">x</span><span class="p">;</span>      <span class="c1">// You may optionally make use</span>
+                            <span class="c1">// symmetric spacing in &lt; &lt;.</span>
 </pre></div>
 </div>
 </dd>
 </dl>
 </div>
 <div class="section" id="id17">
-<h2>8.17. 垂直留白<a class="headerlink" href="#id17" title="Permalink to this headline">¶</a></h2>
+<h2>8.17. 垂直留白</h2>
 <div class="admonition tip">
 <p class="first admonition-title">Tip</p>
 <p class="last">垂直留白越少越好.</p>
@@ -732,7 +685,7 @@
 <p>函數首尾不要有空行</p>
 <div class="last highlight-c++"><div class="highlight"><pre><span class="kt">void</span> <span class="n">Function</span><span class="p">()</span> <span class="p">{</span>
 
-  <span class="c">// Unnecessary blank lines before and after</span>
+  <span class="c1">// Unnecessary blank lines before and after</span>
 
 <span class="p">}</span>
 </pre></div>
@@ -742,12 +695,12 @@
 <p class="first admonition-title">Warning</p>
 <p>代碼塊首尾不要有空行</p>
 <div class="last highlight-c++"><div class="highlight"><pre><span class="k">while</span> <span class="p">(</span><span class="n">condition</span><span class="p">)</span> <span class="p">{</span>
-  <span class="c">// Unnecessary blank line after</span>
+  <span class="c1">// Unnecessary blank line after</span>
 
 <span class="p">}</span>
 <span class="k">if</span> <span class="p">(</span><span class="n">condition</span><span class="p">)</span> <span class="p">{</span>
 
-  <span class="c">// Unnecessary blank line before</span>
+  <span class="c1">// Unnecessary blank line before</span>
 <span class="p">}</span>
 </pre></div>
 </div>
@@ -755,11 +708,11 @@
 <dl class="docutils">
 <dt><tt class="docutils literal"><span class="pre">if-else</span></tt> 塊之間空一行是可以接受的:</dt>
 <dd><div class="first last highlight-c++"><div class="highlight"><pre><span class="k">if</span> <span class="p">(</span><span class="n">condition</span><span class="p">)</span> <span class="p">{</span>
-  <span class="c">// Some lines of code too small to move to another function,</span>
-  <span class="c">// followed by a blank line.</span>
+  <span class="c1">// Some lines of code too small to move to another function,</span>
+  <span class="c1">// followed by a blank line.</span>
 
 <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
-  <span class="c">// Another block of code</span>
+  <span class="c1">// Another block of code</span>
 <span class="p">}</span>
 </pre></div>
 </div>
@@ -767,7 +720,7 @@
 </dl>
 </div>
 <div class="section" id="yulefox">
-<h2>譯者 (YuleFox) 筆記<a class="headerlink" href="#yulefox" title="Permalink to this headline">¶</a></h2>
+<h2>譯者 (YuleFox) 筆記</h2>
 <ol class="arabic simple" start="0">
 <li>對於代碼格式, 因人, 系統而異各有優缺點, 但同一個項目中遵循同一標準還是有必要的;</li>
 <li>行寬原則上不超過 80 列, 把 22 寸的顯示屏都占完, 怎麼也說不過去;</li>
@@ -786,29 +739,22 @@
 </div>
 
 
-          </div>
-        </div>
       </div>
-      <div class="clearer"></div>
-    </div>
-    <div class="related">
-      <h3>Navigation</h3>
-      <ul>
-        <li class="right" style="margin-right: 10px">
-          <a href="genindex.html" title="General Index"
-             >index</a></li>
-        <li class="right" >
-          <a href="exceptions.html" title="9. 規則特例"
-             >next</a> |</li>
-        <li class="right" >
-          <a href="comments.html" title="7. 註釋"
-             >previous</a> |</li>
-        <li><a href="index.html">Google C++ Style Guide</a> &raquo;</li> 
-      </ul>
-    </div>
+      <div class="bottomnav">
+      
+        <p>
+        «&#160;&#160;<a href="comments.html">7. 註釋</a>
+        &#160;&#160;::&#160;&#160;
+        <a class="uplink" href="../contents.html">Contents</a>
+        &#160;&#160;::&#160;&#160;
+        <a href="exceptions.html">9. 規則特例</a>&#160;&#160;»
+        </p>
+
+      </div>
+
     <div class="footer">
-      &copy; Copyright 2009, Google Inc..
-      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 0.6.2.
+        &copy; Copyright .
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.3.
     </div>
   </body>
 </html>

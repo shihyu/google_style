@@ -1,106 +1,60 @@
+
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
 
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>5. 其他 C++ 特性 &mdash; Google C++ Style Guide</title>
-    <link rel="stylesheet" href="_static/sphinxdoc.css" type="text/css" />
-    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <title>5. 其他 C++ 特性 &mdash; Google 開源項目風格指南</title>
+    
+    <link rel="stylesheet" href="../_static/haiku.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/print.css" type="text/css" />
+    
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
-        URL_ROOT:    '',
-        VERSION:     '3.133',
-        COLLAPSE_MODINDEX: false,
+        URL_ROOT:    '../',
+        VERSION:     '',
+        COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
       };
     </script>
-    <script type="text/javascript" src="_static/jquery.js"></script>
-    <script type="text/javascript" src="_static/doctools.js"></script>
-    <link rel="top" title="Google C++ Style Guide" href="index.html" />
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <script type="text/javascript" src="../_static/theme_extras.js"></script>
+    <link rel="top" title="Google 開源項目風格指南" href="../index.html" />
+    <link rel="up" title="C++ 風格指南 - 內容目錄" href="contents.html" />
     <link rel="next" title="6. 命名約定" href="naming.html" />
     <link rel="prev" title="4. 來自 Google 的奇技" href="magic.html" /> 
   </head>
   <body>
-    <div class="related">
-      <h3>Navigation</h3>
-      <ul>
-        <li class="right" style="margin-right: 10px">
-          <a href="genindex.html" title="General Index"
-             accesskey="I">index</a></li>
-        <li class="right" >
-          <a href="naming.html" title="6. 命名約定"
-             accesskey="N">next</a> |</li>
-        <li class="right" >
-          <a href="magic.html" title="4. 來自 Google 的奇技"
-             accesskey="P">previous</a> |</li>
-        <li><a href="index.html">Google C++ Style Guide</a> &raquo;</li> 
-      </ul>
-    </div>
-      <div class="sphinxsidebar">
-        <div class="sphinxsidebarwrapper">
-            <h3><a href="index.html">Table Of Contents</a></h3>
-            <ul>
-<li><a class="reference external" href="">5. 其他 C++ 特性</a><ul>
-<li><a class="reference external" href="#id1">5.1. 引用參數</a></li>
-<li><a class="reference external" href="#function-overloading">5.2. 函數重載</a></li>
-<li><a class="reference external" href="#id5">5.3. 預設參數</a></li>
-<li><a class="reference external" href="#alloca">5.4. 變長數組和 alloca()</a></li>
-<li><a class="reference external" href="#id6">5.5. 友元</a></li>
-<li><a class="reference external" href="#id7">5.6. 異常</a></li>
-<li><a class="reference external" href="#id8">5.7. 運行時類型識別</a></li>
-<li><a class="reference external" href="#id9">5.8. 類型轉換</a></li>
-<li><a class="reference external" href="#id11">5.9. 流</a></li>
-<li><a class="reference external" href="#id12">5.10. 前置自增和自減</a></li>
-<li><a class="reference external" href="#const">5.11. <tt class="docutils literal"><span class="pre">const</span></tt> 的使用</a></li>
-<li><a class="reference external" href="#id13">5.12. 整型</a></li>
-<li><a class="reference external" href="#id14">5.13. 64 位下的可移植性</a></li>
-<li><a class="reference external" href="#preprocessor-macros">5.14. 預處理宏</a></li>
-<li><a class="reference external" href="#null">5.15. 0 和 NULL</a></li>
-<li><a class="reference external" href="#sizeof">5.16. sizeof</a></li>
-<li><a class="reference external" href="#boost">5.17. Boost 庫</a></li>
-</ul>
-</li>
-</ul>
-
-            <h4>Previous topic</h4>
-            <p class="topless"><a href="magic.html"
-                                  title="previous chapter">4. 來自 Google 的奇技</a></p>
-            <h4>Next topic</h4>
-            <p class="topless"><a href="naming.html"
-                                  title="next chapter">6. 命名約定</a></p>
-            <h3>This Page</h3>
-            <ul class="this-page-menu">
-              <li><a href="_sources/others.txt"
-                     rel="nofollow">Show Source</a></li>
-            </ul>
-          <div id="searchbox" style="display: none">
-            <h3>Quick search</h3>
-              <form class="search" action="search.html" method="get">
-                <input type="text" name="q" size="18" />
-                <input type="submit" value="Go" />
-                <input type="hidden" name="check_keywords" value="yes" />
-                <input type="hidden" name="area" value="default" />
-              </form>
-              <p class="searchtip" style="font-size: 90%">
-              Enter search terms or a module, class or function name.
-              </p>
-          </div>
-          <script type="text/javascript">$('#searchbox').show(0);</script>
-        </div>
+      <div class="header"><h1 class="heading"><a href="../index.html">
+          <span>Google 開源項目風格指南</span></a></h1>
+        <h2 class="heading"><span>5. 其他 C++ 特性</span></h2>
       </div>
+      <div class="topnav">
+      
+        <p>
+        «&#160;&#160;<a href="magic.html">4. 來自 Google 的奇技</a>
+        &#160;&#160;::&#160;&#160;
+        <a class="uplink" href="../contents.html">Contents</a>
+        &#160;&#160;::&#160;&#160;
+        <a href="naming.html">6. 命名約定</a>&#160;&#160;»
+        </p>
 
-    <div class="document">
-      <div class="documentwrapper">
-        <div class="bodywrapper">
-          <div class="body">
-            
+      </div>
+      <div class="content">
+        
+        
   <div class="section" id="c">
-<h1>5. 其他 C++ 特性<a class="headerlink" href="#c" title="Permalink to this headline">¶</a></h1>
+<h1>5. 其他 C++ 特性</h1>
 <div class="section" id="id1">
-<h2>5.1. 引用參數<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
+<h2>5.1. 引用參數</h2>
 <div class="admonition tip">
 <p class="first admonition-title">Tip</p>
 <p class="last">所以按引用傳遞的參數必須加上 <tt class="docutils literal"><span class="pre">const</span></tt>.</p>
@@ -126,7 +80,7 @@
 </dl>
 </div>
 <div class="section" id="function-overloading">
-<span id="id2"></span><h2>5.2. 函數重載<a class="headerlink" href="#function-overloading" title="Permalink to this headline">¶</a></h2>
+<span id="id2"></span><h2>5.2. 函數重載</h2>
 <div class="admonition tip">
 <p class="first admonition-title">Tip</p>
 <p class="last">僅在輸入參數類型不同, 功能相同時使用重載函數 (含建構子). 不要用函數重載模擬 <a class="reference external" href="http://code.google.com/p/google-gflags/">預設函數參數</a>.</p>
@@ -154,7 +108,7 @@
 </dl>
 </div>
 <div class="section" id="id5">
-<h2>5.3. 預設參數<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h2>
+<h2>5.3. 預設參數</h2>
 <div class="admonition tip">
 <p class="first admonition-title">Tip</p>
 <p class="last">我們不允許使用預設函數參數.</p>
@@ -169,7 +123,7 @@
 </dl>
 </div>
 <div class="section" id="alloca">
-<h2>5.4. 變長數組和 alloca()<a class="headerlink" href="#alloca" title="Permalink to this headline">¶</a></h2>
+<h2>5.4. 變長數組和 alloca()</h2>
 <div class="admonition tip">
 <p class="first admonition-title">Tip</p>
 <p class="last">我們不允許使用變長數組和 <tt class="docutils literal"><span class="pre">alloca()</span></tt>.</p>
@@ -184,7 +138,7 @@
 </dl>
 </div>
 <div class="section" id="id6">
-<h2>5.5. 友元<a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h2>
+<h2>5.5. 友元</h2>
 <div class="admonition tip">
 <p class="first admonition-title">Tip</p>
 <p class="last">我們允許合理的使用友元類及友元函數.</p>
@@ -193,7 +147,7 @@
 <p>友元擴大了 (但沒有打破) 類的封裝邊界. 某些情況下, 相對於將類成員聲明為 <tt class="docutils literal"><span class="pre">public</span></tt>, 使用友元是更好的選擇, 尤其是如果你只允許另一個類訪問該類的私有成員時. 當然, 大多數類都只應該通過其提供的公有成員進行互操作.</p>
 </div>
 <div class="section" id="id7">
-<h2>5.6. 異常<a class="headerlink" href="#id7" title="Permalink to this headline">¶</a></h2>
+<h2>5.6. 異常</h2>
 <div class="admonition tip">
 <p class="first admonition-title">Tip</p>
 <p class="last">我們不使用 C++ 異常.</p>
@@ -221,13 +175,13 @@
 <dd><p class="first">從表面上看, 使用異常利大於弊, 尤其是在新項目中. 但是對於現有代碼, 引入異常會牽連到所有相關代碼. 如果新項目允許異常向外擴散, 在跟以前未使用異常的代碼整合時也將是個麻煩. 因為 Google 現有的大多數 C++ 代碼都沒有異常處理, 引入帶有異常處理的新代碼相當困難.</p>
 <p>鑒於 Google 現有代碼不接受異常, 在現有代碼中使用異常比在新項目中使用的代價多少要大一些. 遷移過程比較慢, 也容易出錯. 我們不相信異常的使用有效替代方案, 如錯誤代碼, 斷言等會造成嚴重負擔.</p>
 <p>我們並不是基于哲學或道德層面反對使用異常, 而是在實踐的基礎上. 我們希望在 Google 使用我們自己的開源項目, 但項目中使用異常會為此帶來不便, 因此我們也建議不要在 Google 的開源項目中使用異常. 如果我們需要把這些項目推倒重來顯然不太現實.</p>
-<p class="last">對於 Windows 代碼來說, 有個 <a class="reference external" href="exceptions.html#windows-code"><em>特例</em></a>.</p>
+<p class="last">對於 Windows 代碼來說, 有個 <a class="reference internal" href="exceptions.html#windows-code"><em>特例</em></a>.</p>
 </dd>
 </dl>
 <p>(YuleFox 註: 對於異常處理, 顯然不是短短幾句話能夠說清楚的, 以建構子為例, 很多 C++ 書籍上都提到當構造失敗時只有異常可以處理, Google 禁止使用異常這一點, 僅僅是為了自身的方便, 說大了, 無非是基于軟件管理成本上, 實際使用中還是自己決定)</p>
 </div>
 <div class="section" id="id8">
-<h2>5.7. 運行時類型識別<a class="headerlink" href="#id8" title="Permalink to this headline">¶</a></h2>
+<h2>5.7. 運行時類型識別</h2>
 <div class="admonition tip">
 <p class="first admonition-title">Tip</p>
 <p class="last">我們禁止使用 RTTI.</p>
@@ -250,7 +204,7 @@
 </dl>
 </div>
 <div class="section" id="id9">
-<h2>5.8. 類型轉換<a class="headerlink" href="#id9" title="Permalink to this headline">¶</a></h2>
+<h2>5.8. 類型轉換</h2>
 <div class="admonition tip">
 <p class="first admonition-title">Tip</p>
 <p class="last">使用 C++ 的類型轉換, 如 <tt class="docutils literal"><span class="pre">static_cast&lt;&gt;()</span></tt>. 不要使用 <tt class="docutils literal"><span class="pre">int</span> <span class="pre">y</span> <span class="pre">=</span> <span class="pre">(int)x</span></tt> 或 <tt class="docutils literal"><span class="pre">int</span> <span class="pre">y</span> <span class="pre">=</span> <span class="pre">int(x)</span></tt> 等轉換方式;</p>
@@ -265,18 +219,18 @@
 <dt>結論:</dt>
 <dd><p class="first">不要使用 C 風格類型轉換. 而應該使用 C++ 風格.</p>
 <blockquote class="last">
-<ul class="simple">
+<div><ul class="simple">
 <li>用 <tt class="docutils literal"><span class="pre">static_cast</span></tt> 替代 C 風格的值轉換, 或某個類指針需要明確的向上轉換為父類指針時.</li>
 <li>用 <tt class="docutils literal"><span class="pre">const_cast</span></tt> 去掉 <tt class="docutils literal"><span class="pre">const</span></tt> 限定符.</li>
 <li>用 <tt class="docutils literal"><span class="pre">reinterpret_cast</span></tt> 指針類型和整型或其它指針之間進行不安全的相互轉換. 僅在你對所做一切瞭然於心時使用.</li>
 <li><tt class="docutils literal"><span class="pre">dynamic_cast</span></tt> 測試代碼以外不要使用. 除非是單元測試, 如果你需要在運行時確定類型信息, 說明有 <a class="reference external" href="designflaw">設計缺陷</a>.</li>
 </ul>
-</blockquote>
+</div></blockquote>
 </dd>
 </dl>
 </div>
 <div class="section" id="id11">
-<h2>5.9. 流<a class="headerlink" href="#id11" title="Permalink to this headline">¶</a></h2>
+<h2>5.9. 流</h2>
 <div class="admonition tip">
 <p class="first admonition-title">Tip</p>
 <p class="last">只在記錄日誌時使用流.</p>
@@ -296,8 +250,8 @@
 <dd><p class="first">對這一條規則存在一些爭論, 這兒給出點深層次原因. 回想一下唯一性原則 (Only One Way): 我們希望在任何時候都只使用一種確定的 I/O 類型, 使代碼在所有 I/O 處都保持一致. 因此, 我們不希望用戶來決定是使用流還是 <tt class="docutils literal"><span class="pre">printf</span> <span class="pre">+</span> <span class="pre">read/write</span></tt>. 相反, 我們應該決定到底用哪一種方式. 把日誌作為特例是因為日誌是一個非常獨特的應用, 還有一些是歷史原因.</p>
 <dl class="docutils">
 <dt>流的支持者們主張流是不二之選, 但觀點並不是那麼清晰有力. 他們指出的流的每個優勢也都是其劣勢. 流最大的優勢是在輸出時不需要關心打印對象的類型. 這是一個亮點. 同時, 也是一個不足: 你很容易用錯類型, 而編譯器不會報警. 使用流時容易造成的這類錯誤:</dt>
-<dd><div class="first last highlight-c++"><div class="highlight"><pre><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="k">this</span><span class="p">;</span>   <span class="c">// Prints the address</span>
-<span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="o">*</span><span class="k">this</span><span class="p">;</span>  <span class="c">// Prints the contents</span>
+<dd><div class="first last highlight-c++"><div class="highlight"><pre><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="k">this</span><span class="p">;</span>   <span class="c1">// Prints the address</span>
+<span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="o">*</span><span class="k">this</span><span class="p">;</span>  <span class="c1">// Prints the contents</span>
 </pre></div>
 </div>
 </dd>
@@ -321,7 +275,7 @@
 </dl>
 </div>
 <div class="section" id="id12">
-<h2>5.10. 前置自增和自減<a class="headerlink" href="#id12" title="Permalink to this headline">¶</a></h2>
+<h2>5.10. 前置自增和自減</h2>
 <div class="admonition tip">
 <p class="first admonition-title">Tip</p>
 <p class="last">對於迭代器和其他模板對象使用首碼形式 (<tt class="docutils literal"><span class="pre">++i</span></tt>) 的自增, 自減運算符.</p>
@@ -338,7 +292,7 @@
 </dl>
 </div>
 <div class="section" id="const">
-<h2>5.11. <tt class="docutils literal"><span class="pre">const</span></tt> 的使用<a class="headerlink" href="#const" title="Permalink to this headline">¶</a></h2>
+<h2>5.11. <tt class="docutils literal"><span class="pre">const</span></tt> 的使用</h2>
 <div class="admonition tip">
 <p class="first admonition-title">Tip</p>
 <p class="last">我們強烈建議你在任何可能的情況下都要使用 <tt class="docutils literal"><span class="pre">const</span></tt>.</p>
@@ -353,12 +307,12 @@
 <dt>結論:</dt>
 <dd><p class="first"><tt class="docutils literal"><span class="pre">const</span></tt> 變數, 數據成員, 函數和參數為編譯時類型檢測增加了一層保障; 便于儘早發現錯誤. 因此, 我們強烈建議在任何可能的情況下使用 <tt class="docutils literal"><span class="pre">const</span></tt>:</p>
 <blockquote>
-<ul class="simple">
+<div><ul class="simple">
 <li>如果函數不會修改傳入的引用或指針類型參數, 該參數應聲明為 <tt class="docutils literal"><span class="pre">const</span></tt>.</li>
 <li>儘可能將函數聲明為 <tt class="docutils literal"><span class="pre">const</span></tt>. 訪問函數應該總是 <tt class="docutils literal"><span class="pre">const</span></tt>. 其他不會修改任何數據成員, 未調用非 <tt class="docutils literal"><span class="pre">const</span></tt> 函數, 不會返回數據成員非 <tt class="docutils literal"><span class="pre">const</span></tt> 指針或引用的函數也應該聲明成 <tt class="docutils literal"><span class="pre">const</span></tt>.</li>
 <li>如果數據成員在對象構造之後不再發生變化, 可將其定義為 <tt class="docutils literal"><span class="pre">const</span></tt>.</li>
 </ul>
-</blockquote>
+</div></blockquote>
 <p>然而, 也不要發了瘋似的使用 <tt class="docutils literal"><span class="pre">const</span></tt>. 像 <tt class="docutils literal"><span class="pre">const</span> <span class="pre">int</span> <span class="pre">*</span> <span class="pre">const</span> <span class="pre">*</span> <span class="pre">const</span> <span class="pre">x;</span></tt> 就有些過了, 雖然它非常精確的描述了常量 <tt class="docutils literal"><span class="pre">x</span></tt>. 關注真正有幫助意義的信息: 前面的例子寫成 <tt class="docutils literal"><span class="pre">const</span> <span class="pre">int**</span> <span class="pre">x</span></tt> 就夠了.</p>
 <p class="last">關鍵字 <tt class="docutils literal"><span class="pre">mutable</span></tt> 可以使用, 但是在多綫程中是不安全的, 使用時首先要考慮綫程安全.</p>
 </dd>
@@ -369,7 +323,7 @@
 </dl>
 </div>
 <div class="section" id="id13">
-<h2>5.12. 整型<a class="headerlink" href="#id13" title="Permalink to this headline">¶</a></h2>
+<h2>5.12. 整型</h2>
 <div class="admonition tip">
 <p class="first admonition-title">Tip</p>
 <p class="last">C++ 內建整型中, 僅使用 <tt class="docutils literal"><span class="pre">int</span></tt>. 如果程序中需要不同大小的變數, 可以使用 <tt class="docutils literal"><span class="pre">&lt;stdint.h&gt;</span></tt> 中長度精確的整型, 如 <tt class="docutils literal"><span class="pre">int16_t</span></tt>.</p>
@@ -401,7 +355,7 @@
 </dl>
 </div>
 <div class="section" id="id14">
-<h2>5.13. 64 位下的可移植性<a class="headerlink" href="#id14" title="Permalink to this headline">¶</a></h2>
+<h2>5.13. 64 位下的可移植性</h2>
 <div class="admonition tip">
 <p class="first admonition-title">Tip</p>
 <p class="last">代碼應該對 64 位和 32 位系統友好. 處理打印, 比較, 結構體對齊時應切記:</p>
@@ -409,17 +363,17 @@
 <ul>
 <li><p class="first">對於某些類型, <tt class="docutils literal"><span class="pre">printf()</span></tt> 的指示符在 32 位和 64 位系統上可移植性不是很好. C99 標準定義了一些可移植的格式化指示符. 不幸的是, MSVC 7.1 並非全部支持, 而且標準中也有所遺漏, 所以有時我們不得不自己定義一個醜陋的版本 (標頭檔 <tt class="docutils literal"><span class="pre">inttypes.h</span></tt> 仿標準風格):</p>
 <blockquote>
-<div class="highlight-c++"><div class="highlight"><pre><span class="c">// printf macros for size_t, in the style of inttypes.h</span>
+<div><div class="highlight-c++"><div class="highlight"><pre><span class="cp">// printf macros for size_t, in the style of inttypes.h</span>
 <span class="cp">#ifdef _LP64</span>
 <span class="cp">#define __PRIS_PREFIX &quot;z&quot;</span>
 <span class="cp">#else</span>
 <span class="cp">#define __PRIS_PREFIX</span>
 <span class="cp">#endif</span>
 
-<span class="c">// Use these macros after a % in a printf format string</span>
-<span class="c">// to get correct 32/64 bit behavior, like this:</span>
-<span class="c">// size_t size = records.size();</span>
-<span class="c">// printf(&quot;%&quot;PRIuS&quot;\n&quot;, size);</span>
+<span class="cp">// Use these macros after a % in a printf format string</span>
+<span class="cp">// to get correct 32/64 bit behavior, like this:</span>
+<span class="cp">// size_t size = records.size();</span>
+<span class="cp">// printf(&quot;%&quot;PRIuS&quot;\n&quot;, size);</span>
 <span class="cp">#define PRIdS __PRIS_PREFIX &quot;d&quot;</span>
 <span class="cp">#define PRIxS __PRIS_PREFIX &quot;x&quot;</span>
 <span class="cp">#define PRIuS __PRIS_PREFIX &quot;u&quot;</span>
@@ -435,7 +389,7 @@
 <col width="21%" />
 </colgroup>
 <thead valign="bottom">
-<tr><th class="head"><p class="first last">類型</p>
+<tr class="row-odd"><th class="head"><p class="first last">類型</p>
 </th>
 <th class="head"><p class="first last">不要使用</p>
 </th>
@@ -446,7 +400,7 @@
 </tr>
 </thead>
 <tbody valign="top">
-<tr><td><p class="first last"><tt class="docutils literal"><span class="pre">void</span> <span class="pre">*</span></tt>
+<tr class="row-even"><td><p class="first last"><tt class="docutils literal"><span class="pre">void</span> <span class="pre">*</span></tt>
 (或其他指針類型)</p>
 </td>
 <td><p class="first last"><tt class="docutils literal"><span class="pre">%lx</span></tt></p>
@@ -455,7 +409,7 @@
 </td>
 <td>&nbsp;</td>
 </tr>
-<tr><td><p class="first last"><tt class="docutils literal"><span class="pre">int64_t</span></tt></p>
+<tr class="row-odd"><td><p class="first last"><tt class="docutils literal"><span class="pre">int64_t</span></tt></p>
 </td>
 <td><p class="first last"><tt class="docutils literal"><span class="pre">%qd,</span> <span class="pre">%lld</span></tt></p>
 </td>
@@ -463,7 +417,7 @@
 </td>
 <td>&nbsp;</td>
 </tr>
-<tr><td><p class="first last"><tt class="docutils literal"><span class="pre">uint64_t</span></tt></p>
+<tr class="row-even"><td><p class="first last"><tt class="docutils literal"><span class="pre">uint64_t</span></tt></p>
 </td>
 <td><p class="first last"><tt class="docutils literal"><span class="pre">%qu,</span> <span class="pre">%llu,</span> <span class="pre">%llx</span></tt></p>
 </td>
@@ -471,7 +425,7 @@
 </td>
 <td>&nbsp;</td>
 </tr>
-<tr><td><p class="first last"><tt class="docutils literal"><span class="pre">size_t</span></tt></p>
+<tr class="row-odd"><td><p class="first last"><tt class="docutils literal"><span class="pre">size_t</span></tt></p>
 </td>
 <td><p class="first last"><tt class="docutils literal"><span class="pre">%u</span></tt></p>
 </td>
@@ -480,7 +434,7 @@
 <td><p class="first last">C99 規定 <tt class="docutils literal"><span class="pre">%zu</span></tt></p>
 </td>
 </tr>
-<tr><td><p class="first last"><tt class="docutils literal"><span class="pre">ptrdiff_t</span></tt></p>
+<tr class="row-even"><td><p class="first last"><tt class="docutils literal"><span class="pre">ptrdiff_t</span></tt></p>
 </td>
 <td><p class="first last"><tt class="docutils literal"><span class="pre">%d</span></tt></p>
 </td>
@@ -492,7 +446,7 @@
 </tbody>
 </table>
 <p>注意 <tt class="docutils literal"><span class="pre">PRI*</span></tt> 宏會被編譯器擴展為獨立字元串. 因此如果使用非常量的格式化字元串, 需要將宏的值而不是宏名插入格式中. 使用 <tt class="docutils literal"><span class="pre">PRI*</span></tt> 宏同樣可以在 <tt class="docutils literal"><span class="pre">%</span></tt> 後包含長度指示符. 例如, <tt class="docutils literal"><span class="pre">printf(&quot;x</span> <span class="pre">=</span> <span class="pre">%30&quot;PRIuS&quot;\n&quot;,</span> <span class="pre">x)</span></tt> 在 32 位 Linux 上將被展開為 <tt class="docutils literal"><span class="pre">printf(&quot;x</span> <span class="pre">=</span> <span class="pre">%30&quot;</span> <span class="pre">&quot;u&quot;</span> <span class="pre">&quot;\n&quot;,</span> <span class="pre">x)</span></tt>, 編譯器當成 <tt class="docutils literal"><span class="pre">printf(&quot;x</span> <span class="pre">=</span> <span class="pre">%30u\n&quot;,</span> <span class="pre">x)</span></tt> 處理 (yospaly 註: 這在 MSVC 6.0 上行不通, VC 6 編譯器不會自動把引號間隔的多個字元串連接一個長字元串).</p>
-</blockquote>
+</div></blockquote>
 </li>
 <li><p class="first">記住 <tt class="docutils literal"><span class="pre">sizeof(void</span> <span class="pre">*)</span> <span class="pre">!=</span> <span class="pre">sizeof(int)</span></tt>. 如果需要一個指針大小的整數要用 <tt class="docutils literal"><span class="pre">intptr_t</span></tt>.</p>
 </li>
@@ -511,7 +465,7 @@ uint64_t my_mask = 3ULL &lt;&lt; 48;</pre>
 </ul>
 </div>
 <div class="section" id="preprocessor-macros">
-<span id="id15"></span><h2>5.14. 預處理宏<a class="headerlink" href="#preprocessor-macros" title="Permalink to this headline">¶</a></h2>
+<span id="id15"></span><h2>5.14. 預處理宏</h2>
 <div class="admonition tip">
 <p class="first admonition-title">Tip</p>
 <p class="last">使用宏時要非常謹慎, 儘量以內聯函數, 枚舉和常量代替之.</p>
@@ -521,16 +475,16 @@ uint64_t my_mask = 3ULL &lt;&lt; 48;</pre>
 <p>宏可以做一些其他技術無法實現的事情, 在一些代碼庫 (尤其是底層庫中) 可以看到宏的某些特性 (如用 <tt class="docutils literal"><span class="pre">#</span></tt> 字元串化, 用 <tt class="docutils literal"><span class="pre">##</span></tt> 連接等等). 但在使用前, 仔細考慮一下能不能不使用宏達到同樣的目的.</p>
 <p>下面給出的用法模式可以避免使用宏帶來的問題; 如果你要宏, 儘可能遵守:</p>
 <blockquote>
-<ul class="simple">
+<div><ul class="simple">
 <li>不要在 <tt class="docutils literal"><span class="pre">.h</span></tt> 檔案中定義宏.</li>
 <li>在馬上要使用時才進行 <tt class="docutils literal"><span class="pre">#define</span></tt>, 使用後要立即 <tt class="docutils literal"><span class="pre">#undef</span></tt>.</li>
 <li>不要只是對已經存在的宏使用#undef，選擇一個不會衝突的名稱；</li>
 <li>不要試圖使用展開後會導致 C++ 構造不穩定的宏, 不然也至少要附上文檔說明其行為.</li>
 </ul>
-</blockquote>
+</div></blockquote>
 </div>
 <div class="section" id="null">
-<h2>5.15. 0 和 NULL<a class="headerlink" href="#null" title="Permalink to this headline">¶</a></h2>
+<h2>5.15. 0 和 NULL</h2>
 <div class="admonition tip">
 <p class="first admonition-title">Tip</p>
 <p class="last">整數用 <tt class="docutils literal"><span class="pre">0</span></tt>, 實數用 <tt class="docutils literal"><span class="pre">0.0</span></tt>, 指針用 <tt class="docutils literal"><span class="pre">NULL</span></tt>, 字元 (串) 用 <tt class="docutils literal"><span class="pre">'\0'</span></tt>.</p>
@@ -540,7 +494,7 @@ uint64_t my_mask = 3ULL &lt;&lt; 48;</pre>
 <p>字元 (串) 用 <tt class="docutils literal"><span class="pre">'\0'</span></tt>, 不僅類型正確而且可讀性好.</p>
 </div>
 <div class="section" id="sizeof">
-<h2>5.16. sizeof<a class="headerlink" href="#sizeof" title="Permalink to this headline">¶</a></h2>
+<h2>5.16. sizeof</h2>
 <div class="admonition tip">
 <p class="first admonition-title">Tip</p>
 <p class="last">儘可能用 <tt class="docutils literal"><span class="pre">sizeof(varname)</span></tt> 代替 <tt class="docutils literal"><span class="pre">sizeof(type)</span></tt>.</p>
@@ -561,7 +515,7 @@ uint64_t my_mask = 3ULL &lt;&lt; 48;</pre>
 </dl>
 </div>
 <div class="section" id="boost">
-<h2>5.17. Boost 庫<a class="headerlink" href="#boost" title="Permalink to this headline">¶</a></h2>
+<h2>5.17. Boost 庫</h2>
 <div class="admonition tip">
 <p class="first admonition-title">Tip</p>
 <p class="last">只使用 Boost 中被認可的庫.</p>
@@ -576,7 +530,7 @@ uint64_t my_mask = 3ULL &lt;&lt; 48;</pre>
 <dt>結論:</dt>
 <dd><p class="first">為了向閲讀和維護代碼的人員提供更好的可讀性, 我們只允許使用 Boost 一部分經認可的特性子集. 目前允許使用以下庫:</p>
 <blockquote class="last">
-<ul class="simple">
+<div><ul class="simple">
 <li><a class="reference external" href="http://www.boost.org/libs/utility/compressed_pair.htm">Compressed Pair</a> : <tt class="docutils literal"><span class="pre">boost/compressed_pair.hpp</span></tt></li>
 <li><a class="reference external" href="http://www.boost.org/libs/ptr_container/">Pointer Container</a> : <tt class="docutils literal"><span class="pre">boost/ptr_container</span></tt> (序列化除外)</li>
 <li><a class="reference external" href="http://www.boost.org/libs/array/">Array</a> : <tt class="docutils literal"><span class="pre">boost/array.hpp</span></tt></li>
@@ -584,7 +538,7 @@ uint64_t my_mask = 3ULL &lt;&lt; 48;</pre>
 <li><a class="reference external" href="http://www.boost.org/libs/property_map/">Property Map</a> : <tt class="docutils literal"><span class="pre">boost/property_map.hpp</span></tt></li>
 <li><a class="reference external" href="http://www.boost.org/libs/iterator/">Iterator</a> 中處理迭代器定義的部分 : <tt class="docutils literal"><span class="pre">boost/iterator/iterator_adaptor.hpp</span></tt>, <tt class="docutils literal"><span class="pre">boost/iterator/iterator_facade.hpp</span></tt>, 以及 <tt class="docutils literal"><span class="pre">boost/function_output_iterator.hpp</span></tt></li>
 </ul>
-</blockquote>
+</div></blockquote>
 </dd>
 </dl>
 <p>我們正在積極考慮增加其它 Boost 特性, 所以列表中的規則將不斷變化.</p>
@@ -592,29 +546,22 @@ uint64_t my_mask = 3ULL &lt;&lt; 48;</pre>
 </div>
 
 
-          </div>
-        </div>
       </div>
-      <div class="clearer"></div>
-    </div>
-    <div class="related">
-      <h3>Navigation</h3>
-      <ul>
-        <li class="right" style="margin-right: 10px">
-          <a href="genindex.html" title="General Index"
-             >index</a></li>
-        <li class="right" >
-          <a href="naming.html" title="6. 命名約定"
-             >next</a> |</li>
-        <li class="right" >
-          <a href="magic.html" title="4. 來自 Google 的奇技"
-             >previous</a> |</li>
-        <li><a href="index.html">Google C++ Style Guide</a> &raquo;</li> 
-      </ul>
-    </div>
+      <div class="bottomnav">
+      
+        <p>
+        «&#160;&#160;<a href="magic.html">4. 來自 Google 的奇技</a>
+        &#160;&#160;::&#160;&#160;
+        <a class="uplink" href="../contents.html">Contents</a>
+        &#160;&#160;::&#160;&#160;
+        <a href="naming.html">6. 命名約定</a>&#160;&#160;»
+        </p>
+
+      </div>
+
     <div class="footer">
-      &copy; Copyright 2009, Google Inc..
-      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 0.6.2.
+        &copy; Copyright .
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.3.
     </div>
   </body>
 </html>

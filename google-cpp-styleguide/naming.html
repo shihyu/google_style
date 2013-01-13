@@ -1,101 +1,62 @@
+
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
 
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>6. 命名約定 &mdash; Google C++ Style Guide</title>
-    <link rel="stylesheet" href="_static/sphinxdoc.css" type="text/css" />
-    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <title>6. 命名約定 &mdash; Google 開源項目風格指南</title>
+    
+    <link rel="stylesheet" href="../_static/haiku.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/print.css" type="text/css" />
+    
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
-        URL_ROOT:    '',
-        VERSION:     '3.133',
-        COLLAPSE_MODINDEX: false,
+        URL_ROOT:    '../',
+        VERSION:     '',
+        COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
       };
     </script>
-    <script type="text/javascript" src="_static/jquery.js"></script>
-    <script type="text/javascript" src="_static/doctools.js"></script>
-    <link rel="top" title="Google C++ Style Guide" href="index.html" />
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <script type="text/javascript" src="../_static/theme_extras.js"></script>
+    <link rel="top" title="Google 開源項目風格指南" href="../index.html" />
+    <link rel="up" title="C++ 風格指南 - 內容目錄" href="contents.html" />
     <link rel="next" title="7. 註釋" href="comments.html" />
     <link rel="prev" title="5. 其他 C++ 特性" href="others.html" /> 
   </head>
   <body>
-    <div class="related">
-      <h3>Navigation</h3>
-      <ul>
-        <li class="right" style="margin-right: 10px">
-          <a href="genindex.html" title="General Index"
-             accesskey="I">index</a></li>
-        <li class="right" >
-          <a href="comments.html" title="7. 註釋"
-             accesskey="N">next</a> |</li>
-        <li class="right" >
-          <a href="others.html" title="5. 其他 C++ 特性"
-             accesskey="P">previous</a> |</li>
-        <li><a href="index.html">Google C++ Style Guide</a> &raquo;</li> 
-      </ul>
-    </div>
-      <div class="sphinxsidebar">
-        <div class="sphinxsidebarwrapper">
-            <h3><a href="index.html">Table Of Contents</a></h3>
-            <ul>
-<li><a class="reference external" href="">6. 命名約定</a><ul>
-<li><a class="reference external" href="#id2">6.1. 通用命名規則</a></li>
-<li><a class="reference external" href="#id3">6.2. 檔案命名</a></li>
-<li><a class="reference external" href="#id4">6.3. 類型命名</a></li>
-<li><a class="reference external" href="#id5">6.4. 變數命名</a></li>
-<li><a class="reference external" href="#constant-names">6.5. 常量命名</a></li>
-<li><a class="reference external" href="#function-names">6.6. 函數命名</a></li>
-<li><a class="reference external" href="#id8">6.7. 名字空間命名</a></li>
-<li><a class="reference external" href="#id9">6.8. 枚舉命名</a></li>
-<li><a class="reference external" href="#macro-names">6.9. 宏命名</a></li>
-<li><a class="reference external" href="#id11">6.10. 命名規則的特例</a></li>
-</ul>
-</li>
-</ul>
-
-            <h4>Previous topic</h4>
-            <p class="topless"><a href="others.html"
-                                  title="previous chapter">5. 其他 C++ 特性</a></p>
-            <h4>Next topic</h4>
-            <p class="topless"><a href="comments.html"
-                                  title="next chapter">7. 註釋</a></p>
-            <h3>This Page</h3>
-            <ul class="this-page-menu">
-              <li><a href="_sources/naming.txt"
-                     rel="nofollow">Show Source</a></li>
-            </ul>
-          <div id="searchbox" style="display: none">
-            <h3>Quick search</h3>
-              <form class="search" action="search.html" method="get">
-                <input type="text" name="q" size="18" />
-                <input type="submit" value="Go" />
-                <input type="hidden" name="check_keywords" value="yes" />
-                <input type="hidden" name="area" value="default" />
-              </form>
-              <p class="searchtip" style="font-size: 90%">
-              Enter search terms or a module, class or function name.
-              </p>
-          </div>
-          <script type="text/javascript">$('#searchbox').show(0);</script>
-        </div>
+      <div class="header"><h1 class="heading"><a href="../index.html">
+          <span>Google 開源項目風格指南</span></a></h1>
+        <h2 class="heading"><span>6. 命名約定</span></h2>
       </div>
+      <div class="topnav">
+      
+        <p>
+        «&#160;&#160;<a href="others.html">5. 其他 C++ 特性</a>
+        &#160;&#160;::&#160;&#160;
+        <a class="uplink" href="../contents.html">Contents</a>
+        &#160;&#160;::&#160;&#160;
+        <a href="comments.html">7. 註釋</a>&#160;&#160;»
+        </p>
 
-    <div class="document">
-      <div class="documentwrapper">
-        <div class="bodywrapper">
-          <div class="body">
-            
+      </div>
+      <div class="content">
+        
+        
   <div class="section" id="id1">
-<h1>6. 命名約定<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h1>
+<h1>6. 命名約定</h1>
 <p>最重要的一致性規則是命名管理. 命名風格快速獲知名字代表是什麼東東: 類型? 變數? 函數? 常量? 宏 ... ? 甚至不需要去查找類型聲明. 我們大腦中的模式匹配引擎可以非常可靠的處理這些命名規則.</p>
 <p>命名規則具有一定隨意性, 但相比按個人喜好命名, 一致性更重, 所以不管你怎麼想, 規則總歸是規則.</p>
 <div class="section" id="id2">
-<h2>6.1. 通用命名規則<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
+<h2>6.1. 通用命名規則</h2>
 <div class="admonition tip">
 <p class="first admonition-title">Tip</p>
 <p class="last">函數命名, 變數命名, 檔案命名應具備描述性; 不要過度縮寫. 類型和變數應該是名詞, 函數名可以用 &#8220;命令性&#8221; 動詞.</p>
@@ -104,15 +65,15 @@
 <dt>如何命名:</dt>
 <dd><dl class="first docutils">
 <dt>儘可能給出描述性的名稱. 不要節約行空間, 讓別人很快理解你的代碼更重要. 好的命名風格:</dt>
-<dd><div class="first last highlight-c++"><div class="highlight"><pre><span class="kt">int</span> <span class="n">num_errors</span><span class="p">;</span>                  <span class="c">// Good.</span>
-<span class="kt">int</span> <span class="n">num_completed_connections</span><span class="p">;</span>   <span class="c">// Good.</span>
+<dd><div class="first last highlight-c++"><div class="highlight"><pre><span class="kt">int</span> <span class="n">num_errors</span><span class="p">;</span>                  <span class="c1">// Good.</span>
+<span class="kt">int</span> <span class="n">num_completed_connections</span><span class="p">;</span>   <span class="c1">// Good.</span>
 </pre></div>
 </div>
 </dd>
 <dt>糟糕的命名使用含糊的縮寫或隨意的字元:</dt>
-<dd><div class="first last highlight-c++"><div class="highlight"><pre><span class="kt">int</span> <span class="n">n</span><span class="p">;</span>                           <span class="c">// Bad - meaningless.</span>
-<span class="kt">int</span> <span class="n">nerr</span><span class="p">;</span>                        <span class="c">// Bad - ambiguous abbreviation.</span>
-<span class="kt">int</span> <span class="n">n_comp_conns</span><span class="p">;</span>                <span class="c">// Bad - ambiguous abbreviation.</span>
+<dd><div class="first last highlight-c++"><div class="highlight"><pre><span class="kt">int</span> <span class="n">n</span><span class="p">;</span>                           <span class="c1">// Bad - meaningless.</span>
+<span class="kt">int</span> <span class="n">nerr</span><span class="p">;</span>                        <span class="c1">// Bad - ambiguous abbreviation.</span>
+<span class="kt">int</span> <span class="n">n_comp_conns</span><span class="p">;</span>                <span class="c1">// Bad - ambiguous abbreviation.</span>
 </pre></div>
 </div>
 </dd>
@@ -123,25 +84,25 @@
 <dt>縮寫:</dt>
 <dd><dl class="first last docutils">
 <dt>除非該縮寫在其它地方都非常普遍, 否則不要使用. 例如:</dt>
-<dd><div class="first highlight-c++"><div class="highlight"><pre><span class="c">// Good</span>
-<span class="c">// These show proper names with no abbreviations.</span>
-<span class="kt">int</span> <span class="n">num_dns_connections</span><span class="p">;</span>  <span class="c">// 大部分人都知道 &quot;DNS&quot; 是啥意思.</span>
-<span class="kt">int</span> <span class="n">price_count_reader</span><span class="p">;</span>   <span class="c">// OK, price count. 有意義.</span>
+<dd><div class="first highlight-c++"><div class="highlight"><pre><span class="c1">// Good</span>
+<span class="c1">// These show proper names with no abbreviations.</span>
+<span class="kt">int</span> <span class="n">num_dns_connections</span><span class="p">;</span>  <span class="c1">// 大部分人都知道 &quot;DNS&quot; 是啥意思.</span>
+<span class="kt">int</span> <span class="n">price_count_reader</span><span class="p">;</span>   <span class="c1">// OK, price count. 有意義.</span>
 </pre></div>
 </div>
 <div class="last admonition warning">
 <p class="first admonition-title">Warning</p>
-<div class="last highlight-c++"><div class="highlight"><pre><span class="c">// Bad!</span>
-<span class="c">// Abbreviations can be confusing or ambiguous outside a small group.</span>
-<span class="kt">int</span> <span class="n">wgc_connections</span><span class="p">;</span>  <span class="c">// Only your group knows what this stands for.</span>
-<span class="kt">int</span> <span class="n">pc_reader</span><span class="p">;</span>        <span class="c">// Lots of things can be abbreviated &quot;pc&quot;.</span>
+<div class="last highlight-c++"><div class="highlight"><pre><span class="c1">// Bad!</span>
+<span class="c1">// Abbreviations can be confusing or ambiguous outside a small group.</span>
+<span class="kt">int</span> <span class="n">wgc_connections</span><span class="p">;</span>  <span class="c1">// Only your group knows what this stands for.</span>
+<span class="kt">int</span> <span class="n">pc_reader</span><span class="p">;</span>        <span class="c1">// Lots of things can be abbreviated &quot;pc&quot;.</span>
 </pre></div>
 </div>
 </div>
 </dd>
 <dt>永遠不要用省略字母的縮寫:</dt>
-<dd><div class="first last highlight-c++"><div class="highlight"><pre><span class="kt">int</span> <span class="n">error_count</span><span class="p">;</span>  <span class="c">// Good.</span>
-<span class="kt">int</span> <span class="n">error_cnt</span><span class="p">;</span>    <span class="c">// Bad.</span>
+<dd><div class="first last highlight-c++"><div class="highlight"><pre><span class="kt">int</span> <span class="n">error_count</span><span class="p">;</span>  <span class="c1">// Good.</span>
+<span class="kt">int</span> <span class="n">error_cnt</span><span class="p">;</span>    <span class="c1">// Bad.</span>
 </pre></div>
 </div>
 </dd>
@@ -150,7 +111,7 @@
 </dl>
 </div>
 <div class="section" id="id3">
-<h2>6.2. 檔案命名<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h2>
+<h2>6.2. 檔案命名</h2>
 <div class="admonition tip">
 <p class="first admonition-title">Tip</p>
 <p class="last">檔案名要全部小寫, 可以包含下劃線 (<tt class="docutils literal"><span class="pre">_</span></tt>) 或連字元 (<tt class="docutils literal"><span class="pre">-</span></tt>). 按項目約定來.</p>
@@ -168,25 +129,25 @@ myusefulclass.cc</pre>
 url_table.cc     // The class definition.
 url_table-inl.h  // Inline functions that include lots of code.</pre>
 </div>
-<p>參考 <a class="reference external" href="headers.html#inl-files"><em>-inl.h 檔案</em></a> 一節.</p>
+<p>參考 <a class="reference internal" href="headers.html#inl-files"><em>-inl.h 檔案</em></a> 一節.</p>
 </div>
 <div class="section" id="id4">
-<h2>6.3. 類型命名<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h2>
+<h2>6.3. 類型命名</h2>
 <div class="admonition tip">
 <p class="first admonition-title">Tip</p>
 <p class="last">類型名稱的每個單詞首字母均大寫, 不包含下劃線: <tt class="docutils literal"><span class="pre">MyExcitingClass</span></tt>, <tt class="docutils literal"><span class="pre">MyExcitingEnum</span></tt>.</p>
 </div>
 <dl class="docutils">
 <dt>所有類型命名 —— 類, 結構體, 類型定義 (<tt class="docutils literal"><span class="pre">typedef</span></tt>), 枚舉 —— 均使用相同約定. 例如:</dt>
-<dd><div class="first last highlight-c++"><div class="highlight"><pre><span class="c">// classes and structs</span>
+<dd><div class="first last highlight-c++"><div class="highlight"><pre><span class="c1">// classes and structs</span>
 <span class="k">class</span> <span class="nc">UrlTable</span> <span class="p">{</span> <span class="p">...</span>
 <span class="k">class</span> <span class="nc">UrlTableTester</span> <span class="p">{</span> <span class="p">...</span>
 <span class="k">struct</span> <span class="n">UrlTableProperties</span> <span class="p">{</span> <span class="p">...</span>
 
-<span class="c">// typedefs</span>
+<span class="c1">// typedefs</span>
 <span class="k">typedef</span> <span class="n">hash_map</span><span class="o">&lt;</span><span class="n">UrlTableProperties</span> <span class="o">*</span><span class="p">,</span> <span class="n">string</span><span class="o">&gt;</span> <span class="n">PropertiesMap</span><span class="p">;</span>
 
-<span class="c">// enums</span>
+<span class="c1">// enums</span>
 <span class="k">enum</span> <span class="n">UrlTableErrors</span> <span class="p">{</span> <span class="p">...</span>
 </pre></div>
 </div>
@@ -194,7 +155,7 @@ url_table-inl.h  // Inline functions that include lots of code.</pre>
 </dl>
 </div>
 <div class="section" id="id5">
-<h2>6.4. 變數命名<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h2>
+<h2>6.4. 變數命名</h2>
 <div class="admonition tip">
 <p class="first admonition-title">Tip</p>
 <p>變數名一律小寫, 單詞之間用下劃線連接. 類的成員變數以下劃線結尾, 如:</p>
@@ -211,7 +172,7 @@ string tablename;   // OK - all lowercase.</pre>
 </div>
 <div class="last admonition warning">
 <p class="first admonition-title">Warning</p>
-<div class="last highlight-c++"><div class="highlight"><pre><span class="n">string</span> <span class="n">tableName</span><span class="p">;</span>   <span class="c">// Bad - mixed case.</span>
+<div class="last highlight-c++"><div class="highlight"><pre><span class="n">string</span> <span class="n">tableName</span><span class="p">;</span>   <span class="c1">// Bad - mixed case.</span>
 </pre></div>
 </div>
 </div>
@@ -227,14 +188,14 @@ string tablename;   // OK - all lowercase.</pre>
 </div>
 </dd>
 </dl>
-<p class="last">結構體與類的討論參考 <a class="reference external" href="classes.html#structs-vs-classes"><em>結構體 vs. 類</em></a> 一節.</p>
+<p class="last">結構體與類的討論參考 <a class="reference internal" href="classes.html#structs-vs-classes"><em>結構體 vs. 類</em></a> 一節.</p>
 </dd>
 <dt>全局變數:</dt>
 <dd>對全局變數沒有特別要求, 少用就好, 但如果你要用, 可以用 <tt class="docutils literal"><span class="pre">g_</span></tt> 或其它標誌作為首碼, 以便更好的區分局部變數.</dd>
 </dl>
 </div>
 <div class="section" id="constant-names">
-<span id="id6"></span><h2>6.5. 常量命名<a class="headerlink" href="#constant-names" title="Permalink to this headline">¶</a></h2>
+<span id="id6"></span><h2>6.5. 常量命名</h2>
 <div class="admonition tip">
 <p class="first admonition-title">Tip</p>
 <p class="last">在名稱前加 <tt class="docutils literal"><span class="pre">k</span></tt>: kDaysInAWeek.</p>
@@ -245,7 +206,7 @@ string tablename;   // OK - all lowercase.</pre>
 </dl>
 </div>
 <div class="section" id="function-names">
-<span id="id7"></span><h2>6.6. 函數命名<a class="headerlink" href="#function-names" title="Permalink to this headline">¶</a></h2>
+<span id="id7"></span><h2>6.6. 函數命名</h2>
 <div class="admonition tip">
 <p class="first admonition-title">Tip</p>
 <p class="last">常規函數使用大小寫混合, 取值和設值函數則要求與變數名匹配: <tt class="docutils literal"><span class="pre">MyExcitingFunction()</span></tt>, <tt class="docutils literal"><span class="pre">MyExcitingMethod()</span></tt>, <tt class="docutils literal"><span class="pre">my_exciting_member_variable()</span></tt>, <tt class="docutils literal"><span class="pre">set_my_exciting_member_variable()</span></tt>.</p>
@@ -279,15 +240,15 @@ string tablename;   // OK - all lowercase.</pre>
 </dl>
 </div>
 <div class="section" id="id8">
-<h2>6.7. 名字空間命名<a class="headerlink" href="#id8" title="Permalink to this headline">¶</a></h2>
+<h2>6.7. 名字空間命名</h2>
 <div class="admonition tip">
 <p class="first admonition-title">Tip</p>
 <p class="last">名字空間用小寫字母命名, 並基于項目名稱和目錄結構: <tt class="docutils literal"><span class="pre">google_awesome_project</span></tt>.</p>
 </div>
-<p>關於名字空間的討論和如何命名, 參考 <a class="reference external" href="scoping.html#namespaces"><em>名字空間</em></a> 一節.</p>
+<p>關於名字空間的討論和如何命名, 參考 <a class="reference internal" href="scoping.html#namespaces"><em>名字空間</em></a> 一節.</p>
 </div>
 <div class="section" id="id9">
-<h2>6.8. 枚舉命名<a class="headerlink" href="#id9" title="Permalink to this headline">¶</a></h2>
+<h2>6.8. 枚舉命名</h2>
 <div class="admonition tip">
 <p class="first admonition-title">Tip</p>
 <p class="last">枚舉的命名應當和 <a class="reference internal" href="#constant-names"><em>常量</em></a> 或 <a class="reference internal" href="#macro-names"><em>宏</em></a> 一致: <tt class="docutils literal"><span class="pre">kEnumName</span></tt> 或是 <tt class="docutils literal"><span class="pre">ENUM_NAME</span></tt>.</p>
@@ -311,10 +272,10 @@ string tablename;   // OK - all lowercase.</pre>
 <p>2009 年 1 月之前, 我們一直建議採用 <a class="reference internal" href="#macro-names"><em>宏</em></a> 的方式命名枚舉值. 由於枚舉值和宏之間的命名衝突, 直接導致了很多問題. 由此, 這裡改為優先選擇常量風格的命名方式. 新代碼應該儘可能優先使用常量風格. 但是老代碼沒必要切換到常量風格, 除非宏風格確實會產生編譯期問題.</p>
 </div>
 <div class="section" id="macro-names">
-<span id="id10"></span><h2>6.9. 宏命名<a class="headerlink" href="#macro-names" title="Permalink to this headline">¶</a></h2>
+<span id="id10"></span><h2>6.9. 宏命名</h2>
 <div class="admonition tip">
 <p class="first admonition-title">Tip</p>
-<p class="last">你並不打算 <a class="reference external" href="others.html#preprocessor-macros"><em>使用宏</em></a>, 對吧? 如果你一定要用, 像這樣命名: <tt class="docutils literal"><span class="pre">MY_MACRO_THAT_SCARES_SMALL_CHILDREN</span></tt>.</p>
+<p class="last">你並不打算 <a class="reference internal" href="others.html#preprocessor-macros"><em>使用宏</em></a>, 對吧? 如果你一定要用, 像這樣命名: <tt class="docutils literal"><span class="pre">MY_MACRO_THAT_SCARES_SMALL_CHILDREN</span></tt>.</p>
 </div>
 <p>參考 <cite>預處理宏 &lt;preprocessor-macros&gt;</cite>; 通常 <em>不應該</em> 使用宏. 如果不得不用, 其命名像枚舉命名一樣全部大寫, 使用下劃線:</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="c">#define ROUND(x) ...</span>
@@ -323,7 +284,7 @@ string tablename;   // OK - all lowercase.</pre>
 </div>
 </div>
 <div class="section" id="id11">
-<h2>6.10. 命名規則的特例<a class="headerlink" href="#id11" title="Permalink to this headline">¶</a></h2>
+<h2>6.10. 命名規則的特例</h2>
 <div class="admonition tip">
 <p class="first admonition-title">Tip</p>
 <p class="last">如果你命名的實體與已有 C/C++ 實體相似, 可參考現有命名策略.</p>
@@ -344,29 +305,22 @@ string tablename;   // OK - all lowercase.</pre>
 </div>
 
 
-          </div>
-        </div>
       </div>
-      <div class="clearer"></div>
-    </div>
-    <div class="related">
-      <h3>Navigation</h3>
-      <ul>
-        <li class="right" style="margin-right: 10px">
-          <a href="genindex.html" title="General Index"
-             >index</a></li>
-        <li class="right" >
-          <a href="comments.html" title="7. 註釋"
-             >next</a> |</li>
-        <li class="right" >
-          <a href="others.html" title="5. 其他 C++ 特性"
-             >previous</a> |</li>
-        <li><a href="index.html">Google C++ Style Guide</a> &raquo;</li> 
-      </ul>
-    </div>
+      <div class="bottomnav">
+      
+        <p>
+        «&#160;&#160;<a href="others.html">5. 其他 C++ 特性</a>
+        &#160;&#160;::&#160;&#160;
+        <a class="uplink" href="../contents.html">Contents</a>
+        &#160;&#160;::&#160;&#160;
+        <a href="comments.html">7. 註釋</a>&#160;&#160;»
+        </p>
+
+      </div>
+
     <div class="footer">
-      &copy; Copyright 2009, Google Inc..
-      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 0.6.2.
+        &copy; Copyright .
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.3.
     </div>
   </body>
 </html>

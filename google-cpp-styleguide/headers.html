@@ -1,99 +1,63 @@
+
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
 
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>1. 標頭檔 &mdash; Google C++ Style Guide</title>
-    <link rel="stylesheet" href="_static/sphinxdoc.css" type="text/css" />
-    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <title>1. 標頭檔 &mdash; Google 開源項目風格指南</title>
+    
+    <link rel="stylesheet" href="../_static/haiku.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/print.css" type="text/css" />
+    
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
-        URL_ROOT:    '',
-        VERSION:     '3.133',
-        COLLAPSE_MODINDEX: false,
+        URL_ROOT:    '../',
+        VERSION:     '',
+        COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
       };
     </script>
-    <script type="text/javascript" src="_static/jquery.js"></script>
-    <script type="text/javascript" src="_static/doctools.js"></script>
-    <link rel="top" title="Google C++ Style Guide" href="index.html" />
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <script type="text/javascript" src="../_static/theme_extras.js"></script>
+    <link rel="top" title="Google 開源項目風格指南" href="../index.html" />
+    <link rel="up" title="C++ 風格指南 - 內容目錄" href="contents.html" />
     <link rel="next" title="2. 作用域" href="scoping.html" />
-    <link rel="prev" title="﻿Google C++ 風格指南 - 中文版" href="index.html" /> 
+    <link rel="prev" title="0. 扉頁" href="index.html" /> 
   </head>
   <body>
-    <div class="related">
-      <h3>Navigation</h3>
-      <ul>
-        <li class="right" style="margin-right: 10px">
-          <a href="genindex.html" title="General Index"
-             accesskey="I">index</a></li>
-        <li class="right" >
-          <a href="scoping.html" title="2. 作用域"
-             accesskey="N">next</a> |</li>
-        <li class="right" >
-          <a href="index.html" title="﻿Google C++ 風格指南 - 中文版"
-             accesskey="P">previous</a> |</li>
-        <li><a href="index.html">Google C++ Style Guide</a> &raquo;</li> 
-      </ul>
-    </div>
-      <div class="sphinxsidebar">
-        <div class="sphinxsidebarwrapper">
-            <h3><a href="index.html">Table Of Contents</a></h3>
-            <ul>
-<li><a class="reference external" href="">1. 標頭檔</a><ul>
-<li><a class="reference external" href="#define">1.1. #define 保護</a></li>
-<li><a class="reference external" href="#id2">1.2. 標頭檔依賴</a></li>
-<li><a class="reference external" href="#inline-functions">1.3. 內聯函數</a></li>
-<li><a class="reference external" href="#inl-h">1.4. -inl.h檔案</a></li>
-<li><a class="reference external" href="#id4">1.5. 函數參數的順序</a></li>
-<li><a class="reference external" href="#include">1.6. <tt class="docutils literal"><span class="pre">#include</span></tt> 的路徑及順序</a></li>
-<li><a class="reference external" href="#yulefox">譯者 (YuleFox) 筆記</a></li>
-</ul>
-</li>
-</ul>
-
-            <h4>Previous topic</h4>
-            <p class="topless"><a href="index.html"
-                                  title="previous chapter">﻿Google C++ 風格指南 - 中文版</a></p>
-            <h4>Next topic</h4>
-            <p class="topless"><a href="scoping.html"
-                                  title="next chapter">2. 作用域</a></p>
-            <h3>This Page</h3>
-            <ul class="this-page-menu">
-              <li><a href="_sources/headers.txt"
-                     rel="nofollow">Show Source</a></li>
-            </ul>
-          <div id="searchbox" style="display: none">
-            <h3>Quick search</h3>
-              <form class="search" action="search.html" method="get">
-                <input type="text" name="q" size="18" />
-                <input type="submit" value="Go" />
-                <input type="hidden" name="check_keywords" value="yes" />
-                <input type="hidden" name="area" value="default" />
-              </form>
-              <p class="searchtip" style="font-size: 90%">
-              Enter search terms or a module, class or function name.
-              </p>
-          </div>
-          <script type="text/javascript">$('#searchbox').show(0);</script>
-        </div>
+      <div class="header"><h1 class="heading"><a href="../index.html">
+          <span>Google 開源項目風格指南</span></a></h1>
+        <h2 class="heading"><span>1. 標頭檔</span></h2>
       </div>
+      <div class="topnav">
+      
+        <p>
+        «&#160;&#160;<a href="index.html">0. 扉頁</a>
+        &#160;&#160;::&#160;&#160;
+        <a class="uplink" href="../contents.html">Contents</a>
+        &#160;&#160;::&#160;&#160;
+        <a href="scoping.html">2. 作用域</a>&#160;&#160;»
+        </p>
 
-    <div class="document">
-      <div class="documentwrapper">
-        <div class="bodywrapper">
-          <div class="body">
-            
+      </div>
+      <div class="content">
+        
+        
   <div class="section" id="id1">
-<h1>1. 標頭檔<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h1>
+<h1>1. 標頭檔</h1>
 <p>通常每一個 <tt class="docutils literal"><span class="pre">.cc</span></tt> 檔案都有一個對應的 <tt class="docutils literal"><span class="pre">.h</span></tt> 檔案. 也有一些常見例外, 如單元測試代碼和只包含 <tt class="docutils literal"><span class="pre">main()</span></tt> 函數的 <tt class="docutils literal"><span class="pre">.cc</span></tt> 檔案.</p>
 <p>正確使用標頭檔可令代碼在可讀性、檔案大小和性能上大為改觀.</p>
 <p>下面的規則將引導你規避使用標頭檔時的各種陷阱.</p>
 <div class="section" id="define">
-<span id="define-guard"></span><h2>1.1. #define 保護<a class="headerlink" href="#define" title="Permalink to this headline">¶</a></h2>
+<span id="define-guard"></span><h2>1.1. #define 保護</h2>
 <div class="admonition tip">
 <p class="first admonition-title">Tip</p>
 <p class="last">所有標頭檔都應該使用 <tt class="docutils literal"><span class="pre">#define</span></tt> 防止標頭檔被多重包含, 命名格式當是: <tt class="docutils literal"><span class="pre">&lt;PROJECT&gt;_&lt;PATH&gt;_&lt;FILE&gt;_H_</span></tt></p>
@@ -106,7 +70,7 @@
 </div>
 </div>
 <div class="section" id="id2">
-<h2>1.2. 標頭檔依賴<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
+<h2>1.2. 標頭檔依賴</h2>
 <div class="admonition tip">
 <p class="first admonition-title">Tip</p>
 <p class="last">能用前置聲明的地方儘量不使用 <tt class="docutils literal"><span class="pre">#include</span></tt>.</p>
@@ -124,7 +88,7 @@
 <p>當然 <tt class="docutils literal"><span class="pre">.cc</span></tt> 檔案無論如何都需要所使用類的定義部分, 自然也就會包含若干標頭檔.</p>
 </div>
 <div class="section" id="inline-functions">
-<span id="id3"></span><h2>1.3. 內聯函數<a class="headerlink" href="#inline-functions" title="Permalink to this headline">¶</a></h2>
+<span id="id3"></span><h2>1.3. 內聯函數</h2>
 <div class="admonition tip">
 <p class="first admonition-title">Tip</p>
 <p class="last">只有當函數只有 10 行甚至更少時才將其定義為內聯函數.</p>
@@ -144,7 +108,7 @@
 </dl>
 </div>
 <div class="section" id="inl-h">
-<span id="inl-files"></span><h2>1.4. -inl.h檔案<a class="headerlink" href="#inl-h" title="Permalink to this headline">¶</a></h2>
+<span id="inl-files"></span><h2>1.4. -inl.h檔案</h2>
 <div class="admonition tip">
 <p class="first admonition-title">Tip</p>
 <p class="last">複雜的內聯函數的定義, 應放在尾碼名為 <tt class="docutils literal"><span class="pre">-inl.h</span></tt> 的標頭檔中.</p>
@@ -155,7 +119,7 @@
 <p>別忘了 <tt class="docutils literal"><span class="pre">-inl.h</span></tt> 和其他標頭檔一樣, 也需要 <tt class="docutils literal"><span class="pre">#define</span></tt> 保護.</p>
 </div>
 <div class="section" id="id4">
-<h2>1.5. 函數參數的順序<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h2>
+<h2>1.5. 函數參數的順序</h2>
 <div class="admonition tip">
 <p class="first admonition-title">Tip</p>
 <p class="last">定義函數時, 參數順序依次為: 輸入參數, 然後是輸出參數.</p>
@@ -164,7 +128,7 @@
 <p>這條規則並不需要嚴格遵守. 輸入/輸出兩用參數 (通常是類/結構體變數) 把事情變得複雜, 為保持和相關函數的一致性, 你有時不得不有所變通.</p>
 </div>
 <div class="section" id="include">
-<h2>1.6. <tt class="docutils literal"><span class="pre">#include</span></tt> 的路徑及順序<a class="headerlink" href="#include" title="Permalink to this headline">¶</a></h2>
+<h2>1.6. <tt class="docutils literal"><span class="pre">#include</span></tt> 的路徑及順序</h2>
 <div class="admonition tip">
 <p class="first admonition-title">Tip</p>
 <p class="last">使用標準的標頭檔包含順序可增強可讀性, 避免隱藏依賴: C 庫, C++ 庫, 其他庫的 <cite>.h</cite>, 本項目內的 <cite>.h</cite>.</p>
@@ -190,7 +154,7 @@
 <p>按字母順序對標頭檔包含進行二次排序是不錯的主意 (yospaly 譯註: 之前已經按標頭檔類別排過序了).</p>
 <dl class="docutils">
 <dt>舉例來說, <tt class="docutils literal"><span class="pre">google-awesome-project/src/foo/internal/fooserver.cc</span></tt> 的包含次序如下:</dt>
-<dd><div class="first last highlight-c++"><div class="highlight"><pre><span class="cp">#include &quot;foo/public/fooserver.h&quot; </span><span class="c">// 優先位置</span>
+<dd><div class="first last highlight-c++"><div class="highlight"><pre><span class="cp">#include &quot;foo/public/fooserver.h&quot; </span><span class="c1">// 優先位置</span>
 <span class="cp">#include &lt;sys/types.h&gt;</span>
 <span class="cp">#include &lt;unistd.h&gt;</span>
 <span class="cp">#include &lt;hash_map&gt;</span>
@@ -204,7 +168,7 @@
 </dl>
 </div>
 <div class="section" id="yulefox">
-<h2>譯者 (YuleFox) 筆記<a class="headerlink" href="#yulefox" title="Permalink to this headline">¶</a></h2>
+<h2>譯者 (YuleFox) 筆記</h2>
 <ol class="arabic simple">
 <li>避免多重包含是學編程時最基本的要求;</li>
 <li>前置聲明是為了降低編譯依賴，防止修改一個標頭檔引發多米諾效應;</li>
@@ -217,29 +181,22 @@
 </div>
 
 
-          </div>
-        </div>
       </div>
-      <div class="clearer"></div>
-    </div>
-    <div class="related">
-      <h3>Navigation</h3>
-      <ul>
-        <li class="right" style="margin-right: 10px">
-          <a href="genindex.html" title="General Index"
-             >index</a></li>
-        <li class="right" >
-          <a href="scoping.html" title="2. 作用域"
-             >next</a> |</li>
-        <li class="right" >
-          <a href="index.html" title="﻿Google C++ 風格指南 - 中文版"
-             >previous</a> |</li>
-        <li><a href="index.html">Google C++ Style Guide</a> &raquo;</li> 
-      </ul>
-    </div>
+      <div class="bottomnav">
+      
+        <p>
+        «&#160;&#160;<a href="index.html">0. 扉頁</a>
+        &#160;&#160;::&#160;&#160;
+        <a class="uplink" href="../contents.html">Contents</a>
+        &#160;&#160;::&#160;&#160;
+        <a href="scoping.html">2. 作用域</a>&#160;&#160;»
+        </p>
+
+      </div>
+
     <div class="footer">
-      &copy; Copyright 2009, Google Inc..
-      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 0.6.2.
+        &copy; Copyright .
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.3.
     </div>
   </body>
 </html>
