@@ -8,7 +8,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>3. 類 &mdash; Google 開源項目風格指南</title>
+    <title>3. 类 &mdash; Google 开源项目风格指南</title>
     
     <link rel="stylesheet" href="../_static/haiku.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
@@ -27,15 +27,15 @@
     <script type="text/javascript" src="../_static/underscore.js"></script>
     <script type="text/javascript" src="../_static/doctools.js"></script>
     <script type="text/javascript" src="../_static/theme_extras.js"></script>
-    <link rel="top" title="Google 開源項目風格指南" href="../index.html" />
-    <link rel="up" title="C++ 風格指南 - 內容目錄" href="contents.html" />
-    <link rel="next" title="4. 來自 Google 的奇技" href="magic.html" />
+    <link rel="top" title="Google 开源项目风格指南" href="../index.html" />
+    <link rel="up" title="C++ 风格指南 - 内容目录" href="contents.html" />
+    <link rel="next" title="4. 来自 Google 的奇技" href="magic.html" />
     <link rel="prev" title="2. 作用域" href="scoping.html" /> 
   </head>
   <body>
       <div class="header"><h1 class="heading"><a href="../index.html">
-          <span>Google 開源項目風格指南</span></a></h1>
-        <h2 class="heading"><span>3. 類</span></h2>
+          <span>Google 开源项目风格指南</span></a></h1>
+        <h2 class="heading"><span>3. 类</span></h2>
       </div>
       <div class="topnav">
       
@@ -44,7 +44,7 @@
         &#160;&#160;::&#160;&#160;
         <a class="uplink" href="../contents.html">Contents</a>
         &#160;&#160;::&#160;&#160;
-        <a href="magic.html">4. 來自 Google 的奇技</a>&#160;&#160;»
+        <a href="magic.html">4. 来自 Google 的奇技</a>&#160;&#160;»
         </p>
 
       </div>
@@ -52,92 +52,92 @@
         
         
   <div class="section" id="id1">
-<h1>3. 類</h1>
-<p>類是 C++ 中代碼的基本單元. 顯然, 它們被廣泛使用. 本節列舉了在寫一個類時的主要注意事項.</p>
+<h1>3. 类</h1>
+<p>类是 C++ 中代码的基本单元. 显然, 它们被广泛使用. 本节列举了在写一个类时的主要注意事项.</p>
 <div class="section" id="id2">
-<h2>3.1. 建構子的職責</h2>
+<h2>3.1. 构造函数的职责</h2>
 <div class="admonition tip">
 <p class="first admonition-title">Tip</p>
-<p class="last">建構子中只進行那些沒什麼意義的 (trivial, YuleFox 註: 簡單初始化對於程序執行沒有實際的邏輯意義, 因為成員變數 &#8220;有意義&#8221; 的值大多不在建構子中確定) 初始化, 可能的話, 使用 <tt class="docutils literal"><span class="pre">Init()</span></tt> 方法集中初始化有意義的 (non-trivial) 數據.</p>
+<p class="last">构造函数中只进行那些没什么意义的 (trivial, YuleFox 注: 简单初始化对于程序执行没有实际的逻辑意义, 因为成员变量 &#8220;有意义&#8221; 的值大多不在构造函数中确定) 初始化, 可能的话, 使用 <tt class="docutils literal"><span class="pre">Init()</span></tt> 方法集中初始化有意义的 (non-trivial) 数据.</p>
 </div>
 <dl class="docutils">
-<dt>定義:</dt>
-<dd>在建構子體中進行初始化操作.</dd>
-<dt>優點:</dt>
-<dd>排版方便, 無需擔心類是否已經初始化.</dd>
-<dt>缺點:</dt>
-<dd><p class="first">在建構子中執行操作引起的問題有:</p>
+<dt>定义:</dt>
+<dd>在构造函数体中进行初始化操作.</dd>
+<dt>优点:</dt>
+<dd>排版方便, 无需担心类是否已经初始化.</dd>
+<dt>缺点:</dt>
+<dd><p class="first">在构造函数中执行操作引起的问题有:</p>
 <blockquote class="last">
 <div><ul class="simple">
-<li>建構子中很難上報錯誤, <a class="reference external" href="#...">不能使用異常</a>.</li>
-<li>操作失敗會造成對象初始化失敗，進入不確定狀態.</li>
-<li>如果在建構子內調用了自身的虛函數, 這類調用是不會重定向到子類的虛函數實現. 即使當前沒有子類化實現, 將來仍是隱患.</li>
-<li>如果有人創建該類型的全局變數 (雖然違背了上節提到的規則), 建構子將先 <tt class="docutils literal"><span class="pre">main()</span></tt> 一步被調用, 有可能破壞建構子中暗含的假設條件. 例如, <a class="reference external" href="http://code.google.com/p/google-gflags/">gflags</a> 尚未初始化.</li>
+<li>构造函数中很难上报错误, <a class="reference external" href="#...">不能使用异常</a>.</li>
+<li>操作失败会造成对象初始化失败，进入不确定状态.</li>
+<li>如果在构造函数内调用了自身的虚函数, 这类调用是不会重定向到子类的虚函数实现. 即使当前没有子类化实现, 将来仍是隐患.</li>
+<li>如果有人创建该类型的全局变量 (虽然违背了上节提到的规则), 构造函数将先 <tt class="docutils literal"><span class="pre">main()</span></tt> 一步被调用, 有可能破坏构造函数中暗含的假设条件. 例如, <a class="reference external" href="http://code.google.com/p/google-gflags/">gflags</a> 尚未初始化.</li>
 </ul>
 </div></blockquote>
 </dd>
-<dt>結論:</dt>
-<dd>如果對象需要進行有意義的 (non-trivial) 初始化, 考慮使用明確的 <tt class="docutils literal"><span class="pre">Init()</span></tt> 方法並 (或) 增加一個成員標記用於指示對象是否已經初始化成功.</dd>
+<dt>结论:</dt>
+<dd>如果对象需要进行有意义的 (non-trivial) 初始化, 考虑使用明确的 <tt class="docutils literal"><span class="pre">Init()</span></tt> 方法并 (或) 增加一个成员标记用于指示对象是否已经初始化成功.</dd>
 </dl>
 </div>
 <div class="section" id="id4">
-<h2>3.2. 預設建構子</h2>
+<h2>3.2. 默认构造函数</h2>
 <div class="admonition tip">
 <p class="first admonition-title">Tip</p>
-<p class="last">如果一個類定義了若干成員變數又沒有其它建構子, 必須定義一個預設建構子. 否則編譯器將自動生產一個很糟糕的預設建構子.</p>
+<p class="last">如果一个类定义了若干成员变量又没有其它构造函数, 必须定义一个默认构造函数. 否则编译器将自动生产一个很糟糕的默认构造函数.</p>
 </div>
 <dl class="docutils">
-<dt>定義:</dt>
-<dd><tt class="docutils literal"><span class="pre">new</span></tt> 一個不帶參數的類對象時, 會調用這個類的預設建構子. 用 <tt class="docutils literal"><span class="pre">new[]</span></tt> 創建數組時，預設建構子則總是被調用.</dd>
-<dt>優點:</dt>
-<dd>預設將結構體初始化為 &#8220;無效&#8221; 值, 使調試更方便.</dd>
-<dt>缺點:</dt>
-<dd>對代碼編寫者來說, 這是多餘的工作.</dd>
-<dt>結論:</dt>
-<dd><p class="first">如果類中定義了成員變數, 而且沒有提供其它建構子, 你必須定義一個 (不帶參數的) 預設建構子. 把對象的內部狀態初始化成一致/有效的值無疑是更合理的方式.</p>
-<p>這麼做的原因是: 如果你沒有提供其它建構子, 又沒有定義預設建構子, 編譯器將為你自動生成一個. 編譯器生成的建構子並不會對對象進行合理的初始化.</p>
-<p class="last">如果你定義的類繼承現有類, 而你又沒有增加新的成員變數, 則不需要為新類定義預設建構子.</p>
+<dt>定义:</dt>
+<dd><tt class="docutils literal"><span class="pre">new</span></tt> 一个不带参数的类对象时, 会调用这个类的默认构造函数. 用 <tt class="docutils literal"><span class="pre">new[]</span></tt> 创建数组时，默认构造函数则总是被调用.</dd>
+<dt>优点:</dt>
+<dd>默认将结构体初始化为 &#8220;无效&#8221; 值, 使调试更方便.</dd>
+<dt>缺点:</dt>
+<dd>对代码编写者来说, 这是多余的工作.</dd>
+<dt>结论:</dt>
+<dd><p class="first">如果类中定义了成员变量, 而且没有提供其它构造函数, 你必须定义一个 (不带参数的) 默认构造函数. 把对象的内部状态初始化成一致/有效的值无疑是更合理的方式.</p>
+<p>这么做的原因是: 如果你没有提供其它构造函数, 又没有定义默认构造函数, 编译器将为你自动生成一个. 编译器生成的构造函数并不会对对象进行合理的初始化.</p>
+<p class="last">如果你定义的类继承现有类, 而你又没有增加新的成员变量, 则不需要为新类定义默认构造函数.</p>
 </dd>
 </dl>
 </div>
 <div class="section" id="id5">
-<h2>3.3. 顯式建構子</h2>
+<h2>3.3. 显式构造函数</h2>
 <div class="admonition tip">
 <p class="first admonition-title">Tip</p>
-<p class="last">對單個參數的建構子使用 C++ 關鍵字 <tt class="docutils literal"><span class="pre">explicit</span></tt>.</p>
+<p class="last">对单个参数的构造函数使用 C++ 关键字 <tt class="docutils literal"><span class="pre">explicit</span></tt>.</p>
 </div>
 <dl class="docutils">
-<dt>定義:</dt>
-<dd>通常, 如果建構子只有一個參數, 可看成是一種隱式轉換. 打個比方, 如果你定義了 <tt class="docutils literal"><span class="pre">Foo::Foo(string</span> <span class="pre">name)</span></tt>, 接着把一個字元串傳給一個以 <tt class="docutils literal"><span class="pre">Foo</span></tt> 對象為參數的函數, 建構子 <tt class="docutils literal"><span class="pre">Foo::Foo(string</span> <span class="pre">name)</span></tt> 將被調用, 並將該字元串轉換為一個 <tt class="docutils literal"><span class="pre">Foo</span></tt> 的臨時對象傳給調用函數. 看上去很方便, 但如果你並不希望如此通過轉換生成一個新對象的話, 麻煩也隨之而來. 為避免建構子被調用造成隱式轉換, 可以將其聲明為 <tt class="docutils literal"><span class="pre">explicit</span></tt>.</dd>
-<dt>優點:</dt>
-<dd>避免不合時宜的變換.</dd>
-<dt>缺點:</dt>
-<dd>無</dd>
-<dt>結論:</dt>
-<dd><p class="first">所有單參數建構子都必須是顯式的. 在類定義中, 將關鍵字 <tt class="docutils literal"><span class="pre">explicit</span></tt> 加到單參數建構子前: <tt class="docutils literal"><span class="pre">explicit</span> <span class="pre">Foo(string</span> <span class="pre">name);</span></tt></p>
-<p class="last">例外: 在極少數情況下, 拷貝建構子可以不聲明成 <tt class="docutils literal"><span class="pre">explicit</span></tt>. 作為其它類的透明包裝器的類也是特例之一. 類似的例外情況應在註釋中明確說明.</p>
+<dt>定义:</dt>
+<dd>通常, 如果构造函数只有一个参数, 可看成是一种隐式转换. 打个比方, 如果你定义了 <tt class="docutils literal"><span class="pre">Foo::Foo(string</span> <span class="pre">name)</span></tt>, 接着把一个字符串传给一个以 <tt class="docutils literal"><span class="pre">Foo</span></tt> 对象为参数的函数, 构造函数 <tt class="docutils literal"><span class="pre">Foo::Foo(string</span> <span class="pre">name)</span></tt> 将被调用, 并将该字符串转换为一个 <tt class="docutils literal"><span class="pre">Foo</span></tt> 的临时对象传给调用函数. 看上去很方便, 但如果你并不希望如此通过转换生成一个新对象的话, 麻烦也随之而来. 为避免构造函数被调用造成隐式转换, 可以将其声明为 <tt class="docutils literal"><span class="pre">explicit</span></tt>.</dd>
+<dt>优点:</dt>
+<dd>避免不合时宜的变换.</dd>
+<dt>缺点:</dt>
+<dd>无</dd>
+<dt>结论:</dt>
+<dd><p class="first">所有单参数构造函数都必须是显式的. 在类定义中, 将关键字 <tt class="docutils literal"><span class="pre">explicit</span></tt> 加到单参数构造函数前: <tt class="docutils literal"><span class="pre">explicit</span> <span class="pre">Foo(string</span> <span class="pre">name);</span></tt></p>
+<p class="last">例外: 在极少数情况下, 拷贝构造函数可以不声明成 <tt class="docutils literal"><span class="pre">explicit</span></tt>. 作为其它类的透明包装器的类也是特例之一. 类似的例外情况应在注释中明确说明.</p>
 </dd>
 </dl>
 </div>
 <div class="section" id="copy-constructors">
-<span id="id6"></span><h2>3.4. 拷貝建構子</h2>
+<span id="id6"></span><h2>3.4. 拷贝构造函数</h2>
 <div class="admonition tip">
 <p class="first admonition-title">Tip</p>
-<p class="last">僅在代碼中需要拷貝一個類對象的時候使用拷貝建構子; 大部分情況下都不需要, 此時應使用 <tt class="docutils literal"><span class="pre">DISALLOW_COPY_AND_ASSIGN</span></tt>.</p>
+<p class="last">仅在代码中需要拷贝一个类对象的时候使用拷贝构造函数; 大部分情况下都不需要, 此时应使用 <tt class="docutils literal"><span class="pre">DISALLOW_COPY_AND_ASSIGN</span></tt>.</p>
 </div>
 <dl class="docutils">
-<dt>定義:</dt>
-<dd>拷貝建構子在複製一個對象到新建對象時被調用 (特別是對象傳值時).</dd>
-<dt>優點:</dt>
-<dd>拷貝建構子使得拷貝對象更加容易. STL 容器要求所有內容可拷貝, 可賦值.</dd>
-<dt>缺點:</dt>
-<dd>C++ 中的隱式對象拷貝是很多性能問題和 bug 的根源. 拷貝建構子降低了代碼可讀性, 相比傳引用, 跟蹤傳值的對象更加困難, 對象修改的地方變得難以捉摸.</dd>
-<dt>結論:</dt>
-<dd><p class="first">大部分類並不需要可拷貝, 也不需要一個拷貝建構子或重載賦值運算符. 不幸的是, 如果你不主動聲明它們, 編譯器會為你自動生成, 而且是 <tt class="docutils literal"><span class="pre">public</span></tt> 的.</p>
+<dt>定义:</dt>
+<dd>拷贝构造函数在复制一个对象到新建对象时被调用 (特别是对象传值时).</dd>
+<dt>优点:</dt>
+<dd>拷贝构造函数使得拷贝对象更加容易. STL 容器要求所有内容可拷贝, 可赋值.</dd>
+<dt>缺点:</dt>
+<dd>C++ 中的隐式对象拷贝是很多性能问题和 bug 的根源. 拷贝构造函数降低了代码可读性, 相比传引用, 跟踪传值的对象更加困难, 对象修改的地方变得难以捉摸.</dd>
+<dt>结论:</dt>
+<dd><p class="first">大部分类并不需要可拷贝, 也不需要一个拷贝构造函数或重载赋值运算符. 不幸的是, 如果你不主动声明它们, 编译器会为你自动生成, 而且是 <tt class="docutils literal"><span class="pre">public</span></tt> 的.</p>
 <dl class="docutils">
-<dt>可以考慮在類的 <tt class="docutils literal"><span class="pre">private:</span></tt> 中添加拷貝建構子和賦值操作的空實現, 只有聲明, 沒有定義. 由於這些空函數聲明為 <tt class="docutils literal"><span class="pre">private</span></tt>, 當其他代碼試圖使用它們的時候, 編譯器將報錯. 方便起見, 我們可以使用 <tt class="docutils literal"><span class="pre">DISALLOW_COPY_AND_ASSIGN</span></tt> 宏:</dt>
-<dd><div class="first last highlight-c++"><div class="highlight"><pre><span class="cp">// 禁止使用拷貝建構子和 operator= 賦值操作的宏</span>
-<span class="cp">// 應該類的 private: 中使用</span>
+<dt>可以考虑在类的 <tt class="docutils literal"><span class="pre">private:</span></tt> 中添加拷贝构造函数和赋值操作的空实现, 只有声明, 没有定义. 由于这些空函数声明为 <tt class="docutils literal"><span class="pre">private</span></tt>, 当其他代码试图使用它们的时候, 编译器将报错. 方便起见, 我们可以使用 <tt class="docutils literal"><span class="pre">DISALLOW_COPY_AND_ASSIGN</span></tt> 宏:</dt>
+<dd><div class="first last highlight-c++"><div class="highlight"><pre><span class="c1">// 禁止使用拷贝构造函数和 operator= 赋值操作的宏</span>
+<span class="c1">// 应该类的 private: 中使用</span>
 
 <span class="cp">#define DISALLOW_COPY_AND_ASSIGN(TypeName) \</span>
 <span class="cp">            TypeName(const TypeName&amp;); \</span>
@@ -158,117 +158,117 @@
 </div>
 </dd>
 </dl>
-<p class="last">如上所述, 絶大多數情況下都應使用 <tt class="docutils literal"><span class="pre">DISALLOW_COPY_AND_ASSIGN</span></tt> 宏. 如果類確實需要可拷貝, 應在該類的標頭檔中說明原由, 併合理的定義拷貝建構子和賦值操作. 注意在 <tt class="docutils literal"><span class="pre">operator=</span></tt> 中檢測自我賦值的情況 (yospaly 註: 即 <tt class="docutils literal"><span class="pre">operator=</span></tt> 接收的參數是該對象本身).</p>
+<p class="last">如上所述, 绝大多数情况下都应使用 <tt class="docutils literal"><span class="pre">DISALLOW_COPY_AND_ASSIGN</span></tt> 宏. 如果类确实需要可拷贝, 应在该类的头文件中说明原由, 并合理的定义拷贝构造函数和赋值操作. 注意在 <tt class="docutils literal"><span class="pre">operator=</span></tt> 中检测自我赋值的情况 (yospaly 注: 即 <tt class="docutils literal"><span class="pre">operator=</span></tt> 接收的参数是该对象本身).</p>
 </dd>
 </dl>
-<p>為了能作為 STL 容器的值, 你可能有使類可拷貝的衝動. 在大多數類似的情況下, 真正該做的是把對象的 <em>指針</em> 放到 STL 容器中. 可以考慮使用 <tt class="docutils literal"><span class="pre">std::tr1::shared_ptr</span></tt>.</p>
+<p>为了能作为 STL 容器的值, 你可能有使类可拷贝的冲动. 在大多数类似的情况下, 真正该做的是把对象的 <em>指针</em> 放到 STL 容器中. 可以考虑使用 <tt class="docutils literal"><span class="pre">std::tr1::shared_ptr</span></tt>.</p>
 </div>
 <div class="section" id="vs">
-<span id="structs-vs-classes"></span><h2>3.5. 結構體 VS. 類</h2>
+<span id="structs-vs-classes"></span><h2>3.5. 结构体 VS. 类</h2>
 <div class="admonition tip">
 <p class="first admonition-title">Tip</p>
-<p class="last">僅當只有數據時使用 <tt class="docutils literal"><span class="pre">struct</span></tt>, 其它一概使用 <tt class="docutils literal"><span class="pre">class</span></tt>.</p>
+<p class="last">仅当只有数据时使用 <tt class="docutils literal"><span class="pre">struct</span></tt>, 其它一概使用 <tt class="docutils literal"><span class="pre">class</span></tt>.</p>
 </div>
-<p>在 C++ 中 <tt class="docutils literal"><span class="pre">struct</span></tt> 和 <tt class="docutils literal"><span class="pre">class</span></tt> 關鍵字几乎含義一樣. 我們為這兩個關鍵字添加我們自己的語義理解, 以便為定義的數據類型選擇合適的關鍵字.</p>
-<p><tt class="docutils literal"><span class="pre">struct</span></tt> 用來定義包含數據的被動式對象, 也可以包含相關的常量, 但除了存取數據成員之外, 沒有別的函數功能. 並且存取功能是通過直接訪問位域 (field), 而非函數調用. 除了建構子, 解構子, <tt class="docutils literal"><span class="pre">Initialize()</span></tt>, <tt class="docutils literal"><span class="pre">Reset()</span></tt>, <tt class="docutils literal"><span class="pre">Validate()</span></tt> 外, 不能提供其它功能的函數.</p>
-<p>如果需要更多的函數功能, <tt class="docutils literal"><span class="pre">class</span></tt> 更適合. 如果拿不準, 就用 <tt class="docutils literal"><span class="pre">class</span></tt>.</p>
-<p>為了和 STL 保持一致, 對於仿函數 (functors) 和特性 (traits) 可以不用 <tt class="docutils literal"><span class="pre">class</span></tt> 而是使用 <tt class="docutils literal"><span class="pre">struct</span></tt>.</p>
-<p>注意: 類和結構體的成員變數使用 <a class="reference external" href="...">不同的命名規則</a>.</p>
+<p>在 C++ 中 <tt class="docutils literal"><span class="pre">struct</span></tt> 和 <tt class="docutils literal"><span class="pre">class</span></tt> 关键字几乎含义一样. 我们为这两个关键字添加我们自己的语义理解, 以便为定义的数据类型选择合适的关键字.</p>
+<p><tt class="docutils literal"><span class="pre">struct</span></tt> 用来定义包含数据的被动式对象, 也可以包含相关的常量, 但除了存取数据成员之外, 没有别的函数功能. 并且存取功能是通过直接访问位域 (field), 而非函数调用. 除了构造函数, 析构函数, <tt class="docutils literal"><span class="pre">Initialize()</span></tt>, <tt class="docutils literal"><span class="pre">Reset()</span></tt>, <tt class="docutils literal"><span class="pre">Validate()</span></tt> 外, 不能提供其它功能的函数.</p>
+<p>如果需要更多的函数功能, <tt class="docutils literal"><span class="pre">class</span></tt> 更适合. 如果拿不准, 就用 <tt class="docutils literal"><span class="pre">class</span></tt>.</p>
+<p>为了和 STL 保持一致, 对于仿函数 (functors) 和特性 (traits) 可以不用 <tt class="docutils literal"><span class="pre">class</span></tt> 而是使用 <tt class="docutils literal"><span class="pre">struct</span></tt>.</p>
+<p>注意: 类和结构体的成员变量使用 <a class="reference external" href="...">不同的命名规则</a>.</p>
 </div>
 <div class="section" id="inheritance">
-<span id="id8"></span><h2>3.6. 繼承</h2>
+<span id="id8"></span><h2>3.6. 继承</h2>
 <div class="admonition tip">
 <p class="first admonition-title">Tip</p>
-<p class="last">使用組合 (composition, YuleFox 註: 這一點也是 GoF 在 &lt;&lt;Design Patterns&gt;&gt; 裡反覆強調的) 常常比使用繼承更合理. 如果使用繼承的話, 定義為 <tt class="docutils literal"><span class="pre">public</span></tt> 繼承.</p>
+<p class="last">使用组合 (composition, YuleFox 注: 这一点也是 GoF 在 &lt;&lt;Design Patterns&gt;&gt; 里反复强调的) 常常比使用继承更合理. 如果使用继承的话, 定义为 <tt class="docutils literal"><span class="pre">public</span></tt> 继承.</p>
 </div>
 <dl class="docutils">
-<dt>定義:</dt>
-<dd>當子類繼承基類時, 子類包含了父基類所有數據及操作的定義. C++ 實踐中, 繼承主要用於兩種場合: 實現繼承 (implementation inheritance), 子類繼承父類的實現代碼; 介面繼承 (interface inheritance), 子類僅繼承父類的方法名稱.</dd>
-<dt>優點:</dt>
-<dd>實現繼承通過原封不動的復用基類代碼減少了代碼量. 由於繼承是在編譯時聲明, 程序員和編譯器都可以理解相應操作並發現錯誤. 從編程角度而言, 介面繼承是用來強制類輸出特定的 API. 在類沒有實現 API 中某個必須的方法時, 編譯器同樣會發現並報告錯誤.</dd>
-<dt>缺點:</dt>
-<dd>對於實現繼承, 由於子類的實現代碼散佈在父類和子類間之間, 要理解其實現變得更加困難. 子類不能重寫父類的非虛函數, 當然也就不能修改其實現. 基類也可能定義了一些數據成員, 還要區分基類的實際佈局.</dd>
-<dt>結論:</dt>
-<dd><p class="first">所有繼承必須是 <tt class="docutils literal"><span class="pre">public</span></tt> 的. 如果你想使用私有繼承, 你應該替換成把基類的實例作為成員對象的方式.</p>
-<p>不要過度使用實現繼承. 組合常常更合適一些. 儘量做到只在 &#8220;是一個&#8221; (&#8220;is-a&#8221;, YuleFox 註: 其他 &#8220;has-a&#8221; 情況下請使用組合) 的情況下使用繼承: 如果 <tt class="docutils literal"><span class="pre">Bar</span></tt> 的確 &#8220;是一種&#8221; Foo, <tt class="docutils literal"><span class="pre">Bar</span></tt> 才能繼承 <tt class="docutils literal"><span class="pre">Foo</span></tt>.</p>
-<p>必要的話, 解構子聲明為 <tt class="docutils literal"><span class="pre">virtual</span></tt>. 如果你的類有虛函數, 則解構子也應該為虛函數. 注意 <a class="reference external" href="....">數據成員在任何情況下都必須是私有的</a>.</p>
-<p class="last">當重載一個虛函數, 在衍生類中把它明確的聲明為 <tt class="docutils literal"><span class="pre">virtual</span></tt>. 理論依據: 如果省略 <tt class="docutils literal"><span class="pre">virtual</span></tt> 關鍵字, 代碼閲讀者不得不檢查所有父類, 以判斷該函數是否是虛函數.</p>
+<dt>定义:</dt>
+<dd>当子类继承基类时, 子类包含了父基类所有数据及操作的定义. C++ 实践中, 继承主要用于两种场合: 实现继承 (implementation inheritance), 子类继承父类的实现代码; 接口继承 (interface inheritance), 子类仅继承父类的方法名称.</dd>
+<dt>优点:</dt>
+<dd>实现继承通过原封不动的复用基类代码减少了代码量. 由于继承是在编译时声明, 程序员和编译器都可以理解相应操作并发现错误. 从编程角度而言, 接口继承是用来强制类输出特定的 API. 在类没有实现 API 中某个必须的方法时, 编译器同样会发现并报告错误.</dd>
+<dt>缺点:</dt>
+<dd>对于实现继承, 由于子类的实现代码散布在父类和子类间之间, 要理解其实现变得更加困难. 子类不能重写父类的非虚函数, 当然也就不能修改其实现. 基类也可能定义了一些数据成员, 还要区分基类的实际布局.</dd>
+<dt>结论:</dt>
+<dd><p class="first">所有继承必须是 <tt class="docutils literal"><span class="pre">public</span></tt> 的. 如果你想使用私有继承, 你应该替换成把基类的实例作为成员对象的方式.</p>
+<p>不要过度使用实现继承. 组合常常更合适一些. 尽量做到只在 &#8220;是一个&#8221; (&#8220;is-a&#8221;, YuleFox 注: 其他 &#8220;has-a&#8221; 情况下请使用组合) 的情况下使用继承: 如果 <tt class="docutils literal"><span class="pre">Bar</span></tt> 的确 &#8220;是一种&#8221; Foo, <tt class="docutils literal"><span class="pre">Bar</span></tt> 才能继承 <tt class="docutils literal"><span class="pre">Foo</span></tt>.</p>
+<p>必要的话, 析构函数声明为 <tt class="docutils literal"><span class="pre">virtual</span></tt>. 如果你的类有虚函数, 则析构函数也应该为虚函数. 注意 <a class="reference external" href="....">数据成员在任何情况下都必须是私有的</a>.</p>
+<p class="last">当重载一个虚函数, 在衍生类中把它明确的声明为 <tt class="docutils literal"><span class="pre">virtual</span></tt>. 理论依据: 如果省略 <tt class="docutils literal"><span class="pre">virtual</span></tt> 关键字, 代码阅读者不得不检查所有父类, 以判断该函数是否是虚函数.</p>
 </dd>
 </dl>
 </div>
 <div class="section" id="multiple-inheritance">
-<span id="id10"></span><h2>3.7. 多重繼承</h2>
+<span id="id10"></span><h2>3.7. 多重继承</h2>
 <div class="admonition tip">
 <p class="first admonition-title">Tip</p>
-<p class="last">真正需要用到多重實現繼承的情況少之又少. 只在以下情況我們才允許多重繼承: 最多只有一個基類是非抽象類; 其它基類都是以 <tt class="docutils literal"><span class="pre">Interface</span></tt> 為尾碼的 <a class="reference internal" href="#interface"><em>純介面類</em></a>.</p>
+<p class="last">真正需要用到多重实现继承的情况少之又少. 只在以下情况我们才允许多重继承: 最多只有一个基类是非抽象类; 其它基类都是以 <tt class="docutils literal"><span class="pre">Interface</span></tt> 为后缀的 <a class="reference internal" href="#interface"><em>纯接口类</em></a>.</p>
 </div>
 <dl class="docutils">
-<dt>定義:</dt>
-<dd>多重繼承允許子類擁有多個基類. 要將作為 <em>純介面</em> 的基類和具有 <em>實現</em> 的基類區別開來.</dd>
-<dt>優點:</dt>
-<dd>相比單繼承 (見 <a class="reference internal" href="#inheritance"><em>繼承</em></a>), 多重實現繼承可以復用更多的代碼.</dd>
-<dt>缺點:</dt>
-<dd>真正需要用到多重 <em>實現</em> 繼承的情況少之又少. 多重實現繼承看上去是不錯的解決方案, 但你通常也可以找到一個更明確, 更清晰的不同解決方案.</dd>
-<dt>結論:</dt>
-<dd>只有當所有父類除第一個外都是 <a class="reference internal" href="#interface"><em>純介面類</em></a> 時, 才允許使用多重繼承. 為確保它們是純介面, 這些類必須以 <tt class="docutils literal"><span class="pre">Interface</span></tt> 為尾碼.</dd>
+<dt>定义:</dt>
+<dd>多重继承允许子类拥有多个基类. 要将作为 <em>纯接口</em> 的基类和具有 <em>实现</em> 的基类区别开来.</dd>
+<dt>优点:</dt>
+<dd>相比单继承 (见 <a class="reference internal" href="#inheritance"><em>继承</em></a>), 多重实现继承可以复用更多的代码.</dd>
+<dt>缺点:</dt>
+<dd>真正需要用到多重 <em>实现</em> 继承的情况少之又少. 多重实现继承看上去是不错的解决方案, 但你通常也可以找到一个更明确, 更清晰的不同解决方案.</dd>
+<dt>结论:</dt>
+<dd>只有当所有父类除第一个外都是 <a class="reference internal" href="#interface"><em>纯接口类</em></a> 时, 才允许使用多重继承. 为确保它们是纯接口, 这些类必须以 <tt class="docutils literal"><span class="pre">Interface</span></tt> 为后缀.</dd>
 </dl>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
-<p class="last">關於該規則, Windows 下有個 <a class="reference internal" href="exceptions.html#windows-code"><em>特例</em></a>.</p>
+<p class="last">关于该规则, Windows 下有个 <a class="reference internal" href="exceptions.html#windows-code"><em>特例</em></a>.</p>
 </div>
 </div>
 <div class="section" id="interface">
-<span id="id11"></span><h2>3.8. 介面</h2>
+<span id="id11"></span><h2>3.8. 接口</h2>
 <div class="admonition tip">
 <p class="first admonition-title">Tip</p>
-<p class="last">介面是指滿足特定條件的類, 這些類以 <tt class="docutils literal"><span class="pre">Interface</span></tt> 為尾碼 (不強制).</p>
+<p class="last">接口是指满足特定条件的类, 这些类以 <tt class="docutils literal"><span class="pre">Interface</span></tt> 为后缀 (不强制).</p>
 </div>
 <dl class="docutils">
-<dt>定義:</dt>
-<dd><p class="first">當一個類滿足以下要求時, 稱之為純介面:</p>
+<dt>定义:</dt>
+<dd><p class="first">当一个类满足以下要求时, 称之为纯接口:</p>
 <blockquote>
 <div><ul class="simple">
-<li>只有純虛函數 (&#8220;<tt class="docutils literal"><span class="pre">=0</span></tt>&#8221;) 和靜態函數 (除了下文提到的解構子).</li>
-<li>沒有非靜態數據成員.</li>
-<li>沒有定義任何建構子. 如果有, 也不能帶有參數, 並且必須為 <tt class="docutils literal"><span class="pre">protected</span></tt>.</li>
-<li>如果它是一個子類, 也只能從滿足上述條件並以 <tt class="docutils literal"><span class="pre">Interface</span></tt> 為尾碼的類繼承.</li>
+<li>只有纯虚函数 (&#8220;<tt class="docutils literal"><span class="pre">=0</span></tt>&#8221;) 和静态函数 (除了下文提到的析构函数).</li>
+<li>没有非静态数据成员.</li>
+<li>没有定义任何构造函数. 如果有, 也不能带有参数, 并且必须为 <tt class="docutils literal"><span class="pre">protected</span></tt>.</li>
+<li>如果它是一个子类, 也只能从满足上述条件并以 <tt class="docutils literal"><span class="pre">Interface</span></tt> 为后缀的类继承.</li>
 </ul>
 </div></blockquote>
-<p class="last">介面類不能被直接實例化, 因為它聲明了純虛函數. 為確保介面類的所有實現可被正確銷毀, 必須為之聲明虛解構子 (作為上述第 1 條規則的特例, 解構子不能是純虛函數). 具體細節可參考 Stroustrup 的 <em>The C++ Programming Language, 3rd edition</em> 第 12.4 節.</p>
+<p class="last">接口类不能被直接实例化, 因为它声明了纯虚函数. 为确保接口类的所有实现可被正确销毁, 必须为之声明虚析构函数 (作为上述第 1 条规则的特例, 析构函数不能是纯虚函数). 具体细节可参考 Stroustrup 的 <em>The C++ Programming Language, 3rd edition</em> 第 12.4 节.</p>
 </dd>
-<dt>優點:</dt>
-<dd>以 <tt class="docutils literal"><span class="pre">Interface</span></tt> 為尾碼可以提醒其他人不要為該介面類增加函數實現或非靜態數據成員. 這一點對於 <a class="reference internal" href="#multiple-inheritance"><em>多重繼承</em></a> 尤其重要. 另外, 對於 Java 程序員來說, 介面的概念已是深入人心.</dd>
-<dt>缺點:</dt>
-<dd><tt class="docutils literal"><span class="pre">Interface</span></tt> 尾碼增加了類名長度, 為閲讀和理解帶來不便. 同時，介面特性作為實現細節不應暴露給用戶.</dd>
-<dt>結論:</dt>
-<dd>只有在滿足上述需要時, 類才以 <tt class="docutils literal"><span class="pre">Interface</span></tt> 結尾, 但反過來, 滿足上述需要的類未必一定以 <tt class="docutils literal"><span class="pre">Interface</span></tt> 結尾.</dd>
+<dt>优点:</dt>
+<dd>以 <tt class="docutils literal"><span class="pre">Interface</span></tt> 为后缀可以提醒其他人不要为该接口类增加函数实现或非静态数据成员. 这一点对于 <a class="reference internal" href="#multiple-inheritance"><em>多重继承</em></a> 尤其重要. 另外, 对于 Java 程序员来说, 接口的概念已是深入人心.</dd>
+<dt>缺点:</dt>
+<dd><tt class="docutils literal"><span class="pre">Interface</span></tt> 后缀增加了类名长度, 为阅读和理解带来不便. 同时，接口特性作为实现细节不应暴露给用户.</dd>
+<dt>结论:</dt>
+<dd>只有在满足上述需要时, 类才以 <tt class="docutils literal"><span class="pre">Interface</span></tt> 结尾, 但反过来, 满足上述需要的类未必一定以 <tt class="docutils literal"><span class="pre">Interface</span></tt> 结尾.</dd>
 </dl>
 </div>
 <div class="section" id="id12">
-<h2>3.9. 運算符重載</h2>
+<h2>3.9. 运算符重载</h2>
 <div class="admonition tip">
 <p class="first admonition-title">Tip</p>
-<p class="last">除少數特定環境外，不要重載運算符.</p>
+<p class="last">除少数特定环境外，不要重载运算符.</p>
 </div>
 <dl class="docutils">
-<dt>定義:</dt>
-<dd>一個類可以定義諸如 <tt class="docutils literal"><span class="pre">+</span></tt> 和 <tt class="docutils literal"><span class="pre">/</span></tt> 等運算符, 使其可以像內建類型一樣直接操作.</dd>
-<dt>優點:</dt>
-<dd>使代碼看上去更加直觀, 類表現的和內建類型 (如 <tt class="docutils literal"><span class="pre">int</span></tt>) 行為一致. 重載運算符使 <tt class="docutils literal"><span class="pre">Equals()</span></tt>, <tt class="docutils literal"><span class="pre">Add()</span></tt> 等函數名黯然失色. 為了使一些模板函數正確工作, 你可能必須定義操作符.</dd>
-<dt>缺點:</dt>
-<dd><p class="first">雖然操作符重載令代碼更加直觀, 但也有一些不足:</p>
+<dt>定义:</dt>
+<dd>一个类可以定义诸如 <tt class="docutils literal"><span class="pre">+</span></tt> 和 <tt class="docutils literal"><span class="pre">/</span></tt> 等运算符, 使其可以像内建类型一样直接操作.</dd>
+<dt>优点:</dt>
+<dd>使代码看上去更加直观, 类表现的和内建类型 (如 <tt class="docutils literal"><span class="pre">int</span></tt>) 行为一致. 重载运算符使 <tt class="docutils literal"><span class="pre">Equals()</span></tt>, <tt class="docutils literal"><span class="pre">Add()</span></tt> 等函数名黯然失色. 为了使一些模板函数正确工作, 你可能必须定义操作符.</dd>
+<dt>缺点:</dt>
+<dd><p class="first">虽然操作符重载令代码更加直观, 但也有一些不足:</p>
 <ul class="simple">
-<li>混淆視聽, 讓你誤以為一些耗時的操作和操作內建類型一樣輕巧.</li>
-<li>更難定位重載運算符的調用點, 查找 <tt class="docutils literal"><span class="pre">Equals()</span></tt> 顯然比對應的 <tt class="docutils literal"><span class="pre">==</span></tt> 調用點要容易的多.</li>
-<li>有的運算符可以對指針進行操作, 容易導致 bug. <tt class="docutils literal"><span class="pre">Foo</span> <span class="pre">+</span> <span class="pre">4</span></tt> 做的是一件事, 而 <tt class="docutils literal"><span class="pre">&amp;Foo</span> <span class="pre">+</span> <span class="pre">4</span></tt> 可能做的是完全不同的另一件事. 對於二者, 編譯器都不會報錯, 使其很難調試;</li>
+<li>混淆视听, 让你误以为一些耗时的操作和操作内建类型一样轻巧.</li>
+<li>更难定位重载运算符的调用点, 查找 <tt class="docutils literal"><span class="pre">Equals()</span></tt> 显然比对应的 <tt class="docutils literal"><span class="pre">==</span></tt> 调用点要容易的多.</li>
+<li>有的运算符可以对指针进行操作, 容易导致 bug. <tt class="docutils literal"><span class="pre">Foo</span> <span class="pre">+</span> <span class="pre">4</span></tt> 做的是一件事, 而 <tt class="docutils literal"><span class="pre">&amp;Foo</span> <span class="pre">+</span> <span class="pre">4</span></tt> 可能做的是完全不同的另一件事. 对于二者, 编译器都不会报错, 使其很难调试;</li>
 </ul>
-<p class="last">重載還有令你吃驚的副作用. 比如, 重載了 <tt class="docutils literal"><span class="pre">operator&amp;</span></tt> 的類不能被前置聲明.</p>
+<p class="last">重载还有令你吃惊的副作用. 比如, 重载了 <tt class="docutils literal"><span class="pre">operator&amp;</span></tt> 的类不能被前置声明.</p>
 </dd>
-<dt>結論:</dt>
-<dd><p class="first">一般不要重載運算符. 尤其是賦值操作 (<tt class="docutils literal"><span class="pre">operator=</span></tt>) 比較詭異, 應避免重載. 如果需要的話, 可以定義類似 <tt class="docutils literal"><span class="pre">Equals()</span></tt>, <tt class="docutils literal"><span class="pre">CopyFrom()</span></tt> 等函數.</p>
-<p>然而, 極少數情況下可能需要重載運算符以便與模板或 &#8220;標準&#8221; C++ 類互操作 (如 <tt class="docutils literal"><span class="pre">operator&lt;&lt;(ostream&amp;,</span> <span class="pre">const</span> <span class="pre">T&amp;)</span></tt>). 只有被證明是完全合理的才能重載, 但你還是要儘可能避免這樣做. 尤其是不要僅僅為了在 STL 容器中用作鍵值就重載 <tt class="docutils literal"><span class="pre">operator==</span></tt> 或 <tt class="docutils literal"><span class="pre">operator&lt;</span></tt>; 相反, 你應該在聲明容器的時候, 創建相等判斷和大小比較的仿函數類型.</p>
-<p>有些 STL 算法確實需要重載 <tt class="docutils literal"><span class="pre">operator==</span></tt> 時, 你可以這麼做, 記得別忘了在文檔中說明原因.</p>
-<p class="last">參考 <a class="reference internal" href="#copy-constructors"><em>拷貝建構子</em></a> 和 <a class="reference internal" href="others.html#function-overloading"><em>函數重載</em></a>.</p>
+<dt>结论:</dt>
+<dd><p class="first">一般不要重载运算符. 尤其是赋值操作 (<tt class="docutils literal"><span class="pre">operator=</span></tt>) 比较诡异, 应避免重载. 如果需要的话, 可以定义类似 <tt class="docutils literal"><span class="pre">Equals()</span></tt>, <tt class="docutils literal"><span class="pre">CopyFrom()</span></tt> 等函数.</p>
+<p>然而, 极少数情况下可能需要重载运算符以便与模板或 &#8220;标准&#8221; C++ 类互操作 (如 <tt class="docutils literal"><span class="pre">operator&lt;&lt;(ostream&amp;,</span> <span class="pre">const</span> <span class="pre">T&amp;)</span></tt>). 只有被证明是完全合理的才能重载, 但你还是要尽可能避免这样做. 尤其是不要仅仅为了在 STL 容器中用作键值就重载 <tt class="docutils literal"><span class="pre">operator==</span></tt> 或 <tt class="docutils literal"><span class="pre">operator&lt;</span></tt>; 相反, 你应该在声明容器的时候, 创建相等判断和大小比较的仿函数类型.</p>
+<p>有些 STL 算法确实需要重载 <tt class="docutils literal"><span class="pre">operator==</span></tt> 时, 你可以这么做, 记得别忘了在文档中说明原因.</p>
+<p class="last">参考 <a class="reference internal" href="#copy-constructors"><em>拷贝构造函数</em></a> 和 <a class="reference internal" href="others.html#function-overloading"><em>函数重载</em></a>.</p>
 </dd>
 </dl>
 </div>
@@ -276,58 +276,58 @@
 <h2>3.10. 存取控制</h2>
 <div class="admonition tip">
 <p class="first admonition-title">Tip</p>
-<p class="last">將 <em>所有</em> 數據成員聲明為 <tt class="docutils literal"><span class="pre">private</span></tt>, 並根據需要提供相應的存取函數. 例如, 某個名為 <tt class="docutils literal"><span class="pre">foo_</span></tt> 的變數, 其取值函數是 <tt class="docutils literal"><span class="pre">foo()</span></tt>. 還可能需要一個賦值函數 <tt class="docutils literal"><span class="pre">set_foo()</span></tt>.</p>
+<p class="last">将 <em>所有</em> 数据成员声明为 <tt class="docutils literal"><span class="pre">private</span></tt>, 并根据需要提供相应的存取函数. 例如, 某个名为 <tt class="docutils literal"><span class="pre">foo_</span></tt> 的变量, 其取值函数是 <tt class="docutils literal"><span class="pre">foo()</span></tt>. 还可能需要一个赋值函数 <tt class="docutils literal"><span class="pre">set_foo()</span></tt>.</p>
 </div>
-<p>一般在標頭檔中把存取函數定義成內聯函數.</p>
-<p>參考 <a class="reference internal" href="#inheritance"><em>繼承</em></a> 和 <a class="reference internal" href="naming.html#function-names"><em>函數命名</em></a></p>
+<p>一般在头文件中把存取函数定义成内联函数.</p>
+<p>参考 <a class="reference internal" href="#inheritance"><em>继承</em></a> 和 <a class="reference internal" href="naming.html#function-names"><em>函数命名</em></a></p>
 </div>
 <div class="section" id="declaration-order">
-<span id="id14"></span><h2>3.11. 聲明順序</h2>
+<span id="id14"></span><h2>3.11. 声明顺序</h2>
 <div class="admonition tip">
 <p class="first admonition-title">Tip</p>
-<p class="last">在類中使用特定的聲明順序: <tt class="docutils literal"><span class="pre">public:</span></tt> 在 <tt class="docutils literal"><span class="pre">private:</span></tt> 之前, 成員函數在數據成員 (變數) 前;</p>
+<p class="last">在类中使用特定的声明顺序: <tt class="docutils literal"><span class="pre">public:</span></tt> 在 <tt class="docutils literal"><span class="pre">private:</span></tt> 之前, 成员函数在数据成员 (变量) 前;</p>
 </div>
-<p>類的訪問控制區段的聲明順序依次為: <tt class="docutils literal"><span class="pre">public:</span></tt>, <tt class="docutils literal"><span class="pre">protected:</span></tt>, <tt class="docutils literal"><span class="pre">private:</span></tt>. 如果某區段沒內容, 可以不聲明.</p>
-<p>每個區段內的聲明通常按以下順序:</p>
+<p>类的访问控制区段的声明顺序依次为: <tt class="docutils literal"><span class="pre">public:</span></tt>, <tt class="docutils literal"><span class="pre">protected:</span></tt>, <tt class="docutils literal"><span class="pre">private:</span></tt>. 如果某区段没内容, 可以不声明.</p>
+<p>每个区段内的声明通常按以下顺序:</p>
 <blockquote>
 <div><ul class="simple">
-<li><tt class="docutils literal"><span class="pre">typedefs</span></tt> 和枚舉</li>
+<li><tt class="docutils literal"><span class="pre">typedefs</span></tt> 和枚举</li>
 <li>常量</li>
-<li>建構子</li>
-<li>解構子</li>
-<li>成員函數, 含靜態成員函數</li>
-<li>數據成員, 含靜態數據成員</li>
+<li>构造函数</li>
+<li>析构函数</li>
+<li>成员函数, 含静态成员函数</li>
+<li>数据成员, 含静态数据成员</li>
 </ul>
 </div></blockquote>
-<p>宏 <tt class="docutils literal"><span class="pre">DISALLOW_COPY_AND_ASSIGN</span></tt> 的調用放在 <tt class="docutils literal"><span class="pre">private:</span></tt> 區段的末尾. 它通常是類的最後部分. 參考 <a class="reference internal" href="#copy-constructors"><em>拷貝建構子</em></a>.</p>
-<p><tt class="docutils literal"><span class="pre">.cc</span></tt> 檔案中函數的定義應儘可能和聲明順序一致.</p>
-<p>不要在類定義中內聯大型函數. 通常, 只有那些沒有特別意義或性能要求高, 並且是比較短小的函數才能被定義為內聯函數. 更多細節參考 <a class="reference internal" href="headers.html#inline-functions"><em>內聯函數</em></a>.</p>
+<p>宏 <tt class="docutils literal"><span class="pre">DISALLOW_COPY_AND_ASSIGN</span></tt> 的调用放在 <tt class="docutils literal"><span class="pre">private:</span></tt> 区段的末尾. 它通常是类的最后部分. 参考 <a class="reference internal" href="#copy-constructors"><em>拷贝构造函数</em></a>.</p>
+<p><tt class="docutils literal"><span class="pre">.cc</span></tt> 文件中函数的定义应尽可能和声明顺序一致.</p>
+<p>不要在类定义中内联大型函数. 通常, 只有那些没有特别意义或性能要求高, 并且是比较短小的函数才能被定义为内联函数. 更多细节参考 <a class="reference internal" href="headers.html#inline-functions"><em>内联函数</em></a>.</p>
 </div>
 <div class="section" id="id15">
-<h2>3.12. 編寫簡短函數</h2>
+<h2>3.12. 编写简短函数</h2>
 <div class="admonition tip">
 <p class="first admonition-title">Tip</p>
-<p class="last">傾向編寫簡短, 凝練的函數.</p>
+<p class="last">倾向编写简短, 凝练的函数.</p>
 </div>
-<p>我們承認長函數有時是合理的, 因此並不硬性限制函數的長度. 如果函數超過 40 行, 可以思索一下能不能在不影響程序結構的前提下對其進行分割.</p>
-<p>即使一個長函數現在工作的非常好, 一旦有人對其修改, 有可能出現新的問題. 甚至導致難以發現的 bug. 使函數儘量簡短, 便於他人閲讀和修改代碼.</p>
-<p>在處理代碼時, 你可能會發現複雜的長函數. 不要害怕修改現有代碼: 如果證實這些代碼使用 / 調試困難, 或者你需要使用其中的一小段代碼, 考慮將其分割為更加簡短並易於管理的若干函數.</p>
+<p>我们承认长函数有时是合理的, 因此并不硬性限制函数的长度. 如果函数超过 40 行, 可以思索一下能不能在不影响程序结构的前提下对其进行分割.</p>
+<p>即使一个长函数现在工作的非常好, 一旦有人对其修改, 有可能出现新的问题. 甚至导致难以发现的 bug. 使函数尽量简短, 便于他人阅读和修改代码.</p>
+<p>在处理代码时, 你可能会发现复杂的长函数. 不要害怕修改现有代码: 如果证实这些代码使用 / 调试困难, 或者你需要使用其中的一小段代码, 考虑将其分割为更加简短并易于管理的若干函数.</p>
 </div>
 <div class="section" id="yulefox">
-<h2>譯者 (YuleFox) 筆記</h2>
+<h2>译者 (YuleFox) 笔记</h2>
 <ol class="arabic simple">
-<li>不在建構子中做太多邏輯相關的初始化;</li>
-<li>編譯器提供的預設建構子不會對變數進行初始化, 如果定義了其他建構子, 編譯器不再提供, 需要編碼者自行提供預設建構子;</li>
-<li>為避免隱式轉換, 需將單參數建構子聲明為 <tt class="docutils literal"><span class="pre">explicit</span></tt>;</li>
-<li>為避免拷貝建構子, 賦值操作的濫用和編譯器自動生成, 可將其聲明為 <tt class="docutils literal"><span class="pre">private</span></tt> 且無需實現;</li>
-<li>僅在作為數據集合時使用 <tt class="docutils literal"><span class="pre">struct</span></tt>;</li>
-<li>組合 &gt; 實現繼承 &gt; 介面繼承 &gt; 私有繼承, 子類重載的虛函數也要聲明 <tt class="docutils literal"><span class="pre">virtual</span></tt> 關鍵字, 雖然編譯器允許不這樣做;</li>
-<li>避免使用多重繼承, 使用時, 除一個基類含有實現外, 其他基類均為純介面;</li>
-<li>介面類類名以 <tt class="docutils literal"><span class="pre">Interface</span></tt> 為尾碼, 除提供帶實現的虛解構子, 靜態成員函數外, 其他均為純虛函數, 不定義非靜態數據成員, 不提供建構子, 提供的話，聲明為 <tt class="docutils literal"><span class="pre">protected</span></tt>;</li>
-<li>為降低複雜性, 儘量不重載操作符, 模板, 標準類中使用時提供文檔說明;</li>
-<li>存取函數一般內聯在標頭檔中;</li>
-<li>聲明次序: <tt class="docutils literal"><span class="pre">public</span></tt> -&gt; <tt class="docutils literal"><span class="pre">protected</span></tt> -&gt; <tt class="docutils literal"><span class="pre">private</span></tt>;</li>
-<li>函數體儘量短小, 緊湊, 功能單一;</li>
+<li>不在构造函数中做太多逻辑相关的初始化;</li>
+<li>编译器提供的默认构造函数不会对变量进行初始化, 如果定义了其他构造函数, 编译器不再提供, 需要编码者自行提供默认构造函数;</li>
+<li>为避免隐式转换, 需将单参数构造函数声明为 <tt class="docutils literal"><span class="pre">explicit</span></tt>;</li>
+<li>为避免拷贝构造函数, 赋值操作的滥用和编译器自动生成, 可将其声明为 <tt class="docutils literal"><span class="pre">private</span></tt> 且无需实现;</li>
+<li>仅在作为数据集合时使用 <tt class="docutils literal"><span class="pre">struct</span></tt>;</li>
+<li>组合 &gt; 实现继承 &gt; 接口继承 &gt; 私有继承, 子类重载的虚函数也要声明 <tt class="docutils literal"><span class="pre">virtual</span></tt> 关键字, 虽然编译器允许不这样做;</li>
+<li>避免使用多重继承, 使用时, 除一个基类含有实现外, 其他基类均为纯接口;</li>
+<li>接口类类名以 <tt class="docutils literal"><span class="pre">Interface</span></tt> 为后缀, 除提供带实现的虚析构函数, 静态成员函数外, 其他均为纯虚函数, 不定义非静态数据成员, 不提供构造函数, 提供的话，声明为 <tt class="docutils literal"><span class="pre">protected</span></tt>;</li>
+<li>为降低复杂性, 尽量不重载操作符, 模板, 标准类中使用时提供文档说明;</li>
+<li>存取函数一般内联在头文件中;</li>
+<li>声明次序: <tt class="docutils literal"><span class="pre">public</span></tt> -&gt; <tt class="docutils literal"><span class="pre">protected</span></tt> -&gt; <tt class="docutils literal"><span class="pre">private</span></tt>;</li>
+<li>函数体尽量短小, 紧凑, 功能单一;</li>
 </ol>
 </div>
 </div>
@@ -341,7 +341,7 @@
         &#160;&#160;::&#160;&#160;
         <a class="uplink" href="../contents.html">Contents</a>
         &#160;&#160;::&#160;&#160;
-        <a href="magic.html">4. 來自 Google 的奇技</a>&#160;&#160;»
+        <a href="magic.html">4. 来自 Google 的奇技</a>&#160;&#160;»
         </p>
 
       </div>

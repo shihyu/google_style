@@ -8,7 +8,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>1. 標頭檔 &mdash; Google 開源項目風格指南</title>
+    <title>1. 头文件 &mdash; Google 开源项目风格指南</title>
     
     <link rel="stylesheet" href="../_static/haiku.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
@@ -27,20 +27,20 @@
     <script type="text/javascript" src="../_static/underscore.js"></script>
     <script type="text/javascript" src="../_static/doctools.js"></script>
     <script type="text/javascript" src="../_static/theme_extras.js"></script>
-    <link rel="top" title="Google 開源項目風格指南" href="../index.html" />
-    <link rel="up" title="C++ 風格指南 - 內容目錄" href="contents.html" />
+    <link rel="top" title="Google 开源项目风格指南" href="../index.html" />
+    <link rel="up" title="C++ 风格指南 - 内容目录" href="contents.html" />
     <link rel="next" title="2. 作用域" href="scoping.html" />
-    <link rel="prev" title="0. 扉頁" href="index.html" /> 
+    <link rel="prev" title="0. 扉页" href="index.html" /> 
   </head>
   <body>
       <div class="header"><h1 class="heading"><a href="../index.html">
-          <span>Google 開源項目風格指南</span></a></h1>
-        <h2 class="heading"><span>1. 標頭檔</span></h2>
+          <span>Google 开源项目风格指南</span></a></h1>
+        <h2 class="heading"><span>1. 头文件</span></h2>
       </div>
       <div class="topnav">
       
         <p>
-        «&#160;&#160;<a href="index.html">0. 扉頁</a>
+        «&#160;&#160;<a href="index.html">0. 扉页</a>
         &#160;&#160;::&#160;&#160;
         <a class="uplink" href="../contents.html">Contents</a>
         &#160;&#160;::&#160;&#160;
@@ -52,17 +52,17 @@
         
         
   <div class="section" id="id1">
-<h1>1. 標頭檔</h1>
-<p>通常每一個 <tt class="docutils literal"><span class="pre">.cc</span></tt> 檔案都有一個對應的 <tt class="docutils literal"><span class="pre">.h</span></tt> 檔案. 也有一些常見例外, 如單元測試代碼和只包含 <tt class="docutils literal"><span class="pre">main()</span></tt> 函數的 <tt class="docutils literal"><span class="pre">.cc</span></tt> 檔案.</p>
-<p>正確使用標頭檔可令代碼在可讀性、檔案大小和性能上大為改觀.</p>
-<p>下面的規則將引導你規避使用標頭檔時的各種陷阱.</p>
+<h1>1. 头文件</h1>
+<p>通常每一个 <tt class="docutils literal"><span class="pre">.cc</span></tt> 文件都有一个对应的 <tt class="docutils literal"><span class="pre">.h</span></tt> 文件. 也有一些常见例外, 如单元测试代码和只包含 <tt class="docutils literal"><span class="pre">main()</span></tt> 函数的 <tt class="docutils literal"><span class="pre">.cc</span></tt> 文件.</p>
+<p>正确使用头文件可令代码在可读性、文件大小和性能上大为改观.</p>
+<p>下面的规则将引导你规避使用头文件时的各种陷阱.</p>
 <div class="section" id="define">
-<span id="define-guard"></span><h2>1.1. #define 保護</h2>
+<span id="define-guard"></span><h2>1.1. #define 保护</h2>
 <div class="admonition tip">
 <p class="first admonition-title">Tip</p>
-<p class="last">所有標頭檔都應該使用 <tt class="docutils literal"><span class="pre">#define</span></tt> 防止標頭檔被多重包含, 命名格式當是: <tt class="docutils literal"><span class="pre">&lt;PROJECT&gt;_&lt;PATH&gt;_&lt;FILE&gt;_H_</span></tt></p>
+<p class="last">所有头文件都应该使用 <tt class="docutils literal"><span class="pre">#define</span></tt> 防止头文件被多重包含, 命名格式当是: <tt class="docutils literal"><span class="pre">&lt;PROJECT&gt;_&lt;PATH&gt;_&lt;FILE&gt;_H_</span></tt></p>
 </div>
-<p>為保證唯一性, 標頭檔的命名應該依據所在項目原始碼樹的全路徑. 例如, 項目 <tt class="docutils literal"><span class="pre">foo</span></tt> 中的標頭檔 <tt class="docutils literal"><span class="pre">foo/src/bar/baz.h</span></tt> 可按如下方式保護:</p>
+<p>为保证唯一性, 头文件的命名应该依据所在项目源代码树的全路径. 例如, 项目 <tt class="docutils literal"><span class="pre">foo</span></tt> 中的头文件 <tt class="docutils literal"><span class="pre">foo/src/bar/baz.h</span></tt> 可按如下方式保护:</p>
 <div class="highlight-c++"><pre>#ifndef FOO_BAR_BAZ_H_
 #define FOO_BAR_BAZ_H_
 …
@@ -70,91 +70,91 @@
 </div>
 </div>
 <div class="section" id="id2">
-<h2>1.2. 標頭檔依賴</h2>
+<h2>1.2. 头文件依赖</h2>
 <div class="admonition tip">
 <p class="first admonition-title">Tip</p>
-<p class="last">能用前置聲明的地方儘量不使用 <tt class="docutils literal"><span class="pre">#include</span></tt>.</p>
+<p class="last">能用前置声明的地方尽量不使用 <tt class="docutils literal"><span class="pre">#include</span></tt>.</p>
 </div>
-<p>當一個標頭檔被包含的同時也引入了新的依賴, 一旦該標頭檔被修改, 代碼就會被重新編譯. 如果這個標頭檔又包含了其他標頭檔, 這些標頭檔的任何改變都將導致所有包含了該標頭檔的代碼被重新編譯. 因此, 我們傾向于減少包含標頭檔, 尤其是在標頭檔中包含標頭檔.</p>
-<p>使用前置聲明可以顯著減少需要包含的標頭檔數量. 舉例說明: 如果標頭檔中用到類 <tt class="docutils literal"><span class="pre">File</span></tt>, 但不需要訪問 <tt class="docutils literal"><span class="pre">File</span></tt> 類的聲明, 標頭檔中只需前置聲明 <tt class="docutils literal"><span class="pre">class</span> <span class="pre">File;</span></tt> 而無須 <tt class="docutils literal"><span class="pre">#include</span> <span class="pre">&quot;file/base/file.h&quot;</span></tt>.</p>
-<p>不允許訪問類的定義的前提下, 我們在一個標頭檔中能對類 <tt class="docutils literal"><span class="pre">Foo</span></tt> 做哪些操作?</p>
+<p>当一个头文件被包含的同时也引入了新的依赖, 一旦该头文件被修改, 代码就会被重新编译. 如果这个头文件又包含了其他头文件, 这些头文件的任何改变都将导致所有包含了该头文件的代码被重新编译. 因此, 我们倾向于减少包含头文件, 尤其是在头文件中包含头文件.</p>
+<p>使用前置声明可以显著减少需要包含的头文件数量. 举例说明: 如果头文件中用到类 <tt class="docutils literal"><span class="pre">File</span></tt>, 但不需要访问 <tt class="docutils literal"><span class="pre">File</span></tt> 类的声明, 头文件中只需前置声明 <tt class="docutils literal"><span class="pre">class</span> <span class="pre">File;</span></tt> 而无须 <tt class="docutils literal"><span class="pre">#include</span> <span class="pre">&quot;file/base/file.h&quot;</span></tt>.</p>
+<p>不允许访问类的定义的前提下, 我们在一个头文件中能对类 <tt class="docutils literal"><span class="pre">Foo</span></tt> 做哪些操作?</p>
 <ul class="simple">
-<li>我們可以將數據成員類型聲明為 <tt class="docutils literal"><span class="pre">Foo</span> <span class="pre">*</span></tt> 或 <tt class="docutils literal"><span class="pre">Foo</span> <span class="pre">&amp;</span></tt>.</li>
-<li>我們可以將函數參數 / 返回值的類型聲明為 <tt class="docutils literal"><span class="pre">Foo</span></tt> (但不能定義實現).</li>
-<li>我們可以將靜態數據成員的類型聲明為 <tt class="docutils literal"><span class="pre">Foo</span></tt>, 因為靜態數據成員的定義在類定義之外.</li>
+<li>我们可以将数据成员类型声明为 <tt class="docutils literal"><span class="pre">Foo</span> <span class="pre">*</span></tt> 或 <tt class="docutils literal"><span class="pre">Foo</span> <span class="pre">&amp;</span></tt>.</li>
+<li>我们可以将函数参数 / 返回值的类型声明为 <tt class="docutils literal"><span class="pre">Foo</span></tt> (但不能定义实现).</li>
+<li>我们可以将静态数据成员的类型声明为 <tt class="docutils literal"><span class="pre">Foo</span></tt>, 因为静态数据成员的定义在类定义之外.</li>
 </ul>
-<p>反之, 如果你的類是 <tt class="docutils literal"><span class="pre">Foo</span></tt> 的子類, 或者含有類型為 <tt class="docutils literal"><span class="pre">Foo</span></tt> 的非靜態數據成員, 則必須包含 <tt class="docutils literal"><span class="pre">Foo</span></tt> 所在的標頭檔.</p>
-<p>有時, 使用指針成員 (如果是 <tt class="docutils literal"><span class="pre">scoped_ptr</span></tt> 更好) 替代對象成員的確是明智之選. 然而, 這會降低代碼可讀性及執行效率, 因此如果僅僅為了少包含標頭檔，還是不要這麼做的好.</p>
-<p>當然 <tt class="docutils literal"><span class="pre">.cc</span></tt> 檔案無論如何都需要所使用類的定義部分, 自然也就會包含若干標頭檔.</p>
+<p>反之, 如果你的类是 <tt class="docutils literal"><span class="pre">Foo</span></tt> 的子类, 或者含有类型为 <tt class="docutils literal"><span class="pre">Foo</span></tt> 的非静态数据成员, 则必须包含 <tt class="docutils literal"><span class="pre">Foo</span></tt> 所在的头文件.</p>
+<p>有时, 使用指针成员 (如果是 <tt class="docutils literal"><span class="pre">scoped_ptr</span></tt> 更好) 替代对象成员的确是明智之选. 然而, 这会降低代码可读性及执行效率, 因此如果仅仅为了少包含头文件，还是不要这么做的好.</p>
+<p>当然 <tt class="docutils literal"><span class="pre">.cc</span></tt> 文件无论如何都需要所使用类的定义部分, 自然也就会包含若干头文件.</p>
 </div>
 <div class="section" id="inline-functions">
-<span id="id3"></span><h2>1.3. 內聯函數</h2>
+<span id="id3"></span><h2>1.3. 内联函数</h2>
 <div class="admonition tip">
 <p class="first admonition-title">Tip</p>
-<p class="last">只有當函數只有 10 行甚至更少時才將其定義為內聯函數.</p>
+<p class="last">只有当函数只有 10 行甚至更少时才将其定义为内联函数.</p>
 </div>
 <dl class="docutils">
-<dt>定義:</dt>
-<dd>當函數被聲明為內聯函數之後, 編譯器會將其內聯展開, 而不是按通常的函數調用機制進行調用.</dd>
-<dt>優點:</dt>
-<dd>當函數體比較小的時候, 內聯該函數可以令目標代碼更加高效. 對於存取函數以及其它函數體比較短, 性能關鍵的函數, 鼓勵使用內聯.</dd>
-<dt>缺點:</dt>
-<dd>濫用內聯將導致程序變慢. 內聯可能使目標代碼量或增或減, 這取決於內聯函數的大小. 內聯非常短小的存取函數通常會減少代碼大小, 但內聯一個相當大的函數將戲劇性的增加代碼大小. 現代處理器由於更好的利用了指令緩存, 小巧的代碼往往執行更快。</dd>
-<dt>結論:</dt>
-<dd><p class="first">一個較為合理的經驗準則是, 不要內聯超過 10 行的函數. 謹慎對待解構子, 解構子往往比其表面看起來要更長, 因為有隱含的成員和基類解構子被調用!</p>
-<p>另一個實用的經驗準則: 內聯那些包含循環或 <tt class="docutils literal"><span class="pre">switch</span></tt> 語句的函數常常是得不償失 (除非在大多數情況下, 這些循環或 <tt class="docutils literal"><span class="pre">switch</span></tt> 語句從不被執行).</p>
-<p class="last">有些函數即使聲明為內聯的也不一定會被編譯器內聯, 這點很重要; 比如虛函數和遞歸函數就不會被正常內聯.  通常, 遞歸函數不應該聲明成內聯函數.（YuleFox 註: 遞歸調用堆棧的展開並不像循環那麼簡單, 比如遞歸層數在編譯時可能是未知的, 大多數編譯器都不支持內聯遞歸函數). 虛函數內聯的主要原因則是想把它的函數體放在類定義內, 為了圖個方便, 抑或是當作文檔描述其行為, 比如精短的存取函數.</p>
+<dt>定义:</dt>
+<dd>当函数被声明为内联函数之后, 编译器会将其内联展开, 而不是按通常的函数调用机制进行调用.</dd>
+<dt>优点:</dt>
+<dd>当函数体比较小的时候, 内联该函数可以令目标代码更加高效. 对于存取函数以及其它函数体比较短, 性能关键的函数, 鼓励使用内联.</dd>
+<dt>缺点:</dt>
+<dd>滥用内联将导致程序变慢. 内联可能使目标代码量或增或减, 这取决于内联函数的大小. 内联非常短小的存取函数通常会减少代码大小, 但内联一个相当大的函数将戏剧性的增加代码大小. 现代处理器由于更好的利用了指令缓存, 小巧的代码往往执行更快。</dd>
+<dt>结论:</dt>
+<dd><p class="first">一个较为合理的经验准则是, 不要内联超过 10 行的函数. 谨慎对待析构函数, 析构函数往往比其表面看起来要更长, 因为有隐含的成员和基类析构函数被调用!</p>
+<p>另一个实用的经验准则: 内联那些包含循环或 <tt class="docutils literal"><span class="pre">switch</span></tt> 语句的函数常常是得不偿失 (除非在大多数情况下, 这些循环或 <tt class="docutils literal"><span class="pre">switch</span></tt> 语句从不被执行).</p>
+<p class="last">有些函数即使声明为内联的也不一定会被编译器内联, 这点很重要; 比如虚函数和递归函数就不会被正常内联.  通常, 递归函数不应该声明成内联函数.（YuleFox 注: 递归调用堆栈的展开并不像循环那么简单, 比如递归层数在编译时可能是未知的, 大多数编译器都不支持内联递归函数). 虚函数内联的主要原因则是想把它的函数体放在类定义内, 为了图个方便, 抑或是当作文档描述其行为, 比如精短的存取函数.</p>
 </dd>
 </dl>
 </div>
 <div class="section" id="inl-h">
-<span id="inl-files"></span><h2>1.4. -inl.h檔案</h2>
+<span id="inl-files"></span><h2>1.4. -inl.h文件</h2>
 <div class="admonition tip">
 <p class="first admonition-title">Tip</p>
-<p class="last">複雜的內聯函數的定義, 應放在尾碼名為 <tt class="docutils literal"><span class="pre">-inl.h</span></tt> 的標頭檔中.</p>
+<p class="last">复杂的内联函数的定义, 应放在后缀名为 <tt class="docutils literal"><span class="pre">-inl.h</span></tt> 的头文件中.</p>
 </div>
-<p>內聯函數的定義必須放在標頭檔中, 編譯器才能在調用點內聯展開定義. 然而, 實現代碼理論上應該放在 <tt class="docutils literal"><span class="pre">.cc</span></tt> 檔案中, 我們不希望 <tt class="docutils literal"><span class="pre">.h</span></tt> 檔案中有太多實現代碼, 除非在可讀性和性能上有明顯優勢.</p>
-<p>如果內聯函數的定義比較短小, 邏輯比較簡單, 實現代碼放在 <tt class="docutils literal"><span class="pre">.h</span></tt> 檔案裡沒有任何問題. 比如, 存取函數的實現理所當然都應該放在類定義內. 出於編寫者和調用者的方便, 較複雜的內聯函數也可以放到 <tt class="docutils literal"><span class="pre">.h</span></tt> 檔案中, 如果你覺得這樣會使標頭檔顯得笨重, 也可以把它萃取到單獨的 <tt class="docutils literal"><span class="pre">-inl.h</span></tt> 中. 這樣把實現和類定義分離開來, 當需要時包含對應的 <tt class="docutils literal"><span class="pre">-inl.h</span></tt> 即可。</p>
-<p><tt class="docutils literal"><span class="pre">-inl.h</span></tt> 檔案還可用於函數模板的定義. 從而增強模板定義的可讀性.</p>
-<p>別忘了 <tt class="docutils literal"><span class="pre">-inl.h</span></tt> 和其他標頭檔一樣, 也需要 <tt class="docutils literal"><span class="pre">#define</span></tt> 保護.</p>
+<p>内联函数的定义必须放在头文件中, 编译器才能在调用点内联展开定义. 然而, 实现代码理论上应该放在 <tt class="docutils literal"><span class="pre">.cc</span></tt> 文件中, 我们不希望 <tt class="docutils literal"><span class="pre">.h</span></tt> 文件中有太多实现代码, 除非在可读性和性能上有明显优势.</p>
+<p>如果内联函数的定义比较短小, 逻辑比较简单, 实现代码放在 <tt class="docutils literal"><span class="pre">.h</span></tt> 文件里没有任何问题. 比如, 存取函数的实现理所当然都应该放在类定义内. 出于编写者和调用者的方便, 较复杂的内联函数也可以放到 <tt class="docutils literal"><span class="pre">.h</span></tt> 文件中, 如果你觉得这样会使头文件显得笨重, 也可以把它萃取到单独的 <tt class="docutils literal"><span class="pre">-inl.h</span></tt> 中. 这样把实现和类定义分离开来, 当需要时包含对应的 <tt class="docutils literal"><span class="pre">-inl.h</span></tt> 即可。</p>
+<p><tt class="docutils literal"><span class="pre">-inl.h</span></tt> 文件还可用于函数模板的定义. 从而增强模板定义的可读性.</p>
+<p>别忘了 <tt class="docutils literal"><span class="pre">-inl.h</span></tt> 和其他头文件一样, 也需要 <tt class="docutils literal"><span class="pre">#define</span></tt> 保护.</p>
 </div>
 <div class="section" id="id4">
-<h2>1.5. 函數參數的順序</h2>
+<h2>1.5. 函数参数的顺序</h2>
 <div class="admonition tip">
 <p class="first admonition-title">Tip</p>
-<p class="last">定義函數時, 參數順序依次為: 輸入參數, 然後是輸出參數.</p>
+<p class="last">定义函数时, 参数顺序依次为: 输入参数, 然后是输出参数.</p>
 </div>
-<p>C/C++ 函數參數分為輸入參數, 輸出參數, 和輸入/輸出參數三種. 輸入參數一般傳值或傳 <tt class="docutils literal"><span class="pre">const</span></tt> 引用, 輸出參數或輸入/輸出參數則是非-<tt class="docutils literal"><span class="pre">const</span></tt> 指針. 對參數排序時, 將只輸入的參數放在所有輸出參數之前. 尤其是不要僅僅因為是新加的參數, 就把它放在最後; 即使是新加的只輸入參數也要放在輸出參數.</p>
-<p>這條規則並不需要嚴格遵守. 輸入/輸出兩用參數 (通常是類/結構體變數) 把事情變得複雜, 為保持和相關函數的一致性, 你有時不得不有所變通.</p>
+<p>C/C++ 函数参数分为输入参数, 输出参数, 和输入/输出参数三种. 输入参数一般传值或传 <tt class="docutils literal"><span class="pre">const</span></tt> 引用, 输出参数或输入/输出参数则是非-<tt class="docutils literal"><span class="pre">const</span></tt> 指针. 对参数排序时, 将只输入的参数放在所有输出参数之前. 尤其是不要仅仅因为是新加的参数, 就把它放在最后; 即使是新加的只输入参数也要放在输出参数之前.</p>
+<p>这条规则并不需要严格遵守. 输入/输出两用参数 (通常是类/结构体变量) 把事情变得复杂, 为保持和相关函数的一致性, 你有时不得不有所变通.</p>
 </div>
 <div class="section" id="include">
-<h2>1.6. <tt class="docutils literal"><span class="pre">#include</span></tt> 的路徑及順序</h2>
+<h2>1.6. <tt class="docutils literal"><span class="pre">#include</span></tt> 的路径及顺序</h2>
 <div class="admonition tip">
 <p class="first admonition-title">Tip</p>
-<p class="last">使用標準的標頭檔包含順序可增強可讀性, 避免隱藏依賴: C 庫, C++ 庫, 其他庫的 <cite>.h</cite>, 本項目內的 <cite>.h</cite>.</p>
+<p class="last">使用标准的头文件包含顺序可增强可读性, 避免隐藏依赖: C 库, C++ 库, 其他库的 <cite>.h</cite>, 本项目内的 <cite>.h</cite>.</p>
 </div>
 <dl class="docutils">
-<dt>項目內標頭檔應按照項目原始碼目錄樹結構排列, 避免使用 UNIX 特殊的快捷目錄 <tt class="docutils literal"><span class="pre">.</span></tt> (當前目錄) 或 <tt class="docutils literal"><span class="pre">..</span></tt> (上級目錄). 例如, <tt class="docutils literal"><span class="pre">google-awesome-project/src/base/logging.h</span></tt> 應該按如下方式包含:</dt>
+<dt>项目内头文件应按照项目源代码目录树结构排列, 避免使用 UNIX 特殊的快捷目录 <tt class="docutils literal"><span class="pre">.</span></tt> (当前目录) 或 <tt class="docutils literal"><span class="pre">..</span></tt> (上级目录). 例如, <tt class="docutils literal"><span class="pre">google-awesome-project/src/base/logging.h</span></tt> 应该按如下方式包含:</dt>
 <dd><div class="first last highlight-c++"><div class="highlight"><pre><span class="cp">#include “base/logging.h”</span>
 </pre></div>
 </div>
 </dd>
-<dt>又如, <tt class="docutils literal"><span class="pre">dir/foo.cc</span></tt> 的主要作用是實現或測試 <tt class="docutils literal"><span class="pre">dir2/foo2.h</span></tt> 的功能, <tt class="docutils literal"><span class="pre">foo.cc</span></tt> 中包含標頭檔的次序如下:</dt>
+<dt>又如, <tt class="docutils literal"><span class="pre">dir/foo.cc</span></tt> 的主要作用是实现或测试 <tt class="docutils literal"><span class="pre">dir2/foo2.h</span></tt> 的功能, <tt class="docutils literal"><span class="pre">foo.cc</span></tt> 中包含头文件的次序如下:</dt>
 <dd><ol class="first last arabic simple">
-<li><tt class="docutils literal"><span class="pre">dir2/foo2.h</span></tt> (優先位置, 詳情如下)</li>
-<li>C 系統檔案</li>
-<li>C++ 系統檔案</li>
-<li>其他庫的 <tt class="docutils literal"><span class="pre">.h</span></tt> 檔案</li>
-<li>本項目內 <tt class="docutils literal"><span class="pre">.h</span></tt> 檔案</li>
+<li><tt class="docutils literal"><span class="pre">dir2/foo2.h</span></tt> (优先位置, 详情如下)</li>
+<li>C 系统文件</li>
+<li>C++ 系统文件</li>
+<li>其他库的 <tt class="docutils literal"><span class="pre">.h</span></tt> 文件</li>
+<li>本项目内 <tt class="docutils literal"><span class="pre">.h</span></tt> 文件</li>
 </ol>
 </dd>
 </dl>
-<p>這種排序方式可有效減少隱藏依賴. 我們希望每一個標頭檔都是可被獨立編譯的 (yospaly 譯註: 即該標頭檔本身已包含所有必要的顯式依賴), 最簡單的方法是將其作為第一個 <tt class="docutils literal"><span class="pre">.h</span></tt> 檔案 <tt class="docutils literal"><span class="pre">#included</span></tt> 進對應的 <tt class="docutils literal"><span class="pre">.cc</span></tt>.</p>
-<p><tt class="docutils literal"><span class="pre">dir/foo.cc</span></tt> 和 <tt class="docutils literal"><span class="pre">dir2/foo2.h</span></tt> 通常位於同一目錄下 (如 <tt class="docutils literal"><span class="pre">base/basictypes_unittest.cc</span></tt> 和 <tt class="docutils literal"><span class="pre">base/basictypes.h</span></tt>), 但也可以放在不同目錄下.</p>
-<p>按字母順序對標頭檔包含進行二次排序是不錯的主意 (yospaly 譯註: 之前已經按標頭檔類別排過序了).</p>
+<p>这种排序方式可有效减少隐藏依赖. 我们希望每一个头文件都是可被独立编译的 (yospaly 译注: 即该头文件本身已包含所有必要的显式依赖), 最简单的方法是将其作为第一个 <tt class="docutils literal"><span class="pre">.h</span></tt> 文件 <tt class="docutils literal"><span class="pre">#included</span></tt> 进对应的 <tt class="docutils literal"><span class="pre">.cc</span></tt>.</p>
+<p><tt class="docutils literal"><span class="pre">dir/foo.cc</span></tt> 和 <tt class="docutils literal"><span class="pre">dir2/foo2.h</span></tt> 通常位于同一目录下 (如 <tt class="docutils literal"><span class="pre">base/basictypes_unittest.cc</span></tt> 和 <tt class="docutils literal"><span class="pre">base/basictypes.h</span></tt>), 但也可以放在不同目录下.</p>
+<p>按字母顺序对头文件包含进行二次排序是不错的主意 (yospaly 译注: 之前已经按头文件类别排过序了).</p>
 <dl class="docutils">
-<dt>舉例來說, <tt class="docutils literal"><span class="pre">google-awesome-project/src/foo/internal/fooserver.cc</span></tt> 的包含次序如下:</dt>
-<dd><div class="first last highlight-c++"><div class="highlight"><pre><span class="cp">#include &quot;foo/public/fooserver.h&quot; </span><span class="c1">// 優先位置</span>
+<dt>举例来说, <tt class="docutils literal"><span class="pre">google-awesome-project/src/foo/internal/fooserver.cc</span></tt> 的包含次序如下:</dt>
+<dd><div class="first last highlight-c++"><div class="highlight"><pre><span class="cp">#include &quot;foo/public/fooserver.h&quot; </span><span class="c1">// 优先位置</span>
 <span class="cp">#include &lt;sys/types.h&gt;</span>
 <span class="cp">#include &lt;unistd.h&gt;</span>
 <span class="cp">#include &lt;hash_map&gt;</span>
@@ -168,14 +168,14 @@
 </dl>
 </div>
 <div class="section" id="yulefox">
-<h2>譯者 (YuleFox) 筆記</h2>
+<h2>译者 (YuleFox) 笔记</h2>
 <ol class="arabic simple">
-<li>避免多重包含是學編程時最基本的要求;</li>
-<li>前置聲明是為了降低編譯依賴，防止修改一個標頭檔引發多米諾效應;</li>
-<li>內聯函數的合理使用可提高代碼執行效率;</li>
-<li><tt class="docutils literal"><span class="pre">-inl.h</span></tt> 可提高代碼可讀性 (一般用不到吧:D);</li>
-<li>標準化函數參數順序可以提高可讀性和易維護性 (對函數參數的堆棧空間有輕微影響, 我以前大多是相同類型放在一起);</li>
-<li>包含檔案的名稱使用 <tt class="docutils literal"><span class="pre">.</span></tt> 和 <tt class="docutils literal"><span class="pre">..</span></tt> 雖然方便卻易混亂, 使用比較完整的項目路徑看上去很清晰, 很條理, 包含檔案的次序除了美觀之外, 最重要的是可以減少隱藏依賴, 使每個標頭檔在 &#8220;最需要編譯&#8221; (對應源檔案處 :D) 的地方編譯, 有人提出庫檔案放在最後, 這樣出錯先是項目內的檔案, 標頭檔都放在對應源檔案的最前面, 這一點足以保證內部錯誤的及時發現了.</li>
+<li>避免多重包含是学编程时最基本的要求;</li>
+<li>前置声明是为了降低编译依赖，防止修改一个头文件引发多米诺效应;</li>
+<li>内联函数的合理使用可提高代码执行效率;</li>
+<li><tt class="docutils literal"><span class="pre">-inl.h</span></tt> 可提高代码可读性 (一般用不到吧:D);</li>
+<li>标准化函数参数顺序可以提高可读性和易维护性 (对函数参数的堆栈空间有轻微影响, 我以前大多是相同类型放在一起);</li>
+<li>包含文件的名称使用 <tt class="docutils literal"><span class="pre">.</span></tt> 和 <tt class="docutils literal"><span class="pre">..</span></tt> 虽然方便却易混乱, 使用比较完整的项目路径看上去很清晰, 很条理, 包含文件的次序除了美观之外, 最重要的是可以减少隐藏依赖, 使每个头文件在 &#8220;最需要编译&#8221; (对应源文件处 :D) 的地方编译, 有人提出库文件放在最后, 这样出错先是项目内的文件, 头文件都放在对应源文件的最前面, 这一点足以保证内部错误的及时发现了.</li>
 </ol>
 </div>
 </div>
@@ -185,7 +185,7 @@
       <div class="bottomnav">
       
         <p>
-        «&#160;&#160;<a href="index.html">0. 扉頁</a>
+        «&#160;&#160;<a href="index.html">0. 扉页</a>
         &#160;&#160;::&#160;&#160;
         <a class="uplink" href="../contents.html">Contents</a>
         &#160;&#160;::&#160;&#160;

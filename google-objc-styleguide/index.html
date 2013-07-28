@@ -8,7 +8,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>Google Objective-C Style Guide 中文版 &mdash; Google 開源項目風格指南</title>
+    <title>Google Objective-C Style Guide 中文版 &mdash; Google 开源项目风格指南</title>
     
     <link rel="stylesheet" href="../_static/haiku.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
@@ -27,20 +27,20 @@
     <script type="text/javascript" src="../_static/underscore.js"></script>
     <script type="text/javascript" src="../_static/doctools.js"></script>
     <script type="text/javascript" src="../_static/theme_extras.js"></script>
-    <link rel="top" title="Google 開源項目風格指南" href="../index.html" />
-    <link rel="up" title="Objective-C 風格指南 - 內容目錄" href="contents.html" />
+    <link rel="top" title="Google 开源项目风格指南" href="../index.html" />
+    <link rel="up" title="Objective-C 风格指南 - 内容目录" href="contents.html" />
     <link rel="next" title="留白和格式" href="spacing.html" />
-    <link rel="prev" title="Objective-C 風格指南 - 內容目錄" href="contents.html" /> 
+    <link rel="prev" title="Objective-C 风格指南 - 内容目录" href="contents.html" /> 
   </head>
   <body>
       <div class="header"><h1 class="heading"><a href="../index.html">
-          <span>Google 開源項目風格指南</span></a></h1>
+          <span>Google 开源项目风格指南</span></a></h1>
         <h2 class="heading"><span>Google Objective-C Style Guide 中文版</span></h2>
       </div>
       <div class="topnav">
       
         <p>
-        «&#160;&#160;<a href="contents.html">Objective-C 風格指南 - 內容目錄</a>
+        «&#160;&#160;<a href="contents.html">Objective-C 风格指南 - 内容目录</a>
         &#160;&#160;::&#160;&#160;
         <a class="uplink" href="../contents.html">Contents</a>
         &#160;&#160;::&#160;&#160;
@@ -67,56 +67,56 @@
 </div>
 </td>
 </tr>
-<tr class="field-odd field"><th class="field-name">翻譯:</th><td class="field-body"><div class="first line-block">
+<tr class="field-odd field"><th class="field-name">翻译:</th><td class="field-body"><div class="first line-block">
 <div class="line"><a class="reference external" href="http://ke.indiebros.com/">ewangke</a></div>
 <div class="line"><a class="reference external" href="http://yangyubo.com">brantyoung</a></div>
 </div>
 </td>
 </tr>
-<tr class="field-even field"><th class="field-name">項目主頁:</th><td class="field-body"><ul class="first last simple">
+<tr class="field-even field"><th class="field-name">项目主页:</th><td class="field-body"><ul class="first last simple">
 <li><a class="reference external" href="http://google-styleguide.googlecode.com">Google Style Guide</a></li>
-<li><a class="reference external" href="http://github.com/zh-google-styleguide/zh-google-styleguide">Google 開源項目風格指南 - 中文版</a></li>
+<li><a class="reference external" href="http://github.com/zh-google-styleguide/zh-google-styleguide">Google 开源项目风格指南 - 中文版</a></li>
 </ul>
 </td>
 </tr>
 </tbody>
 </table>
 <div class="section" id="id1">
-<h2>譯者的話</h2>
+<h2>译者的话</h2>
 <div class="section" id="ewanke">
 <h3>ewanke</h3>
-<p>一直想翻譯這個 <a class="reference external" href="http://google-styleguide.googlecode.com/svn/trunk/objcguide.xml">style guide</a> ，終於在周末花了7個小時的時間用vim敲出了HTML。很多術語的翻譯很難，平時看的中文技術類書籍有限，對很多術語的中文譯法不是很清楚，難免有不恰當之處，請讀者指出並幫我改進：王軻 ”ewangke at gmail.com” 2011.03.27</p>
+<p>一直想翻译这个 <a class="reference external" href="http://google-styleguide.googlecode.com/svn/trunk/objcguide.xml">style guide</a> ，终于在周末花了7个小时的时间用vim敲出了HTML。很多术语的翻译很难，平时看的中文技术类书籍有限，对很多术语的中文译法不是很清楚，难免有不恰当之处，请读者指出并帮我改进：王轲 ”ewangke at gmail.com” 2011.03.27</p>
 </div>
 <div class="section" id="id2">
 <h3>brantyoung</h3>
-<p>對 Objective-C 的瞭解有限，憑着感覺和 C/C++ 方面的理解：</p>
+<p>对 Objective-C 的了解有限，凭着感觉和 C/C++ 方面的理解：</p>
 <ul class="simple">
 <li>把指南更新到 2.36 版本</li>
-<li>調整了一些術語和句子</li>
+<li>调整了一些术语和句子</li>
 </ul>
 </div>
 </div>
 <div class="section" id="id3">
-<h2>背景介紹</h2>
-<p>Objective-C 是 C 語言的擴展，增加了動態類型和麵對對象的特性。它被設計成具有易讀易用的，支持複雜的面向對象設計的編程語言。它是 Mac OS X 以及 iPhone 的主要開發語言。</p>
-<p>Cocoa 是 Mac OS X 上主要的應用程序框架之一。它由一組 Objective-C 類組成，為快速開發出功能齊全的 Mac OS X 應用程序提供支持。</p>
-<p>蘋果公司已經有一份非常全面的 Objective-C 編碼指南。Google 為 C++ 也寫了一份類似的編碼指南。而這份 Objective-C 指南則是蘋果和 Google 常規建議的最佳結合。因此，在閲讀本指南之前，請確定你已經閲讀過：</p>
+<h2>背景介绍</h2>
+<p>Objective-C 是 C 语言的扩展，增加了动态类型和面对对象的特性。它被设计成具有易读易用的，支持复杂的面向对象设计的编程语言。它是 Mac OS X 以及 iPhone 的主要开发语言。</p>
+<p>Cocoa 是 Mac OS X 上主要的应用程序框架之一。它由一组 Objective-C 类组成，为快速开发出功能齐全的 Mac OS X 应用程序提供支持。</p>
+<p>苹果公司已经有一份非常全面的 Objective-C 编码指南。Google 为 C++ 也写了一份类似的编码指南。而这份 Objective-C 指南则是苹果和 Google 常规建议的最佳结合。因此，在阅读本指南之前，请确定你已经阅读过：</p>
 <ul class="simple">
 <li><a class="reference external" href="http://developer.apple.com/documentation/Cocoa/Conceptual/CodingGuidelines/index.html">Apple’s Cocoa Coding Guidelines</a></li>
 <li><a class="reference external" href="http://codinn.com/projects/google-cpp-styleguide/">Google’s Open Source C++ Style Guide</a></li>
 </ul>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
-<p class="last">所有在 Google 的 C++ 風格指南中所禁止的事情，如未明確說明，也同樣不能在Objective-C++ 中使用。</p>
+<p class="last">所有在 Google 的 C++ 风格指南中所禁止的事情，如未明确说明，也同样不能在Objective-C++ 中使用。</p>
 </div>
-<p>本文檔的目的在於為所有的 Mac OS X 的代碼提供編碼指南及實踐。許多準則是在實際的項目和小組中經過長期的演化、驗證的。Google 開發的開源項目遵從本指南的要求。</p>
-<p>Google 已經發佈了遵守本指南開原始碼，它們屬於 <a class="reference external" href="http://code.google.com/p/google-toolbox-for-mac/">Google Toolbox for Mac project</a> 項目（本文以縮寫 GTM 指代）。GTM 代碼庫中的代碼通常為了可以在不同項目中復用。</p>
-<p>注意，本指南不是 Objective-C 教程。我們假定讀者對 Objective-C 非常熟悉。如果你剛剛接觸 Objective-C 或者需要溫習，請閲讀 <a class="reference external" href="http://developer.apple.com/documentation/Cocoa/Conceptual/ObjectiveC/index.html">The Objective-C Programming Language</a> 。</p>
+<p>本文档的目的在于为所有的 Mac OS X 的代码提供编码指南及实践。许多准则是在实际的项目和小组中经过长期的演化、验证的。Google 开发的开源项目遵从本指南的要求。</p>
+<p>Google 已经发布了遵守本指南开源代码，它们属于 <a class="reference external" href="http://code.google.com/p/google-toolbox-for-mac/">Google Toolbox for Mac project</a> 项目（本文以缩写 GTM 指代）。GTM 代码库中的代码通常为了可以在不同项目中复用。</p>
+<p>注意，本指南不是 Objective-C 教程。我们假定读者对 Objective-C 非常熟悉。如果你刚刚接触 Objective-C 或者需要温习，请阅读 <a class="reference external" href="http://developer.apple.com/documentation/Cocoa/Conceptual/ObjectiveC/index.html">The Objective-C Programming Language</a> 。</p>
 </div>
 <div class="section" id="id4">
 <h2>例子</h2>
-<p>都說一個例子頂上一千句話，我們就從一個例子開始，來感受一下編碼的風格、留白以及命名等等。</p>
-<p>一個標頭檔的例子，展示了在 <tt class="docutils literal"><span class="pre">&#64;interface</span></tt> 聲明中如何進行正確的註釋以及留白。</p>
+<p>都说一个例子顶上一千句话，我们就从一个例子开始，来感受一下编码的风格、留白以及命名等等。</p>
+<p>一个头文件的例子，展示了在 <tt class="docutils literal"><span class="pre">&#64;interface</span></tt> 声明中如何进行正确的注释以及留白。</p>
 <div class="highlight-objc"><div class="highlight"><pre><span class="cp">//  Foo.h</span>
 <span class="cp">//  AwesomeProject</span>
 <span class="cp">//</span>
@@ -144,20 +144,20 @@
 
 <span class="c1">// Designated initializer. |bar| is a thing that represents a thing that</span>
 <span class="c1">// does a thing.</span>
-<span class="o">-</span> <span class="p">(</span><span class="kt">id</span><span class="p">)</span><span class="nl">initWithBar:</span><span class="p">(</span><span class="n">NSString</span> <span class="o">*</span><span class="p">)</span><span class="n">bar</span><span class="p">;</span>
+<span class="k">-</span> <span class="p">(</span><span class="kt">id</span><span class="p">)</span><span class="nf">initWithBar:</span><span class="p">(</span><span class="n">NSString</span> <span class="o">*</span><span class="p">)</span><span class="nv">bar</span><span class="p">;</span>
 
 <span class="c1">// Gets and sets |bar_|.</span>
-<span class="o">-</span> <span class="p">(</span><span class="n">NSString</span> <span class="o">*</span><span class="p">)</span><span class="n">bar</span><span class="p">;</span>
-<span class="o">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="nl">setBar:</span><span class="p">(</span><span class="n">NSString</span> <span class="o">*</span><span class="p">)</span><span class="n">bar</span><span class="p">;</span>
+<span class="k">-</span> <span class="p">(</span><span class="n">NSString</span> <span class="o">*</span><span class="p">)</span><span class="nf">bar</span><span class="p">;</span>
+<span class="k">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="nf">setBar:</span><span class="p">(</span><span class="n">NSString</span> <span class="o">*</span><span class="p">)</span><span class="nv">bar</span><span class="p">;</span>
 
 <span class="c1">// Does some work with |blah| and returns YES if the work was completed</span>
 <span class="c1">// successfully, and NO otherwise.</span>
-<span class="o">-</span> <span class="p">(</span><span class="kt">BOOL</span><span class="p">)</span><span class="nl">doWorkWithBlah:</span><span class="p">(</span><span class="n">NSString</span> <span class="o">*</span><span class="p">)</span><span class="n">blah</span><span class="p">;</span>
+<span class="k">-</span> <span class="p">(</span><span class="kt">BOOL</span><span class="p">)</span><span class="nf">doWorkWithBlah:</span><span class="p">(</span><span class="n">NSString</span> <span class="o">*</span><span class="p">)</span><span class="nv">blah</span><span class="p">;</span>
 
 <span class="k">@end</span>
 </pre></div>
 </div>
-<p>一個源檔案的例子，展示了 <tt class="docutils literal"><span class="pre">&#64;implementation</span></tt> 部分如何進行正確的註釋、留白。同時也包括了基于引用實現的一些重要方法，如 <tt class="docutils literal"><span class="pre">getters</span></tt> 、 <tt class="docutils literal"><span class="pre">setters</span></tt> 、 <tt class="docutils literal"><span class="pre">init</span></tt> 以及 <tt class="docutils literal"><span class="pre">dealloc</span></tt> 。</p>
+<p>一个源文件的例子，展示了 <tt class="docutils literal"><span class="pre">&#64;implementation</span></tt> 部分如何进行正确的注释、留白。同时也包括了基于引用实现的一些重要方法，如 <tt class="docutils literal"><span class="pre">getters</span></tt> 、 <tt class="docutils literal"><span class="pre">setters</span></tt> 、 <tt class="docutils literal"><span class="pre">init</span></tt> 以及 <tt class="docutils literal"><span class="pre">dealloc</span></tt> 。</p>
 <div class="highlight-objc"><div class="highlight"><pre><span class="cp">//</span>
 <span class="cp">//  Foo.m</span>
 <span class="cp">//  AwesomeProject</span>
@@ -171,16 +171,16 @@
 
 <span class="k">@implementation</span> <span class="nc">Foo</span>
 
-<span class="o">+</span> <span class="p">(</span><span class="kt">id</span><span class="p">)</span><span class="nl">fooWithBar:</span><span class="p">(</span><span class="n">NSString</span> <span class="o">*</span><span class="p">)</span><span class="n">bar</span> <span class="p">{</span>
+<span class="k">+</span> <span class="p">(</span><span class="kt">id</span><span class="p">)</span><span class="nf">fooWithBar:</span><span class="p">(</span><span class="n">NSString</span> <span class="o">*</span><span class="p">)</span><span class="nv">bar</span> <span class="p">{</span>
   <span class="k">return</span> <span class="p">[[[</span><span class="n">self</span> <span class="n">alloc</span><span class="p">]</span> <span class="nl">initWithBar:</span><span class="n">bar</span><span class="p">]</span> <span class="n">autorelease</span><span class="p">];</span>
 <span class="p">}</span>
 
 <span class="c1">// Must always override super&#39;s designated initializer.</span>
-<span class="o">-</span> <span class="p">(</span><span class="kt">id</span><span class="p">)</span><span class="n">init</span> <span class="p">{</span>
+<span class="k">-</span> <span class="p">(</span><span class="kt">id</span><span class="p">)</span><span class="nf">init</span> <span class="p">{</span>
   <span class="k">return</span> <span class="p">[</span><span class="n">self</span> <span class="nl">initWithBar:</span><span class="nb">nil</span><span class="p">];</span>
 <span class="p">}</span>
 
-<span class="o">-</span> <span class="p">(</span><span class="kt">id</span><span class="p">)</span><span class="nl">initWithBar:</span><span class="p">(</span><span class="n">NSString</span> <span class="o">*</span><span class="p">)</span><span class="n">bar</span> <span class="p">{</span>
+<span class="k">-</span> <span class="p">(</span><span class="kt">id</span><span class="p">)</span><span class="nf">initWithBar:</span><span class="p">(</span><span class="n">NSString</span> <span class="o">*</span><span class="p">)</span><span class="nv">bar</span> <span class="p">{</span>
   <span class="k">if</span> <span class="p">((</span><span class="n">self</span> <span class="o">=</span> <span class="p">[</span><span class="n">super</span> <span class="n">init</span><span class="p">]))</span> <span class="p">{</span>
     <span class="n">bar_</span> <span class="o">=</span> <span class="p">[</span><span class="n">bar</span> <span class="n">copy</span><span class="p">];</span>
     <span class="n">bam_</span> <span class="o">=</span> <span class="p">[[</span><span class="n">NSString</span> <span class="n">alloc</span><span class="p">]</span> <span class="nl">initWithFormat:</span><span class="s">@&quot;hi %d&quot;</span><span class="p">,</span> <span class="mi">3</span><span class="p">];</span>
@@ -188,22 +188,22 @@
   <span class="k">return</span> <span class="n">self</span><span class="p">;</span>
 <span class="p">}</span>
 
-<span class="o">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="n">dealloc</span> <span class="p">{</span>
+<span class="k">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="nf">dealloc</span> <span class="p">{</span>
   <span class="p">[</span><span class="n">bar_</span> <span class="n">release</span><span class="p">];</span>
   <span class="p">[</span><span class="n">bam_</span> <span class="n">release</span><span class="p">];</span>
   <span class="p">[</span><span class="n">super</span> <span class="n">dealloc</span><span class="p">];</span>
 <span class="p">}</span>
 
-<span class="o">-</span> <span class="p">(</span><span class="n">NSString</span> <span class="o">*</span><span class="p">)</span><span class="n">bar</span> <span class="p">{</span>
+<span class="k">-</span> <span class="p">(</span><span class="n">NSString</span> <span class="o">*</span><span class="p">)</span><span class="nf">bar</span> <span class="p">{</span>
   <span class="k">return</span> <span class="n">bar_</span><span class="p">;</span>
 <span class="p">}</span>
 
-<span class="o">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="nl">setBar:</span><span class="p">(</span><span class="n">NSString</span> <span class="o">*</span><span class="p">)</span><span class="n">bar</span> <span class="p">{</span>
+<span class="k">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="nf">setBar:</span><span class="p">(</span><span class="n">NSString</span> <span class="o">*</span><span class="p">)</span><span class="nv">bar</span> <span class="p">{</span>
   <span class="p">[</span><span class="n">bar_</span> <span class="n">autorelease</span><span class="p">];</span>
   <span class="n">bar_</span> <span class="o">=</span> <span class="p">[</span><span class="n">bar</span> <span class="n">copy</span><span class="p">];</span>
 <span class="p">}</span>
 
-<span class="o">-</span> <span class="p">(</span><span class="kt">BOOL</span><span class="p">)</span><span class="nl">doWorkWithBlah:</span><span class="p">(</span><span class="n">NSString</span> <span class="o">*</span><span class="p">)</span><span class="n">blah</span> <span class="p">{</span>
+<span class="k">-</span> <span class="p">(</span><span class="kt">BOOL</span><span class="p">)</span><span class="nf">doWorkWithBlah:</span><span class="p">(</span><span class="n">NSString</span> <span class="o">*</span><span class="p">)</span><span class="nv">blah</span> <span class="p">{</span>
   <span class="c1">// ...</span>
   <span class="k">return</span> <span class="n">NO</span><span class="p">;</span>
 <span class="p">}</span>
@@ -211,8 +211,8 @@
 <span class="k">@end</span>
 </pre></div>
 </div>
-<p>不要求在 <tt class="docutils literal"><span class="pre">&#64;interface``、``&#64;implementation</span></tt> 和 <tt class="docutils literal"><span class="pre">&#64;end</span></tt> 前後空行。如果你在 <tt class="docutils literal"><span class="pre">&#64;interface</span></tt> 聲明了實例變數，則須在關括號 <tt class="docutils literal"><span class="pre">}</span></tt> 之後空一行。</p>
-<p>除非介面和實現非常短，比如少量的私有方法或橋接類，空行方有助于可讀性。</p>
+<p>不要求在 <tt class="docutils literal"><span class="pre">&#64;interface``、``&#64;implementation</span></tt> 和 <tt class="docutils literal"><span class="pre">&#64;end</span></tt> 前后空行。如果你在 <tt class="docutils literal"><span class="pre">&#64;interface</span></tt> 声明了实例变量，则须在关括号 <tt class="docutils literal"><span class="pre">}</span></tt> 之后空一行。</p>
+<p>除非接口和实现非常短，比如少量的私有方法或桥接类，空行方有助于可读性。</p>
 </div>
 </div>
 
@@ -221,7 +221,7 @@
       <div class="bottomnav">
       
         <p>
-        «&#160;&#160;<a href="contents.html">Objective-C 風格指南 - 內容目錄</a>
+        «&#160;&#160;<a href="contents.html">Objective-C 风格指南 - 内容目录</a>
         &#160;&#160;::&#160;&#160;
         <a class="uplink" href="../contents.html">Contents</a>
         &#160;&#160;::&#160;&#160;

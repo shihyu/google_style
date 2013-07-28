@@ -8,7 +8,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>Cocoa 和 Objective-C 特性 &mdash; Google 開源項目風格指南</title>
+    <title>Cocoa 和 Objective-C 特性 &mdash; Google 开源项目风格指南</title>
     
     <link rel="stylesheet" href="../_static/haiku.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
@@ -27,20 +27,20 @@
     <script type="text/javascript" src="../_static/underscore.js"></script>
     <script type="text/javascript" src="../_static/doctools.js"></script>
     <script type="text/javascript" src="../_static/theme_extras.js"></script>
-    <link rel="top" title="Google 開源項目風格指南" href="../index.html" />
-    <link rel="up" title="Objective-C 風格指南 - 內容目錄" href="contents.html" />
+    <link rel="top" title="Google 开源项目风格指南" href="../index.html" />
+    <link rel="up" title="Objective-C 风格指南 - 内容目录" href="contents.html" />
     <link rel="next" title="Cocoa 模式" href="patterns.html" />
-    <link rel="prev" title="註釋" href="comments.html" /> 
+    <link rel="prev" title="注释" href="comments.html" /> 
   </head>
   <body>
       <div class="header"><h1 class="heading"><a href="../index.html">
-          <span>Google 開源項目風格指南</span></a></h1>
+          <span>Google 开源项目风格指南</span></a></h1>
         <h2 class="heading"><span>Cocoa 和 Objective-C 特性</span></h2>
       </div>
       <div class="topnav">
       
         <p>
-        «&#160;&#160;<a href="comments.html">註釋</a>
+        «&#160;&#160;<a href="comments.html">注释</a>
         &#160;&#160;::&#160;&#160;
         <a class="uplink" href="../contents.html">Contents</a>
         &#160;&#160;::&#160;&#160;
@@ -54,10 +54,10 @@
   <div class="section" id="cocoa-objective-c">
 <h1>Cocoa 和 Objective-C 特性</h1>
 <div class="section" id="private">
-<h2>成員變數應該是 <tt class="docutils literal"><span class="pre">&#64;private</span></tt></h2>
+<h2>成员变量应该是 <tt class="docutils literal"><span class="pre">&#64;private</span></tt></h2>
 <div class="admonition tip">
 <p class="first admonition-title">Tip</p>
-<p class="last">成員變數應該聲明為 <tt class="docutils literal"><span class="pre">&#64;private</span></tt></p>
+<p class="last">成员变量应该声明为 <tt class="docutils literal"><span class="pre">&#64;private</span></tt></p>
 </div>
 <div class="highlight-objc"><div class="highlight"><pre><span class="k">@interface</span> <span class="nc">MyClass</span> : <span class="nc">NSObject</span> <span class="p">{</span>
  <span class="k">@private</span>
@@ -65,63 +65,63 @@
 <span class="p">}</span>
 <span class="c1">// public accessors, setter takes ownership</span>
 <span class="o">-</span> <span class="p">(</span><span class="kt">id</span><span class="p">)</span><span class="n">myInstanceVariable</span><span class="p">;</span>
-<span class="o">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="nl">setMyInstanceVariable:</span><span class="p">(</span><span class="kt">id</span><span class="p">)</span><span class="n">theVar</span><span class="p">;</span>
+<span class="k">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="nf">setMyInstanceVariable:</span><span class="p">(</span><span class="kt">id</span><span class="p">)</span><span class="nv">theVar</span><span class="p">;</span>
 <span class="k">@end</span>
 </pre></div>
 </div>
 </div>
 <div class="section" id="id1">
-<h2>明確指定建構子</h2>
+<h2>明确指定构造函数</h2>
 <div class="admonition tip">
 <p class="first admonition-title">Tip</p>
-<p class="last">註釋並且明確指定你的類的建構子。</p>
+<p class="last">注释并且明确指定你的类的构造函数。</p>
 </div>
-<p>對於需要繼承你的類的人來說，明確指定建構子十分重要。這樣他們就可以只重寫一個建構子（可能是幾個）來保證他們的子類的建構子會被調用。這也有助于將來別人調試你的類時，理解初始化代碼的工作流程。</p>
+<p>对于需要继承你的类的人来说，明确指定构造函数十分重要。这样他们就可以只重写一个构造函数（可能是几个）来保证他们的子类的构造函数会被调用。这也有助于将来别人调试你的类时，理解初始化代码的工作流程。</p>
 </div>
 <div class="section" id="id2">
-<h2>重載指定建構子</h2>
+<h2>重载指定构造函数</h2>
 <div class="admonition tip">
 <p class="first admonition-title">Tip</p>
-<p class="last">當你寫子類的時候，如果需要 <tt class="docutils literal"><span class="pre">init…</span></tt> 方法，記得重載父類的指定建構子。</p>
+<p class="last">当你写子类的时候，如果需要 <tt class="docutils literal"><span class="pre">init…</span></tt> 方法，记得重载父类的指定构造函数。</p>
 </div>
-<p>如果你沒有重載父類的指定建構子，你的建構子有時可能不會被調用，這會導致非常隱秘而且難以解決的 bug。</p>
+<p>如果你没有重载父类的指定构造函数，你的构造函数有时可能不会被调用，这会导致非常隐秘而且难以解决的 bug。</p>
 </div>
 <div class="section" id="nsobject">
-<h2>重載 <tt class="docutils literal"><span class="pre">NSObject</span></tt> 的方法</h2>
+<h2>重载 <tt class="docutils literal"><span class="pre">NSObject</span></tt> 的方法</h2>
 <div class="admonition tip">
 <p class="first admonition-title">Tip</p>
-<p class="last">如果重載了 <tt class="docutils literal"><span class="pre">NSObject</span></tt> 類的方法，強烈建議把它們放在 <tt class="docutils literal"><span class="pre">&#64;implementation</span></tt> 內的起始處，這也是常見的操作方法。</p>
+<p class="last">如果重载了 <tt class="docutils literal"><span class="pre">NSObject</span></tt> 类的方法，强烈建议把它们放在 <tt class="docutils literal"><span class="pre">&#64;implementation</span></tt> 内的起始处，这也是常见的操作方法。</p>
 </div>
-<p>通常適用（但不侷限）于 <tt class="docutils literal"><span class="pre">init...``，``copyWithZone:``，以及</span> <span class="pre">``dealloc</span></tt> 方法。所有 <tt class="docutils literal"><span class="pre">init...</span></tt> 方法應該放在一起，``copyWithZone:`` 緊隨其後，最後才是 <tt class="docutils literal"><span class="pre">dealloc</span></tt> 方法。</p>
+<p>通常适用（但不局限）于 <tt class="docutils literal"><span class="pre">init...``，``copyWithZone:``，以及</span> <span class="pre">``dealloc</span></tt> 方法。所有 <tt class="docutils literal"><span class="pre">init...</span></tt> 方法应该放在一起，``copyWithZone:`` 紧随其后，最后才是 <tt class="docutils literal"><span class="pre">dealloc</span></tt> 方法。</p>
 </div>
 <div class="section" id="id3">
 <h2>初始化</h2>
 <div class="admonition tip">
 <p class="first admonition-title">Tip</p>
-<p class="last">不要在 init 方法中，將成員變數初始化為 <tt class="docutils literal"><span class="pre">0</span></tt> 或者 <a href="#id4"><span class="problematic" id="id5">``</span></a>nil``；毫無必要。</p>
+<p class="last">不要在 init 方法中，将成员变量初始化为 <tt class="docutils literal"><span class="pre">0</span></tt> 或者 <a href="#id4"><span class="problematic" id="id5">``</span></a>nil``；毫无必要。</p>
 </div>
-<p>剛分配的對象，預設值都是 0，除了 <tt class="docutils literal"><span class="pre">isa</span></tt> 指針（譯者註：``NSObject`` 的 <tt class="docutils literal"><span class="pre">isa</span></tt> 指針，用於標識對象的類型）。所以不要在初始化器裡面寫一堆將成員初始化為 <tt class="docutils literal"><span class="pre">0</span></tt> 或者 <tt class="docutils literal"><span class="pre">nil</span></tt> 的代碼。</p>
+<p>刚分配的对象，默认值都是 0，除了 <tt class="docutils literal"><span class="pre">isa</span></tt> 指针（译者注：``NSObject`` 的 <tt class="docutils literal"><span class="pre">isa</span></tt> 指针，用于标识对象的类型）。所以不要在初始化器里面写一堆将成员初始化为 <tt class="docutils literal"><span class="pre">0</span></tt> 或者 <tt class="docutils literal"><span class="pre">nil</span></tt> 的代码。</p>
 </div>
 <div class="section" id="new">
 <h2>避免 <tt class="docutils literal"><span class="pre">+new</span></tt></h2>
 <div class="admonition tip">
 <p class="first admonition-title">Tip</p>
-<p class="last">不要調用 <tt class="docutils literal"><span class="pre">NSObject</span></tt> 類方法 <tt class="docutils literal"><span class="pre">new``，也不要在子類中重載它。使用</span> <span class="pre">``alloc</span></tt> 和 <tt class="docutils literal"><span class="pre">init</span></tt> 方法創建並初始化對象。</p>
+<p class="last">不要调用 <tt class="docutils literal"><span class="pre">NSObject</span></tt> 类方法 <tt class="docutils literal"><span class="pre">new``，也不要在子类中重载它。使用</span> <span class="pre">``alloc</span></tt> 和 <tt class="docutils literal"><span class="pre">init</span></tt> 方法创建并初始化对象。</p>
 </div>
-<p>現代的 Ojbective-C 代碼通過調用 <tt class="docutils literal"><span class="pre">alloc</span></tt> 和 <tt class="docutils literal"><span class="pre">init</span></tt> 方法來創建並 retain 一個對象。由於類方法 <tt class="docutils literal"><span class="pre">new</span></tt> 很少使用，這使得有關內存分配的代碼審查更困難。</p>
+<p>现代的 Ojbective-C 代码通过调用 <tt class="docutils literal"><span class="pre">alloc</span></tt> 和 <tt class="docutils literal"><span class="pre">init</span></tt> 方法来创建并 retain 一个对象。由于类方法 <tt class="docutils literal"><span class="pre">new</span></tt> 很少使用，这使得有关内存分配的代码审查更困难。</p>
 </div>
 <div class="section" id="api">
-<h2>保持公共 API 簡單</h2>
+<h2>保持公共 API 简单</h2>
 <div class="admonition tip">
 <p class="first admonition-title">Tip</p>
-<p class="last">保持類簡單；避免 “廚房水槽（kitchen-sink）” 式的 API。如果一個函數壓根沒必要公開，就不要這麼做。用私有類別保證公共標頭檔整潔。</p>
+<p class="last">保持类简单；避免 “厨房水槽（kitchen-sink）” 式的 API。如果一个函数压根没必要公开，就不要这么做。用私有类别保证公共头文件整洁。</p>
 </div>
-<p>與 C++ 不同，Objective-C 沒有方法來區分公共的方法和私有的方法 &#8211; 所有的方法都是公共的（譯者註：這取決於 Objective-C 運行時的方法調用的消息機制）。因此，除非客戶端的代碼期望使用某個方法，不要把這個方法放進公共 API 中。儘可能的避免了你你不希望被調用的方法卻被調用到。這包括重載父類的方法。對於內部實現所需要的方法，在實現的檔案中定義一個類別，而不是把它們放進公有的標頭檔中。</p>
+<p>与 C++ 不同，Objective-C 没有方法来区分公共的方法和私有的方法 &#8211; 所有的方法都是公共的（译者注：这取决于 Objective-C 运行时的方法调用的消息机制）。因此，除非客户端的代码期望使用某个方法，不要把这个方法放进公共 API 中。尽可能的避免了你你不希望被调用的方法却被调用到。这包括重载父类的方法。对于内部实现所需要的方法，在实现的文件中定义一个类别，而不是把它们放进公有的头文件中。</p>
 <div class="highlight-objc"><div class="highlight"><pre><span class="cp">// GTMFoo.m</span>
 <span class="cp">#import &quot;GTMFoo.h&quot;</span>
 
 <span class="k">@interface</span> <span class="nc">GTMFoo</span> <span class="nl">(PrivateDelegateHandling)</span>
-<span class="o">-</span> <span class="p">(</span><span class="n">NSString</span> <span class="o">*</span><span class="p">)</span><span class="n">doSomethingWithDelegate</span><span class="p">;</span>  <span class="c1">// Declare private method</span>
+<span class="k">-</span> <span class="p">(</span><span class="n">NSString</span> <span class="o">*</span><span class="p">)</span><span class="nf">doSomethingWithDelegate</span><span class="p">;</span>  <span class="c1">// Declare private method</span>
 <span class="k">@end</span>
 
 <span class="k">@implementation</span> <span class="nc">GTMFoo</span><span class="nl">(PrivateDelegateHandling)</span>
@@ -133,29 +133,29 @@
 <span class="k">@end</span>
 </pre></div>
 </div>
-<p>Objective-C 2.0 以前，如果你在私有的 <tt class="docutils literal"><span class="pre">&#64;interface</span></tt> 中聲明了某個方法，但在 <tt class="docutils literal"><span class="pre">&#64;implementation</span></tt> 中忘記定義這個方法，編譯器不會抱怨（這是因為你沒有在其它的類別中實現這個私有的方法）。解決文案是將方法放進指定類別的 <tt class="docutils literal"><span class="pre">&#64;implemenation</span></tt> 中。</p>
-<p>如果你在使用 Objective-C 2.0，相反你應該使用 <a class="reference external" href="http://developer.apple.com/documentation/Cocoa/Conceptual/ObjectiveC/Articles/chapter_4_section_5.html">類擴展</a> 來聲明你的私有類別，例如：</p>
+<p>Objective-C 2.0 以前，如果你在私有的 <tt class="docutils literal"><span class="pre">&#64;interface</span></tt> 中声明了某个方法，但在 <tt class="docutils literal"><span class="pre">&#64;implementation</span></tt> 中忘记定义这个方法，编译器不会抱怨（这是因为你没有在其它的类别中实现这个私有的方法）。解决文案是将方法放进指定类别的 <tt class="docutils literal"><span class="pre">&#64;implemenation</span></tt> 中。</p>
+<p>如果你在使用 Objective-C 2.0，相反你应该使用 <a class="reference external" href="http://developer.apple.com/documentation/Cocoa/Conceptual/ObjectiveC/Articles/chapter_4_section_5.html">类扩展</a> 来声明你的私有类别，例如：</p>
 <div class="highlight-objc"><div class="highlight"><pre><span class="k">@interface</span> <span class="nc">GMFoo</span> <span class="p">()</span> <span class="p">{</span> <span class="p">...</span> <span class="p">}</span>
 </pre></div>
 </div>
-<p>這麼做確保如果聲明的方法沒有在 <tt class="docutils literal"><span class="pre">&#64;implementation</span></tt> 中實現，會觸發一個編譯器告警。</p>
-<p>再次說明，“私有的” 方法其實不是私有的。你有時可能不小心重載了父類的私有方法，因而製造出很難查找的 Bug。通常，私有的方法應該有一個相當特殊的名字以防止子類無意地重載它們。</p>
-<p>Ojbective-C 的類別可以用來將一個大的 <tt class="docutils literal"><span class="pre">&#64;implementation</span></tt> 拆分成更容易理解的小塊，同時，類別可以為最適合的類添加新的、特定應用程序的功能。例如，當添加一個 “middle truncation” 方法時，創建一個 <tt class="docutils literal"><span class="pre">NSString</span></tt> 的新類別並把方法放在裡面，要比創建任意的一個新類把方法放進裡面好得多。</p>
+<p>这么做确保如果声明的方法没有在 <tt class="docutils literal"><span class="pre">&#64;implementation</span></tt> 中实现，会触发一个编译器告警。</p>
+<p>再次说明，“私有的” 方法其实不是私有的。你有时可能不小心重载了父类的私有方法，因而制造出很难查找的 Bug。通常，私有的方法应该有一个相当特殊的名字以防止子类无意地重载它们。</p>
+<p>Ojbective-C 的类别可以用来将一个大的 <tt class="docutils literal"><span class="pre">&#64;implementation</span></tt> 拆分成更容易理解的小块，同时，类别可以为最适合的类添加新的、特定应用程序的功能。例如，当添加一个 “middle truncation” 方法时，创建一个 <tt class="docutils literal"><span class="pre">NSString</span></tt> 的新类别并把方法放在里面，要比创建任意的一个新类把方法放进里面好得多。</p>
 </div>
 <div class="section" id="import-and-include">
 <h2><tt class="docutils literal"><span class="pre">#import</span></tt> and <tt class="docutils literal"><span class="pre">#include</span></tt></h2>
 <div class="admonition tip">
 <p class="first admonition-title">Tip</p>
-<p class="last"><tt class="docutils literal"><span class="pre">#import</span></tt> Ojbective-C/Objective-C++ 標頭檔，``#include`` C/C++ 標頭檔。</p>
+<p class="last"><tt class="docutils literal"><span class="pre">#import</span></tt> Ojbective-C/Objective-C++ 头文件，``#include`` C/C++ 头文件。</p>
 </div>
-<p>基於你所包括的標頭檔的編程語言，選擇使用 <tt class="docutils literal"><span class="pre">#import</span></tt> 或是 <a href="#id7"><span class="problematic" id="id8">``</span></a>#include``：</p>
+<p>基于你所包括的头文件的编程语言，选择使用 <tt class="docutils literal"><span class="pre">#import</span></tt> 或是 <a href="#id7"><span class="problematic" id="id8">``</span></a>#include``：</p>
 <ul class="simple">
-<li>當包含一個使用 Objective-C、Objective-C++ 的標頭檔時，使用 <tt class="docutils literal"><span class="pre">#import</span></tt> 。</li>
-<li>當包含一個使用標準 C、C++ 標頭檔時，使用 <a href="#id9"><span class="problematic" id="id10">``</span></a>#include``。標頭檔應該使用 <a href="#id11"><span class="problematic" id="id12">`</span></a>#define 保護 &lt;<a class="reference external" href="http://google-styleguide.googlecode.com/svn/trunk/cppguide.xml?showone=The__define_Guard#The__define_Guard">http://google-styleguide.googlecode.com/svn/trunk/cppguide.xml?showone=The__define_Guard#The__define_Guard</a>&gt;`_。</li>
+<li>当包含一个使用 Objective-C、Objective-C++ 的头文件时，使用 <tt class="docutils literal"><span class="pre">#import</span></tt> 。</li>
+<li>当包含一个使用标准 C、C++ 头文件时，使用 <a href="#id9"><span class="problematic" id="id10">``</span></a>#include``。头文件应该使用 <a href="#id11"><span class="problematic" id="id12">`</span></a>#define 保护 &lt;<a class="reference external" href="http://google-styleguide.googlecode.com/svn/trunk/cppguide.xml?showone=The__define_Guard#The__define_Guard">http://google-styleguide.googlecode.com/svn/trunk/cppguide.xml?showone=The__define_Guard#The__define_Guard</a>&gt;`_。</li>
 </ul>
-<p>一些 Ojbective-C 的標頭檔缺少 <tt class="docutils literal"><span class="pre">#define</span></tt> 保護，需要使用 <tt class="docutils literal"><span class="pre">#import</span></tt> 的方式包含。由於 Objective-C 的標頭檔只會被 Objective-C 的源檔案及標頭檔包含，廣泛地使用 <tt class="docutils literal"><span class="pre">#import</span></tt> 是可以的。</p>
-<p>檔案中沒有 Objective-C 代碼的標準 C、C++ 標頭檔，很可能會被普通的 C、C++ 包含。由於標準 C、C++ 裡面沒有 <tt class="docutils literal"><span class="pre">#import</span></tt> 的用法，這些檔案將被 <tt class="docutils literal"><span class="pre">#include``。在</span> <span class="pre">Objective-C</span> <span class="pre">源檔案中使用</span> <span class="pre">``#include</span></tt> 包含這些標頭檔，意味着這些標頭檔永遠會在相同的語義下包含。</p>
-<p>這條規則幫助跨平台的項目避免低級錯誤。某個 Mac 開發者寫了一個新的 C 或 C++ 標頭檔，如果忘記使用 <tt class="docutils literal"><span class="pre">#define</span></tt> 保護，在 Mac 下使用 <tt class="docutils literal"><span class="pre">#import</span></tt> 這個標頭檔不回引起問題，但是在其它平台下使用 <tt class="docutils literal"><span class="pre">#include</span></tt> 將可能編譯失敗。在所有的平台上統一使用 <a href="#id13"><span class="problematic" id="id14">``</span></a>#include``，意味着構造更可能全都成功或者失敗，防止這些檔案只能在某些平台下能夠工作。</p>
+<p>一些 Ojbective-C 的头文件缺少 <tt class="docutils literal"><span class="pre">#define</span></tt> 保护，需要使用 <tt class="docutils literal"><span class="pre">#import</span></tt> 的方式包含。由于 Objective-C 的头文件只会被 Objective-C 的源文件及头文件包含，广泛地使用 <tt class="docutils literal"><span class="pre">#import</span></tt> 是可以的。</p>
+<p>文件中没有 Objective-C 代码的标准 C、C++ 头文件，很可能会被普通的 C、C++ 包含。由于标准 C、C++ 里面没有 <tt class="docutils literal"><span class="pre">#import</span></tt> 的用法，这些文件将被 <tt class="docutils literal"><span class="pre">#include``。在</span> <span class="pre">Objective-C</span> <span class="pre">源文件中使用</span> <span class="pre">``#include</span></tt> 包含这些头文件，意味着这些头文件永远会在相同的语义下包含。</p>
+<p>这条规则帮助跨平台的项目避免低级错误。某个 Mac 开发者写了一个新的 C 或 C++ 头文件，如果忘记使用 <tt class="docutils literal"><span class="pre">#define</span></tt> 保护，在 Mac 下使用 <tt class="docutils literal"><span class="pre">#import</span></tt> 这个头文件不回引起问题，但是在其它平台下使用 <tt class="docutils literal"><span class="pre">#include</span></tt> 将可能编译失败。在所有的平台上统一使用 <a href="#id13"><span class="problematic" id="id14">``</span></a>#include``，意味着构造更可能全都成功或者失败，防止这些文件只能在某些平台下能够工作。</p>
 <div class="highlight-objc"><div class="highlight"><pre><span class="cp">#import &lt;Cocoa/Cocoa.h&gt;</span>
 <span class="cp">#include &lt;CoreFoundation/CoreFoundation.h&gt;</span>
 <span class="cp">#import &quot;GTMFoo.h&quot;</span>
@@ -167,9 +167,9 @@
 <h2>使用根框架</h2>
 <div class="admonition tip">
 <p class="first admonition-title">Tip</p>
-<p class="last"><tt class="docutils literal"><span class="pre">#import</span></tt> 根框架而不是單獨的零散檔案</p>
+<p class="last"><tt class="docutils literal"><span class="pre">#import</span></tt> 根框架而不是单独的零散文件</p>
 </div>
-<p>當你試圖從框架（如 Cocoa 或者 Foundation）中包含若干零散的系統標頭檔時，實際上包含頂層根框架的話，編譯器要做的工作更少。根框架通常已經經過預編譯，加載更快。另外記得使用 <tt class="docutils literal"><span class="pre">#import</span></tt> 而不是 <tt class="docutils literal"><span class="pre">#include</span></tt> 來包含 Objective-C 的框架。</p>
+<p>当你试图从框架（如 Cocoa 或者 Foundation）中包含若干零散的系统头文件时，实际上包含顶层根框架的话，编译器要做的工作更少。根框架通常已经经过预编译，加载更快。另外记得使用 <tt class="docutils literal"><span class="pre">#import</span></tt> 而不是 <tt class="docutils literal"><span class="pre">#include</span></tt> 来包含 Objective-C 的框架。</p>
 <div class="highlight-objc"><div class="highlight"><pre><span class="cp">#import &lt;Foundation/Foundation.h&gt;     </span><span class="c1">// good</span>
 
 <span class="cp">#import &lt;Foundation/NSArray.h&gt;        </span><span class="c1">// avoid</span>
@@ -179,12 +179,12 @@
 </div>
 </div>
 <div class="section" id="autorelease">
-<h2>構建時即設定 <tt class="docutils literal"><span class="pre">autorelease</span></tt></h2>
+<h2>构建时即设定 <tt class="docutils literal"><span class="pre">autorelease</span></tt></h2>
 <div class="admonition tip">
 <p class="first admonition-title">Tip</p>
-<p class="last">當創建臨時對象時，在同一行使用 <a href="#id16"><span class="problematic" id="id17">``</span></a>autolease``，而不是在同一個方法的後面語句中使用一個單獨的 <a href="#id18"><span class="problematic" id="id19">``</span></a>release``。</p>
+<p class="last">当创建临时对象时，在同一行使用 <a href="#id16"><span class="problematic" id="id17">``</span></a>autolease``，而不是在同一个方法的后面语句中使用一个单独的 <a href="#id18"><span class="problematic" id="id19">``</span></a>release``。</p>
 </div>
-<p>儘管運行效率會差一點，但避免了意外刪除 <tt class="docutils literal"><span class="pre">release</span></tt> 或者插入 <tt class="docutils literal"><span class="pre">return</span></tt> 語句而導致內存泄露的可能。例如：</p>
+<p>尽管运行效率会差一点，但避免了意外删除 <tt class="docutils literal"><span class="pre">release</span></tt> 或者插入 <tt class="docutils literal"><span class="pre">return</span></tt> 语句而导致内存泄露的可能。例如：</p>
 <div class="highlight-objc"><div class="highlight"><pre><span class="c1">// AVOID (unless you have a compelling performance reason)</span>
 <span class="n">MyController</span><span class="o">*</span> <span class="n">controller</span> <span class="o">=</span> <span class="p">[[</span><span class="n">MyController</span> <span class="n">alloc</span><span class="p">]</span> <span class="n">init</span><span class="p">];</span>
 <span class="c1">// ... code here that might return ...</span>
@@ -196,13 +196,13 @@
 </div>
 </div>
 <div class="section" id="autorelease-retain">
-<h2><tt class="docutils literal"><span class="pre">autorelease</span></tt> 優先 <tt class="docutils literal"><span class="pre">retain</span></tt> 其次</h2>
+<h2><tt class="docutils literal"><span class="pre">autorelease</span></tt> 优先 <tt class="docutils literal"><span class="pre">retain</span></tt> 其次</h2>
 <div class="admonition tip">
 <p class="first admonition-title">Tip</p>
-<p class="last">給對象賦值時遵守 <tt class="docutils literal"><span class="pre">autorelease``之後</span> <span class="pre">``retain</span></tt> 的模式。</p>
+<p class="last">给对象赋值时遵守 <tt class="docutils literal"><span class="pre">autorelease``之后</span> <span class="pre">``retain</span></tt> 的模式。</p>
 </div>
-<p>當給一個變數賦值新的對象時，必須先釋放掉舊的對象以避免內存泄露。有很多 “正確的” 方法可以處理這種情況。我們則選擇 “<tt class="docutils literal"><span class="pre">autorelease</span></tt> 之後 <tt class="docutils literal"><span class="pre">retain</span></tt>” 的方法，因為事實證明它不容易出錯。注意大的循環會填滿 <tt class="docutils literal"><span class="pre">autorelease</span></tt> 池，並且可能效率上會差一點，但權衡之下我們認為是可以接受的。</p>
-<div class="highlight-objc"><div class="highlight"><pre><span class="o">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="nl">setFoo:</span><span class="p">(</span><span class="n">GMFoo</span> <span class="o">*</span><span class="p">)</span><span class="n">aFoo</span> <span class="p">{</span>
+<p>当给一个变量赋值新的对象时，必须先释放掉旧的对象以避免内存泄露。有很多 “正确的” 方法可以处理这种情况。我们则选择 “<tt class="docutils literal"><span class="pre">autorelease</span></tt> 之后 <tt class="docutils literal"><span class="pre">retain</span></tt>” 的方法，因为事实证明它不容易出错。注意大的循环会填满 <tt class="docutils literal"><span class="pre">autorelease</span></tt> 池，并且可能效率上会差一点，但权衡之下我们认为是可以接受的。</p>
+<div class="highlight-objc"><div class="highlight"><pre><span class="k">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="nf">setFoo:</span><span class="p">(</span><span class="n">GMFoo</span> <span class="o">*</span><span class="p">)</span><span class="nv">aFoo</span> <span class="p">{</span>
   <span class="p">[</span><span class="n">foo_</span> <span class="n">autorelease</span><span class="p">];</span>  <span class="c1">// Won&#39;t dealloc if |foo_| == |aFoo|</span>
   <span class="n">foo_</span> <span class="o">=</span> <span class="p">[</span><span class="n">aFoo</span> <span class="n">retain</span><span class="p">];</span>
 <span class="p">}</span>
@@ -210,14 +210,14 @@
 </div>
 </div>
 <div class="section" id="init-dealloc">
-<h2><tt class="docutils literal"><span class="pre">init</span></tt> 和 <tt class="docutils literal"><span class="pre">dealloc</span></tt> 內避免使用訪問器</h2>
+<h2><tt class="docutils literal"><span class="pre">init</span></tt> 和 <tt class="docutils literal"><span class="pre">dealloc</span></tt> 内避免使用访问器</h2>
 <div class="admonition tip">
 <p class="first admonition-title">Tip</p>
-<p class="last">在 <tt class="docutils literal"><span class="pre">init</span></tt> 和 <tt class="docutils literal"><span class="pre">dealloc</span></tt> 方法執行的過程中，子類可能會處在一個不一致的狀態，所以這些方法中的代碼應避免調用訪問器。</p>
+<p class="last">在 <tt class="docutils literal"><span class="pre">init</span></tt> 和 <tt class="docutils literal"><span class="pre">dealloc</span></tt> 方法执行的过程中，子类可能会处在一个不一致的状态，所以这些方法中的代码应避免调用访问器。</p>
 </div>
-<p>子類尚未初始化，或在 <tt class="docutils literal"><span class="pre">init</span></tt> 和 <tt class="docutils literal"><span class="pre">dealloc</span></tt> 方法執行時已經被銷毀，會使訪問器方法很可能不可靠。實際上，應在這些方法中直接對 ivals 進行賦值或釋放操作。</p>
-<p>正確：</p>
-<div class="highlight-objc"><div class="highlight"><pre><span class="o">-</span> <span class="p">(</span><span class="kt">id</span><span class="p">)</span><span class="n">init</span> <span class="p">{</span>
+<p>子类尚未初始化，或在 <tt class="docutils literal"><span class="pre">init</span></tt> 和 <tt class="docutils literal"><span class="pre">dealloc</span></tt> 方法执行时已经被销毁，会使访问器方法很可能不可靠。实际上，应在这些方法中直接对 ivals 进行赋值或释放操作。</p>
+<p>正确：</p>
+<div class="highlight-objc"><div class="highlight"><pre><span class="k">-</span> <span class="p">(</span><span class="kt">id</span><span class="p">)</span><span class="nf">init</span> <span class="p">{</span>
   <span class="n">self</span> <span class="o">=</span> <span class="p">[</span><span class="n">super</span> <span class="n">init</span><span class="p">];</span>
   <span class="k">if</span> <span class="p">(</span><span class="n">self</span><span class="p">)</span> <span class="p">{</span>
     <span class="n">bar_</span> <span class="o">=</span> <span class="p">[[</span><span class="n">NSMutableString</span> <span class="n">alloc</span><span class="p">]</span> <span class="n">init</span><span class="p">];</span>  <span class="c1">// good</span>
@@ -225,14 +225,14 @@
   <span class="k">return</span> <span class="n">self</span><span class="p">;</span>
 <span class="p">}</span>
 
-<span class="o">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="n">dealloc</span> <span class="p">{</span>
+<span class="k">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="nf">dealloc</span> <span class="p">{</span>
   <span class="p">[</span><span class="n">bar_</span> <span class="n">release</span><span class="p">];</span>                           <span class="c1">// good</span>
   <span class="p">[</span><span class="n">super</span> <span class="n">dealloc</span><span class="p">];</span>
 <span class="p">}</span>
 </pre></div>
 </div>
-<p>錯誤：</p>
-<div class="highlight-objc"><div class="highlight"><pre><span class="o">-</span> <span class="p">(</span><span class="kt">id</span><span class="p">)</span><span class="n">init</span> <span class="p">{</span>
+<p>错误：</p>
+<div class="highlight-objc"><div class="highlight"><pre><span class="k">-</span> <span class="p">(</span><span class="kt">id</span><span class="p">)</span><span class="nf">init</span> <span class="p">{</span>
   <span class="n">self</span> <span class="o">=</span> <span class="p">[</span><span class="n">super</span> <span class="n">init</span><span class="p">];</span>
   <span class="k">if</span> <span class="p">(</span><span class="n">self</span><span class="p">)</span> <span class="p">{</span>
     <span class="n">self</span><span class="p">.</span><span class="n">bar</span> <span class="o">=</span> <span class="p">[</span><span class="n">NSMutableString</span> <span class="n">string</span><span class="p">];</span>  <span class="c1">// avoid</span>
@@ -240,7 +240,7 @@
   <span class="k">return</span> <span class="n">self</span><span class="p">;</span>
 <span class="p">}</span>
 
-<span class="o">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="n">dealloc</span> <span class="p">{</span>
+<span class="k">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="nf">dealloc</span> <span class="p">{</span>
   <span class="n">self</span><span class="p">.</span><span class="n">bar</span> <span class="o">=</span> <span class="nb">nil</span><span class="p">;</span>                         <span class="c1">// avoid</span>
   <span class="p">[</span><span class="n">super</span> <span class="n">dealloc</span><span class="p">];</span>
 <span class="p">}</span>
@@ -248,22 +248,22 @@
 </div>
 </div>
 <div class="section" id="id20">
-<h2>按聲明順序銷毀實例變數</h2>
+<h2>按声明顺序销毁实例变量</h2>
 <div class="admonition tip">
 <p class="first admonition-title">Tip</p>
-<p class="last"><tt class="docutils literal"><span class="pre">dealloc</span></tt> 中實例變數被釋放的順序應該與它們在 <tt class="docutils literal"><span class="pre">&#64;interface</span></tt> 中聲明的順序一致，這有助于代碼審查。</p>
+<p class="last"><tt class="docutils literal"><span class="pre">dealloc</span></tt> 中实例变量被释放的顺序应该与它们在 <tt class="docutils literal"><span class="pre">&#64;interface</span></tt> 中声明的顺序一致，这有助于代码审查。</p>
 </div>
-<p>代碼審查者在評審新的或者修改過的 <tt class="docutils literal"><span class="pre">dealloc</span></tt> 實現時，需要保證每個 <tt class="docutils literal"><span class="pre">retained</span></tt> 的實例變數都得到了釋放。</p>
-<p>為了簡化 <tt class="docutils literal"><span class="pre">dealloc</span></tt> 的審查，``retained`` 實例變數被釋放的順序應該與他們在 <tt class="docutils literal"><span class="pre">&#64;interface</span></tt> 中聲明的順序一致。如果 <tt class="docutils literal"><span class="pre">dealloc</span></tt> 調用了其它方法釋放成員變數，添加註釋解釋這些方法釋放了哪些實例變數。</p>
+<p>代码审查者在评审新的或者修改过的 <tt class="docutils literal"><span class="pre">dealloc</span></tt> 实现时，需要保证每个 <tt class="docutils literal"><span class="pre">retained</span></tt> 的实例变量都得到了释放。</p>
+<p>为了简化 <tt class="docutils literal"><span class="pre">dealloc</span></tt> 的审查，``retained`` 实例变量被释放的顺序应该与他们在 <tt class="docutils literal"><span class="pre">&#64;interface</span></tt> 中声明的顺序一致。如果 <tt class="docutils literal"><span class="pre">dealloc</span></tt> 调用了其它方法释放成员变量，添加注释解释这些方法释放了哪些实例变量。</p>
 </div>
 <div class="section" id="setter-nsstrings">
-<h2><tt class="docutils literal"><span class="pre">setter</span></tt> 應複製 NSStrings</h2>
+<h2><tt class="docutils literal"><span class="pre">setter</span></tt> 应复制 NSStrings</h2>
 <div class="admonition tip">
 <p class="first admonition-title">Tip</p>
-<p class="last">接受 <tt class="docutils literal"><span class="pre">NSString</span></tt> 作為參數的 <tt class="docutils literal"><span class="pre">setter``，應該總是</span> <span class="pre">``copy</span></tt> 傳入的字元串。</p>
+<p class="last">接受 <tt class="docutils literal"><span class="pre">NSString</span></tt> 作为参数的 <tt class="docutils literal"><span class="pre">setter``，应该总是</span> <span class="pre">``copy</span></tt> 传入的字符串。</p>
 </div>
-<p>永遠不要僅僅 <tt class="docutils literal"><span class="pre">retain</span></tt> 一個字元串。因為調用者很可能在你不知情的情況下修改了字元串。不要假定別人不會修改，你接受的對象是一個 <tt class="docutils literal"><span class="pre">NSString</span></tt> 對象而不是 <tt class="docutils literal"><span class="pre">NSMutableString</span></tt> 對象。</p>
-<div class="highlight-objc"><div class="highlight"><pre><span class="o">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="nl">setFoo:</span><span class="p">(</span><span class="n">NSString</span> <span class="o">*</span><span class="p">)</span><span class="n">aFoo</span> <span class="p">{</span>
+<p>永远不要仅仅 <tt class="docutils literal"><span class="pre">retain</span></tt> 一个字符串。因为调用者很可能在你不知情的情况下修改了字符串。不要假定别人不会修改，你接受的对象是一个 <tt class="docutils literal"><span class="pre">NSString</span></tt> 对象而不是 <tt class="docutils literal"><span class="pre">NSMutableString</span></tt> 对象。</p>
+<div class="highlight-objc"><div class="highlight"><pre><span class="k">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="nf">setFoo:</span><span class="p">(</span><span class="n">NSString</span> <span class="o">*</span><span class="p">)</span><span class="nv">aFoo</span> <span class="p">{</span>
   <span class="p">[</span><span class="n">foo_</span> <span class="n">autorelease</span><span class="p">];</span>
   <span class="n">foo_</span> <span class="o">=</span> <span class="p">[</span><span class="n">aFoo</span> <span class="n">copy</span><span class="p">];</span>
 <span class="p">}</span>
@@ -271,14 +271,14 @@
 </div>
 </div>
 <div class="section" id="avoid-throwing-exceptions">
-<span id="id21"></span><h2>避免拋異常</h2>
+<span id="id21"></span><h2>避免抛异常</h2>
 <div class="admonition tip">
 <p class="first admonition-title">Tip</p>
-<p class="last">不要 <tt class="docutils literal"><span class="pre">&#64;throw</span></tt> Objective-C 異常，同時也要時刻準備捕獲從第三方或 OS 代碼中拋出的異常。</p>
+<p class="last">不要 <tt class="docutils literal"><span class="pre">&#64;throw</span></tt> Objective-C 异常，同时也要时刻准备捕获从第三方或 OS 代码中抛出的异常。</p>
 </div>
-<p>我們的確允許 <tt class="docutils literal"><span class="pre">-fobjc-exceptions</span></tt> 編譯開關（主要因為我們要用到 <tt class="docutils literal"><span class="pre">&#64;synchronized</span></tt> ），但我們不使用 <tt class="docutils literal"><span class="pre">&#64;throw``。為了合理使用第三方的代碼，``&#64;try``、``&#64;catch</span></tt> 和 <tt class="docutils literal"><span class="pre">&#64;finally</span></tt> 是允許的。如果你確實使用了異常，請明確註釋你期望什麼方法拋出異常。</p>
-<p>不要使用 <tt class="docutils literal"><span class="pre">NS_DURING``、``NS_HANDLER``、``NS_ENDHANDLER``、``NS_VALUERETURN</span></tt> 和 <tt class="docutils literal"><span class="pre">NS_VOIDRETURN</span></tt> 宏，除非你寫的代碼需要在 Mac OS X 10.2 或之前的操作系統中運行。</p>
-<p>注意：如果拋出 Objective-C 異常，Objective-C++ 代碼中基于棧的對象不會被銷毀。比如：</p>
+<p>我们的确允许 <tt class="docutils literal"><span class="pre">-fobjc-exceptions</span></tt> 编译开关（主要因为我们要用到 <tt class="docutils literal"><span class="pre">&#64;synchronized</span></tt> ），但我们不使用 <tt class="docutils literal"><span class="pre">&#64;throw``。为了合理使用第三方的代码，``&#64;try``、``&#64;catch</span></tt> 和 <tt class="docutils literal"><span class="pre">&#64;finally</span></tt> 是允许的。如果你确实使用了异常，请明确注释你期望什么方法抛出异常。</p>
+<p>不要使用 <tt class="docutils literal"><span class="pre">NS_DURING``、``NS_HANDLER``、``NS_ENDHANDLER``、``NS_VALUERETURN</span></tt> 和 <tt class="docutils literal"><span class="pre">NS_VOIDRETURN</span></tt> 宏，除非你写的代码需要在 Mac OS X 10.2 或之前的操作系统中运行。</p>
+<p>注意：如果抛出 Objective-C 异常，Objective-C++ 代码中基于栈的对象不会被销毁。比如：</p>
 <div class="highlight-objc"><div class="highlight"><pre><span class="n">class</span> <span class="n">exceptiontest</span> <span class="p">{</span>
  <span class="nl">public:</span>
   <span class="n">exceptiontest</span><span class="p">()</span> <span class="p">{</span> <span class="n">NSLog</span><span class="p">(</span><span class="s">@&quot;Created&quot;</span><span class="p">);</span> <span class="p">}</span>
@@ -305,37 +305,37 @@
 <span class="p">}</span>
 </pre></div>
 </div>
-<p>會輸出：</p>
-<p>注意：這裡解構子從未被調用。這主要會影響基于棧的 <tt class="docutils literal"><span class="pre">smartptr``，比如</span> <span class="pre">``shared_ptr``、``linked_ptr``，以及所有你可能用到的</span> <span class="pre">STL</span> <span class="pre">對象。因此我們不得不痛苦的說，如果必須在</span> <span class="pre">Objective-C++</span> <span class="pre">中使用異常，就只用</span> <span class="pre">C++</span> <span class="pre">的異常機制。永遠不應該重新拋出</span> <span class="pre">Objective-C</span> <span class="pre">異常，也不應該在</span> <span class="pre">``&#64;try``、``&#64;catch</span></tt> 或 <tt class="docutils literal"><span class="pre">&#64;finally</span></tt> 語句塊中使用基于棧的 C++ 對象。</p>
+<p>会输出：</p>
+<p>注意：这里析构函数从未被调用。这主要会影响基于栈的 <tt class="docutils literal"><span class="pre">smartptr``，比如</span> <span class="pre">``shared_ptr``、``linked_ptr``，以及所有你可能用到的</span> <span class="pre">STL</span> <span class="pre">对象。因此我们不得不痛苦的说，如果必须在</span> <span class="pre">Objective-C++</span> <span class="pre">中使用异常，就只用</span> <span class="pre">C++</span> <span class="pre">的异常机制。永远不应该重新抛出</span> <span class="pre">Objective-C</span> <span class="pre">异常，也不应该在</span> <span class="pre">``&#64;try``、``&#64;catch</span></tt> 或 <tt class="docutils literal"><span class="pre">&#64;finally</span></tt> 语句块中使用基于栈的 C++ 对象。</p>
 </div>
 <div class="section" id="nil">
-<h2>nil 檢查</h2>
+<h2>nil 检查</h2>
 <div class="admonition tip">
 <p class="first admonition-title">Tip</p>
-<p class="last"><tt class="docutils literal"><span class="pre">nil</span></tt> 檢查只用在邏輯流程中。</p>
+<p class="last"><tt class="docutils literal"><span class="pre">nil</span></tt> 检查只用在逻辑流程中。</p>
 </div>
-<p>使用 <tt class="docutils literal"><span class="pre">nil</span></tt> 的檢查來檢查應用程序的邏輯流程，而不是避免崩潰。Objective-C 運行時會處理向 <tt class="docutils literal"><span class="pre">nil</span></tt> 對象發送消息的情況。如果方法沒有返回值，就沒關係。如果有返回值，可能由於運行時架構、返回值類型以及 OS X 版本的不同而不同，參見 <a class="reference external" href="http://developer.apple.com/documentation/Cocoa/Conceptual/ObjectiveC/Articles/chapter_2_section_3.html">Apple’s documentation</a> 。</p>
-<p>注意，這和 C/C++ 中檢查指針是否為 ‵‵NULL`` 很不一樣，C/C++ 運行時不做任何檢查，從而導致應用程序崩潰。因此你仍然需要保證你不會對一個 C/C++ 的空指針解引用。</p>
+<p>使用 <tt class="docutils literal"><span class="pre">nil</span></tt> 的检查来检查应用程序的逻辑流程，而不是避免崩溃。Objective-C 运行时会处理向 <tt class="docutils literal"><span class="pre">nil</span></tt> 对象发送消息的情况。如果方法没有返回值，就没关系。如果有返回值，可能由于运行时架构、返回值类型以及 OS X 版本的不同而不同，参见 <a class="reference external" href="http://developer.apple.com/documentation/Cocoa/Conceptual/ObjectiveC/Articles/chapter_2_section_3.html">Apple’s documentation</a> 。</p>
+<p>注意，这和 C/C++ 中检查指针是否为 ‵‵NULL`` 很不一样，C/C++ 运行时不做任何检查，从而导致应用程序崩溃。因此你仍然需要保证你不会对一个 C/C++ 的空指针解引用。</p>
 </div>
 <div class="section" id="bool">
 <h2>BOOL 若干陷阱</h2>
 <div class="admonition tip">
 <p class="first admonition-title">Tip</p>
-<p class="last">將普通整形轉換成 <tt class="docutils literal"><span class="pre">BOOL</span></tt> 時要小心。不要直接將 <tt class="docutils literal"><span class="pre">BOOL</span></tt> 值與 <tt class="docutils literal"><span class="pre">YES</span></tt> 進行比較。</p>
+<p class="last">将普通整形转换成 <tt class="docutils literal"><span class="pre">BOOL</span></tt> 时要小心。不要直接将 <tt class="docutils literal"><span class="pre">BOOL</span></tt> 值与 <tt class="docutils literal"><span class="pre">YES</span></tt> 进行比较。</p>
 </div>
-<p>Ojbective-C 中把 <tt class="docutils literal"><span class="pre">BOOL</span></tt> 定義成無符號字元型，這意味着 <tt class="docutils literal"><span class="pre">BOOL</span></tt> 類型的值遠不止 <tt class="docutils literal"><span class="pre">YES``(1)或</span> <span class="pre">``NO``(0)。不要直接把整形轉換成</span> <span class="pre">``BOOL``。常見的錯誤包括將數組的大小、指針值及位運算的結果直接轉換成</span> <span class="pre">``BOOL</span></tt> ，取決於整型結果的最後一個位元組，很可能會產生一個 <tt class="docutils literal"><span class="pre">NO</span></tt> 值。當轉換整形至 <tt class="docutils literal"><span class="pre">BOOL</span></tt> 時，使用三目操作符來返回 <tt class="docutils literal"><span class="pre">YES</span></tt> 或者 <a href="#id22"><span class="problematic" id="id23">``</span></a>NO``。（譯者註：讀者可以試一下任意的 256 的整數的轉換結果，如 256、512 …）</p>
-<p>你可以安全在 <tt class="docutils literal"><span class="pre">BOOL``、``_Bool</span></tt> 以及 <tt class="docutils literal"><span class="pre">bool</span></tt> 之間轉換（參見 C++ Std 4.7.4, 4.12 以及 C99 Std 6.3.1.2）。你不能安全在 <tt class="docutils literal"><span class="pre">BOOL</span></tt> 以及 <tt class="docutils literal"><span class="pre">Boolean</span></tt> 之間轉換，因此請把 <tt class="docutils literal"><span class="pre">Boolean</span></tt> 當作一個普通整形，就像之前討論的那樣。但 Objective-C 的方法標識符中，只使用 <a href="#id24"><span class="problematic" id="id25">``</span></a>BOOL``。</p>
-<p>對 <tt class="docutils literal"><span class="pre">BOOL</span></tt> 使用邏輯運算符（``&amp;&amp;``，``||`` 和 <a href="#id26"><span class="problematic" id="id27">``</span></a>!``）是合法的，返回值也可以安全地轉換成 <a href="#id28"><span class="problematic" id="id29">``</span></a>BOOL``，不需要使用三目操作符。</p>
-<p>錯誤的用法：</p>
-<div class="highlight-objc"><div class="highlight"><pre><span class="o">-</span> <span class="p">(</span><span class="kt">BOOL</span><span class="p">)</span><span class="n">isBold</span> <span class="p">{</span>
+<p>Ojbective-C 中把 <tt class="docutils literal"><span class="pre">BOOL</span></tt> 定义成无符号字符型，这意味着 <tt class="docutils literal"><span class="pre">BOOL</span></tt> 类型的值远不止 <tt class="docutils literal"><span class="pre">YES``(1)或</span> <span class="pre">``NO``(0)。不要直接把整形转换成</span> <span class="pre">``BOOL``。常见的错误包括将数组的大小、指针值及位运算的结果直接转换成</span> <span class="pre">``BOOL</span></tt> ，取决于整型结果的最后一个字节，很可能会产生一个 <tt class="docutils literal"><span class="pre">NO</span></tt> 值。当转换整形至 <tt class="docutils literal"><span class="pre">BOOL</span></tt> 时，使用三目操作符来返回 <tt class="docutils literal"><span class="pre">YES</span></tt> 或者 <a href="#id22"><span class="problematic" id="id23">``</span></a>NO``。（译者注：读者可以试一下任意的 256 的整数的转换结果，如 256、512 …）</p>
+<p>你可以安全在 <tt class="docutils literal"><span class="pre">BOOL``、``_Bool</span></tt> 以及 <tt class="docutils literal"><span class="pre">bool</span></tt> 之间转换（参见 C++ Std 4.7.4, 4.12 以及 C99 Std 6.3.1.2）。你不能安全在 <tt class="docutils literal"><span class="pre">BOOL</span></tt> 以及 <tt class="docutils literal"><span class="pre">Boolean</span></tt> 之间转换，因此请把 <tt class="docutils literal"><span class="pre">Boolean</span></tt> 当作一个普通整形，就像之前讨论的那样。但 Objective-C 的方法标识符中，只使用 <a href="#id24"><span class="problematic" id="id25">``</span></a>BOOL``。</p>
+<p>对 <tt class="docutils literal"><span class="pre">BOOL</span></tt> 使用逻辑运算符（``&amp;&amp;``，``||`` 和 <a href="#id26"><span class="problematic" id="id27">``</span></a>!``）是合法的，返回值也可以安全地转换成 <a href="#id28"><span class="problematic" id="id29">``</span></a>BOOL``，不需要使用三目操作符。</p>
+<p>错误的用法：</p>
+<div class="highlight-objc"><div class="highlight"><pre><span class="k">-</span> <span class="p">(</span><span class="kt">BOOL</span><span class="p">)</span><span class="nf">isBold</span> <span class="p">{</span>
   <span class="k">return</span> <span class="p">[</span><span class="n">self</span> <span class="n">fontTraits</span><span class="p">]</span> <span class="o">&amp;</span> <span class="n">NSFontBoldTrait</span><span class="p">;</span>
 <span class="p">}</span>
-<span class="o">-</span> <span class="p">(</span><span class="kt">BOOL</span><span class="p">)</span><span class="n">isValid</span> <span class="p">{</span>
+<span class="k">-</span> <span class="p">(</span><span class="kt">BOOL</span><span class="p">)</span><span class="nf">isValid</span> <span class="p">{</span>
   <span class="k">return</span> <span class="p">[</span><span class="n">self</span> <span class="n">stringValue</span><span class="p">];</span>
 <span class="p">}</span>
 </pre></div>
 </div>
-<p>正確的用法：</p>
+<p>正确的用法：</p>
 <blockquote>
 <div><div class="highlight-objc"><div class="highlight"><pre>
 </pre></div>
@@ -354,14 +354,14 @@ return ([self fontTraits] &amp; NSFontBoldTrait) ? YES : NO;</li>
 <div>return [self isValid] &amp;&amp; [self isBold];</div></blockquote>
 <p>}</p>
 </div></blockquote>
-<p>同樣，不要直接比較 <tt class="docutils literal"><span class="pre">YES/NO</span></tt> 和 <tt class="docutils literal"><span class="pre">BOOL</span></tt> 變數。不僅僅因為影響可讀性，更重要的是結果可能與你想的不同。</p>
-<p>錯誤的用法：</p>
+<p>同样，不要直接比较 <tt class="docutils literal"><span class="pre">YES/NO</span></tt> 和 <tt class="docutils literal"><span class="pre">BOOL</span></tt> 变量。不仅仅因为影响可读性，更重要的是结果可能与你想的不同。</p>
+<p>错误的用法：</p>
 <div class="highlight-objc"><div class="highlight"><pre><span class="kt">BOOL</span> <span class="n">great</span> <span class="o">=</span> <span class="p">[</span><span class="n">foo</span> <span class="n">isGreat</span><span class="p">];</span>
 <span class="k">if</span> <span class="p">(</span><span class="n">great</span> <span class="o">==</span> <span class="n">YES</span><span class="p">)</span>
   <span class="c1">// ...be great!</span>
 </pre></div>
 </div>
-<p>正確的用法：</p>
+<p>正确的用法：</p>
 <div class="highlight-objc"><div class="highlight"><pre><span class="kt">BOOL</span> <span class="n">great</span> <span class="o">=</span> <span class="p">[</span><span class="n">foo</span> <span class="n">isGreat</span><span class="p">];</span>
 <span class="k">if</span> <span class="p">(</span><span class="n">great</span><span class="p">)</span>
   <span class="c1">// ...be great!</span>
@@ -369,15 +369,15 @@ return ([self fontTraits] &amp; NSFontBoldTrait) ? YES : NO;</li>
 </div>
 </div>
 <div class="section" id="property">
-<h2>屬性（Property）</h2>
+<h2>属性（Property）</h2>
 <div class="admonition tip">
 <p class="first admonition-title">Tip</p>
-<p class="last">屬性（Property）通常允許使用，但需要清楚的瞭解：屬性（Property）是 Objective-C 2.0 的特性，會限制你的代碼只能跑在 iPhone 和 Mac OS X 10.5 (Leopard) 及更高版本上。點引用只允許訪問聲明過的 <a href="#id30"><span class="problematic" id="id31">``</span></a>&#64;property``。</p>
+<p class="last">属性（Property）通常允许使用，但需要清楚的了解：属性（Property）是 Objective-C 2.0 的特性，会限制你的代码只能跑在 iPhone 和 Mac OS X 10.5 (Leopard) 及更高版本上。点引用只允许访问声明过的 <a href="#id30"><span class="problematic" id="id31">``</span></a>&#64;property``。</p>
 </div>
 <div class="section" id="id32">
 <h3>命名</h3>
-<p>屬性所關聯的實例變數的命名必須遵守以下劃線作為尾碼的規則。屬性的名字應該與成員變數去掉下劃線尾碼的名字一模一樣。</p>
-<p>使用 <tt class="docutils literal"><span class="pre">&#64;synthesize</span></tt> 指示符來正確地重命名屬性。</p>
+<p>属性所关联的实例变量的命名必须遵守以下划线作为后缀的规则。属性的名字应该与成员变量去掉下划线后缀的名字一模一样。</p>
+<p>使用 <tt class="docutils literal"><span class="pre">&#64;synthesize</span></tt> 指示符来正确地重命名属性。</p>
 <div class="highlight-objc"><div class="highlight"><pre><span class="k">@interface</span> <span class="nc">MyClass</span> : <span class="nc">NSObject</span> <span class="p">{</span>
  <span class="k">@private</span>
   <span class="n">NSString</span> <span class="o">*</span><span class="n">name_</span><span class="p">;</span>
@@ -393,7 +393,7 @@ return ([self fontTraits] &amp; NSFontBoldTrait) ? YES : NO;</li>
 </div>
 <div class="section" id="id33">
 <h3>位置</h3>
-<p>屬性的聲明必須緊靠着類介面中的實例變數語句塊。屬性的定義必須在 <tt class="docutils literal"><span class="pre">&#64;implementation</span></tt> 的類定義的最上方。他們的縮進與包含他們的 <tt class="docutils literal"><span class="pre">&#64;interface</span></tt> 以及 <tt class="docutils literal"><span class="pre">&#64;implementation</span></tt> 語句一樣。</p>
+<p>属性的声明必须紧靠着类接口中的实例变量语句块。属性的定义必须在 <tt class="docutils literal"><span class="pre">&#64;implementation</span></tt> 的类定义的最上方。他们的缩进与包含他们的 <tt class="docutils literal"><span class="pre">&#64;interface</span></tt> 以及 <tt class="docutils literal"><span class="pre">&#64;implementation</span></tt> 语句一样。</p>
 <div class="highlight-objc"><div class="highlight"><pre><span class="k">@interface</span> <span class="nc">MyClass</span> : <span class="nc">NSObject</span> <span class="p">{</span>
  <span class="k">@private</span>
   <span class="n">NSString</span> <span class="o">*</span><span class="n">name_</span><span class="p">;</span>
@@ -403,7 +403,7 @@ return ([self fontTraits] &amp; NSFontBoldTrait) ? YES : NO;</li>
 
 <span class="k">@implementation</span> <span class="nc">MyClass</span>
 <span class="k">@synthesize</span> <span class="n">name</span> <span class="o">=</span> <span class="n">name_</span><span class="p">;</span>
-<span class="o">-</span> <span class="p">(</span><span class="kt">id</span><span class="p">)</span><span class="n">init</span> <span class="p">{</span>
+<span class="k">-</span> <span class="p">(</span><span class="kt">id</span><span class="p">)</span><span class="nf">init</span> <span class="p">{</span>
 <span class="p">...</span>
 <span class="p">}</span>
 <span class="k">@end</span>
@@ -411,23 +411,23 @@ return ([self fontTraits] &amp; NSFontBoldTrait) ? YES : NO;</li>
 </div>
 </div>
 <div class="section" id="copy-attribute">
-<h3>字元串應使用 <tt class="docutils literal"><span class="pre">copy</span></tt> 屬性（Attribute）</h3>
-<p>應總是用 <tt class="docutils literal"><span class="pre">copy</span></tt> 屬性（attribute）聲明 <tt class="docutils literal"><span class="pre">NSString</span></tt> 屬性（property）。</p>
-<p>從邏輯上，確保遵守 <tt class="docutils literal"><span class="pre">NSString</span></tt> 的 <tt class="docutils literal"><span class="pre">setter</span></tt> 必須使用 <tt class="docutils literal"><span class="pre">copy</span></tt> 而不是 <tt class="docutils literal"><span class="pre">retain</span></tt> 的原則。</p>
+<h3>字符串应使用 <tt class="docutils literal"><span class="pre">copy</span></tt> 属性（Attribute）</h3>
+<p>应总是用 <tt class="docutils literal"><span class="pre">copy</span></tt> 属性（attribute）声明 <tt class="docutils literal"><span class="pre">NSString</span></tt> 属性（property）。</p>
+<p>从逻辑上，确保遵守 <tt class="docutils literal"><span class="pre">NSString</span></tt> 的 <tt class="docutils literal"><span class="pre">setter</span></tt> 必须使用 <tt class="docutils literal"><span class="pre">copy</span></tt> 而不是 <tt class="docutils literal"><span class="pre">retain</span></tt> 的原则。</p>
 </div>
 <div class="section" id="id34">
 <h3>原子性</h3>
-<p>一定要注意屬性（property）的開銷。預設情況下，所有 <tt class="docutils literal"><span class="pre">synthesize</span></tt> 的 <tt class="docutils literal"><span class="pre">setter</span></tt> 和 <tt class="docutils literal"><span class="pre">getter</span></tt> 都是原子的。這會給每個 <tt class="docutils literal"><span class="pre">get</span></tt> 或者 <tt class="docutils literal"><span class="pre">set</span></tt> 帶來一定的同步開銷。將屬性（property）聲明為 <a href="#id35"><span class="problematic" id="id36">``</span></a>nonatomic``，除非你需要原子性。</p>
+<p>一定要注意属性（property）的开销。缺省情况下，所有 <tt class="docutils literal"><span class="pre">synthesize</span></tt> 的 <tt class="docutils literal"><span class="pre">setter</span></tt> 和 <tt class="docutils literal"><span class="pre">getter</span></tt> 都是原子的。这会给每个 <tt class="docutils literal"><span class="pre">get</span></tt> 或者 <tt class="docutils literal"><span class="pre">set</span></tt> 带来一定的同步开销。将属性（property）声明为 <a href="#id35"><span class="problematic" id="id36">``</span></a>nonatomic``，除非你需要原子性。</p>
 </div>
 <div class="section" id="id37">
-<h3>點引用</h3>
-<p>點引用是地道的 Objective-C 2.0 風格。它被使用於簡單的屬性 <tt class="docutils literal"><span class="pre">set``、``get</span></tt> 操作，但不應該用它來調用對象的其它操作。</p>
-<p>正確的做法：</p>
+<h3>点引用</h3>
+<p>点引用是地道的 Objective-C 2.0 风格。它被使用于简单的属性 <tt class="docutils literal"><span class="pre">set``、``get</span></tt> 操作，但不应该用它来调用对象的其它操作。</p>
+<p>正确的做法：</p>
 <div class="highlight-objc"><div class="highlight"><pre><span class="n">NSString</span> <span class="o">*</span><span class="n">oldName</span> <span class="o">=</span> <span class="n">myObject</span><span class="p">.</span><span class="n">name</span><span class="p">;</span>
 <span class="n">myObject</span><span class="p">.</span><span class="n">name</span> <span class="o">=</span> <span class="s">@&quot;Alice&quot;</span><span class="p">;</span>
 </pre></div>
 </div>
-<p>錯誤的做法：</p>
+<p>错误的做法：</p>
 <div class="highlight-objc"><div class="highlight"><pre><span class="n">NSArray</span> <span class="o">*</span><span class="n">array</span> <span class="o">=</span> <span class="p">[[</span><span class="n">NSArray</span> <span class="nl">arrayWithObject:</span><span class="s">@&quot;hello&quot;</span><span class="p">]</span> <span class="n">retain</span><span class="p">];</span>
 
 <span class="n">NSUInteger</span> <span class="n">numberOfItems</span> <span class="o">=</span> <span class="n">array</span><span class="p">.</span><span class="n">count</span><span class="p">;</span>  <span class="c1">// not a property</span>
@@ -437,18 +437,18 @@ return ([self fontTraits] &amp; NSFontBoldTrait) ? YES : NO;</li>
 </div>
 </div>
 <div class="section" id="id38">
-<h2>沒有實例變數的介面</h2>
+<h2>没有实例变量的接口</h2>
 <div class="admonition tip">
 <p class="first admonition-title">Tip</p>
-<p class="last">沒有聲明任何實例變數的介面，應省略空花括號。</p>
+<p class="last">没有声明任何实例变量的接口，应省略空花括号。</p>
 </div>
-<p>正確的做法：</p>
+<p>正确的做法：</p>
 <blockquote>
 <div>&#64;interface MyClass : NSObject
 // Does a lot of stuff
 - (void)fooBarBam;
 &#64;end</div></blockquote>
-<p>錯誤的做法：</p>
+<p>错误的做法：</p>
 <blockquote>
 <div>&#64;interface MyClass : NSObject {
 }
@@ -457,13 +457,13 @@ return ([self fontTraits] &amp; NSFontBoldTrait) ? YES : NO;</li>
 &#64;end</div></blockquote>
 </div>
 <div class="section" id="synthesize">
-<h2>自動 <tt class="docutils literal"><span class="pre">synthesize</span></tt> 實例變數</h2>
+<h2>自动 <tt class="docutils literal"><span class="pre">synthesize</span></tt> 实例变量</h2>
 <div class="admonition tip">
 <p class="first admonition-title">Tip</p>
-<p class="last">只運行在 iOS 下的代碼，優先考慮使用自動 <tt class="docutils literal"><span class="pre">synthesize</span></tt> 實例變數。</p>
+<p class="last">只运行在 iOS 下的代码，优先考虑使用自动 <tt class="docutils literal"><span class="pre">synthesize</span></tt> 实例变量。</p>
 </div>
-<p><tt class="docutils literal"><span class="pre">synthesize</span></tt> 實例變數時，使用 <tt class="docutils literal"><span class="pre">&#64;synthesize</span> <span class="pre">var</span> <span class="pre">=</span> <span class="pre">var_;</span></tt> 防止原本想調用 <tt class="docutils literal"><span class="pre">self.var</span> <span class="pre">=</span> <span class="pre">blah;</span></tt> 卻不慎寫成了 <a href="#id39"><span class="problematic" id="id40">``</span></a>var = blah;``。</p>
-<p>不要synthesize CFType的屬性 CFType應該永遠使用&#64;dynamic實現指示符。 儘管CFType不能使用retain屬性特性，開發者必須自己處理retain和release。很少有情況你需要僅僅對它進行賦值，因此最好顯示地實現getter和setter，並作出註釋說明。 列出所有的實現指示符 儘管&#64;dynamic是預設的，顯示列出它以及其它的實現指示符會提高可讀性，代碼閲讀者可以一眼就知道類的每個屬性是如何實現的。</p>
+<p><tt class="docutils literal"><span class="pre">synthesize</span></tt> 实例变量时，使用 <tt class="docutils literal"><span class="pre">&#64;synthesize</span> <span class="pre">var</span> <span class="pre">=</span> <span class="pre">var_;</span></tt> 防止原本想调用 <tt class="docutils literal"><span class="pre">self.var</span> <span class="pre">=</span> <span class="pre">blah;</span></tt> 却不慎写成了 <a href="#id39"><span class="problematic" id="id40">``</span></a>var = blah;``。</p>
+<p>不要synthesize CFType的属性 CFType应该永远使用&#64;dynamic实现指示符。 尽管CFType不能使用retain属性特性，开发者必须自己处理retain和release。很少有情况你需要仅仅对它进行赋值，因此最好显示地实现getter和setter，并作出注释说明。 列出所有的实现指示符 尽管&#64;dynamic是默认的，显示列出它以及其它的实现指示符会提高可读性，代码阅读者可以一眼就知道类的每个属性是如何实现的。</p>
 <div class="highlight-objc"><div class="highlight"><pre><span class="c1">// Header file</span>
 <span class="k">@interface</span> <span class="nc">Foo</span> : <span class="nc">NSObject</span>
 <span class="c1">// A guy walks into a bar.</span>
@@ -489,7 +489,7 @@ return ([self fontTraits] &amp; NSFontBoldTrait) ? YES : NO;</li>
       <div class="bottomnav">
       
         <p>
-        «&#160;&#160;<a href="comments.html">註釋</a>
+        «&#160;&#160;<a href="comments.html">注释</a>
         &#160;&#160;::&#160;&#160;
         <a class="uplink" href="../contents.html">Contents</a>
         &#160;&#160;::&#160;&#160;

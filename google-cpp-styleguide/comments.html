@@ -8,7 +8,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>7. 註釋 &mdash; Google 開源項目風格指南</title>
+    <title>7. 注释 &mdash; Google 开源项目风格指南</title>
     
     <link rel="stylesheet" href="../_static/haiku.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
@@ -27,20 +27,20 @@
     <script type="text/javascript" src="../_static/underscore.js"></script>
     <script type="text/javascript" src="../_static/doctools.js"></script>
     <script type="text/javascript" src="../_static/theme_extras.js"></script>
-    <link rel="top" title="Google 開源項目風格指南" href="../index.html" />
-    <link rel="up" title="C++ 風格指南 - 內容目錄" href="contents.html" />
+    <link rel="top" title="Google 开源项目风格指南" href="../index.html" />
+    <link rel="up" title="C++ 风格指南 - 内容目录" href="contents.html" />
     <link rel="next" title="8. 格式" href="formatting.html" />
-    <link rel="prev" title="6. 命名約定" href="naming.html" /> 
+    <link rel="prev" title="6. 命名约定" href="naming.html" /> 
   </head>
   <body>
       <div class="header"><h1 class="heading"><a href="../index.html">
-          <span>Google 開源項目風格指南</span></a></h1>
-        <h2 class="heading"><span>7. 註釋</span></h2>
+          <span>Google 开源项目风格指南</span></a></h1>
+        <h2 class="heading"><span>7. 注释</span></h2>
       </div>
       <div class="topnav">
       
         <p>
-        «&#160;&#160;<a href="naming.html">6. 命名約定</a>
+        «&#160;&#160;<a href="naming.html">6. 命名约定</a>
         &#160;&#160;::&#160;&#160;
         <a class="uplink" href="../contents.html">Contents</a>
         &#160;&#160;::&#160;&#160;
@@ -52,47 +52,47 @@
         
         
   <div class="section" id="id1">
-<h1>7. 註釋</h1>
-<p>註釋雖然寫起來很痛苦, 但對保證代碼可讀性至關重要. 下面的規則描述了如何註釋以及在哪兒註釋. 當然也要記住: 註釋固然很重要, 但最好的代碼本身應該是自文檔化. 有意義的類型名和變數名, 要遠勝過要用註釋解釋的含糊不清的名字.</p>
-<p>你寫的註釋是給代碼讀者看的: 下一個需要理解你的代碼的人. 慷慨些吧, 下一個人可能就是你!</p>
+<h1>7. 注释</h1>
+<p>注释虽然写起来很痛苦, 但对保证代码可读性至关重要. 下面的规则描述了如何注释以及在哪儿注释. 当然也要记住: 注释固然很重要, 但最好的代码本身应该是自文档化. 有意义的类型名和变量名, 要远胜过要用注释解释的含糊不清的名字.</p>
+<p>你写的注释是给代码读者看的: 下一个需要理解你的代码的人. 慷慨些吧, 下一个人可能就是你!</p>
 <div class="section" id="id2">
-<h2>7.1. 註釋風格</h2>
+<h2>7.1. 注释风格</h2>
 <div class="admonition tip">
 <p class="first admonition-title">Tip</p>
-<p class="last">使用 <tt class="docutils literal"><span class="pre">//</span></tt> 或 <tt class="docutils literal"><span class="pre">/*</span> <span class="pre">*/</span></tt>, 統一就好.</p>
+<p class="last">使用 <tt class="docutils literal"><span class="pre">//</span></tt> 或 <tt class="docutils literal"><span class="pre">/*</span> <span class="pre">*/</span></tt>, 统一就好.</p>
 </div>
-<p><tt class="docutils literal"><span class="pre">//</span></tt> 或 <tt class="docutils literal"><span class="pre">/*</span> <span class="pre">*/</span></tt> 都可以; 但 <tt class="docutils literal"><span class="pre">//</span></tt> <em>更</em> 常用. 要在如何註釋及註釋風格上確保統一.</p>
+<p><tt class="docutils literal"><span class="pre">//</span></tt> 或 <tt class="docutils literal"><span class="pre">/*</span> <span class="pre">*/</span></tt> 都可以; 但 <tt class="docutils literal"><span class="pre">//</span></tt> <em>更</em> 常用. 要在如何注释及注释风格上确保统一.</p>
 </div>
 <div class="section" id="id3">
-<h2>7.2. 檔案註釋</h2>
+<h2>7.2. 文件注释</h2>
 <div class="admonition tip">
 <p class="first admonition-title">Tip</p>
-<p class="last">在每一個檔案開頭加入版權公告, 然後是檔案內容描述.</p>
+<p class="last">在每一个文件开头加入版权公告, 然后是文件内容描述.</p>
 </div>
 <dl class="docutils">
 <dt>法律公告和作者信息:</dt>
-<dd><p class="first">每個檔案都應該包含以下項, 依次是:</p>
+<dd><p class="first">每个文件都应该包含以下项, 依次是:</p>
 <blockquote>
 <div><ul class="simple">
-<li>版權聲明 (比如, <tt class="docutils literal"><span class="pre">Copyright</span> <span class="pre">2008</span> <span class="pre">Google</span> <span class="pre">Inc.</span></tt>)</li>
-<li>許可證. 為項目選擇合適的許可證版本 (比如, Apache 2.0, BSD, LGPL, GPL)</li>
-<li>作者: 標識檔案的原始作者.</li>
+<li>版权声明 (比如, <tt class="docutils literal"><span class="pre">Copyright</span> <span class="pre">2008</span> <span class="pre">Google</span> <span class="pre">Inc.</span></tt>)</li>
+<li>许可证. 为项目选择合适的许可证版本 (比如, Apache 2.0, BSD, LGPL, GPL)</li>
+<li>作者: 标识文件的原始作者.</li>
 </ul>
 </div></blockquote>
-<p class="last">如果你對原始作者的檔案做了重大修改, 將你的信息添加到作者信息裡. 這樣當其他人對該檔案有疑問時可以知道該聯繫誰.</p>
+<p class="last">如果你对原始作者的文件做了重大修改, 将你的信息添加到作者信息里. 这样当其他人对该文件有疑问时可以知道该联系谁.</p>
 </dd>
-<dt>檔案內容:</dt>
-<dd><p class="first">緊接着版權許可和作者信息之後, 每個檔案都要用註釋描述檔案內容.</p>
-<p>通常, <tt class="docutils literal"><span class="pre">.h</span></tt> 檔案要對所聲明的類的功能和用法作簡單說明. <tt class="docutils literal"><span class="pre">.cc</span></tt> 檔案通常包含了更多的實現細節或算法技巧討論,  如果你感覺這些實現細節或算法技巧討論對於理解 <tt class="docutils literal"><span class="pre">.h</span></tt> 檔案有幫助, 可以該註釋挪到 <tt class="docutils literal"><span class="pre">.h</span></tt>, 並在 <tt class="docutils literal"><span class="pre">.cc</span></tt> 中指出文檔在 <tt class="docutils literal"><span class="pre">.h</span></tt>.</p>
-<p class="last">不要簡單的在 <tt class="docutils literal"><span class="pre">.h</span></tt> 和 <tt class="docutils literal"><span class="pre">.cc</span></tt> 間複製註釋. 這種偏離了註釋的實際意義.</p>
+<dt>文件内容:</dt>
+<dd><p class="first">紧接着版权许可和作者信息之后, 每个文件都要用注释描述文件内容.</p>
+<p>通常, <tt class="docutils literal"><span class="pre">.h</span></tt> 文件要对所声明的类的功能和用法作简单说明. <tt class="docutils literal"><span class="pre">.cc</span></tt> 文件通常包含了更多的实现细节或算法技巧讨论,  如果你感觉这些实现细节或算法技巧讨论对于理解 <tt class="docutils literal"><span class="pre">.h</span></tt> 文件有帮助, 可以该注释挪到 <tt class="docutils literal"><span class="pre">.h</span></tt>, 并在 <tt class="docutils literal"><span class="pre">.cc</span></tt> 中指出文档在 <tt class="docutils literal"><span class="pre">.h</span></tt>.</p>
+<p class="last">不要简单的在 <tt class="docutils literal"><span class="pre">.h</span></tt> 和 <tt class="docutils literal"><span class="pre">.cc</span></tt> 间复制注释. 这种偏离了注释的实际意义.</p>
 </dd>
 </dl>
 </div>
 <div class="section" id="class-comments">
-<span id="id4"></span><h2>7.3. 類註釋</h2>
+<span id="id4"></span><h2>7.3. 类注释</h2>
 <div class="admonition tip">
 <p class="first admonition-title">Tip</p>
-<p class="last">每個類的定義都要附帶一份註釋, 描述類的功能和用法.</p>
+<p class="last">每个类的定义都要附带一份注释, 描述类的功能和用法.</p>
 </div>
 <div class="highlight-c++"><div class="highlight"><pre><span class="c1">// Iterates over the contents of a GargantuanTable.  Sample usage:</span>
 <span class="c1">//    GargantuanTable_Iterator* iter = table-&gt;NewIterator();</span>
@@ -105,30 +105,30 @@
 <span class="p">};</span>
 </pre></div>
 </div>
-<p>如果你覺得已經在檔案頂部詳細描述了該類, 想直接簡單的來上一句 &#8220;完整描述見檔案頂部&#8221; 也不打緊, 但務必確保有這類註釋.</p>
-<p>如果類有任何同步前提, 文檔說明之. 如果該類的實例可被多綫程訪問, 要特別注意文檔說明多綫程環境下相關的規則和常量使用.</p>
+<p>如果你觉得已经在文件顶部详细描述了该类, 想直接简单的来上一句 &#8220;完整描述见文件顶部&#8221; 也不打紧, 但务必确保有这类注释.</p>
+<p>如果类有任何同步前提, 文档说明之. 如果该类的实例可被多线程访问, 要特别注意文档说明多线程环境下相关的规则和常量使用.</p>
 </div>
 <div class="section" id="id5">
-<h2>7.4. 函數註釋</h2>
+<h2>7.4. 函数注释</h2>
 <div class="admonition tip">
 <p class="first admonition-title">Tip</p>
-<p class="last">函數聲明處註釋描述函數功能; 定義處描述函數實現.</p>
+<p class="last">函数声明处注释描述函数功能; 定义处描述函数实现.</p>
 </div>
 <dl class="docutils">
-<dt>函數聲明:</dt>
-<dd><p class="first">註釋位於聲明之前, 對函數功能及用法進行描述. 註釋使用敘述式 (&#8220;Opens the file&#8221;) 而非指令式 (&#8220;Open the file&#8221;); 註釋只是為了描述函數, 而不是命令函數做什麼. 通常, 註釋不會描述函數如何工作. 那是函數定義部分的事情.</p>
-<p>函數聲明處註釋的內容:</p>
+<dt>函数声明:</dt>
+<dd><p class="first">注释位于声明之前, 对函数功能及用法进行描述. 注释使用叙述式 (&#8220;Opens the file&#8221;) 而非指令式 (&#8220;Open the file&#8221;); 注释只是为了描述函数, 而不是命令函数做什么. 通常, 注释不会描述函数如何工作. 那是函数定义部分的事情.</p>
+<p>函数声明处注释的内容:</p>
 <blockquote>
 <div><ul class="simple">
-<li>函數的輸入輸出.</li>
-<li>對類成員函數而言: 函數調用期間對象是否需要保持引用參數, 是否會釋放這些參數.</li>
-<li>如果函數分配了空間, 需要由調用者釋放.</li>
-<li>參數是否可以為 <tt class="docutils literal"><span class="pre">NULL</span></tt>.</li>
-<li>是否存在函數使用上的性能隱患.</li>
-<li>如果函數是可重入的, 其同步前提是什麼?</li>
+<li>函数的输入输出.</li>
+<li>对类成员函数而言: 函数调用期间对象是否需要保持引用参数, 是否会释放这些参数.</li>
+<li>如果函数分配了空间, 需要由调用者释放.</li>
+<li>参数是否可以为 <tt class="docutils literal"><span class="pre">NULL</span></tt>.</li>
+<li>是否存在函数使用上的性能隐患.</li>
+<li>如果函数是可重入的, 其同步前提是什么?</li>
 </ul>
 </div></blockquote>
-<p>舉例如下:</p>
+<p>举例如下:</p>
 <blockquote>
 <div><div class="highlight-c++"><div class="highlight"><pre><span class="c1">// Returns an iterator for this table.  It is the client&#39;s</span>
 <span class="c1">// responsibility to delete the iterator when it is done with it,</span>
@@ -148,30 +148,30 @@
 </pre></div>
 </div>
 </div></blockquote>
-<p>但也要避免羅羅嗦嗦, 或做些顯而易見的說明. 下面的註釋就沒有必要加上 &#8220;returns false otherwise&#8221;, 因為已經暗含其中了:</p>
+<p>但也要避免罗罗嗦嗦, 或做些显而易见的说明. 下面的注释就没有必要加上 &#8220;returns false otherwise&#8221;, 因为已经暗含其中了:</p>
 <blockquote>
 <div><div class="highlight-c++"><div class="highlight"><pre><span class="c1">// Returns true if the table cannot hold any more entries.</span>
 <span class="kt">bool</span> <span class="n">IsTableFull</span><span class="p">();</span>
 </pre></div>
 </div>
 </div></blockquote>
-<p class="last">註釋構造/解構子時, 切記讀代碼的人知道構造/解構子是幹啥的, 所以 &#8220;destroys this object&#8221; 這樣的註釋是沒有意義的. 註明建構子對參數做了什麼 (例如, 是否取得指針所有權) 以及解構子清理了什麼. 如果都是些無關緊要的內容, 直接省掉註釋. 解構子前沒有註釋是很正常的.</p>
+<p class="last">注释构造/析构函数时, 切记读代码的人知道构造/析构函数是干啥的, 所以 &#8220;destroys this object&#8221; 这样的注释是没有意义的. 注明构造函数对参数做了什么 (例如, 是否取得指针所有权) 以及析构函数清理了什么. 如果都是些无关紧要的内容, 直接省掉注释. 析构函数前没有注释是很正常的.</p>
 </dd>
-<dt>函數定義:</dt>
-<dd><p class="first">每個函數定義時要用註釋說明函數功能和實現要點. 比如說說你用的編程技巧, 實現的大致步驟, 或解釋如此實現的理由, 為什麼前半部分要加鎖而後半部分不需要.</p>
-<p class="last"><em>不要</em> 從 <tt class="docutils literal"><span class="pre">.h</span></tt> 檔案或其他地方的函數聲明處直接複製註釋. 簡要重述函數功能是可以的, 但註釋重點要放在如何實現上.</p>
+<dt>函数定义:</dt>
+<dd><p class="first">每个函数定义时要用注释说明函数功能和实现要点. 比如说说你用的编程技巧, 实现的大致步骤, 或解释如此实现的理由, 为什么前半部分要加锁而后半部分不需要.</p>
+<p class="last"><em>不要</em> 从 <tt class="docutils literal"><span class="pre">.h</span></tt> 文件或其他地方的函数声明处直接复制注释. 简要重述函数功能是可以的, 但注释重点要放在如何实现上.</p>
 </dd>
 </dl>
 </div>
 <div class="section" id="id6">
-<h2>7.5. 變數註釋</h2>
+<h2>7.5. 变量注释</h2>
 <div class="admonition tip">
 <p class="first admonition-title">Tip</p>
-<p class="last">通常變數名本身足以很好說明變數用途. 某些情況下, 也需要額外的註釋說明.</p>
+<p class="last">通常变量名本身足以很好说明变量用途. 某些情况下, 也需要额外的注释说明.</p>
 </div>
 <dl class="docutils">
-<dt>類數據成員:</dt>
-<dd><p class="first">每個類數據成員 (也叫實例變數或成員變數) 都應該用註釋說明用途. 如果變數可以接受 <tt class="docutils literal"><span class="pre">NULL</span></tt> 或 <tt class="docutils literal"><span class="pre">-1</span></tt> 等警戒值, 須加以說明. 比如:</p>
+<dt>类数据成员:</dt>
+<dd><p class="first">每个类数据成员 (也叫实例变量或成员变量) 都应该用注释说明用途. 如果变量可以接受 <tt class="docutils literal"><span class="pre">NULL</span></tt> 或 <tt class="docutils literal"><span class="pre">-1</span></tt> 等警戒值, 须加以说明. 比如:</p>
 <blockquote class="last">
 <div><div class="highlight-c++"><div class="highlight"><pre><span class="k">private</span><span class="o">:</span>
     <span class="c1">// Keeps track of the total number of entries in the table.</span>
@@ -182,8 +182,8 @@
 </div>
 </div></blockquote>
 </dd>
-<dt>全局變數:</dt>
-<dd><p class="first">和數據成員一樣, 所有全局變數也要註釋說明含義及用途. 比如:</p>
+<dt>全局变量:</dt>
+<dd><p class="first">和数据成员一样, 所有全局变量也要注释说明含义及用途. 比如:</p>
 <blockquote class="last">
 <div><div class="highlight-c++"><div class="highlight"><pre><span class="c1">// The total number of tests cases that we run through in this regression test.</span>
 <span class="k">const</span> <span class="kt">int</span> <span class="n">kNumTestCases</span> <span class="o">=</span> <span class="mi">6</span><span class="p">;</span>
@@ -194,14 +194,14 @@
 </dl>
 </div>
 <div class="section" id="id7">
-<h2>7.6. 實現註釋</h2>
+<h2>7.6. 实现注释</h2>
 <div class="admonition tip">
 <p class="first admonition-title">Tip</p>
-<p class="last">對於代碼中巧妙的, 晦澀的, 有趣的, 重要的地方加以註釋.</p>
+<p class="last">对于代码中巧妙的, 晦涩的, 有趣的, 重要的地方加以注释.</p>
 </div>
 <dl class="docutils">
-<dt>代碼前註釋:</dt>
-<dd><p class="first">巧妙或複雜的代碼段前要加註釋. 比如:</p>
+<dt>代码前注释:</dt>
+<dd><p class="first">巧妙或复杂的代码段前要加注释. 比如:</p>
 <blockquote class="last">
 <div><div class="highlight-c++"><div class="highlight"><pre><span class="c1">// Divide result by two, taking into account that x</span>
 <span class="c1">// contains the carry from the add.</span>
@@ -214,8 +214,8 @@
 </div>
 </div></blockquote>
 </dd>
-<dt>行註釋:</dt>
-<dd><p class="first">比較隱晦的地方要在行尾加入註釋. 在行尾空兩格進行註釋. 比如:</p>
+<dt>行注释:</dt>
+<dd><p class="first">比较隐晦的地方要在行尾加入注释. 在行尾空两格进行注释. 比如:</p>
 <blockquote>
 <div><div class="highlight-c++"><div class="highlight"><pre><span class="c1">// If we have enough memory, mmap the data portion too.</span>
 <span class="n">mmap_budget</span> <span class="o">=</span> <span class="n">max</span><span class="o">&lt;</span><span class="n">int64</span><span class="o">&gt;</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">mmap_budget</span> <span class="o">-</span> <span class="n">index_</span><span class="o">-&gt;</span><span class="n">length</span><span class="p">());</span>
@@ -224,8 +224,8 @@
 </pre></div>
 </div>
 </div></blockquote>
-<p>注意, 這裡用了兩段註釋分別描述這段代碼的作用, 和提示函數返回時錯誤已經被記入日誌.</p>
-<p>如果你需要連續進行多行註釋, 可以使之對齊獲得更好的可讀性:</p>
+<p>注意, 这里用了两段注释分别描述这段代码的作用, 和提示函数返回时错误已经被记入日志.</p>
+<p>如果你需要连续进行多行注释, 可以使之对齐获得更好的可读性:</p>
 <blockquote class="last">
 <div><div class="highlight-c++"><div class="highlight"><pre><span class="n">DoSomething</span><span class="p">();</span>                  <span class="c1">// Comment here so the comments line up.</span>
 <span class="n">DoSomethingElseThatIsLonger</span><span class="p">();</span>  <span class="c1">// Comment here so there are two spaces between</span>
@@ -239,7 +239,7 @@
 </div></blockquote>
 </dd>
 <dt>NULL, true/false, 1, 2, 3...:</dt>
-<dd><p class="first">向函數傳入 <tt class="docutils literal"><span class="pre">NULL</span></tt>, 布爾值或整數時, 要註釋說明含義, 或使用常量讓代碼望文知意. 例如, 對比:</p>
+<dd><p class="first">向函数传入 <tt class="docutils literal"><span class="pre">NULL</span></tt>, 布尔值或整数时, 要注释说明含义, 或使用常量让代码望文知意. 例如, 对比:</p>
 <blockquote>
 <div><div class="admonition warning">
 <p class="first admonition-title">Warning</p>
@@ -260,7 +260,7 @@
 </pre></div>
 </div>
 </div></blockquote>
-<p>或使用常量或描述性變數:</p>
+<p>或使用常量或描述性变量:</p>
 <blockquote class="last">
 <div><div class="highlight-c++"><div class="highlight"><pre><span class="k">const</span> <span class="kt">int</span> <span class="n">kDefaultBaseValue</span> <span class="o">=</span> <span class="mi">10</span><span class="p">;</span>
 <span class="k">const</span> <span class="kt">bool</span> <span class="n">kFirstTimeCalling</span> <span class="o">=</span> <span class="kc">false</span><span class="p">;</span>
@@ -273,13 +273,13 @@
 </div>
 </div></blockquote>
 </dd>
-<dt>不允許:</dt>
-<dd><p class="first">注意 <em>永遠不要</em> 用自然語言翻譯代碼作為註釋. 要假設讀代碼的人 C++ 水平比你高, 即便他/她可能不知道你的用意:</p>
+<dt>不允许:</dt>
+<dd><p class="first">注意 <em>永远不要</em> 用自然语言翻译代码作为注释. 要假设读代码的人 C++ 水平比你高, 即便他/她可能不知道你的用意:</p>
 <div class="last admonition warning">
 <p class="first admonition-title">Warning</p>
-<div class="last highlight-c++"><div class="highlight"><pre><span class="c1">// 現在, 檢查 b 數組並確保 i 是否存在,</span>
-<span class="c1">// 下一個元素是 i+1.</span>
-<span class="p">...</span>        <span class="c1">// 天哪. 令人崩潰的註釋.</span>
+<div class="last highlight-c++"><div class="highlight"><pre><span class="c1">// 现在, 检查 b 数组并确保 i 是否存在,</span>
+<span class="c1">// 下一个元素是 i+1.</span>
+<span class="p">...</span>        <span class="c1">// 天哪. 令人崩溃的注释.</span>
 </pre></div>
 </div>
 </div>
@@ -287,38 +287,38 @@
 </dl>
 </div>
 <div class="section" id="id8">
-<h2>7.7. 標點, 拼寫和語法</h2>
+<h2>7.7. 标点, 拼写和语法</h2>
 <div class="admonition tip">
 <p class="first admonition-title">Tip</p>
-<p class="last">注意標點, 拼寫和語法; 寫的好的註釋比差的要易讀的多.</p>
+<p class="last">注意标点, 拼写和语法; 写的好的注释比差的要易读的多.</p>
 </div>
-<p>註釋的通常寫法是包含正確大小寫和結尾句號的完整語句. 短一點的註釋 (如代碼行章節附註釋) 可以隨意點, 依然要注意風格的一致性. 完整的語句可讀性更好, 也可以說明該註釋是完整的, 而不是一些不成熟的想法.</p>
-<p>雖然被別人指出該用分號時卻用了逗號多少有些尷尬, 但清晰易讀的代碼還是很重要的. 正確的標點, 拼寫和語法對此會有所幫助.</p>
+<p>注释的通常写法是包含正确大小写和结尾句号的完整语句. 短一点的注释 (如代码行尾注释) 可以随意点, 依然要注意风格的一致性. 完整的语句可读性更好, 也可以说明该注释是完整的, 而不是一些不成熟的想法.</p>
+<p>虽然被别人指出该用分号时却用了逗号多少有些尴尬, 但清晰易读的代码还是很重要的. 正确的标点, 拼写和语法对此会有所帮助.</p>
 </div>
 <div class="section" id="todo">
-<h2>7.8. TODO 註釋</h2>
+<h2>7.8. TODO 注释</h2>
 <div class="admonition tip">
 <p class="first admonition-title">Tip</p>
-<p class="last">對那些臨時的, 短期的解決方案, 或已經夠好但仍不完美的代碼使用 <tt class="docutils literal"><span class="pre">TODO</span></tt> 註釋.</p>
+<p class="last">对那些临时的, 短期的解决方案, 或已经够好但仍不完美的代码使用 <tt class="docutils literal"><span class="pre">TODO</span></tt> 注释.</p>
 </div>
-<p><tt class="docutils literal"><span class="pre">TODO</span></tt> 註釋要使用全大寫的字元串 <tt class="docutils literal"><span class="pre">TODO</span></tt>, 在隨後的圓括號裡寫上你的大名, 郵件地址, 或其它身份標識. 冒號是可選的. 主要目的是讓添加註釋的人 (也是可以請求提供更多細節的人) 可根據規範的 <tt class="docutils literal"><span class="pre">TODO</span></tt> 格式進行查找. 添加 <tt class="docutils literal"><span class="pre">TODO</span></tt> 註釋並不意味着你要自己來修正.</p>
+<p><tt class="docutils literal"><span class="pre">TODO</span></tt> 注释要使用全大写的字符串 <tt class="docutils literal"><span class="pre">TODO</span></tt>, 在随后的圆括号里写上你的大名, 邮件地址, 或其它身份标识. 冒号是可选的. 主要目的是让添加注释的人 (也是可以请求提供更多细节的人) 可根据规范的 <tt class="docutils literal"><span class="pre">TODO</span></tt> 格式进行查找. 添加 <tt class="docutils literal"><span class="pre">TODO</span></tt> 注释并不意味着你要自己来修正.</p>
 <blockquote>
 <div><div class="highlight-c++"><div class="highlight"><pre><span class="c1">// TODO(kl@gmail.com): Use a &quot;*&quot; here for concatenation operator.</span>
 <span class="c1">// TODO(Zeke) change this to use relations.</span>
 </pre></div>
 </div>
 </div></blockquote>
-<p>如果加 <tt class="docutils literal"><span class="pre">TODO</span></tt> 是為了在 &#8220;將來某一天做某事&#8221;, 可以附上一個非常明確的時間 &#8220;Fix by November 2005&#8221;), 或者一個明確的事項 (&#8220;Remove this code when all clients can handle XML responses.&#8221;).</p>
+<p>如果加 <tt class="docutils literal"><span class="pre">TODO</span></tt> 是为了在 &#8220;将来某一天做某事&#8221;, 可以附上一个非常明确的时间 &#8220;Fix by November 2005&#8221;), 或者一个明确的事项 (&#8220;Remove this code when all clients can handle XML responses.&#8221;).</p>
 </div>
 <div class="section" id="yulefox">
-<h2>譯者 (YuleFox) 筆記</h2>
+<h2>译者 (YuleFox) 笔记</h2>
 <ol class="arabic simple">
-<li>關於註釋風格，很多 C++ 的 coders 更喜歡行註釋, C coders 或許對塊註釋依然情有獨鍾, 或者在檔案頭大段大段的註釋時使用塊註釋;</li>
-<li>檔案註釋可以炫耀你的成就, 也是為了捅了簍子別人可以找你;</li>
-<li>註釋要言簡意賅, 不要拖沓冗餘, 複雜的東西簡單化和簡單的東西複雜化都是要被鄙視的;</li>
-<li>對於 Chinese coders 來說, 用英文註釋還是用中文註釋, it is a problem, 但不管怎樣, 註釋是為了讓別人看懂, 難道是為了炫耀編程語言之外的你的母語或外語水平嗎；</li>
-<li>註釋不要太亂, 適當的縮進才會讓人樂意看. 但也沒有必要規定註釋從第幾列開始 (我自己寫代碼的時候總喜歡這樣), UNIX/LINUX 下還可以約定是使用 tab 還是 space, 個人傾向于 space;</li>
-<li>TODO 很不錯, 有時候, 註釋確實是為了標記一些未完成的或完成的不盡如人意的地方, 這樣一搜索, 就知道還有哪些活要干, 日誌都省了.</li>
+<li>关于注释风格，很多 C++ 的 coders 更喜欢行注释, C coders 或许对块注释依然情有独钟, 或者在文件头大段大段的注释时使用块注释;</li>
+<li>文件注释可以炫耀你的成就, 也是为了捅了篓子别人可以找你;</li>
+<li>注释要言简意赅, 不要拖沓冗余, 复杂的东西简单化和简单的东西复杂化都是要被鄙视的;</li>
+<li>对于 Chinese coders 来说, 用英文注释还是用中文注释, it is a problem, 但不管怎样, 注释是为了让别人看懂, 难道是为了炫耀编程语言之外的你的母语或外语水平吗；</li>
+<li>注释不要太乱, 适当的缩进才会让人乐意看. 但也没有必要规定注释从第几列开始 (我自己写代码的时候总喜欢这样), UNIX/LINUX 下还可以约定是使用 tab 还是 space, 个人倾向于 space;</li>
+<li>TODO 很不错, 有时候, 注释确实是为了标记一些未完成的或完成的不尽如人意的地方, 这样一搜索, 就知道还有哪些活要干, 日志都省了.</li>
 </ol>
 </div>
 </div>
@@ -328,7 +328,7 @@
       <div class="bottomnav">
       
         <p>
-        «&#160;&#160;<a href="naming.html">6. 命名約定</a>
+        «&#160;&#160;<a href="naming.html">6. 命名约定</a>
         &#160;&#160;::&#160;&#160;
         <a class="uplink" href="../contents.html">Contents</a>
         &#160;&#160;::&#160;&#160;

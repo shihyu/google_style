@@ -8,7 +8,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>Cocoa 模式 &mdash; Google 開源項目風格指南</title>
+    <title>Cocoa 模式 &mdash; Google 开源项目风格指南</title>
     
     <link rel="stylesheet" href="../_static/haiku.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
@@ -27,14 +27,14 @@
     <script type="text/javascript" src="../_static/underscore.js"></script>
     <script type="text/javascript" src="../_static/doctools.js"></script>
     <script type="text/javascript" src="../_static/theme_extras.js"></script>
-    <link rel="top" title="Google 開源項目風格指南" href="../index.html" />
-    <link rel="up" title="Objective-C 風格指南 - 內容目錄" href="contents.html" />
-    <link rel="next" title="Python 風格指南 - 內容目錄" href="../google-python-styleguide/contents.html" />
+    <link rel="top" title="Google 开源项目风格指南" href="../index.html" />
+    <link rel="up" title="Objective-C 风格指南 - 内容目录" href="contents.html" />
+    <link rel="next" title="Python 风格指南 - 内容目录" href="../google-python-styleguide/contents.html" />
     <link rel="prev" title="Cocoa 和 Objective-C 特性" href="features.html" /> 
   </head>
   <body>
       <div class="header"><h1 class="heading"><a href="../index.html">
-          <span>Google 開源項目風格指南</span></a></h1>
+          <span>Google 开源项目风格指南</span></a></h1>
         <h2 class="heading"><span>Cocoa 模式</span></h2>
       </div>
       <div class="topnav">
@@ -44,7 +44,7 @@
         &#160;&#160;::&#160;&#160;
         <a class="uplink" href="../contents.html">Contents</a>
         &#160;&#160;::&#160;&#160;
-        <a href="../google-python-styleguide/contents.html">Python 風格指南 - 內容目錄</a>&#160;&#160;»
+        <a href="../google-python-styleguide/contents.html">Python 风格指南 - 内容目录</a>&#160;&#160;»
         </p>
 
       </div>
@@ -54,28 +54,28 @@
   <div class="section" id="cocoa">
 <h1>Cocoa 模式</h1>
 <div class="section" id="id1">
-<h2>委託模式</h2>
+<h2>委托模式</h2>
 <div class="admonition tip">
 <p class="first admonition-title">Tip</p>
-<p class="last">委託對象不應該被 <tt class="docutils literal"><span class="pre">retain</span></tt></p>
+<p class="last">委托对象不应该被 <tt class="docutils literal"><span class="pre">retain</span></tt></p>
 </div>
-<p>實現委託模式的類應：</p>
+<p>实现委托模式的类应：</p>
 <ol class="arabic simple">
-<li>擁有一個名為 <tt class="docutils literal"><span class="pre">delegate_</span></tt> 的實例變數來引用委託。</li>
-<li>因此，訪問器方法應該命名為 <tt class="docutils literal"><span class="pre">delegate</span></tt> 和 <a href="#id2"><span class="problematic" id="id3">``</span></a>setDelegate:<a href="#id4"><span class="problematic" id="id5">``</span></a>。</li>
-<li><tt class="docutils literal"><span class="pre">delegate_</span></tt> 對象不應該被 <a href="#id6"><span class="problematic" id="id7">``</span></a>retain``。</li>
+<li>拥有一个名为 <tt class="docutils literal"><span class="pre">delegate_</span></tt> 的实例变量来引用委托。</li>
+<li>因此，访问器方法应该命名为 <tt class="docutils literal"><span class="pre">delegate</span></tt> 和 <a href="#id2"><span class="problematic" id="id3">``</span></a>setDelegate:<a href="#id4"><span class="problematic" id="id5">``</span></a>。</li>
+<li><tt class="docutils literal"><span class="pre">delegate_</span></tt> 对象不应该被 <a href="#id6"><span class="problematic" id="id7">``</span></a>retain``。</li>
 </ol>
 </div>
 <div class="section" id="mvc">
-<h2>模型/視圖/控製器（MVC）</h2>
+<h2>模型/视图/控制器（MVC）</h2>
 <div class="admonition tip">
 <p class="first admonition-title">Tip</p>
-<p class="last">分離模型與視圖。分離控製器與視圖、模型。回調 API 使用 <a href="#id8"><span class="problematic" id="id9">``</span></a>&#64;protocol``。</p>
+<p class="last">分离模型与视图。分离控制器与视图、模型。回调 API 使用 <a href="#id8"><span class="problematic" id="id9">``</span></a>&#64;protocol``。</p>
 </div>
 <ul class="simple">
-<li>分離模型與視圖：不要假設模型或者數據源的表示方法。保持數據源與表示層之間的介面抽象。視圖不需要瞭解模型的邏輯（主要的規則是問問你自己，對於數據源的一個實例，有沒有可能有多種不同狀態的表示方法）。</li>
-<li>分離控製器與模型、視圖：不要把所有的 “業務邏輯” 放進跟視圖有關的類中。這使代碼非常難以復用。使用控製器類來處理這些代碼，但保證控製器不需要瞭解太多表示層的邏輯。</li>
-<li>使用 <tt class="docutils literal"><span class="pre">&#64;protocol</span></tt> 來定義回調 API，如果不是所有的方法都必須實現，使用 <tt class="docutils literal"><span class="pre">&#64;optional``（特例：使用</span> <span class="pre">Objective-C</span> <span class="pre">1.0</span> <span class="pre">時，``&#64;optional</span></tt> 不可用，可使用類別來定義一個 “非正規的協議”）。</li>
+<li>分离模型与视图：不要假设模型或者数据源的表示方法。保持数据源与表示层之间的接口抽象。视图不需要了解模型的逻辑（主要的规则是问问你自己，对于数据源的一个实例，有没有可能有多种不同状态的表示方法）。</li>
+<li>分离控制器与模型、视图：不要把所有的 “业务逻辑” 放进跟视图有关的类中。这使代码非常难以复用。使用控制器类来处理这些代码，但保证控制器不需要了解太多表示层的逻辑。</li>
+<li>使用 <tt class="docutils literal"><span class="pre">&#64;protocol</span></tt> 来定义回调 API，如果不是所有的方法都必须实现，使用 <tt class="docutils literal"><span class="pre">&#64;optional``（特例：使用</span> <span class="pre">Objective-C</span> <span class="pre">1.0</span> <span class="pre">时，``&#64;optional</span></tt> 不可用，可使用类别来定义一个 “非正规的协议”）。</li>
 </ul>
 </div>
 </div>
@@ -89,7 +89,7 @@
         &#160;&#160;::&#160;&#160;
         <a class="uplink" href="../contents.html">Contents</a>
         &#160;&#160;::&#160;&#160;
-        <a href="../google-python-styleguide/contents.html">Python 風格指南 - 內容目錄</a>&#160;&#160;»
+        <a href="../google-python-styleguide/contents.html">Python 风格指南 - 内容目录</a>&#160;&#160;»
         </p>
 
       </div>

@@ -8,7 +8,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>命名 &mdash; Google 開源項目風格指南</title>
+    <title>命名 &mdash; Google 开源项目风格指南</title>
     
     <link rel="stylesheet" href="../_static/haiku.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
@@ -27,14 +27,14 @@
     <script type="text/javascript" src="../_static/underscore.js"></script>
     <script type="text/javascript" src="../_static/doctools.js"></script>
     <script type="text/javascript" src="../_static/theme_extras.js"></script>
-    <link rel="top" title="Google 開源項目風格指南" href="../index.html" />
-    <link rel="up" title="Objective-C 風格指南 - 內容目錄" href="contents.html" />
-    <link rel="next" title="註釋" href="comments.html" />
+    <link rel="top" title="Google 开源项目风格指南" href="../index.html" />
+    <link rel="up" title="Objective-C 风格指南 - 内容目录" href="contents.html" />
+    <link rel="next" title="注释" href="comments.html" />
     <link rel="prev" title="留白和格式" href="spacing.html" /> 
   </head>
   <body>
       <div class="header"><h1 class="heading"><a href="../index.html">
-          <span>Google 開源項目風格指南</span></a></h1>
+          <span>Google 开源项目风格指南</span></a></h1>
         <h2 class="heading"><span>命名</span></h2>
       </div>
       <div class="topnav">
@@ -44,7 +44,7 @@
         &#160;&#160;::&#160;&#160;
         <a class="uplink" href="../contents.html">Contents</a>
         &#160;&#160;::&#160;&#160;
-        <a href="comments.html">註釋</a>&#160;&#160;»
+        <a href="comments.html">注释</a>&#160;&#160;»
         </p>
 
       </div>
@@ -53,18 +53,18 @@
         
   <div class="section" id="id1">
 <h1>命名</h1>
-<p>對於易維護的代碼而言，命名規則非常重要。Objective-C 的方法名往往十分長，但代碼塊讀起來就像散文一樣，不需要太多的代碼註釋。</p>
-<p>當編寫純粹的 Objective-C 代碼時，我們基本遵守標準的 <a href="#id2"><span class="problematic" id="id3">`</span></a>Objective-C naming rules &lt;<a class="reference external" href="http://developer.apple.com/documentation/Cocoa/Conceptual/CodingGuidelines/CodingGuidelines.html">http://developer.apple.com/documentation/Cocoa/Conceptual/CodingGuidelines/CodingGuidelines.html</a>&gt;`_，這些命名規則可能與 C++ 風格指南中的大相逕庭。例如，Google 的 C++ 風格指南中推薦使用下劃線分隔的單詞作為變數名，而(蘋果的)風格指南則使用駝峰命名法，這在 Objective-C 社區中非常普遍。</p>
-<p>任何的類、類別、方法以及變數的名字中都使用全大寫的 <a href="#id4"><span class="problematic" id="id5">`</span></a>首字母縮寫 &lt;<a class="reference external" href="http://en.wikipedia.org/wiki/Initialism">http://en.wikipedia.org/wiki/Initialism</a>&gt;`_。這遵守了蘋果的標準命名方式，如 URL、TIFF 以及 EXIF。</p>
-<p>當編寫 Objective-C++ 代碼時，事情就不這麼簡單了。許多項目需要實現跨平台的 C++ API，並混合一些 Objective-C、Cocoa 代碼，或者直接以 C++ 為後端，前端用本地 Cocoa 代碼。這就導致了兩種命名方式直接不統一。</p>
-<p>我們的解決方案是：編碼風格取決於方法/函數以哪種語言實現。如果在一個 <tt class="docutils literal"><span class="pre">&#64;implementation</span></tt> 語句中，就使用 Objective-C 的風格。如果實現一個 C++ 的類，就使用 C++ 的風格。這樣避免了一個函數里面實例變數和局部變數命名規則混亂，嚴重影響可讀性。</p>
+<p>对于易维护的代码而言，命名规则非常重要。Objective-C 的方法名往往十分长，但代码块读起来就像散文一样，不需要太多的代码注释。</p>
+<p>当编写纯粹的 Objective-C 代码时，我们基本遵守标准的 <a href="#id2"><span class="problematic" id="id3">`</span></a>Objective-C naming rules &lt;<a class="reference external" href="http://developer.apple.com/documentation/Cocoa/Conceptual/CodingGuidelines/CodingGuidelines.html">http://developer.apple.com/documentation/Cocoa/Conceptual/CodingGuidelines/CodingGuidelines.html</a>&gt;`_，这些命名规则可能与 C++ 风格指南中的大相径庭。例如，Google 的 C++ 风格指南中推荐使用下划线分隔的单词作为变量名，而(苹果的)风格指南则使用驼峰命名法，这在 Objective-C 社区中非常普遍。</p>
+<p>任何的类、类别、方法以及变量的名字中都使用全大写的 <a href="#id4"><span class="problematic" id="id5">`</span></a>首字母缩写 &lt;<a class="reference external" href="http://en.wikipedia.org/wiki/Initialism">http://en.wikipedia.org/wiki/Initialism</a>&gt;`_。这遵守了苹果的标准命名方式，如 URL、TIFF 以及 EXIF。</p>
+<p>当编写 Objective-C++ 代码时，事情就不这么简单了。许多项目需要实现跨平台的 C++ API，并混合一些 Objective-C、Cocoa 代码，或者直接以 C++ 为后端，前端用本地 Cocoa 代码。这就导致了两种命名方式直接不统一。</p>
+<p>我们的解决方案是：编码风格取决于方法/函数以哪种语言实现。如果在一个 <tt class="docutils literal"><span class="pre">&#64;implementation</span></tt> 语句中，就使用 Objective-C 的风格。如果实现一个 C++ 的类，就使用 C++ 的风格。这样避免了一个函数里面实例变量和局部变量命名规则混乱，严重影响可读性。</p>
 <div class="section" id="id6">
-<h2>檔案名</h2>
+<h2>文件名</h2>
 <div class="admonition tip">
 <p class="first admonition-title">Tip</p>
-<p class="last">檔案名須反映出其實現了什麼類 &#8211; 包括大小寫。遵循你所參與項目的約定。</p>
+<p class="last">文件名须反映出其实现了什么类 &#8211; 包括大小写。遵循你所参与项目的约定。</p>
 </div>
-<p>檔案的副檔名應該如下：</p>
+<p>文件的扩展名应该如下：</p>
 <table border="1" class="docutils">
 <colgroup>
 <col width="21%" />
@@ -72,31 +72,31 @@
 </colgroup>
 <tbody valign="top">
 <tr class="row-odd"><td><tt class="docutils literal"><span class="pre">.h</span></tt></td>
-<td>C/C++/Objective-C 的標頭檔</td>
+<td>C/C++/Objective-C 的头文件</td>
 </tr>
 <tr class="row-even"><td><tt class="docutils literal"><span class="pre">.m</span></tt></td>
-<td>Ojbective-C 實現檔案</td>
+<td>Ojbective-C 实现文件</td>
 </tr>
 <tr class="row-odd"><td><tt class="docutils literal"><span class="pre">.mm</span></tt></td>
-<td>Ojbective-C++ 的實現檔案</td>
+<td>Ojbective-C++ 的实现文件</td>
 </tr>
 <tr class="row-even"><td><tt class="docutils literal"><span class="pre">.cc</span></tt></td>
-<td>純 C++ 的實現檔案</td>
+<td>纯 C++ 的实现文件</td>
 </tr>
 <tr class="row-odd"><td><tt class="docutils literal"><span class="pre">.c</span></tt></td>
-<td>純 C 的實現檔案</td>
+<td>纯 C 的实现文件</td>
 </tr>
 </tbody>
 </table>
-<p>類別的檔案名應該包含被擴展的類名，如：``GTMNSString+Utils.h`` 或``GTMNSTextView+Autocomplete.h``。</p>
+<p>类别的文件名应该包含被扩展的类名，如：``GTMNSString+Utils.h`` 或``GTMNSTextView+Autocomplete.h``。</p>
 </div>
 <div class="section" id="objective-c">
 <h2>Objective-C++</h2>
 <div class="admonition tip">
 <p class="first admonition-title">Tip</p>
-<p class="last">原始碼檔案內，Ojbective-C++ 代碼遵循你正在實現的函數/方法的風格。</p>
+<p class="last">源代码文件内，Ojbective-C++ 代码遵循你正在实现的函数/方法的风格。</p>
 </div>
-<p>為了最小化 Cocoa/Objective-C 與 C++ 之間命名風格的衝突，根據待實現的函數/方法選擇編碼風格。實現 <tt class="docutils literal"><span class="pre">&#64;implementation</span></tt> 語句塊時，使用 Objective-C 的命名規則；如果實現一個 C++ 的類，就使用 C++ 命名規則。</p>
+<p>为了最小化 Cocoa/Objective-C 与 C++ 之间命名风格的冲突，根据待实现的函数/方法选择编码风格。实现 <tt class="docutils literal"><span class="pre">&#64;implementation</span></tt> 语句块时，使用 Objective-C 的命名规则；如果实现一个 C++ 的类，就使用 C++ 命名规则。</p>
 <div class="highlight-objc"><div class="highlight"><pre><span class="c1">// file: cross_platform_header.h</span>
 
 <span class="n">class</span> <span class="n">CrossPlatformAPI</span> <span class="p">{</span>
@@ -119,7 +119,7 @@
 <span class="o">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="nl">respondToSomething:</span><span class="p">(</span><span class="kt">id</span><span class="p">)</span><span class="n">something</span><span class="p">;</span>
 <span class="k">@end</span>
 <span class="k">@implementation</span> <span class="nc">MyDelegate</span>
-<span class="o">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="nl">respondToSomething:</span><span class="p">(</span><span class="kt">id</span><span class="p">)</span><span class="n">something</span> <span class="p">{</span>
+<span class="k">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="nf">respondToSomething:</span><span class="p">(</span><span class="kt">id</span><span class="p">)</span><span class="nv">something</span> <span class="p">{</span>
   <span class="c1">// bridge from Cocoa through our C++ backend</span>
   <span class="n">instanceVar_</span> <span class="o">=</span> <span class="n">backEndObject</span><span class="o">-&gt;</span><span class="n">DoSomethingPlatformSpecific</span><span class="p">();</span>
   <span class="n">NSString</span><span class="o">*</span> <span class="n">tempString</span> <span class="o">=</span> <span class="p">[</span><span class="n">NSString</span> <span class="nl">stringWithInt:</span><span class="n">instanceVar_</span><span class="p">];</span>
@@ -138,47 +138,47 @@
 </div>
 </div>
 <div class="section" id="id7">
-<h2>類名</h2>
+<h2>类名</h2>
 <div class="admonition tip">
 <p class="first admonition-title">Tip</p>
-<p class="last">類名（以及類別、協議名）應首字母大寫，並以駝峰格式分割單詞。</p>
+<p class="last">类名（以及类别、协议名）应首字母大写，并以驼峰格式分割单词。</p>
 </div>
-<p><em>應用層</em> 的代碼，應該儘量避免不必要的首碼。為每個類都添加相同的首碼無助于可讀性。當編寫的代碼期望在不同應用程序間復用時，應使用首碼（如：``GTMSendMessage``）。</p>
+<p><em>应用层</em> 的代码，应该尽量避免不必要的前缀。为每个类都添加相同的前缀无助于可读性。当编写的代码期望在不同应用程序间复用时，应使用前缀（如：``GTMSendMessage``）。</p>
 </div>
 <div class="section" id="id8">
-<h2>類別名</h2>
+<h2>类别名</h2>
 <div class="admonition tip">
 <p class="first admonition-title">Tip</p>
-<p class="last">類別名應該有兩三個字母的首碼以表示類別是項目的一部分或者該類別是通用的。類別名應該包含它所擴展的類的名字。</p>
+<p class="last">类别名应该有两三个字母的前缀以表示类别是项目的一部分或者该类别是通用的。类别名应该包含它所扩展的类的名字。</p>
 </div>
-<p>比如我們要基于 <tt class="docutils literal"><span class="pre">NSString</span></tt> 創建一個用於解析的類別，我們將把類別放在一個名為 <tt class="docutils literal"><span class="pre">GTMNSString+Parsing.h</span></tt> 的檔案中。類別本身命名為 <tt class="docutils literal"><span class="pre">GTMStringParsingAdditions</span></tt> （是的，我們知道類別名和檔案名不一樣，但是這個檔案中可能存在多個不同的與解析有關類別）。類別中的方法應該以 <tt class="docutils literal"><span class="pre">gtm_myCategoryMethodOnAString:</span></tt> 為首碼以避免命名衝突，因為 Objective-C 只有一個名字空間。如果代碼不會分享出去，也不會運行在不同的地址空間中，方法名字就不那麼重要了。</p>
-<p>類名與包含類別名的括號之間，應該以一個空格分隔。</p>
+<p>比如我们要基于 <tt class="docutils literal"><span class="pre">NSString</span></tt> 创建一个用于解析的类别，我们将把类别放在一个名为 <tt class="docutils literal"><span class="pre">GTMNSString+Parsing.h</span></tt> 的文件中。类别本身命名为 <tt class="docutils literal"><span class="pre">GTMStringParsingAdditions</span></tt> （是的，我们知道类别名和文件名不一样，但是这个文件中可能存在多个不同的与解析有关类别）。类别中的方法应该以 <tt class="docutils literal"><span class="pre">gtm_myCategoryMethodOnAString:</span></tt> 为前缀以避免命名冲突，因为 Objective-C 只有一个名字空间。如果代码不会分享出去，也不会运行在不同的地址空间中，方法名字就不那么重要了。</p>
+<p>类名与包含类别名的括号之间，应该以一个空格分隔。</p>
 </div>
 <div class="section" id="id9">
 <h2>Objective-C 方法名</h2>
 <div class="admonition tip">
 <p class="first admonition-title">Tip</p>
-<p class="last">方法名應該以小寫字母開頭，並混合駝峰格式。每個具名參數也應該以小寫字母開頭。</p>
+<p class="last">方法名应该以小写字母开头，并混合驼峰格式。每个具名参数也应该以小写字母开头。</p>
 </div>
-<p>方法名應儘量讀起來就像句子，這表示你應該選擇與方法名連在一起讀起來通順的參數名。（例如，``convertPoint:fromRect:`` 或 <a href="#id10"><span class="problematic" id="id11">``</span></a>replaceCharactersInRange:withString:<a href="#id12"><span class="problematic" id="id13">``</span></a>）。詳情參見 <a href="#id14"><span class="problematic" id="id15">`</span></a>Apple’s Guide to Naming Methods &lt;<a class="reference external" href="http://developer.apple.com/documentation/Cocoa/Conceptual/CodingGuidelines/Articles/NamingMethods.html">http://developer.apple.com/documentation/Cocoa/Conceptual/CodingGuidelines/Articles/NamingMethods.html</a>&gt;`_。</p>
-<p>訪問器方法應該與他們 <tt class="docutils literal"><span class="pre">要獲取的</span></tt> 成員變數的名字一樣，但不應該以get作為首碼。例如：</p>
-<div class="highlight-objc"><div class="highlight"><pre><span class="o">-</span> <span class="p">(</span><span class="kt">id</span><span class="p">)</span><span class="n">getDelegate</span><span class="p">;</span>  <span class="c1">// AVOID</span>
-<span class="o">-</span> <span class="p">(</span><span class="kt">id</span><span class="p">)</span><span class="n">delegate</span><span class="p">;</span>     <span class="c1">// GOOD</span>
+<p>方法名应尽量读起来就像句子，这表示你应该选择与方法名连在一起读起来通顺的参数名。（例如，``convertPoint:fromRect:`` 或 <a href="#id10"><span class="problematic" id="id11">``</span></a>replaceCharactersInRange:withString:<a href="#id12"><span class="problematic" id="id13">``</span></a>）。详情参见 <a href="#id14"><span class="problematic" id="id15">`</span></a>Apple’s Guide to Naming Methods &lt;<a class="reference external" href="http://developer.apple.com/documentation/Cocoa/Conceptual/CodingGuidelines/Articles/NamingMethods.html">http://developer.apple.com/documentation/Cocoa/Conceptual/CodingGuidelines/Articles/NamingMethods.html</a>&gt;`_。</p>
+<p>访问器方法应该与他们 <tt class="docutils literal"><span class="pre">要获取的</span></tt> 成员变量的名字一样，但不应该以get作为前缀。例如：</p>
+<div class="highlight-objc"><div class="highlight"><pre><span class="k">-</span> <span class="p">(</span><span class="kt">id</span><span class="p">)</span><span class="nf">getDelegate</span><span class="p">;</span>  <span class="c1">// AVOID</span>
+<span class="k">-</span> <span class="p">(</span><span class="kt">id</span><span class="p">)</span><span class="nf">delegate</span><span class="p">;</span>     <span class="c1">// GOOD</span>
 </pre></div>
 </div>
-<p>這僅限于 Objective-C 的方法名。C++ 的方法與函數的命名規則應該遵從 C++ 風格指南中的規則。</p>
+<p>这仅限于 Objective-C 的方法名。C++ 的方法与函数的命名规则应该遵从 C++ 风格指南中的规则。</p>
 </div>
 <div class="section" id="id16">
-<h2>變數名</h2>
+<h2>变量名</h2>
 <div class="admonition tip">
 <p class="first admonition-title">Tip</p>
-<p class="last">變數名應該以小寫字母開頭，並使用駝峰格式。類的成員變數應該以下劃線作為尾碼。例如：``myLocalVariable``、``myInstanceVariable_``。如果不能使用 Objective-C 2.0 的 <a href="#id17"><span class="problematic" id="id18">``</span></a>&#64;property``，使用 KVO/KVC 綁定的成員變數可以以一個下劃線作為首碼。</p>
+<p class="last">变量名应该以小写字母开头，并使用驼峰格式。类的成员变量应该以下划线作为后缀。例如：``myLocalVariable``、``myInstanceVariable_``。如果不能使用 Objective-C 2.0 的 <a href="#id17"><span class="problematic" id="id18">``</span></a>&#64;property``，使用 KVO/KVC 绑定的成员变量可以以一个下划线作为前缀。</p>
 </div>
 <div class="section" id="id19">
-<h3>普通變數名</h3>
-<p>對於靜態的屬性（``int`` 或指針），不要使用匈牙利命名法。儘量為變數起一個描述性的名字。不要擔心浪費列寬，因為讓新的代碼閲讀者立即理解你的代碼更重要。例如：</p>
+<h3>普通变量名</h3>
+<p>对于静态的属性（``int`` 或指针），不要使用匈牙利命名法。尽量为变量起一个描述性的名字。不要担心浪费列宽，因为让新的代码阅读者立即理解你的代码更重要。例如：</p>
 <ul>
-<li><p class="first">錯誤的命名：</p>
+<li><p class="first">错误的命名：</p>
 <blockquote>
 <div><div class="highlight-objc"><div class="highlight"><pre><span class="kt">int</span> <span class="n">w</span><span class="p">;</span>
 <span class="kt">int</span> <span class="n">nerr</span><span class="p">;</span>
@@ -190,7 +190,7 @@
 </div>
 </div></blockquote>
 </li>
-<li><p class="first">正確的命名：</p>
+<li><p class="first">正确的命名：</p>
 <blockquote>
 <div><div class="highlight-objc"><div class="highlight"><pre><span class="kt">int</span> <span class="n">numErrors</span><span class="p">;</span>
 <span class="kt">int</span> <span class="n">numCompletedConnections</span><span class="p">;</span>
@@ -204,12 +204,12 @@
 </ul>
 </div>
 <div class="section" id="id20">
-<h3>實例變數</h3>
-<p>實例變數應該混合大小寫，並以下劃線作為尾碼，如 <tt class="docutils literal"><span class="pre">usernameTextField_``。然而，如果不能使用</span> <span class="pre">Objective-C</span> <span class="pre">2.0（操作系統版本的限制），並且使用了</span> <span class="pre">KVO/KVC</span> <span class="pre">綁定成員變數時，我們允許例外（譯者註：</span> <span class="pre">``KVO=Key</span> <span class="pre">Value</span> <span class="pre">Observing，KVC=Key</span> <span class="pre">Value</span> <span class="pre">Coding``）。這種情況下，可以以一個下劃線作為成員變數名字的首碼，這是蘋果所接受的鍵/值命名慣例。如果可以使用</span> <span class="pre">Objective-C</span> <span class="pre">2.0，``&#64;property</span></tt> 以及 <tt class="docutils literal"><span class="pre">&#64;synthesize</span></tt> 提供了遵從這一命名規則的解決方案。</p>
+<h3>实例变量</h3>
+<p>实例变量应该混合大小写，并以下划线作为后缀，如 <tt class="docutils literal"><span class="pre">usernameTextField_``。然而，如果不能使用</span> <span class="pre">Objective-C</span> <span class="pre">2.0（操作系统版本的限制），并且使用了</span> <span class="pre">KVO/KVC</span> <span class="pre">绑定成员变量时，我们允许例外（译者注：</span> <span class="pre">``KVO=Key</span> <span class="pre">Value</span> <span class="pre">Observing，KVC=Key</span> <span class="pre">Value</span> <span class="pre">Coding``）。这种情况下，可以以一个下划线作为成员变量名字的前缀，这是苹果所接受的键/值命名惯例。如果可以使用</span> <span class="pre">Objective-C</span> <span class="pre">2.0，``&#64;property</span></tt> 以及 <tt class="docutils literal"><span class="pre">&#64;synthesize</span></tt> 提供了遵从这一命名规则的解决方案。</p>
 </div>
 <div class="section" id="id21">
 <h3>常量</h3>
-<p>常量名（如宏定義、枚舉、靜態局部變數等）應該以小寫字母 <tt class="docutils literal"><span class="pre">k</span></tt> 開頭，使用駝峰格式分隔單詞，如：``kInvalidHandle，kWritePerm``。</p>
+<p>常量名（如宏定义、枚举、静态局部变量等）应该以小写字母 <tt class="docutils literal"><span class="pre">k</span></tt> 开头，使用驼峰格式分隔单词，如：``kInvalidHandle，kWritePerm``。</p>
 </div>
 </div>
 </div>
@@ -223,7 +223,7 @@
         &#160;&#160;::&#160;&#160;
         <a class="uplink" href="../contents.html">Contents</a>
         &#160;&#160;::&#160;&#160;
-        <a href="comments.html">註釋</a>&#160;&#160;»
+        <a href="comments.html">注释</a>&#160;&#160;»
         </p>
 
       </div>
