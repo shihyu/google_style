@@ -6,94 +6,93 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml">
   
-<!-- Mirrored from zh-google-styleguide.readthedocs.org/en/latest/ by HTTrack Website Copier/3.x [XR&CO'2008], Sun, 28 Jul 2013 11:15:31 GMT -->
+<!-- Mirrored from zh-google-styleguide.readthedocs.org/en/latest/google-objc-styleguide/patterns/ by HTTrack Website Copier/3.x [XR&CO'2008], Sun, 28 Jul 2013 11:15:56 GMT -->
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
 
-    <title>Google 开源项目风格指南 (中文版) &mdash; Google 开源项目风格指南</title>
+    <title>Cocoa 模式 &mdash; Google 开源项目风格指南</title>
 <!-- RTD <head> -->
-<script type="text/javascript" src="../../../ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
-<script type="text/javascript" src="../../../media.readthedocs.org/javascript/underscore.js"></script>
-<script type="text/javascript" src="../../../media.readthedocs.org/javascript/doctools.js"></script>
+<script type="text/javascript" src="../../../../../ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
+<script type="text/javascript" src="../../../../../media.readthedocs.org/javascript/underscore.js"></script>
+<script type="text/javascript" src="../../../../../media.readthedocs.org/javascript/doctools.js"></script>
 
 <script type="text/javascript">
   // This is included here for Javascript that doesn't have access to the templates.
   var doc_version = "latest";
   var doc_slug = "zh-google-styleguide";
-  var page_name = "index";
+  var page_name = "google-objc-styleguide/patterns";
 </script>
 
-<script type="text/javascript" src="../../../media.readthedocs.org/javascript/rtd.js"></script>
+<script type="text/javascript" src="../../../../../media.readthedocs.org/javascript/rtd.js"></script>
 <!-- end RTD <head> -->
 
     
-    <link rel="stylesheet" href="_static/haiku.css" type="text/css" />
-    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
-    <link rel="stylesheet" href="_static/print.html" type="text/css" />
+    <link rel="stylesheet" href="../../_static/haiku.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/print.html" type="text/css" />
     
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
-        URL_ROOT:    '',
+        URL_ROOT:    '../../',
         VERSION:     '',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '',
         HAS_SOURCE:  true
       };
     </script>
-    <script type="text/javascript" src="_static/theme_extras.html"></script>
-    <link rel="top" title="Google 开源项目风格指南" href="#" />
-    <link rel="next" title="C++ 风格指南 - 内容目录" href="google-cpp-styleguide/contents/index.html" />
-    <link rel="prev" title="内容目录" href="contents/index.html" /> 
+    <script type="text/javascript" src="../../_static/theme_extras.html"></script>
+    <link rel="top" title="Google 开源项目风格指南" href="../../index.html" />
+    <link rel="up" title="Objective-C 风格指南 - 内容目录" href="../contents/index.html" />
+    <link rel="next" title="Python 风格指南 - 内容目录" href="../../google-python-styleguide/contents/index.html" />
+    <link rel="prev" title="Cocoa 和 Objective-C 特性" href="../features/index.html" /> 
   </head>
   <body>
-      <div class="header"><h1 class="heading"><a href="#">
+      <div class="header"><h1 class="heading"><a href="../../index.html">
           <span>Google 开源项目风格指南</span></a></h1>
-        <h2 class="heading"><span>Google 开源项目风格指南 (中文版)</span></h2>
+        <h2 class="heading"><span>Cocoa 模式</span></h2>
       </div>
       <div class="topnav">
       
         <p>
-        «&#160;&#160;<a href="contents/index.html">内容目录</a>
+        «&#160;&#160;<a href="../features/index.html">Cocoa 和 Objective-C 特性</a>
         &#160;&#160;::&#160;&#160;
-        <a class="uplink" href="contents/index.html">Contents</a>
+        <a class="uplink" href="../../contents/index.html">Contents</a>
         &#160;&#160;::&#160;&#160;
-        <a href="google-cpp-styleguide/contents/index.html">C++ 风格指南 - 内容目录</a>&#160;&#160;»
+        <a href="../../google-python-styleguide/contents/index.html">Python 风格指南 - 内容目录</a>&#160;&#160;»
         </p>
 
       </div>
       <div class="content">
         
         
-  <div class="section" id="google">
-<h1>Google 开源项目风格指南 (中文版)</h1>
-<ul class="simple">
-<li>在线文档托管在 ReadTheDocs : <a class="reference external" href="http://zh-google-styleguide.readthedocs.org/">在线阅读最新版本</a></li>
-<li>中文风格指南 GitHub 托管地址：`zh-google-styleguide &lt;<a class="reference external" href="https://github.com/zh-google-styleguide/zh-google-styleguide">https://github.com/zh-google-styleguide/zh-google-styleguide</a>&gt;`_</li>
-</ul>
-<div class="admonition note">
-<p class="first admonition-title">Note</p>
-<p>声明.</p>
-<p>本项目并非 Google 官方项目, 而是由国内程序员凭热情创建和维护.</p>
-<p class="last">如果你关注的是 Google 官方英文版, 请移步 <a class="reference external" href="http://code.google.com/p/google-styleguide/">Google Style Guide</a></p>
+  <div class="section" id="cocoa">
+<h1>Cocoa 模式</h1>
+<div class="section" id="id1">
+<h2>委托模式</h2>
+<div class="admonition tip">
+<p class="first admonition-title">Tip</p>
+<p class="last">委托对象不应该被 <tt class="docutils literal"><span class="pre">retain</span></tt></p>
 </div>
-<p>每个较大的开源项目都有自己的风格指南: 关于如何为该项目编写代码的一系列约定 (有时候会比较武断).
-当所有代码均保持一致的风格, 在理解大型代码库时更为轻松.</p>
-<p>&#8220;风格&#8221; 的含义涵盖范围广, 从 &#8220;变量使用驼峰格式 (camelCase)&#8221; 到 &#8220;决不使用全局变量&#8221; 再到 &#8220;决不使用异常&#8221;.
-英文版项目维护的是在 Google 使用的编程风格指南. 如果你正在修改的项目源自 Google, 你可能会被引导至
-英文版项目页面, 以了解项目所使用的风格.</p>
-<p>我们已经发布了四份 <strong>中文版</strong> 的风格指南:</p>
+<p>实现委托模式的类应：</p>
 <ol class="arabic simple">
-<li><a class="reference external" href="google-cpp-styleguide/index.html">Google C++ 风格指南</a></li>
-<li><a class="reference external" href="google-objc-styleguide/index.html">Google Objective-C 风格指南</a></li>
-<li><a class="reference external" href="google-python-styleguide/index.html">Google Python 风格指南</a></li>
-<li><a class="reference external" href="https://github.com/darcyliu/google-styleguide/blob/master/JSONStyleGuide.md">Google JSON 风格指南</a></li>
+<li>拥有一个名为 <tt class="docutils literal"><span class="pre">delegate_</span></tt> 的实例变量来引用委托。</li>
+<li>因此，访问器方法应该命名为 <tt class="docutils literal"><span class="pre">delegate</span></tt> 和 <a href="#id2"><span class="problematic" id="id3">``</span></a>setDelegate:<a href="#id4"><span class="problematic" id="id5">``</span></a>。</li>
+<li><tt class="docutils literal"><span class="pre">delegate_</span></tt> 对象不应该被 <a href="#id6"><span class="problematic" id="id7">``</span></a>retain``。</li>
 </ol>
-<p>中文版项目采用 reStructuredText 纯文本标记语法, 并使用 Sphinx 生成 HTML / CHM / PDF 等文档格式.</p>
+</div>
+<div class="section" id="mvc">
+<h2>模型/视图/控制器（MVC）</h2>
+<div class="admonition tip">
+<p class="first admonition-title">Tip</p>
+<p class="last">分离模型与视图。分离控制器与视图、模型。回调 API 使用 <a href="#id8"><span class="problematic" id="id9">``</span></a>&#64;protocol``。</p>
+</div>
 <ul class="simple">
-<li>英文版项目还包含 <a class="reference external" href="http://google-styleguide.googlecode.com/svn/trunk/cpplint">cpplint</a> - 一个用来帮助适应风格准则的工具, 以及 <a class="reference external" href="http://google-styleguide.googlecode.com/svn/trunk/google-c-style.el">google-c-style.el</a>, Google 风格的 Emacs 配置文件.</li>
-<li>另外, 招募自愿者翻译 <a class="reference external" href="../../../google-styleguide.googlecode.com/svn/trunk/javascriptguide.xml">JavaScript Style Guide</a> 以及 <a class="reference external" href="http://google-styleguide.googlecode.com/svn/trunk/xmlstyle.html">XML Document Format Style Guide</a>, 有意者请联系 <a class="reference external" href="http://yangyubo.com/">brantyoung</a>.</li>
+<li>分离模型与视图：不要假设模型或者数据源的表示方法。保持数据源与表示层之间的接口抽象。视图不需要了解模型的逻辑（主要的规则是问问你自己，对于数据源的一个实例，有没有可能有多种不同状态的表示方法）。</li>
+<li>分离控制器与模型、视图：不要把所有的 “业务逻辑” 放进跟视图有关的类中。这使代码非常难以复用。使用控制器类来处理这些代码，但保证控制器不需要了解太多表示层的逻辑。</li>
+<li>使用 <tt class="docutils literal"><span class="pre">&#64;protocol</span></tt> 来定义回调 API，如果不是所有的方法都必须实现，使用 <tt class="docutils literal"><span class="pre">&#64;optional``（特例：使用</span> <span class="pre">Objective-C</span> <span class="pre">1.0</span> <span class="pre">时，``&#64;optional</span></tt> 不可用，可使用类别来定义一个 “非正规的协议”）。</li>
 </ul>
+</div>
 </div>
 
 
@@ -101,11 +100,11 @@
       <div class="bottomnav">
       
         <p>
-        «&#160;&#160;<a href="contents/index.html">内容目录</a>
+        «&#160;&#160;<a href="../features/index.html">Cocoa 和 Objective-C 特性</a>
         &#160;&#160;::&#160;&#160;
-        <a class="uplink" href="contents/index.html">Contents</a>
+        <a class="uplink" href="../../contents/index.html">Contents</a>
         &#160;&#160;::&#160;&#160;
-        <a href="google-cpp-styleguide/contents/index.html">C++ 风格指南 - 内容目录</a>&#160;&#160;»
+        <a href="../../google-python-styleguide/contents/index.html">Python 风格指南 - 内容目录</a>&#160;&#160;»
         </p>
 
       </div>
@@ -230,7 +229,7 @@
     <a href="http://readthedocs.org/projects/zh-google-styleguide/?fromdocs=zh-google-styleguide" class="rtd-badge rtd"> Brought to you by Read the Docs</a>
     <ul id="version_menu">
       
-        <li><a href="index.html">latest</a></li>
+        <li><a href="../../index.html">latest</a></li>
       
     </ul>
   </div>
@@ -253,5 +252,5 @@
 
   </body>
 
-<!-- Mirrored from zh-google-styleguide.readthedocs.org/en/latest/ by HTTrack Website Copier/3.x [XR&CO'2008], Sun, 28 Jul 2013 11:15:34 GMT -->
+<!-- Mirrored from zh-google-styleguide.readthedocs.org/en/latest/google-objc-styleguide/patterns/ by HTTrack Website Copier/3.x [XR&CO'2008], Sun, 28 Jul 2013 11:15:56 GMT -->
 </html>

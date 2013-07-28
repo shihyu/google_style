@@ -1,0 +1,313 @@
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  
+<!-- Mirrored from zh-google-styleguide.readthedocs.org/en/latest/google-objc-styleguide/comments/ by HTTrack Website Copier/3.x [XR&CO'2008], Sun, 28 Jul 2013 11:15:56 GMT -->
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+
+    <title>注释 &mdash; Google 开源项目风格指南</title>
+<!-- RTD <head> -->
+<script type="text/javascript" src="../../../../../ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
+<script type="text/javascript" src="../../../../../media.readthedocs.org/javascript/underscore.js"></script>
+<script type="text/javascript" src="../../../../../media.readthedocs.org/javascript/doctools.js"></script>
+
+<script type="text/javascript">
+  // This is included here for Javascript that doesn't have access to the templates.
+  var doc_version = "latest";
+  var doc_slug = "zh-google-styleguide";
+  var page_name = "google-objc-styleguide/comments";
+</script>
+
+<script type="text/javascript" src="../../../../../media.readthedocs.org/javascript/rtd.js"></script>
+<!-- end RTD <head> -->
+
+    
+    <link rel="stylesheet" href="../../_static/haiku.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/print.html" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../',
+        VERSION:     '',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../../_static/theme_extras.html"></script>
+    <link rel="top" title="Google 开源项目风格指南" href="../../index.html" />
+    <link rel="up" title="Objective-C 风格指南 - 内容目录" href="../contents/index.html" />
+    <link rel="next" title="Cocoa 和 Objective-C 特性" href="../features/index.html" />
+    <link rel="prev" title="命名" href="../naming/index.html" /> 
+  </head>
+  <body>
+      <div class="header"><h1 class="heading"><a href="../../index.html">
+          <span>Google 开源项目风格指南</span></a></h1>
+        <h2 class="heading"><span>注释</span></h2>
+      </div>
+      <div class="topnav">
+      
+        <p>
+        «&#160;&#160;<a href="../naming/index.html">命名</a>
+        &#160;&#160;::&#160;&#160;
+        <a class="uplink" href="../../contents/index.html">Contents</a>
+        &#160;&#160;::&#160;&#160;
+        <a href="../features/index.html">Cocoa 和 Objective-C 特性</a>&#160;&#160;»
+        </p>
+
+      </div>
+      <div class="content">
+        
+        
+  <div class="section" id="id1">
+<h1>注释</h1>
+<p>虽然写起来很痛苦，但注释是保证代码可读性的关键。下面的规则给出了你应该什么时候、在哪进行注释。记住：尽管注释很重要，但最好的代码应该自成文档。与其给类型及变量起一个晦涩难懂的名字，再为它写注释，不如直接起一个有意义的名字。</p>
+<p>当你写注释的时候，记得你是在给你的听众写，即下一个需要阅读你所写代码的贡献者。大方一点，下一个读代码的人可能就是你！</p>
+<p>记住所有 C++ 风格指南里的规则在这里也同样适用，不同的之处后续会逐步指出。</p>
+<div class="section" id="id2">
+<h2>文件注释</h2>
+<div class="admonition tip">
+<p class="first admonition-title">Tip</p>
+<p class="last">每个文件的开头以文件内容的简要描述起始，紧接着是作者，最后是版权声明和/或许可证样板。</p>
+</div>
+<div class="section" id="id3">
+<h3>版权信息及作者</h3>
+<p>每个文件应该按顺序包括如下项：</p>
+<ul class="simple">
+<li>文件内容的简要描述</li>
+<li>代码作者</li>
+<li>版权信息声明（如：``Copyright 2008 Google Inc.``）</li>
+<li>必要的话，加上许可证样板。为项目选择一个合适的授权样板（例如，``Apache 2.0, BSD, LGPL, GPL``）。</li>
+</ul>
+<p>如果你对其他人的原始代码作出重大的修改，请把你自己的名字添加到作者里面。当另外一个代码贡献者对文件有问题时，他需要知道怎么联系你，这十分有用。</p>
+</div>
+</div>
+<div class="section" id="id4">
+<h2>声明部分的注释</h2>
+<div class="admonition tip">
+<p class="first admonition-title">Tip</p>
+<p class="last">每个接口、类别以及协议应辅以注释，以描述它的目的及与整个项目的关系。</p>
+</div>
+<div class="highlight-objc"><div class="highlight"><pre><span class="c1">// A delegate for NSApplication to handle notifications about app</span>
+<span class="c1">// launch and shutdown. Owned by the main app controller.</span>
+<span class="k">@interface</span> <span class="nc">MyAppDelegate</span> : <span class="nc">NSObject</span> <span class="p">{</span>
+  <span class="p">...</span>
+<span class="p">}</span>
+<span class="k">@end</span>
+</pre></div>
+</div>
+<p>如果你已经在文件头部详细描述了接口，可以直接说明 “完整的描述请参见文件头部”，但是一定要有这部分注释。</p>
+<p>另外，公共接口的每个方法，都应该有注释来解释它的作用、参数、返回值以及其它影响。</p>
+<p>为类的线程安全性作注释，如果有的话。如果类的实例可以被多个线程访问，记得注释多线程条件下的使用规则。</p>
+</div>
+<div class="section" id="id5">
+<h2>实现部分的注释</h2>
+<div class="admonition tip">
+<p class="first admonition-title">Tip</p>
+<p class="last">使用 <tt class="docutils literal"><span class="pre">|</span></tt> 来引用注释中的变量名及符号名而不是使用引号。</p>
+</div>
+<p>这会避免二义性，尤其是当符号是一个常用词汇，这使用语句读起来很糟糕。例如，对于符号 <tt class="docutils literal"><span class="pre">count</span></tt> ：</p>
+<div class="highlight-objc"><div class="highlight"><pre><span class="c1">// Sometimes we need |count| to be less than zero.</span>
+</pre></div>
+</div>
+<p>或者当引用已经包含引号的符号：</p>
+<div class="highlight-objc"><div class="highlight"><pre><span class="c1">// Remember to call |StringWithoutSpaces(&quot;foo bar baz&quot;)|</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="id6">
+<h2>对象所有权</h2>
+<div class="admonition tip">
+<p class="first admonition-title">Tip</p>
+<p class="last">当与 Objective-C 最常规的作法不同时，尽量使指针的所有权模型尽量明确。</p>
+</div>
+<p>继承自 <tt class="docutils literal"><span class="pre">NSObject</span></tt> 的对象的实例变量指针，通常被假定是强引用关系（retained），某些情况下也可以注释为弱引用（weak）或使用 <tt class="docutils literal"><span class="pre">__weak</span></tt> 生命周期限定符。同样，声明的属性如果没有被类 <tt class="docutils literal"><span class="pre">retained``，必须指定是弱引用或赋予</span> <span class="pre">``&#64;property</span></tt> 属性。然而，Mac 软件中标记上 <tt class="docutils literal"><span class="pre">IBOutlets</span></tt> 的实例变量，被认为是不会被类 <tt class="docutils literal"><span class="pre">retained</span></tt> 的。</p>
+<p>当实例变量指向 <tt class="docutils literal"><span class="pre">CoreFoundation``、C++</span> <span class="pre">或者其它非</span> <span class="pre">Objective-C</span> <span class="pre">对象时，不论指针是否会被</span> <span class="pre">``retained``，都需要使用</span> <span class="pre">``__strong</span></tt> 和 <tt class="docutils literal"><span class="pre">__weak</span></tt> 类型修饰符明确指明。``CoreFoundation`` 和其它非 Objective-C 对象指针需要显式的内存管理，即便使用了自动引用计数或垃圾回收机制。当不允许使用 <tt class="docutils literal"><span class="pre">__weak</span></tt> 类型修饰符（比如，使用 clang 编译时的 C++ 成员变量），应使用注释替代说明。</p>
+<p>注意：Objective-C 对象中的 C++ 对象的自动封装，缺省是不允许的，参见 <a class="reference external" href="http://chanson.livejournal.com/154253.html">这里</a> 的说明。</p>
+<p>强引用及弱引用声明的例子：</p>
+<div class="highlight-objc"><div class="highlight"><pre><span class="k">@interface</span> <span class="nc">MyDelegate</span> : <span class="nc">NSObject</span> <span class="p">{</span>
+ <span class="k">@private</span>
+  <span class="kt">IBOutlet</span> <span class="n">NSButton</span> <span class="o">*</span><span class="n">okButton_</span><span class="p">;</span>  <span class="c1">// normal NSControl; implicitly weak on Mac only</span>
+
+  <span class="n">AnObjcObject</span><span class="o">*</span> <span class="n">doohickey_</span><span class="p">;</span>  <span class="c1">// my doohickey</span>
+  <span class="n">__weak</span> <span class="n">MyObjcParent</span> <span class="o">*</span><span class="n">parent_</span><span class="p">;</span>  <span class="c1">// so we can send msgs back (owns me)</span>
+
+  <span class="c1">// non-NSObject pointers...</span>
+  <span class="n">__strong</span> <span class="n">CWackyCPPClass</span> <span class="o">*</span><span class="n">wacky_</span><span class="p">;</span>  <span class="c1">// some cross-platform object</span>
+  <span class="n">__strong</span> <span class="n">CFDictionaryRef</span> <span class="o">*</span><span class="n">dict_</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="k">@property</span><span class="p">(</span><span class="n">strong</span><span class="p">,</span> <span class="n">nonatomic</span><span class="p">)</span> <span class="n">NSString</span> <span class="o">*</span><span class="n">doohickey</span><span class="p">;</span>
+<span class="k">@property</span><span class="p">(</span><span class="n">weak</span><span class="p">,</span> <span class="n">nonatomic</span><span class="p">)</span> <span class="n">NSString</span> <span class="o">*</span><span class="n">parent</span><span class="p">;</span>
+<span class="k">@end</span>
+</pre></div>
+</div>
+<p>（译注：强引用 - 对象被类 <a href="#id8"><span class="problematic" id="id9">``</span></a>retained``。弱引用 - 对象没有被类 <a href="#id10"><span class="problematic" id="id11">``</span></a>retained``，如委托）</p>
+</div>
+</div>
+
+
+      </div>
+      <div class="bottomnav">
+      
+        <p>
+        «&#160;&#160;<a href="../naming/index.html">命名</a>
+        &#160;&#160;::&#160;&#160;
+        <a class="uplink" href="../../contents/index.html">Contents</a>
+        &#160;&#160;::&#160;&#160;
+        <a href="../features/index.html">Cocoa 和 Objective-C 特性</a>&#160;&#160;»
+        </p>
+
+      </div>
+
+
+    <div class="footer">
+        &copy; Copyright .
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.3.
+    </div>
+ <!-- End original user content -->
+
+
+<br/>
+<br/>
+<br/>
+
+
+<style type="text/css">
+  #version_menu, .rtd-badge.rtd {
+    -webkit-transition: all 0.25s 0.75s;
+    transition: all 0.25s 0.75s;
+  }
+  .footer_popout:hover #version_menu, .footer_popout:hover .rtd-badge.rtd {
+    -webkit-transition: all 0.25s 0s;
+    transition: all 0.25s 0s;
+  }
+  .rtd-badge {
+    position: fixed;
+    display: block;
+    bottom: 5px;
+    height: 40px;
+    text-indent: -9999em;
+    border-radius: 3px;
+    -moz-border-radius: 3px;
+    -webkit-border-radius: 3px;
+    box-shadow: 0 1px 0 rgba(0, 0, 0, 0.2), 0 1px 0 rgba(255, 255, 255, 0.2) inset;
+    -moz-box-shadow: 0 1px 0 rgba(0, 0, 0, 0.2), 0 1px 0 rgba(255, 255, 255, 0.2) inset;
+    -webkit-box-shadow: 0 1px 0 rgba(0, 0, 0, 0.2), 0 1px 0 rgba(255, 255, 255, 0.2) inset;
+  }
+  #version_menu {
+    position: fixed;
+    visibility: hidden;
+    opacity: 0;
+    bottom: 11px;
+    right: 47px;
+    list-style-type: none;
+    margin: 0;
+  }
+  .footer_popout:hover #version_menu {
+    visibility: visible;
+    opacity: 1;
+    right: 166px;
+  }
+  #version_menu li {
+    display: block;
+    float: right;
+  }
+  #version_menu li a {
+    display: block;
+    padding: 6px 10px 4px 10px;
+    margin: 7px 7px 0 0;
+    font-weight: bold;
+    font-size: 14px;
+    height: 20px;
+    line-height: 17px;
+    text-decoration: none;
+    color: #fff;
+    background: #8ca1af url(../images/gradient-light.png) bottom left repeat-x;
+    border-radius: 3px;
+    -moz-border-radius: 3px;
+    -webkit-border-radius: 3px;
+    box-shadow: 0 1px 1px #465158;
+    -moz-box-shadow: 0 1px 1px #465158;
+    -webkit-box-shadow: 0 1px 1px #465158;
+    text-shadow: 0 1px 1px rgba(0, 0, 0, 0.5);
+  }
+  #version_menu li a:hover {
+    text-decoration: none;
+    background-color: #697983;
+    box-shadow: 0 1px 0px #465158;
+    -moz-box-shadow: 0 1px 0px #465158;
+    -webkit-box-shadow: 0 1px 0px #465158;
+  }
+  .rtd-badge.rtd {
+    background: #3b4449 url(//media.readthedocs.org//images/badge-rtd.png) scroll top left no-repeat;
+    border: 1px solid #282E32;
+    width: 41px;
+    right: 5px;
+  }
+  .footer_popout:hover .rtd-badge.rtd {
+    width: 160px;
+  }
+  .rtd-badge.revsys { background: #465158 url(//media.readthedocs.org//images/badge-revsys.png) top left no-repeat;
+    border: 1px solid #1C5871;
+    width: 290px;
+    right: 173px;
+  }
+  .rtd-badge.revsys-inline-sponsored {
+    position: inherit;
+    margin-left: auto;
+    margin-right: 175px;
+    margin-bottom: 5px;
+    background: #465158 url(//media.readthedocs.org//images/badge-revsys.png) top left no-repeat;
+    border: 1px solid #1C5871;
+    width: 290px;
+    right: 173px;
+  }
+  .rtd-badge.revsys-inline {
+    position: inherit;
+    margin-left: auto;
+    margin-right: 175px;
+    margin-bottom: 5px;
+    background: #465158 url(//media.readthedocs.org//images/badge-revsys-sm.png) top left no-repeat;
+    border: 1px solid #1C5871;
+    width: 205px;
+    right: 173px;
+  }
+
+</style>
+<div class="rtd_doc_footer">
+  <div class="footer_popout">
+    <a href="http://readthedocs.org/projects/zh-google-styleguide/?fromdocs=zh-google-styleguide" class="rtd-badge rtd"> Brought to you by Read the Docs</a>
+    <ul id="version_menu">
+      
+        <li><a href="../../index.html">latest</a></li>
+      
+    </ul>
+  </div>
+</div>
+<!-- RTD Analytics Code -->
+<script type="text/javascript">
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-17997319-1']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+
+
+
+
+  </body>
+
+<!-- Mirrored from zh-google-styleguide.readthedocs.org/en/latest/google-objc-styleguide/comments/ by HTTrack Website Copier/3.x [XR&CO'2008], Sun, 28 Jul 2013 11:15:56 GMT -->
+</html>
